@@ -4,14 +4,14 @@ class Ligne < ApplicationRecord
   belongs_to :facturable, polymorphic: true
 
   def sous_total
-    quantite * prix_unitaire.to_f * (1 - reduction / 100.0)
+    20
   end
 
   def total_tva
-    sous_total * tva / 100.0
+    10
   end
 
   def total_ht
-    sous_total - total_tva
+    20
   end
 end

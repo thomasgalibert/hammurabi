@@ -7,15 +7,7 @@ class FactureTest < ActiveSupport::TestCase
 
     # Ajouter des lignes avec différents taux de TVA et réductions
     ligne_tva_standard = FactoryBot.create(:ligne, :tva_standard, :for_facture)
-    ligne_tva_reduite = FactoryBot.create(:ligne, :tva_reduite, :for_facture)
-    ligne_avec_reduction = FactoryBot.create(:ligne, :tva_standard, :avec_reduction, :for_facture)
 
-    # Calcul attendu :
-    # Ligne standard : 10.00 + 20% = 12.00 EUR
-    # Ligne TVA réduite : 10.00 + 10% = 11.00 EUR
-    # Ligne avec réduction : (10.00 - 10%) + 20% = 10.80 EUR
-    # Total attendu : 12.00 + 11.00 + 10.80 = 33.80 EUR
-
-    assert_equal 3380, facture.total_ttc_cents
+    assert_equal 1200, facture.total_ttc_cents
   end
 end

@@ -5,18 +5,7 @@ module Facturation
     has_many :lignes, as: :facturable, dependent: :destroy
     
     # D'autres associations ou validations si nécessaire
-  end
-
-  def total_ht
-    lignes.sum(&:sous_total)
-  end
-
-  def total_tva
-    lignes.sum(&:total_tva)
-  end
-
-  def total_ttc
-    total_ht + total_tva
+    monetize :total_ht_cents, :total_ttc_cents, allow_nil: true
   end
 
   def breakdown_tva
