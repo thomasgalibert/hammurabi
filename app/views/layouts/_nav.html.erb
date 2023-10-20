@@ -1,0 +1,25 @@
+<nav>
+
+  <ul>
+    <li class="logo">
+      <%= link_to image_tag("logo.svg"), root_url %>
+    </li>
+    <li class="logo">
+      <%= link_to "HAMMURABI", root_url %>
+    </li>
+  </ul>
+
+  <ul>
+  </ul>
+  
+  <ul>
+    <% if user_signed_in? %>
+      <li><%= link_to t('sessions.edit_password'), edit_password_path %></li>
+      <li><%= button_to t('sessions.logout'), session_path, method: :delete %></li>
+    <% else %>
+      <li><%= link_to t('sessions.signup'), new_registration_path %></li>
+      <li><%= link_to t('sessions.login'), new_session_path %></li>
+    <% end %>
+  </ul>
+
+</nav>

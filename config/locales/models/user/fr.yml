@@ -1,0 +1,13 @@
+fr:
+  activerecord:
+    attributes:
+      user:
+        email: "Adresse email"
+        password: "Mot de passe"
+        password_confirmation: "Confirmation"
+  
+  helpers:
+    submit:
+      user:
+        create: "Créer un compte"
+        update: "Mettre à jour mes informations"

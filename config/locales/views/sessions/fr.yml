@@ -1,0 +1,7 @@
+fr:
+  sessions:
+    login: "Connexion"
+    logout: "Déconnexion"
+    signup: "Créer un compte"
+    edit_password: "Modifier mon mot de passe"
+    destroy: "Vous êtes bien déconnecté du service."

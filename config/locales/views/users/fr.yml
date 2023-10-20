@@ -1,0 +1,5 @@
+fr:
+  registration:
+    new:
+      title: "Créer un compte"
+      legend: "Renseignez les informations suivantes : "

@@ -1,0 +1,32 @@
+<h1><%= t 'registration.new.title' %></h1>
+
+<%= form_with model: @user, url: registration_path do |form| %>
+  <% if form.object.errors.any? %>
+    <aside>
+      <ol>
+        <% form.object.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %> 
+      </ol>
+    </aside>
+  <% end %>
+  
+  <fieldset>
+    <legend><%= t 'registration.new.legend' %></legend>
+    <div>
+      <%= form.label :email %>
+      <%= form.email_field :email, autofocus: true %>
+    </div>
+    <div>
+      <%= form.label :password %>
+      <%= form.password_field :password %>
+    </div>
+    <div>
+      <%= form.label :password_confirmation %>
+      <%= form.password_field :password_confirmation %>
+    </div>
+  </fieldset>
+
+  <div class="form-footer"><%= form.submit %></div>
+
+<% end %>

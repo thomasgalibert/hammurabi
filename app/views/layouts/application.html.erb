@@ -7,9 +7,23 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6639560/7077632/css/fonts.css" />
+    <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <div><%= notice %></div>
+    <div><%= alert %></div>
+
+    
+    <header>
+      <%= render "layouts/nav" %>
+    </header>
+
+    <main>
+      <section><%= yield %></section>
+    </main>
+
+    <footer><%= render "layouts/footer" %></footer>
   </body>
 </html>

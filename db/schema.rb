@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_19_163646) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_20_134743) do
   create_table "factures", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "total_ht_cents"
     t.integer "total_ttc_cents"
@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_19_163646) do
     t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "locked", default: false
   end
 
   create_table "lignes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -33,7 +34,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_19_163646) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "reduction"
+    t.integer "total_tva_cents"
     t.index ["facturable_type", "facturable_id"], name: "index_lignes_on_facturable"
+  end
+
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
