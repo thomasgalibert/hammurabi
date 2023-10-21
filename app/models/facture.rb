@@ -2,6 +2,8 @@ class Facture < ApplicationRecord
   include Facturation
   include AASM
 
+  belongs_to :emetteur, class_name: 'User'
+
   aasm column: :state do
     state :draft, initial: true
     state :achived

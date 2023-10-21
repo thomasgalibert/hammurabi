@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_20_134743) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_21_163459) do
   create_table "factures", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "total_ht_cents"
     t.integer "total_ttc_cents"
@@ -20,6 +20,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_20_134743) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "locked", default: false
+    t.bigint "emetteur_id", null: false
+    t.index ["emetteur_id"], name: "index_factures_on_emetteur_id"
   end
 
   create_table "lignes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -45,4 +47,5 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_20_134743) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "factures", "users", column: "emetteur_id"
 end

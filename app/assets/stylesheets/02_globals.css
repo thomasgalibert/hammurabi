@@ -2,114 +2,86 @@ body {
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   background-color: #fafaf9;
   font-size: 16px;
-
-  a{
-    color: #3730a3;
-    text-decoration: underline;
-
-    &:hover{
-      color: #4f46e5;
-    }
-  }
-
-  header{
-    background-color: #881337;
-
-    nav{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.5em 2em;
-
-      a{
-        color: #fecdd3;
-        text-decoration: none;
-        font-size: 0.9em;
-        font-weight: bold;
-
-        &:hover{
-          color: white;
-        }
-      }
-
-      button{
-        background-color: transparent;
-        border: none;
-        color: white;
-        font-size: 0.9em;
-        font-weight: bold;
-        cursor: pointer;
-
-        &:hover{
-          color: #fecdd3;
-        }
-      }
-
-      ul{
-        display: flex;
-        align-items: center;
-        gap: 1em;
-        list-style: none;
-        margin: 0em;
-        padding: 0em;
-
-        li{
-          color: white;
-          &.logo{
-            img{
-              width: 50px;
-            }
-
-            a{
-              font-size: 1.5em;
-              font-weight: bold;
-              color: white;
-            }
-            
-          }
-        }
-      }
-    }
-  }
-
-  main{
-    margin: 2em;
-    background-color: white;
-    border: 1px solid #e7e5e4;
-
-    section{
-      padding: 2em;
-    }
-  }
-
-  h1{
-    color: #57534e;
-  }
-
-  footer{
-    margin-top: 5em;
-    border-top: 1px solid #e7e5e4;
-    
-    nav{
-      ul{
-        display: flex;
-        gap: 1em;
-        list-style: none;
-        font-size: 0.7em;
-
-        li{
-          a{
-          }
-        }
-      }
-    }
-  }
 }
-
-.serif{
+body a {
+  color: #3730a3;
+  text-decoration: underline;
+}
+body a:hover {
+  color: #4f46e5;
+}
+body header {
+  background-color: #881337;
+}
+body header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 2em;
+}
+body header nav a {
+  color: #fecdd3;
+  text-decoration: none;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+body header nav a:hover {
+  color: white;
+}
+body header nav button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 0.9em;
+  font-weight: bold;
+  cursor: pointer;
+}
+body header nav button:hover {
+  color: #fecdd3;
+}
+body header nav ul {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  list-style: none;
+  margin: 0em;
+  padding: 0em;
+}
+body header nav ul li {
+  color: white;
+}
+body header nav ul li.logo img {
+  width: 50px;
+}
+body header nav ul li.logo a {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: white;
+}
+body main {
+  margin: 2em;
+  background-color: white;
+  border: 1px solid #e7e5e4;
+}
+body main section {
+  padding: 2em;
+}
+body h1 {
+  color: #57534e;
+}
+body footer {
+  margin-top: 5em;
+  border-top: 1px solid #e7e5e4;
+}
+body footer nav ul {
+  display: flex;
+  gap: 1em;
+  list-style: none;
+  font-size: 0.7em;
+}
+.serif {
   font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
-
-.mono{
+.mono {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
