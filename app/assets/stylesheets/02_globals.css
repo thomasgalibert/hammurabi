@@ -54,6 +54,7 @@ body {
         padding: 0em;
 
         li{
+          color: white;
           &.logo{
             img{
               width: 50px;
