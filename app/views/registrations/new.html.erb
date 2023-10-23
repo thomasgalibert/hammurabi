@@ -1,15 +1,7 @@
 <h1><%= t 'registration.new.title' %></h1>
 
 <%= form_with model: @user, url: registration_path do |form| %>
-  <% if form.object.errors.any? %>
-    <aside>
-      <ol>
-        <% form.object.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %> 
-      </ol>
-    </aside>
-  <% end %>
+  <%= render "shared/errors", object: form.object %>
   
   <fieldset>
     <legend><%= t 'registration.new.legend' %></legend>

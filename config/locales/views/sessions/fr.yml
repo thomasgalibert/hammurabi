@@ -5,3 +5,31 @@ fr:
     signup: "Créer un compte"
     edit_password: "Modifier mon mot de passe"
     destroy: "Vous êtes bien déconnecté du service."
+    create: "Vous êtes bien connecté au service."
+    invalid_credentials: "Votre identifiant ou votre mot de passe est incorrect."
+    login_legend: "Renseignez l'email et le mot de passe utilisés lors de votre inscription."
+    email: "Email"
+    password: "Mot de passe"
+    submit: "Connexion"
+    forget_password: "Mot de passe oublié ?"
+    unauthenticate: "Vous n'êtes pas connecté au service."
+    updated_password: "Votre mot de passe a bien été modifié."
+  
+  password_resets:
+    create:
+      notice: "Un email vous a été envoyé avec les instructions pour réinitialiser votre mot de passe."
+    set_user_by_token:
+      alert: "Le lien de réinitialisation du mot de passe a expiré ou est invalide."
+    update:
+      notice: "Votre mot de passe a bien été modifié. Vous pouvez vous connecter avec vos nouveaux identifiants."
+    edit:
+      title: "Réinitialiser votre mot de passe"
+      legend: "Renseignez votre nouveau mot de passe."
+    new:
+      title: "Réinitialiser votre mot de passe"
+      legend: "Renseignez votre email pour réinitialiser votre mot de passe."
+      submit: "Réinitialiser mon mot de passe"
+  
+  password_mailer:
+    password_reset:
+      subject: "Réinitialisation de votre mot de passe"

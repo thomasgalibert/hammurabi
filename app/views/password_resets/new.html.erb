@@ -1,0 +1,13 @@
+<h1><%= t 'password_resets.new.title' %></h1>
+
+<%= form_with model: @user, url: password_reset_path do |form| %>
+  <fieldset>
+    <legend><%= t 'password_resets.new.legend' %></legend>
+    <div>
+      <%= form.label :email, t('sessions.email') %>
+      <%= form.email_field :email, autofocus: true %>
+    </div>
+  </fieldset>
+
+  <div class="form-footer"><%= form.submit t('password_resets.new.submit') %></div>
+<% end %>

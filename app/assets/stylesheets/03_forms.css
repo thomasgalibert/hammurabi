@@ -59,4 +59,30 @@ form .form-footer input[type="submit"] {
   border-radius: 3px;
   padding: 0.5em 1em;
   cursor: pointer;
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2);
+  /* looks like the button is pressed when clicked or hover */
+  transition: all 0.1s ease-in-out;
+}
+
+form .form-footer input[type="submit"]:hover {
+  background-color: #d6d3d1;
+  border-color: #c4c2c0;
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2);
+}
+
+.button{
+  background-color: #e7e5e4;
+  border: 1px solid #d6d3d1;
+  border-radius: 3px;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2);
+  /* looks like the button is pressed when clicked or hover */
+  transition: all 0.1s ease-in-out;
+}
+
+.button:hover {
+  background-color: #d6d3d1;
+  border-color: #c4c2c0;
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2);
 }

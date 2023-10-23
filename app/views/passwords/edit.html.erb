@@ -1,0 +1,25 @@
+<h1><%= t 'passwords.edit.title' %></h1>
+
+<%= form_with model: current_user, url: password_path do |form| %>
+  <%= render "shared/errors", object: form.object %>
+  
+  <fieldset>
+    <legend><%= t 'passwords.edit.legend' %></legend>
+
+    <div>
+      <%= form.label :password_challenge %>
+      <%= form.password_field :password_challenge %>
+    </div>
+    <div>
+      <%= form.label :password, t('activerecord.attributes.user.new_password') %>
+      <%= form.password_field :password %>
+    </div>
+    <div>
+      <%= form.label :password_confirmation, t('activerecord.attributes.user.new_password_confirmation') %>
+      <%= form.password_field :password_confirmation %>
+    </div>
+  </fieldset>
+
+  <div class="form-footer"><%= form.submit t('passwords.edit.submit') %></div>
+
+<% end %>

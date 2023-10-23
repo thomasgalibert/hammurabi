@@ -5,6 +5,9 @@ fr:
         email: "Adresse email"
         password: "Mot de passe"
         password_confirmation: "Confirmation"
+        password_challenge: "Mot de passe actuel"
+        new_password: "Nouveau mot de passe"
+        new_password_confirmation: "Confirmation"
   
   helpers:
     submit:

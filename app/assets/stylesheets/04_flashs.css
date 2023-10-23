@@ -1,0 +1,21 @@
+/* Flash message for info, success, warning and error. */
+
+.flash {
+  padding: 1em;
+  border-radius: 3px;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.flash-notice {
+  background-color: #d9edf7;
+  color: #31708f;
+  border-bottom: #bce8f1 1px solid;
+}
+
+.flash-alert {
+  background-color: #f2dede;
+  color: #a94442;
+  border-bottom: #ebccd1 1px solid;
+}

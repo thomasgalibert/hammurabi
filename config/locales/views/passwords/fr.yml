@@ -1,0 +1,6 @@
+fr:
+  passwords:
+    edit:
+      title: "Modifier votre mot de passe"
+      legend: "Renseignez votre nouveau mot de passe : "
+      submit: "Modifier le mot de passe"
