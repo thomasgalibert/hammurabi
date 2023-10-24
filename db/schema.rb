@@ -10,7 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_21_163459) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_24_162932) do
+  create_table "contacts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "kind"
+    t.string "last_name"
+    t.string "first_name"
+    t.string "company_name"
+    t.string "business_number"
+    t.string "vat_number"
+    t.string "email"
+    t.string "phone"
+    t.text "address"
+    t.string "zip_code"
+    t.string "city"
+    t.string "country"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_contacts_on_user_id"
+  end
+
+  create_table "dossier_contacts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "dossier_id", null: false
+    t.bigint "contact_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_id"], name: "index_dossier_contacts_on_contact_id"
+    t.index ["dossier_id"], name: "index_dossier_contacts_on_dossier_id"
+  end
+
+  create_table "dossiers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name"
+    t.string "state"
+    t.text "description"
+    t.string "category"
+    t.string "court"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_dossiers_on_user_id"
+  end
+
   create_table "factures", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "total_ht_cents"
     t.integer "total_ttc_cents"
@@ -21,6 +61,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_21_163459) do
     t.datetime "updated_at", null: false
     t.boolean "locked", default: false
     t.bigint "emetteur_id", null: false
+    t.bigint "dossier_id", null: false
+    t.index ["dossier_id"], name: "index_factures_on_dossier_id"
     t.index ["emetteur_id"], name: "index_factures_on_emetteur_id"
   end
 
@@ -47,5 +89,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_21_163459) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "contacts", "users"
+  add_foreign_key "dossier_contacts", "contacts"
+  add_foreign_key "dossier_contacts", "dossiers"
+  add_foreign_key "dossiers", "users"
+  add_foreign_key "factures", "dossiers"
   add_foreign_key "factures", "users", column: "emetteur_id"
 end

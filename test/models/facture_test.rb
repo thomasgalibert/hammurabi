@@ -4,21 +4,24 @@ require 'test_helper'
 class FactureTest < ActiveSupport::TestCase
   test "il y a bien une création de 3 lignes pour la facture" do
     user = FactoryBot.create(:user)
-    facture = FactoryBot.create(:facture, emetteur: user)    
+    dossier = FactoryBot.create(:dossier, user: user)
+    facture = FactoryBot.create(:facture, emetteur: user, dossier: dossier)    
     ligne_tva_standard = FactoryBot.create(:ligne, :tva_standard, facturable: facture)
     assert_equal 1, facture.lignes.count
   end
 
   test "vérifie le total ttc de la première ligne" do
     user = FactoryBot.create(:user)
-    facture = FactoryBot.create(:facture, emetteur: user)    
+    dossier = FactoryBot.create(:dossier, user: user)
+    facture = FactoryBot.create(:facture, emetteur: user, dossier: dossier)    
     ligne_tva_standard = FactoryBot.create(:ligne, :tva_standard, facturable: facture)
     assert_equal 1200, ligne_tva_standard.total_ttc_cents
   end
 
   test "vérifie le total ttc de la facture" do
     user = FactoryBot.create(:user)
-    facture = FactoryBot.create(:facture, emetteur: user)    
+    dossier = FactoryBot.create(:dossier, user: user)
+    facture = FactoryBot.create(:facture, emetteur: user, dossier: dossier)    
     ligne_tva_standard = FactoryBot.create(:ligne, :tva_standard, facturable: facture)
     facture.reload
     facture.calculer_totaux
@@ -28,7 +31,8 @@ class FactureTest < ActiveSupport::TestCase
 
   test "vérifie le total ttc avec différentes tva et réduction" do
     user = FactoryBot.create(:user)
-    facture = FactoryBot.create(:facture, emetteur: user)    
+    dossier = FactoryBot.create(:dossier, user: user)
+    facture = FactoryBot.create(:facture, emetteur: user, dossier: dossier)    
 
     FactoryBot.create(
       :ligne, 
@@ -54,7 +58,8 @@ class FactureTest < ActiveSupport::TestCase
 
   test "verifie que les sous-totaux de tva sont corrects" do
     user = FactoryBot.create(:user)
-    facture = FactoryBot.create(:facture, emetteur: user)
+    dossier = FactoryBot.create(:dossier, user: user)
+    facture = FactoryBot.create(:facture, emetteur: user, dossier: dossier)
 
     FactoryBot.create(
       :ligne, 
@@ -81,17 +86,19 @@ class FactureTest < ActiveSupport::TestCase
 
   test "vérifie que l'on peut pas créer un facture avec un date antérieure à la précédente" do
     user = FactoryBot.create(:user)
-    facture = FactoryBot.create(:facture, emetteur: user)    
-    facture2 = FactoryBot.build(:facture, emetteur: user, date: facture.date - 1.day)
+    dossier = FactoryBot.create(:dossier, user: user)
+    facture = FactoryBot.create(:facture, emetteur: user, dossier: dossier)    
+    facture2 = FactoryBot.build(:facture, emetteur: user, date: facture.date - 1.day, dossier: dossier)
     assert_not facture2.valid?
   end
 
   test "vérifie que le numéro de la facture est bien incrémenté par rapport à la dernière facture ajoutée" do
     user = FactoryBot.create(:user)
+    dossier = FactoryBot.create(:dossier, user: user)
     Facture.delete_all
-    facture1 = FactoryBot.create(:facture, state: :achived, emetteur: user)    
-    facture2 = FactoryBot.create(:facture, state: :draft, emetteur: user)    
-    facture3 = FactoryBot.create(:facture, state: :achived, emetteur: user)
+    facture1 = FactoryBot.create(:facture, state: :achived, emetteur: user, dossier: dossier)    
+    facture2 = FactoryBot.create(:facture, state: :draft, emetteur: user, dossier: dossier)    
+    facture3 = FactoryBot.create(:facture, state: :achived, emetteur: user, dossier: dossier)
 
     assert_equal 2, facture3.numero
   end
@@ -99,7 +106,8 @@ class FactureTest < ActiveSupport::TestCase
   test "vérifie que la facture n'a pas de numéro quand c'est un brouillon" do
     Facture.delete_all
     user = FactoryBot.create(:user)
-    facture1 = FactoryBot.create(:facture, state: :draft, emetteur: user)    
+    dossier = FactoryBot.create(:dossier, user: user)
+    facture1 = FactoryBot.create(:facture, state: :draft, emetteur: user, dossier: dossier)    
 
     assert_nil facture1.numero
   end
@@ -107,7 +115,8 @@ class FactureTest < ActiveSupport::TestCase
   test "vérifie que la facture a un numéro quand elle est validée" do
     Facture.delete_all
     user = FactoryBot.create(:user)
-    facture1 = FactoryBot.create(:facture, state: :draft, emetteur: user)
+    dossier = FactoryBot.create(:dossier, user: user)
+    facture1 = FactoryBot.create(:facture, state: :draft, emetteur: user, dossier: dossier)
     facture1.complete!    
 
     assert_not_nil facture1.numero
@@ -116,7 +125,8 @@ class FactureTest < ActiveSupport::TestCase
 
   test "vérifie que l'on ne peut pas modifier une facture validée" do
     user = FactoryBot.create(:user)
-    facture = FactoryBot.create(:facture, state: :draft, emetteur: user)
+    dossier = FactoryBot.create(:dossier, user: user)
+    facture = FactoryBot.create(:facture, state: :draft, emetteur: user, dossier: dossier)
     facture.complete!    
     facture.update(date: facture.date + 1.day)
     

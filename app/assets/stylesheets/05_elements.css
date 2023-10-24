@@ -1,3 +1,11 @@
-#clock{
+li.clock #date {
+  font-size: 0.7em;
   text-align: center;
+  margin-bottom: 5px;
+  color: #fecdd3;
+}
+
+li.clock #clock time{
+  text-align: center;
+  font-size: 1.1em;
 }

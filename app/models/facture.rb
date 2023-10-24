@@ -3,6 +3,7 @@ class Facture < ApplicationRecord
   include AASM
 
   belongs_to :emetteur, class_name: 'User'
+  belongs_to :dossier
 
   aasm column: :state do
     state :draft, initial: true

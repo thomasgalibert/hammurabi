@@ -69,6 +69,12 @@ body main section {
 body h1 {
   color: #57534e;
 }
+
+body h2 {
+  color: #57534e;
+  font-size: 1.2em;
+}
+
 body footer {
   margin-top: 5em;
   border-top: 1px solid #e7e5e4;
