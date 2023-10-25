@@ -2,17 +2,23 @@
 require 'test_helper'
 
 class FactureAssociationsTest < ActiveSupport::TestCase
+  def setup
+    @user = FactoryBot.create(:user)
+    @contact = FactoryBot.create(:contact, user: @user)
+    @dossier = FactoryBot.create(:dossier, user: @user)
+    @dossier.contacts << @contact
+    @facture = FactoryBot.create(:facture, emetteur: @user, dossier: @dossier, contact: @contact)
+  end
+
   test "Vérifier que la facture appartient à un émetteur qui est relié à la table users" do
-    user = FactoryBot.create(:user)
-    dossier = FactoryBot.create(:dossier, user: user)
-    facture = FactoryBot.create(:facture, emetteur: user, dossier: dossier)    
-    assert_equal facture.emetteur.class, User
+    assert_equal @facture.emetteur.class, User
   end
 
   test "Vérifier que la facture est reliée à un dossier" do
-    user = FactoryBot.create(:user)
-    dossier = FactoryBot.create(:dossier, user: user)
-    facture = FactoryBot.create(:facture, emetteur: user, dossier: dossier)    
-    assert_equal facture.dossier.class, Dossier
+    assert_equal @facture.dossier.class, Dossier
+  end
+
+  test "Vérifier que la facture est reliée à un contact" do
+    assert_equal @facture.contact.class, Contact
   end
 end

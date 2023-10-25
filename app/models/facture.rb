@@ -4,6 +4,7 @@ class Facture < ApplicationRecord
 
   belongs_to :emetteur, class_name: 'User'
   belongs_to :dossier
+  belongs_to :contact
 
   aasm column: :state do
     state :draft, initial: true

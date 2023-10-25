@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_24_162932) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_25_144327) do
   create_table "contacts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "kind"
@@ -27,6 +27,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_24_162932) do
     t.string "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "main", default: false
     t.index ["user_id"], name: "index_contacts_on_user_id"
   end
 
@@ -62,6 +63,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_24_162932) do
     t.boolean "locked", default: false
     t.bigint "emetteur_id", null: false
     t.bigint "dossier_id", null: false
+    t.bigint "contact_id", null: false
+    t.index ["contact_id"], name: "index_factures_on_contact_id"
     t.index ["dossier_id"], name: "index_factures_on_dossier_id"
     t.index ["emetteur_id"], name: "index_factures_on_emetteur_id"
   end
@@ -93,6 +96,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_24_162932) do
   add_foreign_key "dossier_contacts", "contacts"
   add_foreign_key "dossier_contacts", "dossiers"
   add_foreign_key "dossiers", "users"
+  add_foreign_key "factures", "contacts"
   add_foreign_key "factures", "dossiers"
   add_foreign_key "factures", "users", column: "emetteur_id"
 end
