@@ -111,4 +111,16 @@ class FactureTest < ActiveSupport::TestCase
     
     assert_not @facture.valid?
   end
+
+  test "vérifie que la facture comporte une date de fin de validité" do
+    assert_not_nil @facture.date_fin_validite
+  end
+
+  test "vérifie que la facture comporte des conditions de paiement" do
+    assert_not_nil @facture.conditions_paiement
+  end
+
+  test "vérifie que le facture comporte des conditions générales" do
+    assert_not_nil @facture.conditions_generales
+  end
 end

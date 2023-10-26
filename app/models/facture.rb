@@ -6,6 +6,9 @@ class Facture < ApplicationRecord
   belongs_to :dossier
   belongs_to :contact
 
+  has_rich_text :conditions_paiement
+  has_rich_text :conditions_generales
+
   aasm column: :state do
     state :draft, initial: true
     state :achived
