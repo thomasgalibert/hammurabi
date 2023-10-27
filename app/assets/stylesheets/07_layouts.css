@@ -1,0 +1,14 @@
+.flex{
+  display: flex;
+  align-items: top;
+  gap: 2em;
+  list-style: none;
+  margin: 0em;
+  padding: 0em;
+}
+
+@media screen and (max-width: 600px) {
+  .flex {
+    flex-direction: column;
+  }
+}

@@ -2,7 +2,7 @@ li.clock #date {
   font-size: 0.7em;
   text-align: center;
   margin-bottom: 5px;
-  color: #fecdd3;
+  color: var(--celadon);
 }
 
 li.clock #clock time{
