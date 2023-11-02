@@ -70,3 +70,4 @@ end
 # Additionnal gems
 gem 'money-rails'
 gem 'aasm'
+gem 'tailwindcss-rails'

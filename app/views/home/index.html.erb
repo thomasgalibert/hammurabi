@@ -1,37 +1,37 @@
-<div class="flex">
-  <article>
-    <h1>Gestion de cabinet d'avocat @thomasgalibert.</h1>
+<article class="prose prose-cyan lg:prose-xl">
+  <h2 class="text-stone-600">Gestion de cabinet d'avocat libre</h2>
 
-    <p>
-      Hammurabi est un logiciel de gestion de cabinet d'avocat.
+  <p>
+    Il est développé par 
+    <a href="http://github.com/thomasgalibert" target="_blank">Thomas Galibert</a> 
+    et est disponible sous licence 
+    <a href="http://www.gnu.org/licenses/gpl-3.0.html" target="_blank">GPLv3</a>.
+  </p>
+
+  <p>Ce qu'Hammurabi ne fait pas :
+
+    <ul>
+      <li>proposer des modèles de conclusions,</li>
+      <li>envoyer et intégrer les emails dans vos dossiers.</li>
+    </ul>
+  </p>
+
+  <p><strong>Par contre, ce qu'il fait et que les autres ne font que peu ou pas :</strong></p>
+
+  <ul>
+    <li>il est <em>open-source</em>, donc vous pouvez l'installer vous-même sans redevance mensuelle,</li>
+    <li>comme il encore <em>open-source</em>, vous pouvez héberger vos données sur vos propres serveurs,</li>
+    <li>il a été conçu avec le respect du RGPD en tête, donc, vous pouvez anonymiser en un click les donneés personnelles de vos clients,</li>
+    <li>il a été conçu pour faciliter la collaboration entre confrères (postulation, sous-traitance) et permet un partage en toute sécurité des dossiers,</li>
+    <li>il gère la récolte des pièces des clients,</li>
+    <li>enfin, il est conçu pour être entièrement utilisable depuis son téléphone, quand vous êtes en audience.</li>
+  </ul>
+
+  <div class="bg-white border p-10 rounded-md shadow-sm">
+    <p>Vous pouvez toutefois nous confier l'hébergement et la mise à jour de votre instance, pour 50€ par mois / utilisateur.</p>
+
+    <p class="text-right"><%= link_to "Ouvrir un compte", new_registration_path, 
+          class: "no-underline flex w-full justify-center rounded-md bg-lime-600 px-3 py-1.5 text-lg font-semibold leading-6 text-white shadow-sm hover:bg-lime-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-600" %>
     </p>
-
-    <p>
-      Il est développé par 
-      <a href="http://github.com/thomasgalibert" target="_blank">Thomas Galibert</a> 
-      et est disponible sous licence 
-      <a href="http://www.gnu.org/licenses/gpl-3.0.html" target="_blank">GPLv3</a>.
-    </p>
-
-    <p>Les principales fonctions sont :
-
-      <ul>
-        <li>gestion des dossiers</li>
-        <li>gestion des documents</li>
-        <li>gestion des clients</li>
-        <li>gestion des factures</li>
-        <li>gestion des paiements</li>
-        <li>gestion des feuilles de temps</li>
-      </ul>
-    </p>
-  </article>
-
-  <article>
-    <h1>Spécificités</h1>
-
-    <h2>Collaboration</h2>
-
-    <p>Le logiciel est axé sur la collaboration entre avocats, du même cabinet ou pas.</p>
-    <p>Imaginons que vous souhaitiez travailler ou sous-traiter un dossier avec un collègue, il suffit
-    qu'il soit inscrit et il peut accéder à votre dossier.</p>
-  </article>
+  </div>
+</article>

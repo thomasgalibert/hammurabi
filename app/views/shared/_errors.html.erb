@@ -1,9 +1,10 @@
 <% if object.errors.any? %>
-  <aside>
-    <ol>
+  <aside class="rounded-md bg-red-50 border-red-300 border mt-4 mb-20  p-4">
+    <h2 class="text-red-800 font-semibold mb-6"><%= t('errors.title') %></h2>
+    <ul class="list-decimal ml-6">
       <% object.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %> 
-    </ol>
+    </ul>
   </aside>
 <% end %>
