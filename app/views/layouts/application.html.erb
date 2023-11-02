@@ -15,7 +15,8 @@
     <%= render "shared/flashs" %>
     
     <header>
-      <%= render "layouts/nav" %>
+      <%= render "shared/nav_signed_in" if current_user %>
+      <%= render "layouts/nav" unless current_user %>
     </header>
 
     <main>

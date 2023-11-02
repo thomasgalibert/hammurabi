@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+  has_many :dossiers, dependent: :destroy
 
   validates :email, presence: true
   validates :email, uniqueness: true

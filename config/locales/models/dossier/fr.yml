@@ -1,0 +1,9 @@
+fr:
+  dossiers:
+    flash:
+      created:
+        success: "Dossier créé avec succès."
+      updated:
+        success: "Dossier mis à jour avec succès."
+      destroyed:
+        success: "Dossier supprimé avec succès."

@@ -1,13 +1,12 @@
-<h1><%= t 'password_resets.new.title' %></h1>
-
-<%= form_with model: @user, url: password_reset_path do |form| %>
-  <fieldset>
-    <legend><%= t 'password_resets.new.legend' %></legend>
-    <div>
-      <%= form.label :email, t('sessions.email') %>
-      <%= form.email_field :email, autofocus: true %>
+<%= form_with model: @user, url: password_reset_path, class: "max-w-3xl" do |form| %>
+  <fieldset class="bg-white border rounded-md p-6 relative mt-10">
+    <legend class="absolute -top-10 text-stone-500 text-lg"><%= t 'password_resets.new.legend' %></legend>
+    <div class="flex flex-col space-y-2 mb-6">
+      <%= form.label :email, t('sessions.email'), class: "block text-sm font-medium leading-6 text-stone-900" %>
+      <%= form.email_field :email, autofocus: true, class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-lime-600 sm:text-sm sm:leading-6" %>
     </div>
+
+    <%= form.submit t('password_resets.new.submit'), class: "flex w-full justify-center rounded-md bg-lime-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-lime-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-600" %>
   </fieldset>
 
-  <div class="form-footer"><%= form.submit t('password_resets.new.submit') %></div>
 <% end %>
