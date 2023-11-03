@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  todoable: one
+  todoable_type: Todoable
+  name: MyString
+  done: false
+  due_at: 2023-11-03
+
+two:
+  todoable: two
+  todoable_type: Todoable
+  name: MyString
+  done: false
+  due_at: 2023-11-03

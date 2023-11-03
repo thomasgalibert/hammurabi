@@ -1,5 +1,5 @@
 <% if flash[:notice] %>
-  <div class="rounded-md bg-lime-50 border-lime-300 border mt-4 p-4">
+  <div data-controller="flash" data-flash-target="flash" class="rounded-md bg-stone-800 border-lime-300 border mt-4 p-4 relative">
     <div class="flex">
       <div class="flex-shrink-0">
         <svg class="h-5 w-5 text-lime-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -7,17 +7,28 @@
         </svg>
       </div>
       <div class="ml-3">
-        <h3 class="text-sm font-medium text-lime-800"><%= t('flash.title.notice') %></h3>
-        <div class="mt-2 text-sm text-lime-700">
+        <h3 class="text-sm font-medium text-lime-400"><%= t('flash.title.notice') %></h3>
+        <div class="mt-2 text-sm text-lime-300">
           <p><%= flash[:notice] %></p>
         </div>
       </div>
+    </div>
+
+    <div data-action="click->flash#close">
+      <svg xmlns="http://www.w3.org/2000/svg" 
+           fill="none" 
+           viewBox="0 0 24 24" 
+           stroke-width="1.5" 
+           stroke="currentColor" 
+           class="w-6 h-6 text-red-400 absolute font-black top-2 right-4 cursor-pointer">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
     </div>
   </div>
 <% end %>
 
 <% if flash[:alert] %>
-  <div class="rounded-md bg-red-50 border-red-300 border mt-4 p-4">
+  <div data-controller="flash" data-flash-target="flash" class="relative rounded-md bg-stone-800 border-red-300 border mt-4 p-4">
     <div class="flex">
       <div class="flex-shrink-0">
         <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -25,11 +36,22 @@
         </svg>
       </div>
       <div class="ml-3">
-        <h3 class="text-sm font-medium text-red-800"><%= t('flash.title.alert') %></h3>
-        <div class="mt-2 text-sm text-red-700">
+        <h3 class="text-sm font-medium text-red-400"><%= t('flash.title.alert') %></h3>
+        <div class="mt-2 text-sm text-red-300">
           <p><%= flash[:alert] %></p>
         </div>
       </div>
+    </div>
+
+    <div data-action="click->flash#close">
+      <svg xmlns="http://www.w3.org/2000/svg" 
+           fill="none" 
+           viewBox="0 0 24 24" 
+           stroke-width="1.5" 
+           stroke="currentColor" 
+           class="w-6 h-6 text-red-400 absolute font-black top-2 right-4 cursor-pointer">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
     </div>
   </div>
 <% end %>

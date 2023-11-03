@@ -8,6 +8,15 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+# Seed user
+user = User.create(
+  email: 'test@gmail.com',
+  password: 'Azerty34500!',
+  last_name: 'Allred',
+  first_name: 'Gloria',
+  firm: 'Allred Maroko & Goldberg',
+)
+
 # Seeds 100 dossier records
 
 states = %w[pending archived sent paid overdue]
@@ -21,7 +30,7 @@ courts = ["TGI de Paris", "TGI Marseille", "Conseil des prud'hommes de Perpignan
     state: states.sample,
     category: categories.sample,
     court: courts.sample,
-    user_id: 1
+    user: user
   )
 end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_03_081420) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_03_152252) do
   create_table "action_text_rich_texts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -125,11 +125,27 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_03_081420) do
     t.index ["facturable_type", "facturable_id"], name: "index_lignes_on_facturable"
   end
 
+  create_table "todos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "todoable_type", null: false
+    t.bigint "todoable_id", null: false
+    t.bigint "user_id", null: false
+    t.string "name"
+    t.boolean "done", default: false
+    t.date "due_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["todoable_type", "todoable_id"], name: "index_todos_on_todoable"
+    t.index ["user_id"], name: "index_todos_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "last_name"
+    t.string "first_name"
+    t.string "firm"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -141,4 +157,5 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_03_081420) do
   add_foreign_key "factures", "contacts"
   add_foreign_key "factures", "dossiers"
   add_foreign_key "factures", "users", column: "emetteur_id"
+  add_foreign_key "todos", "users"
 end

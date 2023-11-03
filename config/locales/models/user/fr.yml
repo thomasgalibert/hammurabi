@@ -8,6 +8,10 @@ fr:
         password_challenge: "Mot de passe actuel"
         new_password: "Nouveau mot de passe"
         new_password_confirmation: "Confirmation"
+        honorific: "Me"
+        last_name: "Nom de famille"
+        first_name: "Prénom"
+        firm: "Nom du cabinet"
   
   helpers:
     submit:

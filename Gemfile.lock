@@ -154,6 +154,8 @@ GEM
     msgpack (1.7.2)
     mutex_m (0.1.2)
     mysql2 (0.5.5)
+    name_of_person (1.1.2)
+      activesupport (>= 5.2.0)
     net-imap (0.4.1)
       date
       net-protocol
@@ -290,6 +292,7 @@ DEPENDENCIES
   jbuilder
   money-rails
   mysql2 (~> 0.5)
+  name_of_person
   puma (>= 5.0)
   rails (~> 7.1.1)
   redis (>= 4.0.1)

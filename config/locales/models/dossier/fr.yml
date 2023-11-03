@@ -7,7 +7,7 @@ fr:
         success: "Dossier mis à jour avec succès."
       destroyed:
         success: "Dossier supprimé avec succès."
-    list: "Derniers dossiers"
+    list: "Derniers dossiers visités"
     add: "Nouveau dossier"
     actions:
       email: "Email"

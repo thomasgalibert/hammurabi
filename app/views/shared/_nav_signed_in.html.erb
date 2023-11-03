@@ -2,15 +2,25 @@
   <div class="flex items-center space-x-2">
     <div>
       <span class="inline-flex h-14 w-14 items-center justify-center rounded-full bg-gray-500">
-        <span class="text-xl font-medium leading-none text-white"><%= "TG" %></span>
+        <span class="text-xl font-medium leading-none text-white"><%= current_user.name.initials %></span>
       </span>
     </div>
 
     <div>
-      <div class="text-lg font-black text-stone-600">Me Zaïna AZZABI</div>
-      <div class="text-sm font-semibold text-stone-500">Cabinet Zaïna AZZABI Avocats</div>
+      <div class="text-lg font-black text-stone-600">
+        <%= t('activerecord.attributes.user.honorific') %>
+        <%= current_user.name.full %>
+      </div>
+      <div class="text-sm font-semibold text-stone-500"><%= current_user.firm %></div>
     </div>
   </div>
 
-  <div><%= render "dossiers/search" %></div>
+  <div class="flex items-center space-x-4">
+    <%= render "dossiers/search" %>
+    <%= button_to session_path, method: :delete, class: "text-stone-600 bg-white rounded-full h-10 w-10 p-2 border flex justify-center items-center hover:shadow-md" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+      </svg>
+    <% end %>
+  </div>
 </nav>

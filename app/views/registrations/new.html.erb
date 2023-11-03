@@ -3,9 +3,30 @@
   
   <fieldset class="bg-white border rounded-md p-6 relative mt-10">
     <legend class="absolute -top-10 text-stone-500 text-lg"><%= t 'registration.new.legend' %></legend>
+
+    <div class="grid grid-cols-2 sm:gap-4">
+      <div class="flex flex-col space-y-2 mb-6 col-span-2 sm:col-span-1">
+        <%= form.label :last_name, class: "block text-sm font-medium leading-6 text-stone-900" %>
+        <%= form.text_field :last_name, autofocus: true,
+            class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-lime-600 sm:text-sm sm:leading-6" %>
+      </div>
+
+      <div class="flex flex-col space-y-2 mb-6 col-span-2 sm:col-span-1">
+        <%= form.label :first_name, class: "block text-sm font-medium leading-6 text-stone-900" %>
+        <%= form.text_field :first_name,
+            class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-lime-600 sm:text-sm sm:leading-6" %>
+      </div>
+    </div>
+
+    <div class="flex flex-col space-y-2 mb-6">
+        <%= form.label :firm, class: "block text-sm font-medium leading-6 text-stone-900" %>
+        <%= form.text_field :firm,
+            class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-lime-600 sm:text-sm sm:leading-6" %>
+      </div>
+
     <div class="flex flex-col space-y-2 mb-6">
       <%= form.label :email, class: "block text-sm font-medium leading-6 text-stone-900" %>
-      <%= form.email_field :email, autofocus: true,
+      <%= form.email_field :email,
           class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-lime-600 sm:text-sm sm:leading-6" %>
     </div>
     <div class="flex flex-col space-y-2 mb-6">
