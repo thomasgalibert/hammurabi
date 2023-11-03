@@ -1,0 +1,20 @@
+.simple-calendar{
+  background-color: white;
+  padding: 7px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+}
+
+.simple-calendar table{
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+  margin-top: 3px;
+}
+
+.simple-calendar .calendar-heading{
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 3px;
+}

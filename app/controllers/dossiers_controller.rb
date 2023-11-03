@@ -1,9 +1,10 @@
 class DossiersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_dossier, only: [:show, :edit, :update, :destroy]
+  before_action :update_viewed_at, only: [:show, :edit]
 
   def index
-    @dossiers = current_user.dossiers
+    @dossiers = current_user.dossiers.actives.last_viewed(9)
   end
 
   def show
@@ -47,5 +48,9 @@ class DossiersController < ApplicationController
 
   def dossier_params
     params.require(:dossier).permit(:name, :description)
+  end
+
+  def update_viewed_at
+    @dossier.save
   end
 end

@@ -1,0 +1,22 @@
+<%= week_calendar(number_of_weeks: 1) do |date| %>
+  <div class="text-center text-xs text-stone-500"><%=l date %></div>
+<% end %>
+
+<%= render "shared/divider_with_button", 
+    title: t('dossiers.list'),
+    action_path: new_dossier_path(),
+    action_name: t('dossiers.add') %>
+
+<ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <%= render @dossiers %>
+</ul>
+
+<div class="grid grid-cols-2 gap-10">
+  <div class="col-span-2 sm:col-span-1">
+    <%= render "shared/divider", title: t('todos.list') %>
+  </div>
+
+  <div class="col-span-2 sm:col-span-1">
+    <%= render "shared/divider", title: t('documents.list') %>
+  </div>
+</div>

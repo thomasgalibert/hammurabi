@@ -7,3 +7,14 @@ fr:
         success: "Dossier mis à jour avec succès."
       destroyed:
         success: "Dossier supprimé avec succès."
+    list: "Derniers dossiers"
+    add: "Nouveau dossier"
+    actions:
+      email: "Email"
+      call: "Appeler"
+    states:
+      pending: "En cours"
+      archived: "Archivé"
+      sent: "Facturé"
+      paid: "Payé"
+      overdue: "Impayé"

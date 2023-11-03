@@ -71,3 +71,5 @@ end
 gem 'money-rails'
 gem 'aasm'
 gem 'tailwindcss-rails'
+gem "simple_calendar", "~> 2.4"
+gem 'faker'
