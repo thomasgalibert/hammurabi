@@ -1,15 +1,31 @@
-<li class="flex items-center justify-between gap-x-6 py-5">
-    <div class="min-w-0">
-      <div class="flex items-start gap-x-3">
-        <p class="text-sm font-semibold leading-6 text-gray-900"><%= todo.name %></p>
-        <p class="rounded-md whitespace-nowrap mt-0.5 px-1.5 py-0.5 text-xs font-medium ring-1 ring-inset text-green-700 bg-green-50 ring-green-600/20">Complete</p>
-      </div>
-      <div class="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500">
-        <p class="whitespace-nowrap">Due on <time datetime="2023-03-17T00:00Z"><%= todo.due_at.present? ? l(todo.due_at) : "--" %></time></p>
-        <svg viewBox="0 0 2 2" class="h-0.5 w-0.5 fill-current">
-          <circle cx="1" cy="1" r="1" />
-        </svg>
-        <p class="truncate">@ <%= l todo.created_at %></p>
-      </div>
+<li class="flex items-center text-xs gap-x-3 py-2" data-controller="todo">
+  <input type="checkbox" <%= "checked" if todo.done? %> 
+         data-turbo-frame="false" 
+         data-turbo-action="click->todo#toggle" 
+         data-turbo-target="todo.done" />
+
+
+  <div class="flex flex-1 justify-between items-center">
+    <div class="flex flex-col space-y-1">
+      <div class="text-sm font-semibold"><%= todo.name %></div>
+      <div class="border rounded-md p-1 text-stone-500"><%= todo.todoable.name %></div>
     </div>
-  </li>
+
+    <div class="flex space-x-1 items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-stone-400">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <time datetime="<%= todo.due_at if todo.due_at.present? %>">
+      <%= todo.due_at.present? ? l(todo.due_at) : "--" %>
+      </time>
+
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z" />
+        </svg>
+      </div>
+    </time>
+
+  </div>
+  
+</li>

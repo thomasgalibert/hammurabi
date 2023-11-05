@@ -16,7 +16,10 @@
     <%= render "shared/divider", title: t('todos.list') %>
 
     <ul role="list" class="divide-y divide-gray-100 bg-white p-4 rounded-md border">
-      <%= render current_user.todos.lasts(10) %>
+      <%= render current_user.todos.incomplete.lasts(5) %>
+      <li class="flex items-center justify-end text-xs gap-x-3 py-2">
+        <%= link_to "voir toutes les tâches &rarr;".html_safe, '#' %>
+      </li>
     </ul>
   </div>
 

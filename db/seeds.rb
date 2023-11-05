@@ -24,7 +24,7 @@ categories = %w[civil business criminal family work public]
 courts = ["TGI de Paris", "TGI Marseille", "Conseil des prud'hommes de Perpignan", "Tribunal de commerce de Lyon"]
 
 100.times do
-  Dossier.create(
+  dossier = Dossier.create(
     name: Faker::Lorem.sentence(word_count: 3),
     description: Faker::Lorem.paragraph(sentence_count: 2),
     state: states.sample,
@@ -32,6 +32,16 @@ courts = ["TGI de Paris", "TGI Marseille", "Conseil des prud'hommes de Perpignan
     court: courts.sample,
     user: user
   )
+
+  5.times do
+    Todo.create(
+      name: Faker::Lorem.sentence(word_count: 3),
+      due_at: Faker::Date.between(from: 2.days.ago, to: Date.today),
+      todoable: dossier,
+      user: user,
+      done: Faker::Boolean.boolean(true_ratio: 0.2)
+    )
+  end
 end
 
 # Seeds 100 user records
