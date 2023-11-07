@@ -17,7 +17,7 @@
 
     <ul role="list" class="divide-y divide-gray-100 bg-white p-4 rounded-md border">
       <%= render current_user.todos.incomplete.lasts(5) %>
-      <li class="flex items-center justify-end text-xs gap-x-3 py-2">
+      <li class="flex items-center justify-end text-xs gap-x-3 py-2 pt-4">
         <%= link_to "voir toutes les tâches &rarr;".html_safe, '#' %>
       </li>
     </ul>
@@ -25,5 +25,12 @@
 
   <div class="col-span-2 sm:col-span-1">
     <%= render "shared/divider", title: t('documents.list') %>
+
+    <ul role="list" class="divide-y divide-gray-100 bg-white p-4 rounded-md border">
+      <%= render current_user.documents.lasts(5) %>
+      <li class="flex items-center justify-end text-xs gap-x-3 py-2 pt-4">
+        <%= link_to "voir toutes les documents &rarr;".html_safe, '#' %>
+      </li>
+    </ul>
   </div>
 </div>

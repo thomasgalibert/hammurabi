@@ -18,3 +18,7 @@ fr:
       sent: "Facturé"
       paid: "Payé"
       overdue: "Impayé"
+  activerecord:
+    attributes:
+      dossier:
+        created_at: "Créé le"

@@ -1,0 +1,41 @@
+<h1 class="font-black text-3xl"><%= @dossier.name %></h1>
+<div class="flex items-center space-x-2">
+  <div><%= render "badge", state: @dossier.state %></div>
+  <div>
+    <span class="text-sm text-stone-500">
+      <%= t('activerecord.attributes.dossier.created_at') %>
+      <%= l(@dossier.created_at, format: :short) %>
+    </span>
+  </div>
+</div>
+
+<div class="grid grid-rows-6 grid-cols-2 mt-10 gap-4">
+  <div class="p-4 bg-white rounded-md border shadow-sm">
+    <h2 class="text-sm font-semibold text-stone-400">Résumé</h2>
+  </div>
+
+  <div class="p-4 bg-white rounded-md border shadow-sm row-span-2">
+    <h2 class="text-sm font-semibold text-stone-400">Tâches</h2>
+  </div>
+
+  <div class="p-4 bg-white rounded-md border shadow-sm">
+    <h2 class="text-sm font-semibold text-stone-400">Dates d'audience</h2>
+  </div>
+
+  <div class="p-4 bg-white rounded-md border shadow-sm">
+    <h2 class="text-sm font-semibold text-stone-400">Autres événements</h2>
+  </div>
+
+  <div class="p-4 bg-white rounded-md border shadow-sm row-span-2">
+    <h2 class="text-sm font-semibold text-stone-400">Documents</h2>
+  </div>
+
+  <div class="p-4 bg-white rounded-md border shadow-sm row-span-2">
+    <h2 class="text-sm font-semibold text-stone-400">Contacts</h2>
+  </div>
+
+  <div class="p-4 bg-white rounded-md border shadow-sm">
+    <h2 class="text-sm font-semibold text-stone-400">Conventions d'honoraires</h2>
+  </div>
+
+</div>

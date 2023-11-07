@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_person_name
   has_many :dossiers, dependent: :destroy
   has_many :todos, dependent: :destroy
+  has_many :documents, dependent: :destroy
 
   validates :email, presence: true
   validates :email, uniqueness: true

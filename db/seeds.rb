@@ -33,13 +33,19 @@ courts = ["TGI de Paris", "TGI Marseille", "Conseil des prud'hommes de Perpignan
     user: user
   )
 
-  5.times do
+  2.times do
     Todo.create(
       name: Faker::Lorem.sentence(word_count: 3),
       due_at: Faker::Date.between(from: 2.days.ago, to: Date.today),
       todoable: dossier,
       user: user,
       done: Faker::Boolean.boolean(true_ratio: 0.2)
+    )
+
+    Document.create(
+      name: Faker::Lorem.sentence(word_count: 3),
+      user: user,
+      dossier: dossier
     )
   end
 end
