@@ -26,7 +26,7 @@ courts = ["TGI de Paris", "TGI Marseille", "Conseil des prud'hommes de Perpignan
 100.times do
   dossier = Dossier.create(
     name: Faker::Lorem.sentence(word_count: 3),
-    description: Faker::Lorem.paragraph(sentence_count: 2),
+    description: Faker::Lorem.paragraph(sentence_count: 10),
     state: states.sample,
     category: categories.sample,
     court: courts.sample,

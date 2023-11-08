@@ -1,7 +1,22 @@
+# == Schema definition
+# t.bigint "user_id", null: false
+# t.string "name"
+# t.string "state"
+# t.text "description"
+# t.string "category"
+# t.string "court"
+# t.datetime "created_at", null: false
+# t.datetime "updated_at", null: false
+# t.datetime "viewed_at"
+# t.index ["user_id"], name: "index_dossiers_on_user_id"
+# == Schema end
+
 class Dossier < ApplicationRecord
   belongs_to :user
   has_many :dossier_contacts
   has_many :contacts, through: :dossier_contacts
+  has_many :todos, as: :todoable
+  has_many :documents, dependent: :destroy
 
   # Helpers
   def contact_principal

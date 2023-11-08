@@ -8,7 +8,10 @@
   <div class="flex flex-1 justify-between items-center">
     <div class="flex flex-col space-y-1">
       <div class="text-sm font-semibold"><%= todo.name %></div>
-      <div class="border rounded-md p-1 text-stone-500"><%= todo.todoable.name %></div>
+
+      <% unless params[:controller] == "dossiers" && params[:action] == "show" %>
+        <div class="border rounded-md p-1 text-stone-500"><%= todo.todoable.name %></div>
+      <% end %>
     </div>
 
     <div class="flex space-x-1 items-center">

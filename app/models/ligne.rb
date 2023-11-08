@@ -1,3 +1,19 @@
+# == Schema definition
+# t.string "description"
+# t.integer "quantite"
+# t.integer "prix_unitaire_cents"
+# t.float "tva"
+# t.integer "total_ht_cents"
+# t.integer "total_ttc_cents"
+# t.string "facturable_type", null: false
+# t.bigint "facturable_id", null: false
+# t.datetime "created_at", null: false
+# t.datetime "updated_at", null: false
+# t.float "reduction"
+# t.integer "total_tva_cents"
+# t.index ["facturable_type", "facturable_id"], name: "index_lignes_on_facturable"
+# == Schema end
+
 class Ligne < ApplicationRecord
   monetize :prix_unitaire_cents, :total_ht_cents, :total_ttc_cents, :total_tva_cents, allow_nil: true
 

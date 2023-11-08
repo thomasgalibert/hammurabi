@@ -2,7 +2,7 @@
     <div class="flex w-full items-center justify-between space-x-6 p-6">
       <div class="flex-1 truncate">
         <div class="flex items-center space-x-3">
-          <h3 class="truncate text-sm font-medium text-stone-900"><%= dossier.name %></h3>
+          <h3 class="truncate text-sm font-medium text-stone-900"><%= link_to dossier.name, dossier, class: "underline" %></h3>
           <%= render "badge", state: dossier.state %>
         </div>
         <p class="mt-1 truncate text-sm text-stone-500"><%= dossier.description.truncate_words(5, omission: '...') %></p>
