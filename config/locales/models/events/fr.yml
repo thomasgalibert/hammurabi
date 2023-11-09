@@ -1,0 +1,12 @@
+fr:
+  activerecord:
+    attributes:
+      event:
+        kinds:
+          meeting: "Rendez-vous"
+          signature: "Signature"
+          hearing: "Audience"
+          conciliation hearing: "Audience de conciliation"
+          judgment hearing: "Audience de jugement"
+          expertise: "Expertise"
+          other: "Autre"

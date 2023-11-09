@@ -1,0 +1,9 @@
+fr:
+  activerecord:
+    attributes:
+      contact:
+        kinds:
+          customer: "Client"
+          witness: "Témoin"
+          partner: "Confrère"
+          other: "Autre"

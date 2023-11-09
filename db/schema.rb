@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_07_153041) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_09_110820) do
   create_table "action_text_rich_texts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -101,6 +101,19 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_07_153041) do
     t.index ["user_id"], name: "index_dossiers_on_user_id"
   end
 
+  create_table "events", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "dossier_id", null: false
+    t.string "title"
+    t.text "description"
+    t.string "kind"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dossier_id"], name: "index_events_on_dossier_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
   create_table "factures", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "total_ht_cents"
     t.integer "total_ttc_cents"
@@ -166,6 +179,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_07_153041) do
   add_foreign_key "dossier_contacts", "contacts"
   add_foreign_key "dossier_contacts", "dossiers"
   add_foreign_key "dossiers", "users"
+  add_foreign_key "events", "dossiers"
+  add_foreign_key "events", "users"
   add_foreign_key "factures", "contacts"
   add_foreign_key "factures", "dossiers"
   add_foreign_key "factures", "users", column: "emetteur_id"

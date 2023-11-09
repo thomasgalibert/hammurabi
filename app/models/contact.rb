@@ -20,4 +20,7 @@
 
 class Contact < ApplicationRecord
   belongs_to :user
+  has_person_name
+
+  KINDS = ["customer", "witness", "partner", "other"]
 end

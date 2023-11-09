@@ -33,6 +33,40 @@ courts = ["TGI de Paris", "TGI Marseille", "Conseil des prud'hommes de Perpignan
     user: user
   )
 
+  dossier.contacts.create(
+    user: user,
+    kind: "customer",
+    last_name: Faker::Name.last_name,
+    first_name: Faker::Name.first_name,
+    company_name: Faker::Company.name,
+    business_number: Faker::Company.french_siren_number,
+    vat_number: "FR#{Faker::Company.french_siren_number}",
+    email: Faker::Internet.email,
+    phone: Faker::PhoneNumber.phone_number,
+    address: Faker::Address.street_address,
+    zip_code: Faker::Address.zip_code,
+    city: Faker::Address.city,
+    country: 'FR',
+    main: true
+  )
+
+  dossier.contacts.create(
+    user: user,
+    kind: Contact::KINDS.sample,
+    last_name: Faker::Name.last_name,
+    first_name: Faker::Name.first_name,
+    company_name: Faker::Company.name,
+    business_number: Faker::Company.french_siren_number,
+    vat_number: "FR#{Faker::Company.french_siren_number}",
+    email: Faker::Internet.email,
+    phone: Faker::PhoneNumber.phone_number,
+    address: Faker::Address.street_address,
+    zip_code: Faker::Address.zip_code,
+    city: Faker::Address.city,
+    country: 'FR',
+    main: false
+  )
+
   2.times do
     Todo.create(
       name: Faker::Lorem.sentence(word_count: 3),
@@ -46,6 +80,16 @@ courts = ["TGI de Paris", "TGI Marseille", "Conseil des prud'hommes de Perpignan
       name: Faker::Lorem.sentence(word_count: 3),
       user: user,
       dossier: dossier
+    )
+  end
+
+  3.times do
+    dossier.events.create(
+      user: user,
+      title: Faker::Lorem.sentence(word_count: 3),
+      description: Faker::Lorem.paragraph(sentence_count: 2),
+      kind: Event::KINDS.sample,
+      date: Faker::Date.between(from: 30.days.ago, to: Date.today)
     )
   end
 end

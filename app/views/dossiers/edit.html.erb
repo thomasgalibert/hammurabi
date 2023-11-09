@@ -1,0 +1,5 @@
+<% if params[:attribute].present? %>
+  <%= turbo_frame_tag "dossier_#{params[:attribute]}" do %>
+    <%= render "form_inline", dossier: @dossier %>
+  <% end %>
+<% end %>

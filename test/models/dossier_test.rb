@@ -36,4 +36,13 @@ class DossierTest < ActiveSupport::TestCase
     assert_not_equal dossier.viewed_at, old_viewed_at
   end
 
+  test "un dossier doit avoir plusieurs events" do
+    event1 = FactoryBot.create(:event, user: @user, dossier: @dossier)
+    event2 = FactoryBot.create(:event, user: @user, dossier: @dossier)
+    
+    assert_equal 2, @dossier.events.count
+    assert_includes @dossier.events, event1
+    assert_includes @dossier.events, event2
+  end
+
 end
