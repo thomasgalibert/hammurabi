@@ -129,6 +129,8 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    keynote (1.1.1)
+      rails (>= 3.1.0)
     loofah (2.21.4)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -169,6 +171,8 @@ GEM
     nokogiri (1.15.4-aarch64-linux)
       racc (~> 1.4)
     nokogiri (1.15.4-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.15.4-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
@@ -250,6 +254,8 @@ GEM
       railties (>= 6.0.0)
     tailwindcss-rails (2.0.32-arm64-darwin)
       railties (>= 6.0.0)
+    tailwindcss-rails (2.0.32-x86_64-darwin)
+      railties (>= 6.0.0)
     tailwindcss-rails (2.0.32-x86_64-linux)
       railties (>= 6.0.0)
     thor (1.2.2)
@@ -277,6 +283,7 @@ GEM
 PLATFORMS
   aarch64-linux
   arm64-darwin-22
+  x86_64-darwin-22
   x86_64-linux
 
 DEPENDENCIES
@@ -290,6 +297,7 @@ DEPENDENCIES
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
+  keynote
   money-rails
   mysql2 (~> 0.5)
   name_of_person

@@ -13,7 +13,7 @@
 <% end %>
 
 <div class="flex items-center space-x-2">
-  <div><%= render "badge", state: @dossier.state %></div>
+  <div><%= k(@dossier).badge %></div>
   <div>
     <span class="text-sm text-stone-500">
       <%= t('activerecord.attributes.dossier.created_at') %>
@@ -24,21 +24,26 @@
 
 <div class="grid grid-cols-2 mt-10 gap-4">
   <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 sm:col-span-1">
-    <h2 class="text-sm font-semibold text-stone-400">Résumé</h2>
+    <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.resume') %></h2>
     <p><%= simple_format @dossier.description %></p>
   </div>
 
   <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 sm:col-span-1">
-    <h2 class="text-sm font-semibold text-stone-400">Tâches</h2>
+    <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.todos') %></h2>
     <%= render @dossier.todos %>
   </div>
 
   <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 sm:col-span-1">
-    <h2 class="text-sm font-semibold text-stone-400">Dates d'audience</h2>
+    <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.hearings') %></h2>
+    <div class="flow-root">
+      <ul role="list" class="mt-4">
+        <%= render @dossier.events.hearings %>
+      </ul>
+    </div>
   </div>
 
   <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 sm:col-span-1">
-    <h2 class="text-sm font-semibold text-stone-400">Autres événements</h2>
+    <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.events') %></h2>
     <div class="flow-root">
       <ul role="list" class="mt-4">
         <%= render @dossier.events %>
@@ -47,23 +52,23 @@
   </div>
 
   <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 sm:col-span-1">
-    <h2 class="text-sm font-semibold text-stone-400">Pièces du dossier</h2>
+    <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.documents') %></h2>
     <%= render @dossier.documents %>
   </div>
 
   <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 sm:col-span-1">
-    <h2 class="text-sm font-semibold text-stone-400">Contacts</h2>
+    <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.contacts') %></h2>
     <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2 mt-4">
       <%= render @dossier.contacts %>
     </ul>
   </div>
 
   <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 sm:col-span-1">
-    <h2 class="text-sm font-semibold text-stone-400">Conventions d'honoraires</h2>
+    <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.conventions') %></h2>
   </div>
 
   <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 sm:col-span-1">
-    <h2 class="text-sm font-semibold text-stone-400">Factures</h2>
+    <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.factures') %></h2>
   </div>
 
 </div>

@@ -15,6 +15,15 @@ fr:
       sent: "Facturé"
       paid: "Payé"
       overdue: "Impayé"
+    show:
+      resume: "Résumé"
+      todos: "Tâches"
+      hearings: "Prochaines dates d'audience"
+      events: "Événements"
+      documents: "Liste des pièces"
+      contacts: "Contacts"
+      conventions: "Conventions"
+      factures: "Factures"
   activerecord:
     attributes:
       dossier:

@@ -20,6 +20,10 @@ class Event < ApplicationRecord
   # Validations
   validates :title, :date, presence: true
 
+  default_scope { order(date: :desc) }
+
+  scope :hearings, -> { where(kind: ["hearing", "conciliation hearing", "jugment hearing"]) }
+
   KINDS = [
     "meeting",
     "signature",
