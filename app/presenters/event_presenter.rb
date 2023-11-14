@@ -2,14 +2,34 @@ class EventPresenter < Keynote::Presenter
   presents :event
 
   def badge
-    wrapper_class = "h-8 w-8 rounded-full bg-gray-400 flex items-center justify-center ring-8 ring-white"
-    svg_class = "h-5 w-5 text-white"
+    wrapper_class = "h-8 w-8 rounded-full text-white bg-stone-400 flex items-center justify-center ring-8 ring-white"
+    svg_class = "h-5 w-5"
 
     content_tag :span, class: wrapper_class do
-      content_tag :svg, class: svg_class, viewBox: "0 0 20 20", fill: "currentColor", aria_hidden: true do
-        content_tag :path, "", d: "M10 8a3 3 0 100-6 3 3 0 000 6zM3.465 14.493a1.23 1.23 0 00.41 1.412A9.957 9.957 0 0010 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 00-13.074.003z"
+      content_tag :i, class: "{svg_class} #{set_icon(event)}" do
       end
     end
   end
+
+  def set_icon(event)
+    case event.kind
+    when "meeting" then user_icon
+    when "signature" then signature_icon
+    when "hearing" then hearing_icon
+    when "conciliation hearing" then conciliation_hearing_icon
+    when "judgment hearing" then judgment_hearing_icon
+    when "expertise" then expertise_icon
+    else unknow_icon
+    end
+  end
+
+  def meeting_icon = "fa-solid fa-handshake"
+  def signature_icon = "fa-solid fa-signature"
+  def hearing_icon = "fa-solid fa-gavel"
+  def conciliation_hearing_icon = "fa-solid fa-gavel"
+  def judgment_hearing_icon = "fa-solid fa-gavel"
+  def expertise_icon = "fa-solid fa-helmet-safety"
+  def unknow_icon = "fa-sharp fa-solid fa-calendar"
+
 
 end
