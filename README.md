@@ -1,24 +1,20 @@
-# README
+# Gestion de cabinet d'avocat libre
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Le logiciel Hammurabi est développé par Thomas Galibert et disponible sous licence GPLv3.
 
-Things you may want to cover:
+Ce qu'Hammurabi ne fait pas :
 
-* Ruby version
+- proposer des modèles de conclusions,
+- envoyer et intégrer les emails dans vos dossiers.
 
-* System dependencies
+## Par contre, ce qu'il fait et que les autres ne font que peu ou pas :
 
-* Configuration
+- il est open-source, donc vous pouvez l'installer vous-même sans redevance mensuelle,
+comme il encore open-source, vous pouvez héberger vos données sur vos propres serveurs,
 
-* Database creation
+- il a été conçu avec le respect du RGPD en tête, donc, vous pouvez anonymiser en un click les donneés personnelles de vos clients,
+  
+- il a été conçu pour faciliter la collaboration entre confrères (postulation, sous-traitance) et permet un partage en toute sécurité des dossiers,
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- il gère la récolte des pièces des clients,
+enfin, il est conçu pour être entièrement utilisable depuis son téléphone, quand vous êtes en audience.
