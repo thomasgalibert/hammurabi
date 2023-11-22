@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   draw :admin
+  draw :todos
   draw :dossiers
   draw :authentications
   get "up" => "rails/health#show", as: :rails_health_check

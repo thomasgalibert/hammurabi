@@ -1,6 +1,6 @@
 class TodosController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_todo, only: [:edit, :update]
+  before_action :set_todo, only: [:edit, :update, :sort]
 
   def create
     @todo = current_user.todos.create(todo_params)
@@ -14,6 +14,11 @@ class TodosController < ApplicationController
   def update
     @todo.update(todo_params)
     redirect_to @todo.todoable
+  end
+
+  def sort
+    @todo.update(row_order_position: params[:row_order_position])
+    head :no_content
   end
 
   private

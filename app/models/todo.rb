@@ -5,6 +5,7 @@
 # t.string "name"
 # t.boolean "done", default: false
 # t.date "due_at"
+# t.integer "row_order"
 # t.datetime "created_at", null: false
 # t.datetime "updated_at", null: false
 # t.index ["todoable_type", "todoable_id"], name: "index_todos_on_todoable"
@@ -12,6 +13,8 @@
 # == Schema end
 
 class Todo < ApplicationRecord
+  include RankedModel
+
   belongs_to :todoable, polymorphic: true
   belongs_to :user
 
@@ -21,4 +24,6 @@ class Todo < ApplicationRecord
 
   validates :name, presence: true
   validates :done, inclusion: { in: [true, false] }
+
+  ranks :row_order, with_same: :todoable_id
 end

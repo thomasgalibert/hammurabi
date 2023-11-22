@@ -221,6 +221,8 @@ GEM
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
     rake (13.0.6)
+    ranked-model (0.4.9)
+      activerecord (>= 5.2)
     rdoc (6.5.0)
       psych (>= 4.0.0)
     redis (5.0.7)
@@ -230,6 +232,8 @@ GEM
     regexp_parser (2.8.2)
     reline (0.3.9)
       io-console (~> 0.5)
+    requestjs-rails (0.0.11)
+      railties (>= 6.1.0)
     rexml (3.2.6)
     ruby-vips (2.2.0)
       ffi (~> 1.12)
@@ -308,7 +312,9 @@ DEPENDENCIES
   name_of_person
   puma (>= 5.0)
   rails (~> 7.1.1)
+  ranked-model
   redis (>= 4.0.1)
+  requestjs-rails
   selenium-webdriver
   simple_calendar (~> 2.4)
   sprockets-rails
