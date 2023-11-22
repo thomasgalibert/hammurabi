@@ -2,7 +2,8 @@
 
 ## Dossier
 
-- [ ] Ajouter, modifier et supprimer les todos
+- [X] Ajouter, modifier et supprimer les todos
+- [ ] Cocher les todos et afficher les todos complétées
 - [ ] Modifier le résumé du dossier
 - [ ] Ajouter, modifier et supprimer les dates et événements
 - [ ] Ajouter, modifier et supprimer les pièces

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class DropdownComponent < ViewComponent::Base
-
+class TodoComponent < ViewComponent::Base
   def initialize(todo:)
     @todo = todo
   end
+
 end

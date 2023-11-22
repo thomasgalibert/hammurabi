@@ -221,8 +221,6 @@ GEM
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
     rake (13.0.6)
-    ranked-model (0.4.9)
-      activerecord (>= 5.2)
     rdoc (6.5.0)
       psych (>= 4.0.0)
     redis (5.0.7)
@@ -312,7 +310,6 @@ DEPENDENCIES
   name_of_person
   puma (>= 5.0)
   rails (~> 7.1.1)
-  ranked-model
   redis (>= 4.0.1)
   requestjs-rails
   selenium-webdriver

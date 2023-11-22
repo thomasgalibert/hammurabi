@@ -13,8 +13,6 @@
 # == Schema end
 
 class Todo < ApplicationRecord
-  include RankedModel
-
   belongs_to :todoable, polymorphic: true
   belongs_to :user
 
@@ -24,6 +22,4 @@ class Todo < ApplicationRecord
 
   validates :name, presence: true
   validates :done, inclusion: { in: [true, false] }
-
-  ranks :row_order, with_same: :todoable_id
 end
