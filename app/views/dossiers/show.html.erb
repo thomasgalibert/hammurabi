@@ -30,6 +30,7 @@
 
   <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 sm:col-span-1">
     <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.todos') %></h2>
+    <div class="mb-4"><%= render "todos/form", todo: @dossier.todos.new, todoable: @dossier %></div>
     <%= render @dossier.todos %>
   </div>
 

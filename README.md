@@ -17,4 +17,9 @@ comme il encore open-source, vous pouvez héberger vos données sur vos propres 
 - il a été conçu pour faciliter la collaboration entre confrères (postulation, sous-traitance) et permet un partage en toute sécurité des dossiers,
 
 - il gère la récolte des pièces des clients,
-enfin, il est conçu pour être entièrement utilisable depuis son téléphone, quand vous êtes en audience.
+  
+- enfin, il est conçu pour être entièrement utilisable depuis son téléphone, quand vous êtes en audience.
+
+## Licence
+
+Hammurabi est un logiciel libre, sous licence [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html).

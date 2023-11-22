@@ -75,3 +75,4 @@ gem "simple_calendar", "~> 2.4"
 gem 'faker'
 gem 'name_of_person'
 gem 'keynote'
+gem 'view_component'

@@ -1,3 +1,12 @@
 fr:
   todos:
     list: "Liste des tâches"
+    placeholders:
+      name: "Nom de la tâche"
+    buttons:
+      edit: "modifier"
+      delete: "supprimer"
+  helpers:
+    submit:
+      create: "ajouter"
+      update: "modifier"
