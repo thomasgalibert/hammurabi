@@ -1,7 +1,7 @@
 <% unless todo.new_record? %>
   <li data-controller="todo" data-sortable-update-url="<%= sort_todo_path(todo) %>">
     <%= turbo_frame_tag dom_id(todo) do %>
-      <%= render TodoComponent.new(todo: todo) %>
+      <%= render TodoComponent.new(todo: todo, can_edit: can_edit, show_dossier: show_dossier) %>
     <% end %>
   </li>
 <% end %>

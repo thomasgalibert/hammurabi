@@ -2,7 +2,4 @@
 
 class DropdownComponent < ViewComponent::Base
 
-  def initialize(todo:)
-    @todo = todo
-  end
 end

@@ -18,7 +18,7 @@ class Todo < ApplicationRecord
 
   scope :completed, -> { where(done: true) }
   scope :incomplete, -> { where(done: false) }
-  scope :lasts, -> (limit) { order(due_at: :desc, created_at: :desc).limit(limit) }
+  scope :lasts, -> (limit) { order(due_at: :desc, row_order: :asc).limit(limit) }
 
   validates :name, presence: true
   validates :done, inclusion: { in: [true, false] }

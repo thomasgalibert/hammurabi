@@ -1,3 +1,9 @@
 resources :dossiers do
-  resources :todos
+  resources :todos do
+    collection do
+      get :completed
+    end
+  end
+
+  resources :events
 end

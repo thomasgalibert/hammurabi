@@ -13,11 +13,11 @@ class EventPresenter < Keynote::Presenter
 
   def set_icon(event)
     case event.kind
-    when "meeting" then user_icon
+    when "meeting" then meeting_icon
     when "signature" then signature_icon
     when "hearing" then hearing_icon
-    when "conciliation hearing" then conciliation_hearing_icon
-    when "judgment hearing" then judgment_hearing_icon
+    when "conciliation_hearing" then conciliation_hearing_icon
+    when "judgment_hearing" then judgment_hearing_icon
     when "expertise" then expertise_icon
     else unknow_icon
     end

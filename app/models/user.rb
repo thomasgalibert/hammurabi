@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :dossiers, dependent: :destroy
   has_many :todos, dependent: :destroy
   has_many :documents, dependent: :destroy
+  has_many :events, dependent: :destroy
 
   validates :email, presence: true
   validates :email, uniqueness: true

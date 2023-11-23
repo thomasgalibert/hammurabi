@@ -1,11 +1,14 @@
-<%= form_with model: [todoable, todo], class: "flex items-center space-x-0 text-xs" do |form| %>
+<%= form_with model: [dossier, event], class: "flex items-center space-x-0 text-xs" do |form| %>
 
-  <%= form.hidden_field :todoable_type, value: todoable.class.to_s %>
-  <%= form.hidden_field :todoable_id, value: todoable.id %>
+  <%= form.hidden_field :dossier_id, value: dossier.id %>
 
-  <%= form.text_field :name, placeholder: t('todos.placeholders.name'),
+  <%= form.text_field :title, placeholder: t('events.placeholders.title'),
       class: "flex-1 border-r-0 px-2 py-1 rounded-l-md m-0 border-stone-300 placeholder:text-gray-400 focus:ring-0 focus:outline-none outline-none text-xs" %>
-  <%= form.date_field :due_at, 
+  
+  <%= form.select :kind, Event::KINDS_HEARING.collect { |k| [t("events.kinds.#{k}"), k] }, {}, class: "px-2 py-1 text-xs border-stone-300 border-l-1 border-r-0" %>
+
+  <%= form.datetime_field :date, 
       class: "w-30 border-r-0 px-2 py-1 m-0 border-stone-300 placeholder:text-gray-400 focus:ring-0 focus:outline-none outline-none text-xs" %>
+
   <%= form.submit class: "cursor-pointer border-l border-stone-300 border-t border-r border-b px-2 py-1 rounded-r-md m-0 bg-emerald-500 text-white font-semibold w-18" %>
 <% end %>

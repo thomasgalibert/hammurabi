@@ -10,3 +10,14 @@ fr:
           judgment hearing: "Audience de jugement"
           expertise: "Expertise"
           other: "Autre"
+  events:
+    placeholders:
+      title: "Nom de l'évènement"
+    kinds:
+      meeting: "Rendez-vous"
+      signature: "Signature"
+      hearing: "Audience"
+      conciliation_hearing: "Audience de conciliation"
+      judgment_hearing: "Audience de jugement"
+      expertise: "Expertise"
+      other: "Autre"

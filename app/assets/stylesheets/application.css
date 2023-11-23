@@ -14,3 +14,7 @@
  *= require_self
  
  */
+
+ .content > p{
+  margin-bottom: 7px;
+ }

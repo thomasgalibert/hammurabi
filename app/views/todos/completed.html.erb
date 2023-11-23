@@ -1,0 +1,7 @@
+<%= turbo_frame_tag :modal do %>
+  <%= render "layouts/modal" do %>
+    <ul data-controller="sortable" class="divide-y">
+      <%= render partial: "todos/todo", collection: @todos.order(:row_order), locals: {can_edit: false, show_dossier: false} %>
+    </ul>
+  <% end %>
+<% end %>

@@ -1,14 +1,26 @@
 <%= form_with model: @dossier, url: dossier_path(@dossier, attribute: params[:attribute]), method: :patch do |form| %>
 <div>
-  <div class="relative mt-2 flex items-center w-full">
-    <%= form.text_field :name, 
-        class: "w-full block rounded-md border-0 py-1.5 pr-14 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 text-3xl sm:leading-6", 
-        onchange: "this.form.requestSubmit()",
-        autofocus: true %>
+  <% if params[:attribute] == "name" %>
+    <div class="relative mt-2 flex items-center w-full">
+      <%= form.text_field :name, 
+          class: "w-full block rounded-md border-0 py-1.5 pr-14 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 text-3xl sm:leading-6", 
+          onchange: "this.form.requestSubmit()",
+          autofocus: true %>
 
-    <div class="absolute inset-y-0 right-0 flex py-1.5 pr-1.5">
-      <kbd class="inline-flex items-center rounded border border-gray-200 px-1 font-sans text-xs text-gray-400">↵ Entrer pour valider</kbd>
+      <div class="absolute inset-y-0 right-0 flex py-1.5 pr-1.5">
+        <kbd class="inline-flex items-center rounded border border-gray-200 px-1 font-sans text-xs text-gray-400">↵ Entrer pour valider</kbd>
+      </div>
     </div>
-  </div>
+  <% end %>
+
+  <% if params[:attribute] == "description" %>
+    <div class="relative mt-2 flex items-center w-full">
+      <%= form.text_area :description, 
+          class: "w-full block text-sm rounded-md border-0 py-1.5 px-2 text-gray-900 h-48", 
+          autofocus: true %>
+    </div>
+
+    <%= form.submit class: "flex mt-4 w-full justify-center rounded-md bg-emerald-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600" %>
+  <% end %>
 </div>
 <% end %>

@@ -1,0 +1,4 @@
+<%= turbo_frame_tag dom_id(@event) do %>
+  <%= render "form", event: @event, dossier: @event.dossier if @event.kind.in?(Event::KINDS_HEARING) %>
+  <%= render "form_other", event: @event, dossier: @event.dossier if @event.kind.in?(Event::KINDS_OTHERS) %>
+<% end %>

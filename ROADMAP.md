@@ -3,9 +3,9 @@
 ## Dossier
 
 - [X] Ajouter, modifier et supprimer les todos
-- [ ] Cocher les todos et afficher les todos complétées
-- [ ] Modifier le résumé du dossier
-- [ ] Ajouter, modifier et supprimer les dates et événements
+- [X] Cocher les todos et afficher les todos complétées
+- [X] Modifier le résumé du dossier
+- [X] Ajouter, modifier et supprimer les dates et événements
 - [ ] Ajouter, modifier et supprimer les pièces
 - [ ] Ajouter, modifier et supprimer les contacts
 - [ ] Ajouter, modifier et supprimer les conventions d'honoraires
