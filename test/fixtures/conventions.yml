@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  dossier: one
+  title: MyString
+  date: 2023-11-24
+  forfait_cents: 1
+
+two:
+  user: two
+  dossier: two
+  title: MyString
+  date: 2023-11-24
+  forfait_cents: 1

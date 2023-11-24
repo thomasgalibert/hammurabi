@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_22_134242) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_24_190103) do
   create_table "action_text_rich_texts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -67,6 +67,18 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_22_134242) do
     t.datetime "updated_at", null: false
     t.boolean "main", default: false
     t.index ["user_id"], name: "index_contacts_on_user_id"
+  end
+
+  create_table "conventions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "dossier_id", null: false
+    t.string "title"
+    t.date "date"
+    t.integer "forfait_cents"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dossier_id"], name: "index_conventions_on_dossier_id"
+    t.index ["user_id"], name: "index_conventions_on_user_id"
   end
 
   create_table "documents", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -175,6 +187,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_22_134242) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "contacts", "users"
+  add_foreign_key "conventions", "dossiers"
+  add_foreign_key "conventions", "users"
   add_foreign_key "documents", "dossiers"
   add_foreign_key "documents", "users"
   add_foreign_key "dossier_contacts", "contacts"

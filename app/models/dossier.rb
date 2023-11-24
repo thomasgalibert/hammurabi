@@ -18,6 +18,7 @@ class Dossier < ApplicationRecord
   has_many :todos, as: :todoable
   has_many :documents, dependent: :destroy
   has_many :events, :dependent => :destroy
+  has_many :conventions, :dependent => :destroy
 
   validates :name, presence: true
 

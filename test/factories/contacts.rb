@@ -11,6 +11,6 @@ FactoryBot.define do
     zip_code { "75000" }
     city { "Paris" }
     country { "France" }
-    kind { "client" }
+    kind { "customer" }
   end
 end
