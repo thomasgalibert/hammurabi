@@ -1,0 +1,5 @@
+<%= turbo_frame_tag :modal do %>
+  <%= render "layouts/modal" do %>
+    <%= render "contact", contact: @contact, dossier: @dossier %>
+  <% end %>
+<% end %>

@@ -9,14 +9,18 @@ fr:
           other: "Autre"
         first_name: "Prénom"
         last_name: "Nom"
+        name: "Nom et prénom"
         email: "Courriel"
         phone: "Téléphone"
         kind: "Type"
-        company: "Entreprise"
+        company_name: "Entreprise"
+        business_number: "N° SIRET"
+        vat_number: "N° TVA"
         address: "Adresse"
         city: "Ville"
         zip_code: "Code postal"
         country: "Pays"
+        actions: "Actions"
   contacts:
     flash:
       created: "Le contact a été créé avec succès."
@@ -24,3 +28,5 @@ fr:
       destroyed: "Le contact a été supprimé avec succès."
     new:
       legend: "Nouveau contact dans le dossier"
+    edit:
+      legend: "Modifier le contact du dossier"

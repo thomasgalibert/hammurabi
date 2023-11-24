@@ -7,7 +7,7 @@
 - [X] Modifier le résumé du dossier
 - [X] Ajouter, modifier et supprimer les dates et événements
 - [ ] Ajouter, modifier et supprimer les pièces
-- [ ] Ajouter, modifier et supprimer les contacts
+- [X] Ajouter, modifier et supprimer les contacts
 - [ ] Ajouter, modifier et supprimer les conventions d'honoraires
 - [ ] Ajouter, modifier et supprimer les factures
 

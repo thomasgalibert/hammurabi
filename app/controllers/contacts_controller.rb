@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_dossier, only: [:new, :create]
+  before_action :set_dossier, only: [:new, :create, :show, :edit, :update, :destroy]
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
 
   def new
@@ -35,7 +35,10 @@ class ContactsController < ApplicationController
 
   def destroy
     @contact.destroy
-    redirect_to @dossier, notice: t('contacts.flash.destroyed')
+    respond_to do |format|
+      format.html { redirect_to @dossier, notice: t('contacts.flash.destroyed') }
+      format.turbo_stream
+    end
   end
 
   private

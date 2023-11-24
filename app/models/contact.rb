@@ -21,7 +21,7 @@
 class Contact < ApplicationRecord
   belongs_to :user
   has_person_name
-  has_many :dossier_contacts
+  has_many :dossier_contacts, dependent: :destroy
   has_many :dossiers, through: :dossier_contacts
 
   KINDS = ["customer", "witness", "partner", "other"]

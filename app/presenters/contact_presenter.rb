@@ -17,6 +17,10 @@ class ContactPresenter < Keynote::Presenter
     end
   end
 
+  def full_address
+    simple_format("#{contact.address} \n #{contact.zip_code} #{contact.city} (#{contact.country})")
+  end
+
   private
 
   def contact_class(contact)
