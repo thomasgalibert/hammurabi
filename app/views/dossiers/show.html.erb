@@ -59,7 +59,7 @@
     <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.hearings') %></h2>
     <div class="mb-4"><%= render "events/form", event: @dossier.events.new, dossier: @dossier %></div>
     <div class="flow-root">
-      <ul role="list" class="mt-4">
+      <ul role="list" class="mt-4" id="hearings">
         <%= render @dossier.events.hearings %>
       </ul>
     </div>
@@ -74,7 +74,7 @@
     <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.events') %></h2>
     <div class="mb-4"><%= render "events/form_other", event: @dossier.events.new, dossier: @dossier %></div>
     <div class="flow-root">
-      <ul role="list" class="mt-4">
+      <ul role="list" class="mt-4" id="events">
         <%= render @dossier.events.others %>
       </ul>
     </div>
