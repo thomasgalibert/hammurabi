@@ -6,4 +6,6 @@ resources :dossiers do
   end
 
   resources :events
+
+  resources :contacts
 end

@@ -7,3 +7,20 @@ fr:
           witness: "Témoin"
           partner: "Confrère"
           other: "Autre"
+        first_name: "Prénom"
+        last_name: "Nom"
+        email: "Courriel"
+        phone: "Téléphone"
+        kind: "Type"
+        company: "Entreprise"
+        address: "Adresse"
+        city: "Ville"
+        zip_code: "Code postal"
+        country: "Pays"
+  contacts:
+    flash:
+      created: "Le contact a été créé avec succès."
+      updated: "Le contact a été mis à jour avec succès."
+      destroyed: "Le contact a été supprimé avec succès."
+    new:
+      legend: "Nouveau contact dans le dossier"

@@ -21,6 +21,12 @@
 class Contact < ApplicationRecord
   belongs_to :user
   has_person_name
+  has_many :dossier_contacts
+  has_many :dossiers, through: :dossier_contacts
 
   KINDS = ["customer", "witness", "partner", "other"]
+
+  validates :kind, presence: true
+  validates :kind, inclusion: { in: KINDS }
+  validates :last_name, :first_name, presence: true
 end

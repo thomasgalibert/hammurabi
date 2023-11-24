@@ -20,3 +20,12 @@
 
 - [ ] Ajouter, modifier et supprimer les collaborateurs
 - [ ] Page privée de consultation du dossier pour les non utilisateurs d'Hammurabi 
+
+## Tests
+
+- [X] Tests dossiers
+- [X] Tests contacts
+- [X] Tests factures
+- [X] Tests events
+- [X] Tests todos
+- [ ] Tests récolte des pièces
