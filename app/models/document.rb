@@ -17,6 +17,14 @@ class Document < ApplicationRecord
 
   scope :lasts, -> (limit) { order(created_at: :desc).limit(limit) }
 
+  validates :fichier, attached: true, 
+            content_type: { 
+              in: ['image/png', 'image/jpeg', 'application/pdf'], 
+              message: "Le format du fichier doit être png, jpeg ou pdf"}, 
+            size: { 
+              less_than: 10.megabytes , 
+              message: "La taille du fichier ne doit pas dépasser 10 Mo" }
+
   def description
     if self.fichier.attached?
       # Get the size from the blob object and the mime type

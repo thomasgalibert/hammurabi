@@ -1,4 +1,5 @@
 resources :dossiers do
+  
   resources :todos do
     collection do
       get :completed
@@ -6,6 +7,7 @@ resources :dossiers do
   end
 
   resources :events
-
   resources :contacts
+  resources :documents
+  resources :conventions
 end

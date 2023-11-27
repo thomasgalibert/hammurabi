@@ -1,0 +1,9 @@
+<div class="flex space-x-1 items-start">
+  <div class="w-3">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 text-yellow-400" fill="none" viewBox="0 0 24 24"><g id="circle--geometric-circle-round-design-shape-shapes-shape"><path id="Ellipse 605" fill="currentColor" d="M1 12a11 11 0 1 0 22 0 11 11 0 1 0-22 0"></path></g></svg>
+  </div>
+  <%= link_to @event.dossier, class: "text-stone-600 text-xs", data: {turbo_frame: "_top"} do %>
+    <span class="font-semibold"><%= @event.dossier.name %></span> : <%= @event.title %>
+    <span class="text-stone-400 italic">(<%= k(@event).kind_translated %>)</span>
+  <% end %>
+</div>

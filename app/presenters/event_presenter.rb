@@ -31,5 +31,9 @@ class EventPresenter < Keynote::Presenter
   def expertise_icon = "fa-solid fa-helmet-safety"
   def unknow_icon = "fa-sharp fa-solid fa-calendar"
 
+  def kind_translated
+    I18n.t("activerecord.attributes.event.kinds.#{event.kind}")
+  end
+
 
 end

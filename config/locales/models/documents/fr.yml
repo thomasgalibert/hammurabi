@@ -1,3 +1,8 @@
 fr:
   documents:
     list: "Derniers documents"
+    placeholders:
+      name: "Nom de la pièce"
+  activerecord:
+    attributes:
+      name: "nom de la pièce"

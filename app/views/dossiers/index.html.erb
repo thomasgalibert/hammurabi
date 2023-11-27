@@ -1,6 +1,4 @@
-<%= week_calendar(number_of_weeks: 1) do |date| %>
-  <div class="text-center text-xs text-stone-500"><%=l date %></div>
-<% end %>
+<%= turbo_frame_tag :calendar, src: dashboard_events_path %>
 
 <%= render "shared/divider_with_button", 
     title: t('dossiers.list'),
@@ -30,7 +28,7 @@
     <%= render "shared/divider", title: t('documents.list') %>
 
     <ul role="list" class="divide-y divide-gray-100 bg-white p-4 rounded-md border">
-      <%= render current_user.documents.lasts(5) %>
+      <%= render DocumentComponent.with_collection(current_user.documents.lasts(5), show_dossier: true) %>
       <li class="flex items-center justify-end text-xs gap-x-3 py-2 pt-4">
         <%= link_to "voir toutes les documents &rarr;".html_safe, '#' %>
       </li>

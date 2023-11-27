@@ -1,0 +1,39 @@
+<li class="flex items-center text-xs gap-x-3 py-2">
+  
+  <div class="flex flex-1 justify-between items-center">
+    <div class="flex flex-col space-y-1">
+      <div class="text-sm font-semibold"><%= @document.name %> <span class="text-xs font-normal italic text-stone-500">(<%= @document.description %>)</span></div>
+
+      <% if @show_dossier %>
+        <div class="border rounded-md p-1 text-stone-500 cursor-pointer hover:bg-stone-50">
+          <%=link_to @document.dossier.name, @document.dossier, data: {turbo_frame: "_top"} %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="flex space-x-1 items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-stone-400">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <time datetime="<%= @document.created_at %>">
+        <%= l(@document.created_at, format: :short) %>
+      </time>
+
+      <% unless @show_dossier %>
+        <%= render DropdownComponent.new do %>
+          <%= link_to t('buttons.edit'), edit_dossier_document_path(@document.dossier, @document), class: "text-gray-700 block px-4 py-2 text-sm" %>
+          <%= link_to t('buttons.download'), 
+                @document.fichier.url(expires_in: 1.hour), 
+                target: "_blank",
+                class: "text-gray-700 block px-4 py-2 text-sm" if @document.fichier.attached? %>
+          <%= button_to t('buttons.delete'), 
+              dossier_document_path(@document.dossier, @document),
+              method: :delete, 
+              class: "text-gray-700 block px-4 py-2 text-sm" %>
+        <% end %>
+      <% end %>
+    </time>
+
+  </div>
+  
+</li>

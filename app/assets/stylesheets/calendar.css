@@ -1,16 +1,58 @@
-.simple-calendar{
-  background-color: white;
-  padding: 7px;
+.simple-calendar table {
+  -webkit-border-horizontal-spacing: 0px;
+  -webkit-border-vertical-spacing: 0px;
+  background-color: #FFF;
   border: 1px solid #ddd;
-  border-radius: 7px;
-}
-
-.simple-calendar table{
-  width: 100%;
   border-collapse: collapse;
-  border-spacing: 0;
-  table-layout: fixed;
-  margin-top: 3px;
+  box-sizing: border-box;
+  max-width: 100%;
+  width: 100%;
+}
+.simple-calendar tr {
+  border-collapse: collapse;
+}
+.simple-calendar th {
+  padding: 6px;
+  border-bottom: 2px solid #ddd;
+  border-collapse: collapse;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-top: 0px none #333;
+  box-sizing: border-box;
+  text-align: left;
+}
+.simple-calendar td {
+  padding: 6px;
+  vertical-align: top;
+  width: 14%;
+  border: 1px solid #ddd;
+  border-top-color: #ddd;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-right-color: #ddd;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-bottom-color: #ddd;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-left-color: #ddd;
+  border-left-style: solid;
+  border-left-width: 1px;
+}
+.simple-calendar .calendar-heading nav {
+  display: inline-block;
+}
+.simple-calendar .day {
+  height: 80px;
+}
+.simple-calendar .today {
+  background: #ffffc0;
+}
+.simple-calendar .prev-month {
+  background: #ddd;
+}
+.simple-calendar .next-month {
+  background: #ddd;
 }
 
 .simple-calendar .calendar-heading{

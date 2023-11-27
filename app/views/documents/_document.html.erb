@@ -1,29 +1,5 @@
-<li class="flex items-center text-xs gap-x-3 py-2">
-  
-  <div class="flex flex-1 justify-between items-center">
-    <div class="flex flex-col space-y-1">
-      <div class="text-sm font-semibold"><%= document.name %> <span class="text-xs font-normal italic text-stone-500">(<%= document.description %>)</span></div>
-
-      <% unless params[:controller] == "dossiers" && params[:action] == "show" %>
-        <div class="border rounded-md p-1 text-stone-500"><%= document.dossier.name %></div>
-      <% end %>
-    </div>
-
-    <div class="flex space-x-1 items-center">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-stone-400">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-      <time datetime="<%= document.created_at %>">
-        <%= l(document.created_at, format: :short) %>
-      </time>
-
-      <div>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z" />
-        </svg>
-      </div>
-    </time>
-
-  </div>
-  
-</li>
+<% unless document.new_record? %>
+  <%= turbo_frame_tag dom_id(document) do %>
+    <%= render DocumentComponent.new(document: document, show_dossier: false) %>
+  <% end %>
+<% end %>

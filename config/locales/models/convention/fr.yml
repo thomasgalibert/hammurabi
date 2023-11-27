@@ -1,0 +1,18 @@
+fr:
+  activerecord:
+    attributes:
+      convention:
+        title: "Titre"
+        date: "Date de la convention"
+        forfait: "Montant forfaitaire"
+        variable: "Honoraires variables"
+        fichier: "Fichier"
+  conventions:
+    flash:
+      created: "La convention a été créée avec succès."
+      updated: "La convention a été mise à jour avec succès."
+      destroyed: "La convention a été supprimée avec succès."
+    new:
+      legend: "Nouvelle convention dans le dossier"
+    edit:
+      legend: "Modifier la convention du dossier"

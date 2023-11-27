@@ -64,6 +64,7 @@
 
   <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 sm:col-span-1">
     <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.documents') %></h2>
+    <div class="mb-4"><%= render "documents/form", document: @dossier.documents.new, dossier: @dossier %></div>
     <%= render @dossier.documents %>
   </div>
 
@@ -92,6 +93,13 @@
 
   <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 sm:col-span-1">
     <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.conventions') %></h2>
+    <%= render ConventionComponent.with_collection(@dossier.conventions) %>
+
+    <div class="flex justify-end mt-4">
+      <%= link_to new_dossier_convention_path(@dossier), "data-turbo-frame": "modal" do %>
+        <span class="text-emerald-500 text-xs italic underline">ajouter</span>
+      <% end %>
+    </div>
   </div>
 
   <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 sm:col-span-1">

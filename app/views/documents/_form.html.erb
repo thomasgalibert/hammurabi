@@ -1,0 +1,11 @@
+<%= form_with model: [dossier, document], class: "flex items-center space-x-0 text-xs" do |form| %>
+
+  <%= form.hidden_field :dossier_id, value: dossier.id %>
+
+  <%= form.text_field :name, placeholder: t('documents.placeholders.name'),
+      class: "flex-1 px-2 py-1 rounded-md m-0 border-stone-300 placeholder:text-gray-400 focus:ring-0 focus:outline-none outline-none text-xs" %>
+  
+  <%= form.file_field :fichier, class: "flex-1 border-r-0 px-2 py-1 rounded-l-md m-0 border-stone-300 placeholder:text-gray-400 focus:ring-0 focus:outline-none outline-none text-xs" %>
+
+  <%= form.submit class: "cursor-pointer border border-stone-300 px-2 py-1 rounded-md m-0 bg-emerald-500 text-white font-semibold w-18" %>
+<% end %>

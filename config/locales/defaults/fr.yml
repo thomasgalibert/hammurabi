@@ -43,7 +43,7 @@ fr:
     formats:
       default: "%d/%m/%Y"
       long: "%-d %B %Y"
-      short: "%-d %b"
+      short: "%-d %b %Y"
     month_names:
     -
     - janvier
@@ -217,7 +217,7 @@ fr:
     formats:
       default: "%d %B %Y %Hh %Mmin %Ss"
       long: "%A %d %B %Y %Hh%M"
-      short: "%d %b %Hh%M"
+      short: "%d %b %Y, %Hh%M "
     pm: pm
   simple_calendar:
     previous: "<<"
@@ -226,3 +226,8 @@ fr:
   edit: "modifier"
   delete: "supprimer"
   are_you_sure: "Êtes-vous sûr ? Cette action est irréversible."
+  buttons:
+    edit: "modifier"
+    delete: "supprimer"
+    download: "télécharger"
+    show: "afficher"

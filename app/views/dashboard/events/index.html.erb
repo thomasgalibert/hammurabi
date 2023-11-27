@@ -1,0 +1,15 @@
+<%= turbo_frame_tag :calendar do %>
+  <%= week_calendar(number_of_weeks: 1, events: @events, attribute: :date) do |date, events| %>
+
+    <div class="flex flex-col align-top">
+      <div class="text-xs text-stone-500"><%=l date %></div>
+      
+      <div class="text-left flex flex-col space-y-1 mt-4">
+        <% events.each do |event| %>
+          <%= render EventCalendarComponent.new(event: event) %>
+        <% end %>
+      </div>
+    </div>
+    
+  <% end %>
+<% end %>
