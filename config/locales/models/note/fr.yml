@@ -1,0 +1,17 @@
+fr:
+  activerecord:
+    attributes:
+      note:
+        content: "Contenu de la note"
+  notes:
+    list: "Liste des notes"
+    flash:
+      created: "La note a été créée avec succès."
+      updated: "La note a été mise à jour avec succès."
+      destroyed: "La note a été supprimée avec succès."
+    new:
+      legend: "Nouvelle note dans le dossier"
+    edit:
+      legend: "Modifier la note du dossier"
+    buttons:
+      new: "Nouvelle note"

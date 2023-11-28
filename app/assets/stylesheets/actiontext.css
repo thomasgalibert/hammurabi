@@ -29,3 +29,9 @@
   padding: 0 !important;
   max-width: 100% !important;
 }
+
+trix-editor h1 {
+  font-size: 1.2em;
+  font-weight: bold;
+  line-height: 1.5em;
+}

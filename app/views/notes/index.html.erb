@@ -1,0 +1,16 @@
+<%= turbo_frame_tag :notes do %>
+  <div class="flex justify-between items-center my-4 border-t pt-4">
+    <div class="text-base text-stone-600 font-semibold"><%= t('notes.list') %></div>
+    <div>
+      <%= link_to t('notes.buttons.new'), 
+          new_dossier_note_path(@dossier),
+          class: "text-xs cursor-pointer border-stone-300 border px-2 py-1 rounded-md m-0 bg-stone-50 text-stone-600 font-semibold w-18", 
+          data: {turbo_frame: :modal} %>
+    </div>
+  </div>
+  <ul class="grid grid-cols-3 gap-4">
+    <%= render NoteComponent.with_collection(@notes) %>
+  </ul>
+
+  
+<% end %>

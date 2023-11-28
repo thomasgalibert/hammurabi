@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_24_190103) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_28_093709) do
   create_table "action_text_rich_texts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -160,6 +160,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_24_190103) do
     t.index ["facturable_type", "facturable_id"], name: "index_lignes_on_facturable"
   end
 
+  create_table "notes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "dossier_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dossier_id"], name: "index_notes_on_dossier_id"
+    t.index ["user_id"], name: "index_notes_on_user_id"
+  end
+
   create_table "todos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "todoable_type", null: false
     t.bigint "todoable_id", null: false
@@ -199,5 +208,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_24_190103) do
   add_foreign_key "factures", "contacts"
   add_foreign_key "factures", "dossiers"
   add_foreign_key "factures", "users", column: "emetteur_id"
+  add_foreign_key "notes", "dossiers"
+  add_foreign_key "notes", "users"
   add_foreign_key "todos", "users"
 end

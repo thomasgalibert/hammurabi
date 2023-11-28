@@ -30,3 +30,5 @@ fr:
       legend: "Nouveau contact dans le dossier"
     edit:
       legend: "Modifier le contact du dossier"
+    buttons:
+      new: "Nouveau contact"

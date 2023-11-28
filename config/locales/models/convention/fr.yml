@@ -16,3 +16,5 @@ fr:
       legend: "Nouvelle convention dans le dossier"
     edit:
       legend: "Modifier la convention du dossier"
+    buttons:
+      new: "Nouvelle convention"

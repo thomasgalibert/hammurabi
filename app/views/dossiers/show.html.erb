@@ -36,6 +36,8 @@
         <% end %>
       </div>
     <% end %>
+
+    <%= turbo_frame_tag :notes, src: dossier_notes_path(@dossier) %>
   </div>
 
   <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 sm:col-span-1">
@@ -86,7 +88,7 @@
 
     <div class="flex justify-end mt-4">
       <%= link_to new_dossier_contact_path(@dossier), "data-turbo-frame": "modal" do %>
-        <span class="text-emerald-500 text-xs italic underline">ajouter</span>
+        <span class="text-xs cursor-pointer border-stone-300 border px-2 py-1 rounded-md m-0 bg-stone-50 text-stone-600 font-semibold w-18"><%= t('contacts.buttons.new') %></span>
       <% end %>
     </div>
   </div>
@@ -97,7 +99,7 @@
 
     <div class="flex justify-end mt-4">
       <%= link_to new_dossier_convention_path(@dossier), "data-turbo-frame": "modal" do %>
-        <span class="text-emerald-500 text-xs italic underline">ajouter</span>
+        <span class="text-xs cursor-pointer border-stone-300 border px-2 py-1 rounded-md m-0 bg-stone-50 text-stone-600 font-semibold w-18"><%= t('conventions.buttons.new') %></span>
       <% end %>
     </div>
   </div>

@@ -10,4 +10,5 @@ resources :dossiers do
   resources :contacts
   resources :documents
   resources :conventions
+  resources :notes
 end

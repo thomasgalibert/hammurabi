@@ -1,0 +1,5 @@
+<%= turbo_frame_tag :modal do %>
+  <%= render "layouts/modal" do %>
+    <%= render "notes/form", note: @note, dossier: @dossier %>
+  <% end %>
+<% end %>

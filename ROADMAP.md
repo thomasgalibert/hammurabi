@@ -10,7 +10,7 @@
 - [X] Ajouter, modifier et supprimer les contacts
 - [X] Afficher le calendriers des événements dans le dashboard
 - [X] Ajouter, modifier et supprimer les conventions d'honoraires
-- [ ] Ajouter, modifier et supprimer des notes de dossier
+- [X] Ajouter, modifier et supprimer des notes de dossier
 - [ ] Ajouter, modifier et supprimer les factures
 
 ## Récolte des pièces
