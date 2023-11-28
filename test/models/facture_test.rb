@@ -7,7 +7,7 @@ class FactureTest < ActiveSupport::TestCase
     @user = FactoryBot.create(:user)
     @dossier = FactoryBot.create(:dossier, user: @user)
     @contact = FactoryBot.create(:contact, user: @user)
-    @facture = FactoryBot.create(:facture, emetteur: @user, dossier: @dossier, contact: @contact)
+    @facture = FactoryBot.create(:facture, emetteur: @user, dossier: @dossier, contact: @contact, user: @user)
   end
 
   test "il y a bien une création de 3 lignes pour la facture" do
@@ -76,29 +76,29 @@ class FactureTest < ActiveSupport::TestCase
   end
 
   test "vérifie que l'on peut pas créer un facture avec un date antérieure à la précédente" do
-    facture2 = FactoryBot.build(:facture, emetteur: @user, date: @facture.date - 1.day, dossier: @dossier, contact: @contact)
+    facture2 = FactoryBot.build(:facture, emetteur: @user, date: @facture.date - 1.day, dossier: @dossier, contact: @contact, user: @user)
     assert_not facture2.valid?
   end
 
   test "vérifie que le numéro de la facture est bien incrémenté par rapport à la dernière facture ajoutée" do
     Facture.delete_all
-    facture1 = FactoryBot.create(:facture, state: :achived, emetteur: @user, dossier: @dossier, contact: @contact)    
-    facture2 = FactoryBot.create(:facture, state: :draft, emetteur: @user, dossier: @dossier, contact: @contact)    
-    facture3 = FactoryBot.create(:facture, state: :achived, emetteur: @user, dossier: @dossier, contact: @contact)
+    facture1 = FactoryBot.create(:facture, state: :achived, emetteur: @user, dossier: @dossier, contact: @contact, user: @user)    
+    facture2 = FactoryBot.create(:facture, state: :draft, emetteur: @user, dossier: @dossier, contact: @contact, user: @user)    
+    facture3 = FactoryBot.create(:facture, state: :achived, emetteur: @user, dossier: @dossier, contact: @contact, user: @user)
 
     assert_equal 2, facture3.numero
   end
 
   test "vérifie que la facture n'a pas de numéro quand c'est un brouillon" do
     Facture.delete_all
-    facture1 = FactoryBot.create(:facture, state: :draft, emetteur: @user, dossier: @dossier, contact: @contact)    
+    facture1 = FactoryBot.create(:facture, state: :draft, emetteur: @user, dossier: @dossier, contact: @contact, user: @user)    
 
     assert_nil facture1.numero
   end
 
   test "vérifie que la facture a un numéro quand elle est validée" do
     Facture.delete_all
-    facture1 = FactoryBot.create(:facture, state: :draft, emetteur: @user, dossier: @dossier, contact: @contact)
+    facture1 = FactoryBot.create(:facture, state: :draft, emetteur: @user, dossier: @dossier, contact: @contact, user: @user)
     facture1.complete!    
 
     assert_not_nil facture1.numero

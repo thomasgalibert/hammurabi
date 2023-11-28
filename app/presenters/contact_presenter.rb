@@ -21,6 +21,14 @@ class ContactPresenter < Keynote::Presenter
     simple_format("#{contact.address} \n #{contact.zip_code} #{contact.city} (#{contact.country})")
   end
 
+  def name_with_company
+    if contact.company_name.present?
+      "#{contact.company_name} - #{contact.name.full}"
+    else
+      contact.name.full
+    end
+  end
+
   private
 
   def contact_class(contact)

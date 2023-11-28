@@ -18,7 +18,7 @@ module Facturation
   end
 
   def breakdown_tva
-    lignes.group_by(&:tva).transform_values do |ligne_group|
+    lignes.with_prix_unitaire_cents.group_by(&:tva).transform_values do |ligne_group|
       {
         base: ligne_group.sum(&:total_ht_cents),
         montant: ligne_group.sum(&:total_tva_cents)

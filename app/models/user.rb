@@ -18,6 +18,7 @@ class User < ApplicationRecord
   has_many :contacts, dependent: :destroy
   has_many :conventions, dependent: :destroy
   has_many :notes, :dependent => :destroy
+  has_many :factures, dependent: :destroy
   
   validates :email, presence: true
   validates :email, uniqueness: true

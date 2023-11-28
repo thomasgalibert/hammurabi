@@ -21,6 +21,8 @@ class Ligne < ApplicationRecord
 
   before_validation :calculer_totaux
 
+  scope :with_prix_unitaire_cents, -> { where.not(prix_unitaire_cents: nil) }
+
   def calcul_ht_avec_reduction
     total_ht_sans_reduction = prix_unitaire_cents * quantite
     pourcentage_de_reduction = reduction / 100.0

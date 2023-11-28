@@ -1,0 +1,9 @@
+<div class="border-t mt-6 pt-4">
+  <div>Total HT : <%= facture.total_ht %></div>
+  <div>Total TTC : <%= facture.total_ttc %></div>
+
+  <div>Bases HT :</div>
+  <%= facture.breakdown_tva.inspect if facture.breakdown_tva.any? %>
+  <%= 0 if facture.breakdown_tva == {} %>
+</div>
+

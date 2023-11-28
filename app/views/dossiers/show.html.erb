@@ -106,6 +106,12 @@
 
   <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 sm:col-span-1">
     <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.factures') %></h2>
+
+    <div class="flex justify-end mt-4">
+      <%= link_to new_dossier_facture_path(@dossier) do %>
+        <span class="text-xs cursor-pointer border-stone-300 border px-2 py-1 rounded-md m-0 bg-stone-50 text-stone-600 font-semibold w-18"><%= t('factures.buttons.new') %></span>
+      <% end %>
+    </div>
   </div>
 
 </div>

@@ -11,4 +11,5 @@ resources :dossiers do
   resources :documents
   resources :conventions
   resources :notes
+  resources :factures
 end

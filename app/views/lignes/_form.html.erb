@@ -1,0 +1,8 @@
+<%= form_with model: [facture, ligne], class: "flex my-4" do |form| %>
+    <%= form.text_field :description, class: "border-stone-300 border-r-0 text-xs px-2 py-1" %>
+    <%= form.number_field :quantite, class: "border-stone-300 text-xs px-2 py-1 border-r-0" %>
+    <%= form.number_field :prix_unitaire, class: "border-stone-300 text-xs px-2 py-1 border-r-0" %>
+    <%= form.number_field :tva, class: "border-stone-300 text-xs px-2 py-1 border-r-0" %>
+    <%= form.number_field :reduction, class: "border-stone-300 border-r-0 text-xs px-2 py-1" %>
+    <%= form.submit "Ajouter", class: "bg-emerald-600 text-white px-2 py-1 rounded-r-md" %>
+<% end %>

@@ -7,7 +7,7 @@ class FactureAssociationsTest < ActiveSupport::TestCase
     @contact = FactoryBot.create(:contact, user: @user)
     @dossier = FactoryBot.create(:dossier, user: @user)
     @dossier.contacts << @contact
-    @facture = FactoryBot.create(:facture, emetteur: @user, dossier: @dossier, contact: @contact)
+    @facture = FactoryBot.create(:facture, emetteur: @user, dossier: @dossier, contact: @contact, user: @user)
   end
 
   test "Vérifier que la facture appartient à un émetteur qui est relié à la table users" do

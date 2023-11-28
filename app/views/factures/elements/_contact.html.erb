@@ -1,0 +1,14 @@
+<%= turbo_frame_tag :facture_contact_id do %>
+  <h2 class="text-lg flex items-center space-x-2 mt-4 border-t pt-4">
+    <span class="inline-block"><%= at(facture, :billed_to) %> : 
+      <%= k(facture.contact).name_with_company %>
+    </span>
+    <span class="inline-block font-base italic text-sm text-stone-500">
+      <%= link_to edit_dossier_facture_path(dossier, facture, attribute: :contact_id) do %>
+        (<%= t('factures.buttons.edit_client_id') %>)
+      <% end %>
+    </span>
+  </h1>
+
+  <div class="mt-2 font-mono"><%= k(facture.contact).full_address %></div>
+<% end %>

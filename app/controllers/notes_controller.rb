@@ -40,7 +40,7 @@ class NotesController < ApplicationController
     @note.destroy
     respond_to do |format|
       format.html { redirect_to @dossier, notice: t('notes.flash.destroyed') }
-      format.turbo_stream { render turbo_stream: turbo_stream.remove(@note) }
+      format.turbo_stream
     end
   end
 
