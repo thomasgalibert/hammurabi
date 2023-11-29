@@ -1,8 +1,45 @@
-<%= form_with model: [facture, ligne], class: "flex my-4" do |form| %>
-    <%= form.text_field :description, class: "border-stone-300 border-r-0 text-xs px-2 py-1" %>
-    <%= form.number_field :quantite, class: "border-stone-300 text-xs px-2 py-1 border-r-0" %>
-    <%= form.number_field :prix_unitaire, class: "border-stone-300 text-xs px-2 py-1 border-r-0" %>
-    <%= form.number_field :tva, class: "border-stone-300 text-xs px-2 py-1 border-r-0" %>
-    <%= form.number_field :reduction, class: "border-stone-300 border-r-0 text-xs px-2 py-1" %>
-    <%= form.submit "Ajouter", class: "bg-emerald-600 text-white px-2 py-1 rounded-r-md" %>
+<%= form_with model: [facture, ligne], class: "flex mt-4 mb-20 relative", id: "ligne_form" do |form| %>
+    <%= render "shared/errors", object: form.object %>
+
+    <div class="absolute top-1 right-4">
+      <%= link_to "fermer", dossier_facture_path(facture.dossier, facture),
+          class: "text-sm italic text-rose-500" %>
+    </div>
+
+    <div class="p-2 w-full mx-auto bg-white rounded-xl shadow-md border">
+      <div class="w-full mb-6">
+        <div class="p-1">
+            <div class="uppercase tracking-wide text-xs text-amber-500 font-semibold"><%= at(ligne, :description) %></div>
+            <p class="block mt-1 text-sm leading-tight font-medium text-stone-600">
+              <%= form.text_area :description, required: true, class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6", autofocus: true %>
+            </p>
+        </div>
+      </div>
+      <div class="md:flex justify-between items-center">
+          <div class="p-1 text-center">
+              <div class="uppercase tracking-wide text-xs text-amber-500 font-semibold"><%= at(ligne, :quantite) %></div>
+              <p class="block mt-1 text-sm leading-tight font-medium text-stone-600 font-mono"><%= form.number_field :quantite, required: true, step: :any, class: "w-full px-4 py-2 rounded-md m-0 border-stone-300 placeholder:text-gray-400 focus:ring-0 focus:outline-none outline-none text-sm" %></p>
+          </div>
+          <div class="p-1 text-right">
+              <div class="uppercase tracking-wide text-xs text-amber-500 font-semibold"><%= at(ligne, :prix_unitaire) %></div>
+              <p class="block mt-1 text-sm leading-tight font-medium text-stone-600 font-mono"><%= form.number_field :prix_unitaire, required: true, step: :any, class: "w-full px-4 py-2 rounded-md m-0 border-stone-300 placeholder:text-gray-400 focus:ring-0 focus:outline-none outline-none text-sm" %></p>
+          </div>
+          <div class="p-1 text-center">
+              <div class="uppercase tracking-wide text-xs text-amber-500 font-semibold"><%= at(ligne, :tva) %></div>
+              <p class="block mt-1 text-sm leading-tight font-medium text-stone-600 font-mono"><%= form.number_field :tva, required: true, step: :any, min: 0, class: "w-full px-4 py-2 rounded-md m-0 border-stone-300 placeholder:text-gray-400 focus:ring-0 focus:outline-none outline-none text-sm" %></p>
+          </div>
+          <div class="p-1 text-center">
+              <div class="uppercase tracking-wide text-xs text-amber-500 font-semibold"><%= at(ligne, :reduction) %></div>
+              <p class="block mt-1 text-sm leading-tight font-medium text-stone-600 font-mono"><%= form.number_field :reduction, required: true, step: :any, min: 0, max: 100, class: "w-full px-4 py-2 rounded-md m-0 border-stone-300 placeholder:text-gray-400 focus:ring-0 focus:outline-none outline-none text-sm" %></p>
+          </div>
+      </div>
+
+      <div class="w-full mb-6">
+        <div class="p-1">
+          <p class="block mt-1 text-sm leading-tight font-medium text-stone-600">
+            <%= form.submit class: "cursor-pointer w-full bg-emerald-500 text-white text-lg rounded-md px-4 py-2" %>
+          </p>
+        </div>
+      </div>
+  </div>
 <% end %>

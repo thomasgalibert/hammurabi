@@ -1,4 +1,5 @@
 class FacturesController < ApplicationController
+  include Ordering
   before_action :authenticate_user!
   before_action :set_dossier, only: [:index, :new, :show, :edit, :update, :destroy]
   before_action :set_facture, only: [:show, :edit, :update, :destroy]
@@ -19,7 +20,7 @@ class FacturesController < ApplicationController
   end
 
   def show
-    
+    initialize_row_order(@facture.lignes, order: :asc)  
   end
 
   def edit
@@ -28,7 +29,7 @@ class FacturesController < ApplicationController
 
   def update
     if @facture.update(facture_params)
-      redirect_to @dossier, notice: t('factures.flash.updated')
+      redirect_to [@dossier, @facture], notice: t('factures.flash.updated')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -63,6 +64,7 @@ class FacturesController < ApplicationController
       :locked,
       :contact_id,
       :date_fin_validite,
+      :description
     )
   end
 end

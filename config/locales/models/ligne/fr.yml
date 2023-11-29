@@ -1,0 +1,16 @@
+fr:
+  activerecord:
+    attributes:
+      ligne:
+        description: "Libellé"
+        quantite: "Qt"
+        prix_unitaire: "PU HT"
+        tva: "% TVA"
+        total_ht: "Total HT"
+        total_ttc: "Total TTC"
+        reduction: "% Rem"
+        total_tva: "Total TVA"
+  helpers:
+    submit:
+      create: "ajouter la ligne"
+      update: "modifier la ligne"

@@ -20,6 +20,7 @@ class Dossier < ApplicationRecord
   has_many :events, :dependent => :destroy
   has_many :conventions, :dependent => :destroy
   has_many :notes, :dependent => :destroy
+  has_many :factures, :dependent => :destroy
 
   validates :name, presence: true
 

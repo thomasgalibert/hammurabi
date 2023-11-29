@@ -1,0 +1,5 @@
+<li id="<%= dom_id(facture) %>" class="col-span-3 sm:col-span-1 p-4 rounded-lg bg-yellow-100 border-yellow-500 text-xs flex flex-col justify-between">
+  <%= link_to truncate(facture.description.to_plain_text, length: 130), 
+      dossier_facture_path(facture.dossier, facture), 
+      class: "hover:underline" %>
+</li>

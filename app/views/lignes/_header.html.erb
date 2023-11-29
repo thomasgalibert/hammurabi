@@ -1,0 +1,27 @@
+<li class="p-2 w-full mx-auto bg-white ignore-elements">
+    <div class="md:flex w-full justify-between items-center">
+        <div class="p-1 text-center w-10">
+            <div class="block uppercase tracking-wide text-xs text-amber-500 font-semibold"></div>
+        </div>  
+        <div class="p-1 w-5/12">
+            <div class="block uppercase tracking-wide text-xs text-amber-500 font-semibold"><%= at(ligne, :description) %></div>
+        </div>
+        <div class="p-1 text-center w-20">
+            <div class="block uppercase tracking-wide text-xs text-amber-500 font-semibold"><%= at(ligne, :quantite) %></div>
+        </div>
+        <div class="p-1 text-right w-32">
+            <div class="block uppercase tracking-wide text-xs text-amber-500 font-semibold"><%= at(ligne, :prix_unitaire) %></div>
+        </div>
+        <div class="p-1 text-center w-20">
+            <div class="block uppercase tracking-wide text-xs text-amber-500 font-semibold"><%= at(ligne, :tva) %></div>
+        </div>
+        <div class="p-1 text-center w-20">
+            <div class="block uppercase tracking-wide text-xs text-amber-500 font-semibold"><%= at(ligne, :reduction) %></div>
+        </div>
+        <div class="p-1 text-right w-32">
+            <div class="block uppercase tracking-wide text-xs text-amber-500 font-semibold"><%= at(ligne, :total_ttc) %></div>
+        </div>
+        <div class="p-1 text-right w-10">
+        </div>
+    </div>
+</li>

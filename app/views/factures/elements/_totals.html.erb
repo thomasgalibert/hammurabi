@@ -1,9 +1,24 @@
-<div class="border-t mt-6 pt-4">
-  <div>Total HT : <%= facture.total_ht %></div>
-  <div>Total TTC : <%= facture.total_ttc %></div>
+<div class="p-4 max-w-full mx-auto bg-white rounded-xl shadow-md mt-6 border">
+    <div class="flex justify-between border-b border-gray-200 pb-4">
+        <div class="text-lg font-medium text-black"><%= at(facture, :total_ht) %></div>
+        <div class="text-lg font-medium text-black font-mono"><%= number_to_currency facture.total_ht %></div>
+    </div>
 
-  <div>Bases HT :</div>
-  <%= facture.breakdown_tva.inspect if facture.breakdown_tva.any? %>
-  <%= 0 if facture.breakdown_tva == {} %>
+    <% facture.breakdown_tva.each do |taux, valeurs| %>
+      <div class="py-4">
+          <div class="flex justify-between">
+              <div class="text-sm font-medium text-black">Base HT à <%= taux %> %</div>
+              <div class="text-sm font-medium text-black font-mono"><%= number_to_currency (valeurs[:base] / 100) %></div>
+          </div>
+          <div class="flex justify-between mt-2">
+              <div class="text-sm font-medium text-black">TVA à <%= taux %> %</div>
+              <div class="text-sm font-medium text-black font-mono"><%= number_to_currency (valeurs[:montant] / 100) %></div>
+          </div>
+          <!-- Répétez les deux lignes ci-dessus pour chaque taux de TVA différent -->
+      </div>
+    <% end %>
+    <div class="flex justify-between border-t border-gray-200 pt-4">
+        <div class="text-lg font-medium text-black"><%= at(facture, :total_ttc) %></div>
+        <div class="text-lg font-medium text-black font-mono"><%= number_to_currency facture.total_ttc %></div>
+    </div>
 </div>
-

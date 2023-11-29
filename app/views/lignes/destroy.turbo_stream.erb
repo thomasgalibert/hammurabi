@@ -1,0 +1,5 @@
+<%= turbo_stream.remove(@ligne) %>
+
+<%= turbo_stream.update(:totals) do %>
+  <%= render 'factures/elements/totals', facture: @facture, dossier: @dossier %>
+<% end %>

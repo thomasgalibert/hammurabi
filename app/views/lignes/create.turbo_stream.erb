@@ -1,8 +1,8 @@
 <%= turbo_stream.append(:lignes) do %>
-  <%= render 'lignes/line', ligne: @ligne %>
+  <%= render 'lignes/ligne', ligne: @ligne %>
 <% end %>
 
-<%= turbo_stream.replace(:line_form, partial: 'lignes/form', locals: { ligne: @facture.lignes.new }) %>
+<%= turbo_stream.replace(:ligne_form, partial: 'lignes/form', locals: { facture: @facture,  ligne: @facture.lignes.new(quantite: 1, tva: 20, reduction: 0) }) %>
 
 <%= turbo_stream.update(:totals) do %>
   <%= render 'factures/elements/totals', facture: @facture, dossier: @dossier %>

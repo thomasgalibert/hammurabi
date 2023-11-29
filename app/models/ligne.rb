@@ -11,17 +11,27 @@
 # t.datetime "updated_at", null: false
 # t.float "reduction"
 # t.integer "total_tva_cents"
+# t.integer "row_order"
 # t.index ["facturable_type", "facturable_id"], name: "index_lignes_on_facturable"
 # == Schema end
 
 class Ligne < ApplicationRecord
-  monetize :prix_unitaire_cents, :total_ht_cents, :total_ttc_cents, :total_tva_cents, allow_nil: true
+  monetize :prix_unitaire_cents, allow_nil: false
+  monetize :total_ht_cents, :total_ttc_cents, :total_tva_cents, allow_nil: true
+
+  validates :description, presence: true
+  validates :quantite, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :tva, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :reduction, presence: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
 
   belongs_to :facturable, polymorphic: true
 
   before_validation :calculer_totaux
+  after_save :update_facture_totaux
+  after_destroy :update_facture_totaux
 
-  scope :with_prix_unitaire_cents, -> { where.not(prix_unitaire_cents: nil) }
+  default_scope { order(row_order: :asc) }
+  scope :saved, -> { where.not(id: nil) }
 
   def calcul_ht_avec_reduction
     total_ht_sans_reduction = prix_unitaire_cents * quantite
@@ -46,5 +56,9 @@ class Ligne < ApplicationRecord
     self.total_ht_cents = calcul_ht_avec_reduction.round.to_i
     self.total_ttc_cents = calcul_total_ttc.round.to_i
     self.total_tva_cents = calcul_montant_tva.round.to_i
+  end
+
+  def update_facture_totaux
+    facturable.save
   end
 end

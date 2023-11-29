@@ -1,6 +1,11 @@
 <div class="bg-white p-10 rounded-lg border">
   <%= render "factures/elements/header", facture: facture, dossier: dossier %>
   <%= render "factures/elements/contact", facture: facture, dossier: dossier %>
-  <%= render "lignes/form", facture: facture, ligne: facture.lignes.new %>
-  <%= render "factures/elements/totals", facture: facture, dossier: dossier %>
+  <%= render "factures/elements/description", facture: facture, dossier: dossier %>
+  <%= render "factures/elements/new_button", facture: facture, dossier: dossier %>
+  <ul id="lignes" class="flex flex-col divide-y" data-controller="sortable">
+    <%= render "lignes/header", ligne: Ligne.new %>
+    <%= render facture.lignes.saved %>
+  </ul>
+  <div id="totals"><%= render "factures/elements/totals", facture: facture, dossier: dossier %></div>
 </div>

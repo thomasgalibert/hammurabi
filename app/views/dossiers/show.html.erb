@@ -111,6 +111,10 @@
       <%= link_to new_dossier_facture_path(@dossier) do %>
         <span class="text-xs cursor-pointer border-stone-300 border px-2 py-1 rounded-md m-0 bg-stone-50 text-stone-600 font-semibold w-18"><%= t('factures.buttons.new') %></span>
       <% end %>
+
+      <ul class="grid grid-cols-3 gap-4">
+        <%= render partial: "factures/sheet", collection: @dossier.factures, as: :facture %>
+      </ul>
     </div>
   </div>
 

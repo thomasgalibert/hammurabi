@@ -1,0 +1,5 @@
+<% if params[:attribute].present? %>
+  <%= turbo_frame_tag "facture_#{params[:attribute]}" do %>
+    <%= render "form", dossier: @dossier, facture: @facture %>
+  <% end %>
+<% end %>

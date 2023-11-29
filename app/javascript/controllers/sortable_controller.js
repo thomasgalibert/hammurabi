@@ -5,8 +5,11 @@ import { put } from '@rails/request.js'
 // Connects to data-controller="sortable"
 export default class extends Controller {
   connect() {
+    console.log('Sortable controller connected')
+    
     Sortable.create(this.element, {
       handle: '.handle',
+      filter: ".ignore-elements",
       onEnd: this.onEnd.bind(this)
     })
   }

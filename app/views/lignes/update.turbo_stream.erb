@@ -1,0 +1,7 @@
+<%= turbo_stream.replace dom_id(@ligne) do %>
+  <%= render "lignes/ligne", ligne: @ligne %>
+<% end %>
+
+<%= turbo_stream.update(:totals) do %>
+  <%= render 'factures/elements/totals', facture: @facture, dossier: @dossier %>
+<% end %>

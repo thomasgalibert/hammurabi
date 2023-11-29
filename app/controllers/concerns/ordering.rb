@@ -1,8 +1,8 @@
 module Ordering
   extend ActiveSupport::Concern
 
-  def initialize_row_order(items)
-    items.order(created_at: :desc).each_with_index do |item, index|
+  def initialize_row_order(items, order: :desc)
+    items.order(created_at: order).each_with_index do |item, index|
       item.update(row_order: index+1) if item.row_order.nil?
     end
   end

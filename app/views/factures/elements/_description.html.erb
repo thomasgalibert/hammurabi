@@ -1,0 +1,22 @@
+<%= turbo_frame_tag :facture_description do %>
+  <div class="bg-yellow-50 px-4 pb-4 pt-8 mt-4 rounded-md relative">
+
+    <div class="absolute top-1 left-4">
+      <span class="inline-block font-base italic text-sm text-stone-500"><%= at(facture, :description) %></span>
+    </div>
+
+    <div class="absolute top-1 right-4">
+      <%= link_to edit_dossier_facture_path(dossier, facture, attribute: :description),
+          class: "inline-block font-base italic text-sm text-stone-500" do %>
+        (<%= t('factures.buttons.edit_description') %>)
+      <% end %>
+    </div>
+    
+
+    <% if facture.description.present? %>
+      <div><%= facture.description %></div>
+    <% else %>
+      <div><%= at(facture, :no_description) %></div>
+    <% end %>
+  </div>
+<% end %>
