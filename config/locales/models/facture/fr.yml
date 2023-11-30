@@ -16,6 +16,10 @@ fr:
     states:
       draft: "Brouillon"
       achived: "Validée"
+    payment_statuses:
+      paid: "Payée"
+      partial: "Partiellement payée"
+      unpaid: "Impayée"
   activerecord:
     attributes:
       facture:

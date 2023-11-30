@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_29_103405) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_30_091111) do
   create_table "action_text_rich_texts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -140,6 +140,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_103405) do
     t.bigint "contact_id", null: false
     t.date "date_fin_validite"
     t.bigint "user_id", null: false
+    t.string "payment_status"
     t.index ["contact_id"], name: "index_factures_on_contact_id"
     t.index ["dossier_id"], name: "index_factures_on_dossier_id"
     t.index ["emetteur_id"], name: "index_factures_on_emetteur_id"
@@ -160,6 +161,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_103405) do
     t.float "reduction"
     t.integer "total_tva_cents"
     t.integer "row_order"
+    t.string "unit"
     t.index ["facturable_type", "facturable_id"], name: "index_lignes_on_facturable"
   end
 
@@ -170,6 +172,17 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_103405) do
     t.datetime "updated_at", null: false
     t.index ["dossier_id"], name: "index_notes_on_dossier_id"
     t.index ["user_id"], name: "index_notes_on_user_id"
+  end
+
+  create_table "payments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "facture_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "amount_cents"
+    t.date "issued_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["facture_id"], name: "index_payments_on_facture_id"
+    t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
   create_table "todos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -214,5 +227,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_103405) do
   add_foreign_key "factures", "users", column: "emetteur_id"
   add_foreign_key "notes", "dossiers"
   add_foreign_key "notes", "users"
+  add_foreign_key "payments", "factures"
+  add_foreign_key "payments", "users"
   add_foreign_key "todos", "users"
 end

@@ -123,4 +123,29 @@ class FactureTest < ActiveSupport::TestCase
   test "vérifie que le facture comporte des conditions générales" do
     assert_not_nil @facture.conditions_generales
   end
+
+  test "vérifie que le facture payée en totalité a un payment_status égal à paid" do
+    payment = FactoryBot.create(
+                :payment, 
+                facture: @facture, 
+                user: @user,
+                amount_cents: @facture.total_ttc_cents)
+
+    assert_equal "paid", @facture.payment_status
+  end
+
+  test "vérifie que le facture payée en partie a un payment_status égal à partial" do
+    payment = FactoryBot.create(
+                :payment, 
+                facture: @facture, 
+                user: @user,
+                amount_cents: @facture.total_ttc_cents - 1)
+
+    assert_equal "partial", @facture.payment_status
+  end
+
+  test "vérifie que le facture non payée a un payment_status égal à unpaid" do
+    assert_equal "unpaid", @facture.payment_status
+  end
+
 end

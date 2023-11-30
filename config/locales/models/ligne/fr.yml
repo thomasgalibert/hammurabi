@@ -10,7 +10,12 @@ fr:
         total_ttc: "Total TTC"
         reduction: "% Rem"
         total_tva: "Total TVA"
+        unit: "Unité"
   helpers:
     submit:
       create: "ajouter la ligne"
       update: "modifier la ligne"
+    ligne:
+      unit:
+        forfait: "Forfait"
+        hour: "Heures"

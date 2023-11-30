@@ -19,6 +19,9 @@ class Ligne < ApplicationRecord
   monetize :prix_unitaire_cents, allow_nil: false
   monetize :total_ht_cents, :total_ttc_cents, :total_tva_cents, allow_nil: true
 
+  UNITS = %w(forfait hour)
+
+  validates :unit, inclusion: { in: UNITS }, allow_nil: false
   validates :description, presence: true
   validates :quantite, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :tva, presence: true, numericality: { greater_than_or_equal_to: 0 }

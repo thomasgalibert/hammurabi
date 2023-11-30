@@ -56,6 +56,6 @@ class LignesController < ApplicationController
   end
 
   def ligne_params
-    params.require(:ligne).permit(:description, :quantite, :prix_unitaire, :tva, :reduction)
+    params.require(:ligne).permit(:description, :quantite, :prix_unitaire, :tva, :reduction, :unit)
   end
 end

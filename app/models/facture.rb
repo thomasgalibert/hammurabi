@@ -18,12 +18,15 @@
 
 class Facture < ApplicationRecord
   include Facturation
+  include Receipts
   include AASM
 
   belongs_to :emetteur, class_name: 'User'
   belongs_to :dossier
   belongs_to :contact
   belongs_to :user
+
+  has_many :payments, dependent: :destroy
 
   has_rich_text :description
   has_rich_text :conditions_paiement

@@ -12,7 +12,7 @@
         <p class="block mt-1 text-sm leading-tight font-medium text-stone-600"><%= ligne.description %></p>
       </div>
       <div class="p-1 w-20 text-center">
-        <p class="block mt-1 text-sm leading-tight font-medium text-stone-600 font-mono"><%= ligne.quantite %></p>
+        <p class="block mt-1 text-sm leading-tight font-medium text-stone-600"><span class="font-mono"><%= ligne.quantite %></span> <span class="text-xs text-stone-400 font-normal"><%= k(ligne).unit %></span></p>
       </div>
       <div class="p-1 w-32 text-right">
         <p class="block mt-1 text-sm leading-tight font-medium text-stone-600 font-mono"><%= number_to_currency ligne.prix_unitaire %></p>

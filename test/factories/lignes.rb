@@ -4,7 +4,8 @@ FactoryBot.define do
     quantite { 1 }
     prix_unitaire_cents { 1000 } # 10.00 dans la devise choisie (supposons EUR)
     reduction { 0 }
-    tva { 20 } # TVA à 20%
+    tva { 20 }
+    unit { "forfait" }
     association :facturable, factory: :facture
 
     trait :tva_standard do

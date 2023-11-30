@@ -1,5 +1,17 @@
-<li id="<%= dom_id(facture) %>" class="col-span-3 sm:col-span-1 p-4 rounded-lg bg-yellow-100 border-yellow-500 text-xs flex flex-col justify-between">
-  <%= link_to truncate(facture.description.to_plain_text, length: 130), 
-      dossier_facture_path(facture.dossier, facture), 
-      class: "hover:underline" %>
+<li id="<%= dom_id(facture) %>" class="col-span-3 sm:col-span-1 p-4 rounded-lg bg-sky-50 border-sky-500 text-xs flex flex-col justify-between">
+  <div class="flex justify-between items-center mb-4 text-sky-800">
+    <div><%=l facture.date %></div>
+    <div><%= number_to_currency facture.total_ttc %></div>
+  </div>
+
+  <div>
+    <%= link_to truncate(facture.description.to_plain_text, length: 50),
+        dossier_facture_path(facture.dossier, facture),
+        class: "underline" %>
+  </div>
+
+  <div class="mt-3 flex justify-between items-center">
+    <%= k(facture).badge %>
+    <%= k(facture).payment_badge %>
+  </div>
 </li>
