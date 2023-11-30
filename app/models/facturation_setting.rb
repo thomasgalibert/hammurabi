@@ -13,4 +13,5 @@ class FacturationSetting < ApplicationRecord
   belongs_to :user
   has_rich_text :conditions_generales
   has_rich_text :conditions_paiement
+  has_one_attached :logo
 end

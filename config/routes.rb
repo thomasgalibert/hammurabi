@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  draw :settings
   draw :factures
   draw :dashboard
   draw :admin

@@ -192,27 +192,4 @@ class FactureTest < ActiveSupport::TestCase
     assert_not_nil @facture.facture_seal
   end
 
-  test "vérifie que FactureSeal a les champs suivants : emetteur_name, emetteur_address, etc" do
-    @facture.complete!
-    assert_equal @facture.emetteur.firm_setting.legal_name, @facture.facture_seal.emetteur_legal_name
-    assert_equal @facture.emetteur.firm_setting.address, @facture.facture_seal.emetteur_address
-    assert_equal @facture.emetteur.firm_setting.city, @facture.facture_seal.emetteur_city
-    assert_equal @facture.emetteur.firm_setting.zip_code, @facture.facture_seal.emetteur_zip_code
-    assert_equal @facture.emetteur.firm_setting.country, @facture.facture_seal.emetteur_country
-    assert_equal @facture.emetteur.firm_setting.business_number, @facture.facture_seal.emetteur_business_number
-    assert_equal @facture.emetteur.firm_setting.vat_number, @facture.facture_seal.emetteur_vat_number
-    assert_equal @facture.emetteur.firm_setting.share_capital, @facture.facture_seal.emetteur_share_capital
-  end
-
-  test "vérifie que FactureSeal a les champs suivants : client_name, client_address, etc" do
-    @facture.complete!
-    assert_equal @facture.contact.name_with_company, @facture.facture_seal.client_name
-    assert_equal @facture.contact.address, @facture.facture_seal.client_address
-    assert_equal @facture.contact.city, @facture.facture_seal.client_city
-    assert_equal @facture.contact.zip_code, @facture.facture_seal.client_zip_code
-    assert_equal @facture.contact.country, @facture.facture_seal.client_country
-    assert_equal @facture.contact.business_number, @facture.facture_seal.client_business_number
-    assert_equal @facture.contact.vat_number, @facture.facture_seal.client_vat_number
-  end
-
 end

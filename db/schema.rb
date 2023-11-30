@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_30_134540) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_30_142312) do
   create_table "action_text_rich_texts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -148,6 +148,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_30_134540) do
     t.string "emetteur_share_capital"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "client_name"
+    t.text "client_address"
+    t.string "client_city"
+    t.string "client_zip_code"
+    t.string "client_country"
+    t.string "client_business_number"
+    t.string "client_vat_number"
     t.index ["facture_id"], name: "index_facture_seals_on_facture_id"
   end
 

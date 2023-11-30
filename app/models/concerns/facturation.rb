@@ -24,6 +24,7 @@ module Facturation
     before_validation :definir_numero, :verifier_si_modifiable
     before_save :calculer_totaux
     before_save :set_conditions
+    before_save :check_currency_exists?
 
     scope :nodraft, -> { where.not(state: "draft") }
   end
@@ -86,9 +87,12 @@ module Facturation
 
   def create_facture_seal_from_facture(facture)
     facture_seal = FactureSeal.new(facture: facture)
+    facture_seal.populate_with_facture(facture)
     facture_seal.save
   end
 
-  
+  def check_currency_exists?
+    self.currency = "EUR" if self.currency.blank?
+  end
 
 end

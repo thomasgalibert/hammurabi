@@ -1,0 +1,24 @@
+<div class="overflow-hidden bg-white shadow sm:rounded-lg relative">
+
+  <div class="absolute right-4 top-4">
+    <%= link_to t('firm_setting.buttons.edit'), 
+        edit_settings_firm_setting_path(firm_setting),
+        class: "text-xs cursor-pointer border-stone-300 border px-2 py-1 rounded-md m-0 bg-stone-50 text-stone-600 font-semibold w-18" %>
+  </div>
+
+  <div class="px-4 py-6 sm:px-6">
+    <h3 class="text-base font-semibold leading-7 text-gray-900"><%= t('firm_setting.title') %></h3>
+    <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500"><%= t('firm_setting.subtitle') %></p>
+  </div>
+  <div class="border-t border-gray-100">
+    <dl class="divide-y divide-gray-100">
+      <% %w(legal_name address city state zip_code country phone_number email business_number vat_number share_capital).each do |attribute| %>
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-900"><%= t("activerecord.attributes.firm_setting.#{attribute}") %></dt>
+          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= firm_setting.send(attribute) %></dd>
+        </div>
+      <% end %>
+    </dl>
+  </div>
+</div>
+ 

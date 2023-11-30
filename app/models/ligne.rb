@@ -33,7 +33,6 @@ class Ligne < ApplicationRecord
   after_save :update_facture_totaux
   after_destroy :update_facture_totaux
 
-  default_scope { order(row_order: :asc) }
   scope :saved, -> { where.not(id: nil) }
 
   def calcul_ht_avec_reduction

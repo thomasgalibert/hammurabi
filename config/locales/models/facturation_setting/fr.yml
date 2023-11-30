@@ -1,0 +1,12 @@
+fr:
+  facturation_setting:
+    title: "Paramètres de facturation"
+    subtitle: "Paramètres de facturation du cabinet"
+    buttons:
+      edit: "Modifier les paramètres"
+  activerecord:
+    attributes:
+      facturation_setting:
+        tva_standard: "TVA standard"
+        first_invoice_number: "Numéro de la première facture"
+        default_payment_link: "Lien de paiement par défaut"

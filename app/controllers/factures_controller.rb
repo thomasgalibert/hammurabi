@@ -20,7 +20,7 @@ class FacturesController < ApplicationController
   end
 
   def show
-    initialize_row_order(@facture.lignes, order: :asc)  
+    initialize_row_order(@facture.lignes.saved, order: :asc)  
   end
 
   def edit

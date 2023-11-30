@@ -19,8 +19,8 @@ class LignesController < ApplicationController
   end
 
   def sort
-    new_position = params[:row_order_position].to_i
-    reorder_items(@ligne.facturable.lignes, @ligne, new_position)  
+    new_position = params[:row_order_position].to_i+1
+    reorder_items(@ligne.facturable.lignes.saved, @ligne, new_position)  
     head :no_content    
   end
 

@@ -3,9 +3,9 @@
   <%= render "factures/elements/contact", facture: facture, dossier: dossier %>
   <%= render "factures/elements/description", facture: facture, dossier: dossier %>
   <%= render "factures/elements/new_button", facture: facture, dossier: dossier %>
+  <ul><%= render "lignes/header", ligne: Ligne.new %></ul>
   <ul id="lignes" class="flex flex-col divide-y" data-controller="sortable">
-    <%= render "lignes/header", ligne: Ligne.new %>
-    <%= render facture.lignes.saved %>
+    <%= render facture.lignes.saved.order(row_order: :asc) %>
   </ul>
   <div id="totals"><%= render "factures/elements/totals", facture: facture, dossier: dossier %></div>
 </div>

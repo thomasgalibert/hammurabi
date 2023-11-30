@@ -15,4 +15,23 @@
 
 class FactureSeal < ApplicationRecord
   belongs_to :facture
+
+  def populate_with_facture(facture)
+    self.emetteur_legal_name = facture.emetteur.firm_setting.legal_name
+    self.emetteur_address = facture.emetteur.firm_setting.address
+    self.emetteur_city = facture.emetteur.firm_setting.city
+    self.emetteur_zip_code = facture.emetteur.firm_setting.zip_code
+    self.emetteur_country = facture.emetteur.firm_setting.country
+    self.emetteur_business_number = facture.emetteur.firm_setting.business_number
+    self.emetteur_vat_number = facture.emetteur.firm_setting.vat_number
+    self.emetteur_share_capital = facture.emetteur.firm_setting.share_capital
+
+    self.client_name = facture.contact.name_with_company
+    self.client_address = facture.contact.address
+    self.client_city = facture.contact.city
+    self.client_zip_code = facture.contact.zip_code
+    self.client_country = facture.contact.country
+    self.client_business_number = facture.contact.business_number
+    self.client_vat_number = facture.contact.vat_number
+  end
 end
