@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_30_091111) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_30_134540) do
   create_table "action_text_rich_texts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -126,6 +126,31 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_30_091111) do
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
+  create_table "facturation_settings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.decimal "tva_standard", precision: 10
+    t.integer "first_invoice_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "default_payment_link"
+    t.index ["user_id"], name: "index_facturation_settings_on_user_id"
+  end
+
+  create_table "facture_seals", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "facture_id", null: false
+    t.string "emetteur_legal_name"
+    t.text "emetteur_address"
+    t.string "emetteur_city"
+    t.string "emetteur_zip_code"
+    t.string "emetteur_country"
+    t.string "emetteur_business_number"
+    t.string "emetteur_vat_number"
+    t.string "emetteur_share_capital"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["facture_id"], name: "index_facture_seals_on_facture_id"
+  end
+
   create_table "factures", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "total_ht_cents"
     t.integer "total_ttc_cents"
@@ -141,10 +166,31 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_30_091111) do
     t.date "date_fin_validite"
     t.bigint "user_id", null: false
     t.string "payment_status"
+    t.string "backup_number"
+    t.string "currency"
+    t.string "order_reference"
     t.index ["contact_id"], name: "index_factures_on_contact_id"
     t.index ["dossier_id"], name: "index_factures_on_dossier_id"
     t.index ["emetteur_id"], name: "index_factures_on_emetteur_id"
     t.index ["user_id"], name: "index_factures_on_user_id"
+  end
+
+  create_table "firm_settings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "legal_name"
+    t.text "address"
+    t.string "city"
+    t.string "state"
+    t.string "zip_code"
+    t.string "country"
+    t.string "phone_number"
+    t.string "email"
+    t.string "business_number"
+    t.string "vat_number"
+    t.string "share_capital"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_firm_settings_on_user_id"
   end
 
   create_table "lignes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -221,10 +267,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_30_091111) do
   add_foreign_key "dossiers", "users"
   add_foreign_key "events", "dossiers"
   add_foreign_key "events", "users"
+  add_foreign_key "facturation_settings", "users"
+  add_foreign_key "facture_seals", "factures"
   add_foreign_key "factures", "contacts"
   add_foreign_key "factures", "dossiers"
   add_foreign_key "factures", "users"
   add_foreign_key "factures", "users", column: "emetteur_id"
+  add_foreign_key "firm_settings", "users"
   add_foreign_key "notes", "dossiers"
   add_foreign_key "notes", "users"
   add_foreign_key "payments", "factures"

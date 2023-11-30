@@ -11,6 +11,8 @@
 class User < ApplicationRecord
   has_secure_password
   has_person_name
+  has_one :facturation_setting, dependent: :destroy
+  has_one :firm_setting, dependent: :destroy
   has_many :dossiers, dependent: :destroy
   has_many :todos, dependent: :destroy
   has_many :documents, dependent: :destroy
@@ -38,5 +40,29 @@ class User < ApplicationRecord
 
   generates_token_for :email_confirmation, expires_in: 24.hours do
     email
+  end
+
+  def conditions_generales
+    if self.facturation_setting.present? && self.facturation_setting.conditions_generales.present?
+      self.facturation_setting.conditions_generales
+    else
+      "Conditions générales de vente"
+    end
+  end
+
+  def conditions_paiement
+    if self.facturation_setting.present? && self.facturation_setting.conditions_paiement.present?
+      self.facturation_setting.conditions_paiement
+    else
+      "Paiement à réception de la facture"
+    end
+  end
+
+  def first_invoice_number
+    if self.facturation_setting.present? && self.facturation_setting.first_invoice_number.present?
+      self.facturation_setting.first_invoice_number
+    else
+      1
+    end
   end
 end

@@ -5,6 +5,8 @@ class FactureTest < ActiveSupport::TestCase
 
   def setup
     @user = FactoryBot.create(:user)
+    @facturation_setting = FactoryBot.create(:facturation_setting, user: @user, first_invoice_number: 3)
+    @firm_setting = FactoryBot.create(:firm_setting, user: @user)
     @dossier = FactoryBot.create(:dossier, user: @user)
     @contact = FactoryBot.create(:contact, user: @user)
     @facture = FactoryBot.create(:facture, emetteur: @user, dossier: @dossier, contact: @contact, user: @user)
@@ -105,6 +107,14 @@ class FactureTest < ActiveSupport::TestCase
     assert facture1.locked?
   end
 
+  test "vérifie que la facture a un screen_number qui correspond son numéro qui tient compte du first_invoice_number de facturation_setting" do
+    Facture.delete_all
+    facture1 = FactoryBot.create(:facture, state: :draft, emetteur: @user, dossier: @dossier, contact: @contact, user: @user)
+    facture1.complete!
+
+    assert_equal "00000003", facture1.screen_number
+  end
+
   test "vérifie que l'on ne peut pas modifier une facture validée" do
     @facture.complete!    
     @facture.update(date: @facture.date + 1.day)
@@ -146,6 +156,63 @@ class FactureTest < ActiveSupport::TestCase
 
   test "vérifie que le facture non payée a un payment_status égal à unpaid" do
     assert_equal "unpaid", @facture.payment_status
+  end
+
+  test "vérifie qu'à la création de la facture, les conditions_paiement et conditions_generales sont ceux de facturation_setting" do
+    facture = FactoryBot.build(
+      :facture,
+      emetteur: @user,
+      dossier: @dossier,
+      contact: @contact,
+      user: @user,
+      conditions_paiement: nil, 
+      conditions_generales: nil)
+
+    facture.save
+
+    assert_equal @facturation_setting.conditions_generales.to_plain_text, facture.conditions_generales.to_plain_text
+    assert_equal @facturation_setting.conditions_paiement.to_plain_text, facture.conditions_paiement.to_plain_text
+  end
+
+  test "vérifie que quand le numero est créé, le champ backup_number est bien rempli" do
+    @facture.complete!
+    assert_equal @facture.screen_number, @facture.backup_number
+  end
+
+  test "vérifie qu'il y a un attribut currency et que par défault, c'est EUR" do
+    assert_equal "EUR", @facture.currency
+  end
+
+  test "vérifie que le facture a un order_reference mais il n'est pas obligatoire" do
+    assert_nil @facture.order_reference
+  end
+
+  test "vérifie que quand la facture est validée, il y a un objet FactureSeal attaché qui est créé" do
+    @facture.complete!
+    assert_not_nil @facture.facture_seal
+  end
+
+  test "vérifie que FactureSeal a les champs suivants : emetteur_name, emetteur_address, etc" do
+    @facture.complete!
+    assert_equal @facture.emetteur.firm_setting.legal_name, @facture.facture_seal.emetteur_legal_name
+    assert_equal @facture.emetteur.firm_setting.address, @facture.facture_seal.emetteur_address
+    assert_equal @facture.emetteur.firm_setting.city, @facture.facture_seal.emetteur_city
+    assert_equal @facture.emetteur.firm_setting.zip_code, @facture.facture_seal.emetteur_zip_code
+    assert_equal @facture.emetteur.firm_setting.country, @facture.facture_seal.emetteur_country
+    assert_equal @facture.emetteur.firm_setting.business_number, @facture.facture_seal.emetteur_business_number
+    assert_equal @facture.emetteur.firm_setting.vat_number, @facture.facture_seal.emetteur_vat_number
+    assert_equal @facture.emetteur.firm_setting.share_capital, @facture.facture_seal.emetteur_share_capital
+  end
+
+  test "vérifie que FactureSeal a les champs suivants : client_name, client_address, etc" do
+    @facture.complete!
+    assert_equal @facture.contact.name_with_company, @facture.facture_seal.client_name
+    assert_equal @facture.contact.address, @facture.facture_seal.client_address
+    assert_equal @facture.contact.city, @facture.facture_seal.client_city
+    assert_equal @facture.contact.zip_code, @facture.facture_seal.client_zip_code
+    assert_equal @facture.contact.country, @facture.facture_seal.client_country
+    assert_equal @facture.contact.business_number, @facture.facture_seal.client_business_number
+    assert_equal @facture.contact.vat_number, @facture.facture_seal.client_vat_number
   end
 
 end

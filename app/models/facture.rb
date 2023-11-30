@@ -11,26 +11,19 @@
 # t.bigint "dossier_id", null: false
 # t.bigint "contact_id", null: false
 # t.date "date_fin_validite"
+# t.bigint "user_id", null: false
+# t.string "payment_status"
+# t.string "backup_number"
 # t.index ["contact_id"], name: "index_factures_on_contact_id"
 # t.index ["dossier_id"], name: "index_factures_on_dossier_id"
 # t.index ["emetteur_id"], name: "index_factures_on_emetteur_id"
+# t.index ["user_id"], name: "index_factures_on_user_id"
 # == Schema end
 
 class Facture < ApplicationRecord
   include Facturation
   include Receipts
   include AASM
-
-  belongs_to :emetteur, class_name: 'User'
-  belongs_to :dossier
-  belongs_to :contact
-  belongs_to :user
-
-  has_many :payments, dependent: :destroy
-
-  has_rich_text :description
-  has_rich_text :conditions_paiement
-  has_rich_text :conditions_generales
 
   aasm column: :state do
     state :draft, initial: true
@@ -39,11 +32,5 @@ class Facture < ApplicationRecord
     event :complete do
       transitions from: :draft, to: :achived, after: :definir_numero_et_verrouiller
     end
-  end
-
-  private
-
-  def definir_numero_et_verrouiller
-    verouiller
   end
 end

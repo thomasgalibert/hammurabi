@@ -22,11 +22,7 @@ class ContactPresenter < Keynote::Presenter
   end
 
   def name_with_company
-    if contact.company_name.present?
-      "#{contact.company_name} - #{contact.name.full}"
-    else
-      contact.name.full
-    end
+    contact.name_with_company
   end
 
   private

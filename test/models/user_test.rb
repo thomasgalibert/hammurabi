@@ -3,6 +3,8 @@ require "test_helper"
 class UserTest < ActiveSupport::TestCase
   setup do
     @user = FactoryBot.create(:user)
+    @facturation_setting = FactoryBot.create(:facturation_setting, user: @user)
+    @firm_setting = FactoryBot.create(:firm_setting, user: @user)
   end
 
   test "un utilisateur doit avoir un last_name, first_name email et firm" do
@@ -36,5 +38,13 @@ class UserTest < ActiveSupport::TestCase
 
   test "on peut afficher le nom du cabinet de l'utilisateur" do
     assert_equal "Allred Maroko & Goldberg", @user.firm
+  end
+
+  test "un utilisateur a un seul FacturationSetting" do
+    assert_equal true, @user.facturation_setting.present?
+  end
+
+  test "un utilisateur a un seul FirmSetting" do
+    assert_equal true, @user.firm_setting.present?
   end
 end
