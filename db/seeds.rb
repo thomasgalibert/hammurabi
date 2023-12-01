@@ -19,8 +19,8 @@ user = User.create(
 
 # Seeds 100 dossier records
 
-states = %w[pending archived sent paid overdue]
-categories = %w[civil business criminal family work public]
+states = Dossier::STATES
+categories = Dossier::CATEGORIES
 courts = ["TGI de Paris", "TGI Marseille", "Conseil des prud'hommes de Perpignan", "Tribunal de commerce de Lyon"]
 
 100.times do

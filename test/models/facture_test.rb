@@ -84,9 +84,12 @@ class FactureTest < ActiveSupport::TestCase
 
   test "vérifie que le numéro de la facture est bien incrémenté par rapport à la dernière facture ajoutée" do
     Facture.delete_all
-    facture1 = FactoryBot.create(:facture, state: :achived, emetteur: @user, dossier: @dossier, contact: @contact, user: @user)    
+    facture1 = FactoryBot.create(:facture, state: :draft, emetteur: @user, dossier: @dossier, contact: @contact, user: @user)    
     facture2 = FactoryBot.create(:facture, state: :draft, emetteur: @user, dossier: @dossier, contact: @contact, user: @user)    
-    facture3 = FactoryBot.create(:facture, state: :achived, emetteur: @user, dossier: @dossier, contact: @contact, user: @user)
+    facture3 = FactoryBot.create(:facture, state: :draft, emetteur: @user, dossier: @dossier, contact: @contact, user: @user)
+
+    facture1.complete!
+    facture3.complete!    
 
     assert_equal 2, facture3.numero
   end
@@ -104,7 +107,15 @@ class FactureTest < ActiveSupport::TestCase
     facture1.complete!    
 
     assert_not_nil facture1.numero
-    assert facture1.locked?
+    assert facture1.achived?
+  end
+
+  test "vérfie que la facture a le statut de achived quand elle est validée" do
+    Facture.delete_all
+    facture1 = FactoryBot.create(:facture, state: :draft, emetteur: @user, dossier: @dossier, contact: @contact, user: @user)
+    facture1.complete!
+
+    assert_equal "achived", facture1.state
   end
 
   test "vérifie que la facture a un screen_number qui correspond son numéro qui tient compte du first_invoice_number de facturation_setting" do

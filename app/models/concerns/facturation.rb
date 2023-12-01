@@ -21,11 +21,11 @@ module Facturation
 
     validate :date_posterieure_a_la_derniere_facture, on: :create
 
-    before_validation :definir_numero, :verifier_si_modifiable
+    before_validation :verifier_si_modifiable
     before_save :calculer_totaux
     before_save :set_conditions
     before_save :check_currency_exists?
-    after_save :update_dossier_state, if: :achived?
+    after_save :update_dossier_state
 
     scope :nodraft, -> { where.not(state: "draft") }
   end
@@ -48,6 +48,14 @@ module Facturation
     end
   end
 
+  def complete!
+    definir_numero
+  end
+
+  def achived?
+    state == "achived"
+  end
+
   private
 
   def date_posterieure_a_la_derniere_facture
@@ -58,25 +66,18 @@ module Facturation
   end
 
   def definir_numero
-    if state != "draft"
+    if numero.blank?
       derniere_facture = self.class.nodraft.order(created_at: :desc).first
       new_number = derniere_facture ? derniere_facture.numero + 1 : 1
-      self.numero = new_number
-      self.backup_number = self.screen_number
+      update(numero: new_number)
+      update(backup_number: self.screen_number)
+      update_attribute(:state, "achived")
+      create_facture_seal_from_facture(self)
     end
-  end
-
-  def definir_numero_et_verrouiller
-    verouiller
-  end
-
-  def verouiller
-    update(state: "achived", locked: true)
-    create_facture_seal_from_facture(self)    
   end 
 
   def verifier_si_modifiable
-    if achived? && locked?
+    if self.achived?
       errors.add(:base, "Cette facture est verrouillée et ne peut plus être modifiée.")
     end
   end
@@ -87,9 +88,11 @@ module Facturation
   end
 
   def create_facture_seal_from_facture(facture)
-    facture_seal = FactureSeal.new(facture: facture)
-    facture_seal.populate_with_facture(facture)
-    facture_seal.save
+    unless facture.facture_seal.present?
+      facture_seal = FactureSeal.new(facture: facture)
+      facture_seal.populate_with_facture(facture)
+      facture_seal.save
+    end
   end
 
   def check_currency_exists?
@@ -97,7 +100,7 @@ module Facturation
   end
 
   def update_dossier_state
-    self.dossier.save
+    self.dossier.update_state
   end
 
 end

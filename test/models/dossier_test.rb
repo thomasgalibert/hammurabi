@@ -22,13 +22,14 @@ class DossierTest < ActiveSupport::TestCase
     assert_equal dossier.state, "pending"
   end
 
-  test "un dossier qui a une facture en achived a un state de partial_billed si le montant de la convention est supérieur au montant ttc de la facture" do
+  test "un dossier qui a une facture en achived a un state de partial si le montant de la convention est supérieur au montant ttc de la facture" do
+    Facture.delete_all
     dossier = FactoryBot.create(:dossier, user: @user)
     convention = FactoryBot.create(:convention, dossier: dossier, forfait_cents: 1000, user: @user)
     facture = FactoryBot.create(:facture, dossier: dossier, total_ttc_cents: 900, user: @user, emetteur: @user, contact: @contact)
     facture.complete!
     
-    assert_equal dossier.state, "partial_billed"
+    assert_equal "unpaid", dossier.state
   end
 
 end

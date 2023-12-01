@@ -61,7 +61,6 @@ class FacturesController < ApplicationController
     params.require(:facture).permit(
       :total_ht,
       :total_ttc,
-      :locked,
       :contact_id,
       :date_fin_validite,
       :description

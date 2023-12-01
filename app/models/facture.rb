@@ -6,7 +6,6 @@
 # t.string "state"
 # t.datetime "created_at", null: false
 # t.datetime "updated_at", null: false
-# t.boolean "locked", default: false
 # t.bigint "emetteur_id", null: false
 # t.bigint "dossier_id", null: false
 # t.bigint "contact_id", null: false
@@ -23,14 +22,4 @@
 class Facture < ApplicationRecord
   include Facturation
   include Receipts
-  include AASM
-
-  aasm column: :state do
-    state :draft, initial: true
-    state :achived
-
-    event :complete do
-      transitions from: :draft, to: :achived, after: :definir_numero_et_verrouiller
-    end
-  end
 end

@@ -37,7 +37,24 @@ class Dossier < ApplicationRecord
   end
   
   before_save :update_viewed_at
-  after_commit :update_state
+
+  def update_state
+    dossier_factures = self.factures.nodraft
+
+    if dossier_factures.any?
+      if dossier_factures.all? { |facture| facture.paid? }
+        update(state: 'paid') 
+      elsif dossier_factures.any? { |facture| facture.partial? }
+        update(state: 'partial') 
+      elsif dossier_factures.any? { |facture| facture.unpaid? }
+        update(state: 'unpaid') 
+      else
+        update(state: 'unpaid') 
+      end
+    else
+      update(state: 'pending') 
+    end
+  end
 
   private
 
@@ -45,21 +62,5 @@ class Dossier < ApplicationRecord
     self.viewed_at = Time.now
   end
 
-  def update_state
-    factures_achived = self.factures.nodraft
-
-    if factures_achived.any?
-      if factures_achived.all? { |facture| facture.paid? }
-        self.state = 'paid'
-      elsif factures_achived.any? { |facture| facture.partial? }
-        self.state = 'partial'
-      elsif factures_achived.any? { |facture| facture.unpaid? }
-        self.state = 'unpaid'
-      else
-        self.state = 'unpaid'
-      end
-    else
-      self.state = 'pending'
-    end
-  end
+  
 end
