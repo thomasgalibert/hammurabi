@@ -16,4 +16,17 @@ module Receipts
       self.payment_status = "unpaid"
     end
   end
+
+  def paid?
+    payment_status == "paid"
+  end
+
+  def unpaid?
+    payment_status == "unpaid"
+  end
+
+  def partial?
+    payment_status == "partial"
+  end
+
 end

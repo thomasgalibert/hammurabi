@@ -12,6 +12,9 @@
 # == Schema end
 
 class Dossier < ApplicationRecord
+  STATES = %w[pending partial unpaid paid archived]
+  CATEGORIES = %w[civil business criminal family work public]
+
   belongs_to :user
   has_many :dossier_contacts
   has_many :contacts, through: :dossier_contacts
@@ -23,13 +26,10 @@ class Dossier < ApplicationRecord
   has_many :factures, :dependent => :destroy
 
   validates :name, presence: true
-
+  validates :state, inclusion: { in: STATES }
   
   scope :actives, -> { where.not(state: 'archived') }
   scope :last_viewed, -> (limit) { order(viewed_at: :desc).limit(limit) }
-  
-  STATES = %w[pending archived sent paid overdue]
-  CATEGORIES = %w[civil business criminal family work public]
   
   # Helpers
   def contact_principal
@@ -37,10 +37,29 @@ class Dossier < ApplicationRecord
   end
   
   before_save :update_viewed_at
+  after_commit :update_state
 
   private
 
   def update_viewed_at
     self.viewed_at = Time.now
+  end
+
+  def update_state
+    factures_achived = self.factures.nodraft
+
+    if factures_achived.any?
+      if factures_achived.all? { |facture| facture.paid? }
+        self.state = 'paid'
+      elsif factures_achived.any? { |facture| facture.partial? }
+        self.state = 'partial'
+      elsif factures_achived.any? { |facture| facture.unpaid? }
+        self.state = 'unpaid'
+      else
+        self.state = 'unpaid'
+      end
+    else
+      self.state = 'pending'
+    end
   end
 end

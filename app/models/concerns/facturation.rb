@@ -25,6 +25,7 @@ module Facturation
     before_save :calculer_totaux
     before_save :set_conditions
     before_save :check_currency_exists?
+    after_save :update_dossier_state, if: :achived?
 
     scope :nodraft, -> { where.not(state: "draft") }
   end
@@ -93,6 +94,10 @@ module Facturation
 
   def check_currency_exists?
     self.currency = "EUR" if self.currency.blank?
+  end
+
+  def update_dossier_state
+    self.dossier.save
   end
 
 end
