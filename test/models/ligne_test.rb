@@ -37,4 +37,9 @@ class LigneTest < ActiveSupport::TestCase
     assert_not ligne_tva_standard.valid?
   end
 
+  test "vérifie que l'on ne peut pas créer ou modifier une ligne d'une facture qui a un state achived" do
+    @facture.update(state: "achived")
+    ligne_tva_standard = FactoryBot.build(:ligne, :tva_standard, facturable: @facture)
+    assert_not ligne_tva_standard.valid?
+  end
 end

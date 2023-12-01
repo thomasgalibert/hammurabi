@@ -9,12 +9,17 @@ class LignesController < ApplicationController
   end
   
   def create
-    @ligne = @facture.lignes.create!(ligne_params)
-    add_item_to_list(@facture.lignes, @ligne)
-    
-    respond_to do |format|
-      format.html { redirect_to dossier_facture_path(@dossier, @facture) }
-      format.turbo_stream 
+    @ligne = @facture.lignes.new(ligne_params)
+
+    if @ligne.save
+      add_item_to_list(@facture.lignes, @ligne)
+      
+      respond_to do |format|
+        format.html { redirect_to dossier_facture_path(@dossier, @facture) }
+        format.turbo_stream 
+      end
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 

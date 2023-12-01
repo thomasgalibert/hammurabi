@@ -29,7 +29,7 @@ class Ligne < ApplicationRecord
 
   belongs_to :facturable, polymorphic: true
 
-  before_validation :calculer_totaux
+  before_validation :check_if_can_update, :calculer_totaux
   after_save :update_facture_totaux
   after_destroy :update_facture_totaux
 
@@ -53,6 +53,12 @@ class Ligne < ApplicationRecord
 
 
   private
+
+  def check_if_can_update
+    if facturable.achived?
+      errors.add(:base, "Vous ne pouvez pas ajouter une ligne sur une facture archivée")
+    end
+  end
 
   def calculer_totaux
     self.total_ht_cents = calcul_ht_avec_reduction.round.to_i

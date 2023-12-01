@@ -11,7 +11,9 @@
 - [X] Afficher le calendriers des événements dans le dashboard
 - [X] Ajouter, modifier et supprimer les conventions d'honoraires
 - [X] Ajouter, modifier et supprimer des notes de dossier
-- [ ] Ajouter, modifier et supprimer les factures
+- [X] Ajouter, modifier et supprimer les factures
+- [ ] Retirer les éléments de modification d'une facture quand elle est achived
+- [ ] Mettre à jour les statuts des dossiers avec la nouvelle liste
 
 ## Récolte des pièces
 
