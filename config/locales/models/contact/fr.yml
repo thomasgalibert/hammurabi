@@ -21,6 +21,8 @@ fr:
         zip_code: "Code postal"
         country: "Pays"
         actions: "Actions"
+        main: "Définir comme le client principal ?"
+        main_explanation: "Le contact servira à la facturation et à l'envoi des documents."
   contacts:
     flash:
       created: "Le contact a été créé avec succès."

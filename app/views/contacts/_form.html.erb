@@ -27,6 +27,24 @@
           class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
     </div>
 
+    
+    <div class="grid grid-cols-2 sm:gap-4 mb-6">
+      <div class="flex flex-col space-y-2 mb-6 col-span-2 sm:col-span-1">
+        <%= form.label :kind, class: "block text-sm font-medium leading-6 text-stone-900" %>
+        <%= form.select :kind, Contact::KINDS.collect { |k| [t("activerecord.attributes.contact.kinds.#{k}"), k] }, {}, class: "mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+      </div>
+
+      <div class="relative flex items-start col-span-2 sm:col-span-1">
+        <div class="flex h-6 items-center">
+          <%= form.check_box :main, class: "h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600" %>
+        </div>
+        <div class="ml-3 text-sm leading-6">
+          <%= form.label :main, class: "font-medium text-gray-900" %>
+          <p id="candidates-description" class="text-gray-500"><%= t('activerecord.attributes.contact.main_explanation') %></p>
+        </div>
+      </div>
+    </div>
+
     <div class="grid grid-cols-2 sm:gap-4 mb-6">
       <div class="flex flex-col space-y-2 mb-0 col-span-2 sm:col-span-1">
         <%= form.label :business_number, class: "block text-sm font-medium leading-6 text-stone-900" %>
@@ -41,10 +59,6 @@
       </div>
     </div>
 
-    <div class="flex flex-col space-y-2 mb-6">
-      <%= form.label :kind, class: "block text-sm font-medium leading-6 text-stone-900" %>
-      <%= form.select :kind, Contact::KINDS.collect { |k| [t("activerecord.attributes.contact.kinds.#{k}"), k] }, {}, class: "mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
-    </div>
 
     <div class="grid grid-cols-3 sm:gap-4 mb-6">
       <div class="flex flex-col space-y-2 mb-0 col-span-3 sm:col-span-1">

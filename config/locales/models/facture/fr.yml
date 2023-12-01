@@ -1,5 +1,6 @@
 fr:
   factures:
+    without_description: "-- Sans objet --"
     buttons:
       new: "Nouvelle facture"
       edit_client_id: "Modifier le client"

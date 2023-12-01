@@ -6,7 +6,11 @@ module ApplicationHelper
   def translate_options_for_select(object, attribute, options)
     object_name = object.class.to_s.downcase
     options.map { |option| 
-      [I18n.t("helpers.#{object_name}.#{attribute.to_s}.#{option}"), option] 
+      [I18n.t("activerecord.attributes.#{object_name}.#{attribute.to_s}.#{option}"), option] 
     }
+  end
+
+  def display_boolean(boolean)
+    boolean ? I18n.t('helpers.boolean.is_yes') : I18n.t('helpers.boolean.is_no')
   end
 end

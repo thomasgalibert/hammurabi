@@ -11,11 +11,10 @@ fr:
         reduction: "% Rem"
         total_tva: "Total TVA"
         unit: "Unité"
+        units:
+          forfait: "Forfait"
+          hour: "Heures"
   helpers:
     submit:
       create: "ajouter la ligne"
-      update: "modifier la ligne"
-    ligne:
-      unit:
-        forfait: "Forfait"
-        hour: "Heures"
+      update: "modifier la ligne"      

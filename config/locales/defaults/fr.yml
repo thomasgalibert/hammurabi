@@ -156,6 +156,9 @@ fr:
       create: Créer un(e) %{model}
       submit: Enregistrer ce(tte) %{model}
       update: Modifier ce(tte) %{model}
+    boolean:
+      is_yes: "Oui"
+      is_no: "Non"
   number:
     currency:
       format:

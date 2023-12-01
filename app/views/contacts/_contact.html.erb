@@ -1,13 +1,19 @@
 <div class="overflow-hidden bg-white shadow sm:rounded-lg">
-  <div class="px-4 py-6 sm:px-6">
+  <div class="px-4 py-6 sm:px-6 flex justify-between items-center">
     <h3 class="text-base font-semibold leading-7 text-gray-900"><%= contact.name.full if contact.last_name.present? %></h3>
-    <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
-      <%= k(contact).badge %>
-      <%= k(contact).star %>
-    </p>
+    <div>
+      <div class="mt-1 max-w-2xl text-sm leading-6 text-gray-500 flex items-center space-x-4">
+        <%= k(contact).badge %>
+        <%= k(contact).star %>
+      </div>
+    </div>
   </div>
   <div class="border-t border-gray-100">
     <dl class="divide-y divide-gray-100">
+      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-900"><%= at(contact, :main) %></dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= display_boolean contact.main %></dd>
+      </div>
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
         <dt class="text-sm font-medium text-gray-900"><%= at(contact, :email) %></dt>
         <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= contact.email %></dd>
