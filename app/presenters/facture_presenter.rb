@@ -27,4 +27,12 @@ class FacturePresenter < Keynote::Presenter
 
     content_tag :span, t("factures.payment_statuses.#{facture.payment_status}"), class: badge_class
   end
+
+  def numero
+    if facture.achived?
+      content_tag :span, class: "text-gray-500" do
+        "#{at(facture, :numero_abbreviated)} #{facture.numero}"
+      end
+    end
+  end
 end

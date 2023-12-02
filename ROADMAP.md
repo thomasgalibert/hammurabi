@@ -14,6 +14,7 @@
 - [X] Ajouter, modifier et supprimer les factures
 - [ ] Retirer les éléments de modification d'une facture quand elle est achived
 - [ ] Mettre à jour les statuts des dossiers avec la nouvelle liste
+- [ ] PDF de la facture
 
 ## Récolte des pièces
 

@@ -29,6 +29,7 @@ fr:
         total_ttc: "Total TTC"
         date: "Date"
         numero: "Numéro"
+        numero_abbreviated: "N°"
         state: "Etat"
         locked: "Verrouillée"
         emetteur: "Emetteur"
