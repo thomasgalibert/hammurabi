@@ -6,9 +6,11 @@
     </div>
 
     <div class="absolute top-1 right-4">
-      <%= link_to edit_dossier_facture_path(dossier, facture, attribute: :description),
-          class: "inline-block font-base italic text-sm text-stone-500" do %>
-        (<%= t('factures.buttons.edit_description') %>)
+      <% if facture.draft? %>
+        <%= link_to edit_dossier_facture_path(dossier, facture, attribute: :description),
+            class: "inline-block font-base italic text-sm text-stone-500" do %>
+          (<%= t('factures.buttons.edit_description') %>)
+        <% end %>
       <% end %>
     </div>
     

@@ -12,9 +12,9 @@ fr:
     states:
       pending: "En cours"
       archived: "Archivé"
-      sent: "Facturé"
+      partial: "Partiellement payé"
       paid: "Payé"
-      overdue: "Impayé"
+      unpaid: "Impayé"
     show:
       resume: "Résumé"
       todos: "Tâches"

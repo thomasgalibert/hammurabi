@@ -30,8 +30,8 @@ class FacturePresenter < Keynote::Presenter
 
   def numero
     if facture.achived?
-      content_tag :span, class: "text-gray-500" do
-        "#{at(facture, :numero_abbreviated)} #{facture.numero}"
+      content_tag :span, class: "text-gray-800 font-mono inline-block mx-2 font-thin" do
+        "#{at(facture, :numero_abbreviated)} #{facture.screen_number}"
       end
     end
   end

@@ -1,8 +1,8 @@
 class FacturesController < ApplicationController
   include Ordering
   before_action :authenticate_user!
-  before_action :set_dossier, only: [:index, :new, :show, :edit, :update, :destroy]
-  before_action :set_facture, only: [:show, :edit, :update, :destroy]
+  before_action :set_dossier, only: [:index, :new, :show, :edit, :update, :destroy, :will_complete, :complete]
+  before_action :set_facture, only: [:show, :edit, :update, :destroy, :complete, :will_complete]
   before_action :check_contact_existence, only: [:new]
 
   def index
@@ -11,6 +11,7 @@ class FacturesController < ApplicationController
 
   def new
     @facture = current_user.factures.create!(
+      state: "draft",
       dossier: @dossier, 
       emetteur: current_user, 
       contact: @dossier.contact_principal,
@@ -41,6 +42,15 @@ class FacturesController < ApplicationController
       format.html { redirect_to @dossier, notice: t('factures.flash.destroyed') }
       format.turbo_stream
     end
+  end
+
+  def will_complete
+    
+  end
+
+  def complete
+    @facture.complete!
+    redirect_to [@dossier, @facture], notice: t('factures.flash.completed')
   end
 
   private

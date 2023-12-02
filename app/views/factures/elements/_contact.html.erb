@@ -5,8 +5,10 @@
         <%= k(facture.contact).name_with_company %>
       </span>
       <span class="inline-block font-base italic text-sm text-stone-500">
-        <%= link_to edit_dossier_facture_path(dossier, facture, attribute: :contact_id) do %>
-          (<%= t('factures.buttons.edit_client_id') %>)
+        <% if facture.draft? %>
+          <%= link_to edit_dossier_facture_path(dossier, facture, attribute: :contact_id) do %>
+            (<%= t('factures.buttons.edit_client_id') %>)
+          <% end %>
         <% end %>
       </span>
     </h1>

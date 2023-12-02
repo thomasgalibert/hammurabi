@@ -11,5 +11,11 @@ resources :dossiers do
   resources :documents
   resources :conventions
   resources :notes
-  resources :factures
+
+  resources :factures do
+    member do
+      get :will_complete
+      put :complete
+    end
+  end
 end

@@ -1,7 +1,8 @@
 module Facturation
   extend ActiveSupport::Concern
-  
+
   included do
+    STATES = %w(draft achived)
     monetize :total_ht_cents, :total_ttc_cents, allow_nil: true
 
     belongs_to :emetteur, class_name: 'User'
@@ -20,6 +21,7 @@ module Facturation
     has_rich_text :conditions_generales
 
     validate :date_posterieure_a_la_derniere_facture, on: :create
+    validates :state, inclusion: { in: STATES }
 
     before_validation :verifier_si_modifiable
     before_save :calculer_totaux
@@ -54,6 +56,10 @@ module Facturation
 
   def achived?
     state == "achived"
+  end
+
+  def draft?
+    state == "draft"
   end
 
   private

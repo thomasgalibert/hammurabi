@@ -3,11 +3,11 @@ class DossierPresenter < Keynote::Presenter
 
   def badge
     specific_class = case dossier.state
-      when 'pending' then "bg-yellow-50 text-yellow-700 ring-yellow-600/20"
+      when 'pending' then "bg-indigo-50 text-indigo-700 ring-indigo-600/20"
       when 'archived' then "bg-gray-50 text-gray-700 ring-gray-600/20"
-      when 'sent' then "bg-blue-50 text-blue-700 ring-blue-600/20"
+      when 'partial' then "bg-orange-50 text-orange-700 ring-orange-600/20"
       when 'paid' then "bg-emerald-50 text-emerald-700 ring-emerald-600/20"
-      when 'overdue' then "bg-red-50 text-red-700 ring-red-600/20"
+      when 'unpaid' then "bg-red-50 text-red-700 ring-red-600/20"
       else "bg-gray-50 text-gray-700 ring-gray-600/20"
     end
 

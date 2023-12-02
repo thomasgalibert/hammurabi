@@ -1,8 +1,9 @@
-<div class="bg-white p-10 rounded-lg border">
+<div class="bg-white px-10 pb-10 pt-16 rounded-lg border relative">
+  <%= render "factures/elements/complete_button", facture: facture, dossier: dossier if facture.draft? && params[:action] != "will_complete" %>
   <%= render "factures/elements/header", facture: facture, dossier: dossier %>
   <%= render "factures/elements/contact", facture: facture, dossier: dossier %>
   <%= render "factures/elements/description", facture: facture, dossier: dossier %>
-  <%= render "factures/elements/new_button", facture: facture, dossier: dossier %>
+  <%= render "factures/elements/new_button", facture: facture, dossier: dossier if facture.draft? %>
   <ul><%= render "lignes/header", ligne: Ligne.new %></ul>
   <ul id="lignes" class="flex flex-col divide-y" data-controller="sortable">
     <%= render facture.lignes.saved.order(row_order: :asc) %>

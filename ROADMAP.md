@@ -12,8 +12,9 @@
 - [X] Ajouter, modifier et supprimer les conventions d'honoraires
 - [X] Ajouter, modifier et supprimer des notes de dossier
 - [X] Ajouter, modifier et supprimer les factures
-- [ ] Retirer les éléments de modification d'une facture quand elle est achived
-- [ ] Mettre à jour les statuts des dossiers avec la nouvelle liste
+- [X] Retirer les éléments de modification d'une facture quand elle est achived
+- [X] Ajouter le bouton pour finalier la facture avec une fenêtre d'avertissement
+- [X] Mettre à jour les statuts des dossiers avec la nouvelle liste
 - [ ] PDF de la facture
 
 ## Récolte des pièces
@@ -34,3 +35,8 @@
 - [X] Tests events
 - [X] Tests todos
 - [ ] Tests récolte des pièces
+
+## Environnement de développement
+
+- [X] Passer à Ruby 3.3.0.dev
+- [ ] Passer à Postres
