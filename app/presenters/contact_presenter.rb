@@ -10,7 +10,7 @@ class ContactPresenter < Keynote::Presenter
   end
 
   def star
-    if contact.main?
+    if contact.is_main?
       content_tag :div, class: "text-yellow-500" do
         content_tag :i, "", class: "fa-solid fa-star"
       end

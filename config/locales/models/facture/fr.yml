@@ -8,12 +8,14 @@ fr:
       edit_description: "Modifier l'objet"
       back_dossier: "retour au dossier"
       complete: "Valider la facture"
+      delete: "Supprimer la facture"
     flash:
       created: "La facture a été créée avec succès."
       destroyed: "La facture a été supprimée avec succès."
       updated: "La facture a été mise à jour avec succès."
       no_contact: "Vous devez avoir un contact principal dans le dossier !"
       completed: "La facture a été validée avec succès."
+      not_destroyed: "La facture n'a pas pu être supprimée."
     titles:
       new: "Note d'honoraires"
     states:

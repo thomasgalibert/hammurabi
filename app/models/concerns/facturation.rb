@@ -6,7 +6,7 @@ module Facturation
     monetize :total_ht_cents, :total_ttc_cents, allow_nil: true
 
     belongs_to :emetteur, class_name: 'User'
-    belongs_to :dossier
+    belongs_to :dossier, touch: true
     belongs_to :contact
     belongs_to :user
 

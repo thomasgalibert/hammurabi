@@ -28,9 +28,16 @@ fr:
       created: "Le contact a été créé avec succès."
       updated: "Le contact a été mis à jour avec succès."
       destroyed: "Le contact a été supprimé avec succès."
+      added: "Le contact a été ajouté au dossier avec succès."
+      removed: "Le contact a été retiré du dossier avec succès."
     new:
       legend: "Nouveau contact dans le dossier"
+      choose: "Choisissez un contact existant"
+      create_new: "ou alors créez un nouveau contact"
     edit:
       legend: "Modifier le contact du dossier"
     buttons:
       new: "Nouveau contact"
+      add_new: "Créer un tout nouveau contact"
+      add_existing: "Ajouter ce contact au dossier"
+      remove: "Retirer ce contact du dossier"

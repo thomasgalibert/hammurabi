@@ -12,7 +12,7 @@
     <dl class="divide-y divide-gray-100">
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
         <dt class="text-sm font-medium text-gray-900"><%= at(contact, :main) %></dt>
-        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= display_boolean contact.main %></dd>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= display_boolean contact.is_main? %></dd>
       </div>
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
         <dt class="text-sm font-medium text-gray-900"><%= at(contact, :email) %></dt>
@@ -44,8 +44,8 @@
         <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
           <div class="flex space-x-4">
             <%= link_to t('edit'), edit_dossier_contact_path(dossier, contact), class: "text-stone-600 border px-2 py-1.5 border-stone-300 rounded-md bg-white hover:text-stone-800 hover:shadow-md" %>
-            <%= button_to t('delete'), 
-                dossier_contact_path(dossier, contact), 
+            <%= button_to t('contacts.buttons.remove'), 
+                remove_dossier_contact_path(dossier, contact), 
                 method: :delete,
                 form: { data: { turbo_confirm: t('are_you_sure') } },
                 class: "text-rose-600 border px-2 py-1.5 border-rose-300 rounded-md bg-white hover:text-rose-800 hover:shadow-md" %>

@@ -37,4 +37,8 @@ class Contact < ApplicationRecord
       self.name.full
     end
   end
+
+  def is_main?
+    DossierContact.find_by(contact_id: self.id).is_main
+  end
 end

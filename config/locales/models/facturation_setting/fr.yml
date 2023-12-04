@@ -4,9 +4,18 @@ fr:
     subtitle: "Paramètres de facturation du cabinet"
     buttons:
       edit: "Modifier les paramètres"
+      back_to_settings: "&larr; Revenir au dossier"
+  facturation_settings:
+    errors:
+      first_invoice_number: "Vous ne pouvez pas modifier le numéro de la première facture car il y a déjà des factures validées."
   activerecord:
     attributes:
       facturation_setting:
         tva_standard: "TVA standard"
         first_invoice_number: "Numéro de la première facture"
         default_payment_link: "Lien de paiement par défaut"
+        logo: "Logo du cabinet"
+  helpers:
+    submit:
+      facturation_setting:
+        update: "Enregistrer les modifications"

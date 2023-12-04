@@ -37,10 +37,11 @@ class FacturesController < ApplicationController
   end
 
   def destroy
-    @facture.destroy
-    respond_to do |format|
-      format.html { redirect_to @dossier, notice: t('factures.flash.destroyed') }
-      format.turbo_stream
+    if @facture.draft?
+      @facture.delete
+      redirect_to @dossier, notice: t('factures.flash.destroyed')
+    else
+      redirect_to @dossier, alert: t('factures.flash.not_destroyed')
     end
   end
 

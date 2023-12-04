@@ -87,7 +87,7 @@
     </ul>
 
     <div class="flex justify-end mt-4">
-      <%= link_to new_dossier_contact_path(@dossier), "data-turbo-frame": "modal" do %>
+      <%= link_to new_existing_dossier_contact_path(@dossier), "data-turbo-frame": "modal" do %>
         <span class="text-xs cursor-pointer border-stone-300 border px-2 py-1 rounded-md m-0 bg-stone-50 text-stone-600 font-semibold w-18"><%= t('contacts.buttons.new') %></span>
       <% end %>
     </div>

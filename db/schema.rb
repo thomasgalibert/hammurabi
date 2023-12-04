@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_01_165633) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_04_143554) do
   create_table "action_text_rich_texts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -96,6 +96,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_01_165633) do
     t.bigint "contact_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_main", default: false
     t.index ["contact_id"], name: "index_dossier_contacts_on_contact_id"
     t.index ["dossier_id"], name: "index_dossier_contacts_on_dossier_id"
   end

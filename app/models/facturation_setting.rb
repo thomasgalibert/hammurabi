@@ -14,4 +14,20 @@ class FacturationSetting < ApplicationRecord
   has_rich_text :conditions_generales
   has_rich_text :conditions_paiement
   has_one_attached :logo
+
+  validates :tva_standard, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
+  validates :first_invoice_number, numericality: { greater_than_or_equal_to: 0 }
+
+  # Custom validation for first_invoice setting:
+  # Check if current_user factures achived exists and if yes, 
+  # -> dont allowed to change first_invoice_number
+
+  validate :check_if_factures_achived_exists
+
+  def check_if_factures_achived_exists
+    if self.first_invoice_number_changed? && self.user.factures.nodraft.any?
+      errors.add(:first_invoice_number, I18n.t('facturation_settings.errors.first_invoice_number'))
+    end
+  end
+
 end

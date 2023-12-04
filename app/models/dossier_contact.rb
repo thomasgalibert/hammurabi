@@ -3,6 +3,7 @@
 # t.bigint "contact_id", null: false
 # t.datetime "created_at", null: false
 # t.datetime "updated_at", null: false
+# t.boolean "is_main", default: false
 # t.index ["contact_id"], name: "index_dossier_contacts_on_contact_id"
 # t.index ["dossier_id"], name: "index_dossier_contacts_on_dossier_id"
 # == Schema end

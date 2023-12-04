@@ -33,7 +33,7 @@ class Dossier < ApplicationRecord
   
   # Helpers
   def contact_principal
-    self.contacts.where(main: true).first
+    self.dossier_contacts.find_by(is_main: true).contact
   end
   
   before_save :update_viewed_at

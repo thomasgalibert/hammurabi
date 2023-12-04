@@ -1,20 +1,31 @@
 class ContactsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_dossier, only: [:new, :create, :show, :edit, :update, :destroy]
-  before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  before_action :set_dossier, only: [:new, :create, :show, :edit, :update, :destroy, :new_existing, :add_existing, :remove]
+  before_action :set_contact, only: [:show, :edit, :update, :destroy, :remove]
 
   def new
     @contact = current_user.contacts.new()
+  end
+
+  def new_existing
+    @contacts = current_user.contacts
   end
 
   def create
     @contact = current_user.contacts.new(contact_params)
     if @contact.save
       @dossier.contacts << @contact
+      update_dossier_contact_main(@dossier, @contact, @contact.main)
       redirect_to @dossier, notice: t('contacts.flash.created')
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def add_existing
+    @contact = current_user.contacts.find(params[:contact_id])
+    @dossier.contacts << @contact
+    redirect_to @dossier, notice: t('contacts.flash.added')
   end
 
   def show
@@ -27,10 +38,19 @@ class ContactsController < ApplicationController
 
   def update
     if @contact.update(contact_params)
+      update_dossier_contact_main(@dossier, @contact, @contact.main)
       redirect_to @dossier, notice: t('contacts.flash.updated')
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def remove
+    @dossier.contacts.delete(@contact)
+    respond_to do |format|
+      format.html { redirect_to @dossier, notice: t('contacts.flash.removed') }
+      format.turbo_stream
+    end    
   end
 
   def destroy
@@ -66,5 +86,9 @@ class ContactsController < ApplicationController
       :city,
       :country,
       :main)
+  end
+
+  def update_dossier_contact_main(dossier, contact, is_main)
+    DossierContact.find_by(dossier: dossier, contact: contact).update(is_main: is_main)
   end
 end

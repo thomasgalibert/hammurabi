@@ -1,0 +1,14 @@
+<div class="absolute top-4 right-10">
+  <div class="flex space-x-4">
+    <%= button_to t('factures.buttons.delete'), 
+      dossier_facture_path(dossier, facture),
+      method: :delete,
+      form: { data: { turbo_confirm: t('are_you_sure') } },
+      class: "text-rose-600 border px-2 py-1.5 border-rose-300 rounded-md bg-white hover:text-rose-800 hover:shadow-md" %>
+
+    <%= link_to t('factures.buttons.complete'), 
+      will_complete_dossier_facture_path(dossier, facture),
+      class: "text-fuchsia-600 border px-2 py-1.5 border-fuchsia-300 rounded-md bg-white hover:text-fuchsia-800 hover:shadow-md" %>
+  </div>
+  
+</div>

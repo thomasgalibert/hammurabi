@@ -1,0 +1,44 @@
+<%= form_with model: @facturation_setting, 
+    url: settings_facturation_setting_path() do |form| %>
+
+  <%= render "shared/errors", object: form.object %>
+
+  <fieldset class="bg-white border rounded-md p-6 relative mt-10">
+    <legend class="absolute -top-10 text-stone-500 text-lg">
+      <span class="font-semibold"><%= t('facturation_setting.title') %> </span>
+    </legend>
+
+    <div class="grid grid-cols-2 gap-4">
+      <div class="flex flex-col space-y-2 mb-6 col-span-2 sm:col-span-1">
+        <%= form.label :tva_standard, class: "block text-sm font-medium leading-6 text-stone-900" %>
+        <%= form.number_field :tva_standard, step: :any, min: 0, required: true,
+            class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+      </div>
+
+      <div class="flex flex-col space-y-2 mb-6 col-span-2 sm:col-span-1">
+        <%= form.label :first_invoice_number, class: "block text-sm font-medium leading-6 text-stone-900" %>
+        <%= form.number_field :first_invoice_number, step: :any, min: 0, required: true,
+            class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+      </div>
+    </div>
+
+    <div class="flex flex-col space-y-2 mb-6">
+      <%= form.label :default_payment_link, class: "block text-sm font-medium leading-6 text-stone-900" %>
+      <%= form.text_field :default_payment_link,
+          class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+    </div>
+
+    <div class="flex flex-col space-y-2 mb-6">
+      <%= form.label :logo, class: "block text-sm font-medium leading-6 text-stone-900" %>
+      <%= form.file_field :logo,
+          class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+    </div>
+
+    <div class="flex justify-between items-center">
+      <%= link_to t("facturation_setting.buttons.back_to_settings").html_safe, settings_path, class: "text-stone-600 border px-2 py-1.5 border-stone-300 rounded-md bg-white hover:text-stone-800 hover:shadow-md" %>
+      <%= form.submit class: "cursor-pointer bg-emerald-500 text-white text-lg rounded-md px-4 py-2" %>
+    </div>
+
+  </fieldset>
+
+<% end %>

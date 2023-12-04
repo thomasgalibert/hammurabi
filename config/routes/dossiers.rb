@@ -7,7 +7,15 @@ resources :dossiers do
   end
 
   resources :events
-  resources :contacts
+
+  resources :contacts do
+    member do
+      get :new_existing
+      post :add_existing
+      delete :remove
+    end
+  end
+
   resources :documents
   resources :conventions
   resources :notes

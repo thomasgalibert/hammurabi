@@ -24,6 +24,7 @@ class ContactTest < ActiveSupport::TestCase
     
     @dossier.contacts << contact1
     @dossier.contacts << contact2
+    DossierContact.find_by(dossier_id: @dossier.id, contact_id: contact2.id).update(is_main: true)
     
     assert_equal contact2, @dossier.contact_principal
   end

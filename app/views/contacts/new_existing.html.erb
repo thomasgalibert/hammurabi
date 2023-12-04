@@ -1,0 +1,28 @@
+<%= turbo_frame_tag :modal do %>
+  <%= render "layouts/modal" do %>
+    <p class="text-xl text-stone-600 mb-6"><%= t('contacts.new.choose') %> :</p>
+
+    <%= form_with url: add_existing_dossier_contact_path(@dossier),
+          class: "flex",
+          data: {turbo: false} do |form| %>
+
+      <%= form.collection_select :contact_id, 
+            @contacts, 
+            :id, 
+            :name_with_company, 
+            {}, 
+            class: "flex-1 px-4 py-2 rounded-md m-0 border-stone-300 placeholder:text-gray-400 focus:ring-0 focus:outline-none outline-none text-sm mr-6" %>
+
+      <%= form.submit t('contacts.buttons.add_existing'), class: "cursor-pointer w-72 bg-amber-500 text-white text-lg rounded-md px-4 py-2" %>
+    <% end %>
+
+    <%= render DividerComponent.new(title: t('contacts.new.create_new')) %>
+
+    <p>
+      <%= link_to t('contacts.buttons.add_new'), 
+          new_dossier_contact_path(@dossier), 
+          data: {turbo_frame: "modal"},
+          class: "cursor-pointer block text-center w-full bg-emerald-500 text-white text-lg rounded-md px-4 py-2" %>
+  </p>
+  <% end %>
+<% end %>
