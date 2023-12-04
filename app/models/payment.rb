@@ -1,5 +1,5 @@
 class Payment < ApplicationRecord
-  belongs_to :facture
+  belongs_to :facture, touch: true
   belongs_to :user
 
   after_create :update_facture

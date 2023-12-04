@@ -18,9 +18,14 @@ class FacturationSetting < ApplicationRecord
   validates :tva_standard, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
   validates :first_invoice_number, numericality: { greater_than_or_equal_to: 0 }
 
-  # Custom validation for first_invoice setting:
-  # Check if current_user factures achived exists and if yes, 
-  # -> dont allowed to change first_invoice_number
+  validates :logo, attached: true, 
+            content_type: { 
+              in: ['image/jpeg'], 
+              message: "Le format du fichier doit être au format jpeg"}, 
+            size: { 
+              less_than: 1.megabytes , 
+              message: "La taille du fichier ne doit pas dépasser 1 Mo" },
+            allow_blank: true
 
   validate :check_if_factures_achived_exists
 
