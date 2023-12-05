@@ -4,5 +4,6 @@ FactoryBot.define do
     description { "Description de l'événement" }
     kind { "rendez-vous" }
     date { Faker::Date.between(from: 30.days.ago, to: Date.today) }
+    association :user, factory: :user
   end
 end

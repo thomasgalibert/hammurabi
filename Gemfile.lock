@@ -126,6 +126,10 @@ GEM
     country_select (8.0.3)
       countries (~> 5.0)
     crass (1.0.6)
+    database_cleaner-active_record (2.1.0)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.1)
     date (3.3.4)
     debug (1.8.0)
       irb (>= 1.5.0)
@@ -189,7 +193,6 @@ GEM
       railties (>= 3.0)
     msgpack (1.7.2)
     mutex_m (0.2.0)
-    mysql2 (0.5.5)
     name_of_person (1.1.2)
       activesupport (>= 5.2.0)
     net-imap (0.4.7)
@@ -205,6 +208,7 @@ GEM
     nokogiri (1.15.5)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
+    pg (1.5.4)
     psych (5.1.1.1)
       stringio
     public_suffix (5.0.4)
@@ -325,6 +329,7 @@ DEPENDENCIES
   bootsnap
   capybara
   country_select (~> 8.0)
+  database_cleaner-active_record
   debug
   factory_bot_rails
   faker
@@ -334,8 +339,8 @@ DEPENDENCIES
   jbuilder
   keynote
   money-rails
-  mysql2 (~> 0.5)
   name_of_person
+  pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.2)
   redis (>= 4.0.1)
@@ -384,6 +389,8 @@ CHECKSUMS
   countries (5.7.0) sha256=20d28764e8d2d1eb0702ff6ff8b9195fddbd384e495f252c8c6b6da304351395
   country_select (8.0.3) sha256=971d7dfd383f684090967af7623697953c9eefea36ca3799cf892fbb8fecc8fe
   crass (1.0.6) sha256=dc516022a56e7b3b156099abc81b6d2b08ea1ed12676ac7a5657617f012bd45d
+  database_cleaner-active_record (2.1.0) sha256=7384b973d67bcc1b5a850b876a4638aa83cca3bc88f9d87562fe25cd2dd60d8a
+  database_cleaner-core (2.0.1) sha256=8646574c32162e59ed7b5258a97a208d3c44551b854e510994f24683865d846c
   date (3.3.4) sha256=971f2cb66b945bcbea4ddd9c7908c9400b31a71bc316833cb42fa584b59d3291
   debug (1.8.0) sha256=502bd1ad41a9a4b51f557f181cd13650c746390a82b5d11a5d2c81600ca013da
   drb (2.2.0) sha256=e9e4af1cded3306cfe37e064a0086e302d5f40df9cb4d161d059a6bb3a75d40f
@@ -416,7 +423,6 @@ CHECKSUMS
   money-rails (1.15.0) sha256=cace7c3af76a0685747f57b96fdb321a4d966294e0a11b51f8e28c3ac08e4903
   msgpack (1.7.2) sha256=59ab62fd8a4d0dfbde45009f87eb6f158ab2628a7c48886b0256f175166baaa8
   mutex_m (0.2.0) sha256=b6ef0c6c842ede846f2ec0ade9e266b1a9dac0bc151682b04835e8ebd54840d5
-  mysql2 (0.5.5) sha256=76d11f8590a821060b8465e82eb0b2965767acee876991c4981c365c82905bbe
   name_of_person (1.1.2) sha256=3d4b42081f5e61c11db470d988056a737941e666ac51325cb04df5b496b3d885
   net-imap (0.4.7) sha256=ba2b20395d5fa4f754ba12b0c1a57cf5e3189ade21e8e98646d090afb0a38114
   net-pop (0.1.2) sha256=848b4e982013c15b2f0382792268763b748cce91c9e91e36b0f27ed26420dff3
@@ -424,6 +430,7 @@ CHECKSUMS
   net-smtp (0.4.0) sha256=2d7eb8de289ba8dce3f0d436ee40b9366bea28354c5ba183c8ab2ec05139a3e7
   nio4r (2.7.0) sha256=9586a685eca8246d6406e712a525e705d15bb88f709d78fc3f141e864df97276
   nokogiri (1.15.5) sha256=22448ca35dbcbdcec60dbe25ccf452b685a5436c28f21b2fec2e20917aba9100
+  pg (1.5.4) sha256=04f7b247151c639a0b955d8e5a9a41541343f4640aa3c2bdf749a872c339d25d
   psych (5.1.1.1) sha256=44b0d1823629ac815f1f470af642dc7261489d67feb622a3f5573aa9f5cc5f72
   public_suffix (5.0.4) sha256=35cd648e0d21d06b8dce9331d19619538d1d898ba6d56a6f2258409d2526d1ae
   puma (6.4.0) sha256=d5dda11362744df9f4694708a62e3cfddf72eba7498c16016ebbb30f106712f9

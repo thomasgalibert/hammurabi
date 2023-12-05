@@ -11,5 +11,6 @@ FactoryBot.define do
     business_number { "567 567 567 00022" }
     vat_number { "FR8567567567" }
     share_capital { "100000" }
+    association :user, factory: :user
   end
 end

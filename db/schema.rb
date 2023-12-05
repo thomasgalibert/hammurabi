@@ -11,9 +11,12 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2023_12_04_143554) do
-  create_table "action_text_rich_texts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
-    t.text "body", size: :long
+    t.text "body"
     t.string "record_type", null: false
     t.bigint "record_id", null: false
     t.datetime "created_at", null: false
@@ -21,7 +24,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_143554) do
     t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
   end
 
-  create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.bigint "record_id", null: false
@@ -31,7 +34,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_143554) do
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "active_storage_blobs", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -43,13 +46,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_143554) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "active_storage_variant_records", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "active_storage_variant_records", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "contacts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "contacts", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "kind"
     t.string "last_name"
@@ -69,7 +72,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_143554) do
     t.index ["user_id"], name: "index_contacts_on_user_id"
   end
 
-  create_table "conventions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "conventions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "dossier_id", null: false
     t.string "title"
@@ -81,7 +84,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_143554) do
     t.index ["user_id"], name: "index_conventions_on_user_id"
   end
 
-  create_table "documents", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "documents", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "dossier_id", null: false
     t.string "name"
@@ -91,7 +94,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_143554) do
     t.index ["user_id"], name: "index_documents_on_user_id"
   end
 
-  create_table "dossier_contacts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "dossier_contacts", force: :cascade do |t|
     t.bigint "dossier_id", null: false
     t.bigint "contact_id", null: false
     t.datetime "created_at", null: false
@@ -101,7 +104,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_143554) do
     t.index ["dossier_id"], name: "index_dossier_contacts_on_dossier_id"
   end
 
-  create_table "dossiers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "dossiers", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name"
     t.string "state"
@@ -114,7 +117,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_143554) do
     t.index ["user_id"], name: "index_dossiers_on_user_id"
   end
 
-  create_table "events", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "events", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "dossier_id", null: false
     t.string "title"
@@ -127,9 +130,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_143554) do
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
-  create_table "facturation_settings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "facturation_settings", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.decimal "tva_standard", precision: 10
+    t.decimal "tva_standard"
     t.integer "first_invoice_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -137,7 +140,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_143554) do
     t.index ["user_id"], name: "index_facturation_settings_on_user_id"
   end
 
-  create_table "facture_seals", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "facture_seals", force: :cascade do |t|
     t.bigint "facture_id", null: false
     t.string "emetteur_legal_name"
     t.text "emetteur_address"
@@ -159,7 +162,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_143554) do
     t.index ["facture_id"], name: "index_facture_seals_on_facture_id"
   end
 
-  create_table "factures", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "factures", force: :cascade do |t|
     t.integer "total_ht_cents"
     t.integer "total_ttc_cents"
     t.date "date"
@@ -182,7 +185,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_143554) do
     t.index ["user_id"], name: "index_factures_on_user_id"
   end
 
-  create_table "firm_settings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "firm_settings", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "legal_name"
     t.text "address"
@@ -200,7 +203,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_143554) do
     t.index ["user_id"], name: "index_firm_settings_on_user_id"
   end
 
-  create_table "lignes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "lignes", force: :cascade do |t|
     t.string "description"
     t.integer "quantite"
     t.integer "prix_unitaire_cents"
@@ -218,7 +221,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_143554) do
     t.index ["facturable_type", "facturable_id"], name: "index_lignes_on_facturable"
   end
 
-  create_table "notes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "notes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "dossier_id", null: false
     t.datetime "created_at", null: false
@@ -227,7 +230,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_143554) do
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
-  create_table "payments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "payments", force: :cascade do |t|
     t.bigint "facture_id", null: false
     t.bigint "user_id", null: false
     t.integer "amount_cents"
@@ -238,7 +241,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_143554) do
     t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
-  create_table "todos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "todos", force: :cascade do |t|
     t.string "todoable_type", null: false
     t.bigint "todoable_id", null: false
     t.bigint "user_id", null: false
@@ -252,7 +255,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_143554) do
     t.index ["user_id"], name: "index_todos_on_user_id"
   end
 
-  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
     t.datetime "created_at", null: false

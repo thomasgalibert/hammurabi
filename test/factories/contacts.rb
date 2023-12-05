@@ -5,12 +5,13 @@ FactoryBot.define do
     company_name { "Bertillon et fils" }
     business_number { "123456789" }
     vat_number { "FR123456789" }
-    email { "a.bertillon@gmail.com" }
+    email { Faker::Internet.email }
     phone { "01 23 45 67 89" }
     address { "1 rue de la Paix" }
     zip_code { "75000" }
     city { "Paris" }
     country { "France" }
     kind { "customer" }
+    association :user, factory: :user
   end
 end

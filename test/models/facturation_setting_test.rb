@@ -10,7 +10,7 @@ class FacturationSettingTest < ActiveSupport::TestCase
   end
 
   test "vérifie que lorsqu'il y a au moins une facture achived on ne peut pas changer facturation_setting.firt_invoice_number" do
-    Facture.delete_all
+    Facture.destroy_all
     facture = FactoryBot.create(:facture, emetteur: @user, user: @user, dossier: @dossier, contact: @contact)
     facture.complete!
     @facturation_setting.first_invoice_number = 4

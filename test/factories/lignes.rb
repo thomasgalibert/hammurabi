@@ -7,6 +7,9 @@ FactoryBot.define do
     tva { 20 }
     unit { "forfait" }
     association :facturable, factory: :facture
+    # association :user, factory: :user
+    # association :emetteur, factory: :user
+    # association :dossier, factory: :dossier
 
     trait :tva_standard do
       tva { 20 }

@@ -5,5 +5,9 @@ FactoryBot.define do
     state { :draft }
     conditions_paiement { "Paiement à réception de la facture" }
     conditions_generales { "Conditions générales de vente" }
+    association :user, factory: :user
+    association :dossier, factory: :dossier
+    association :contact, factory: :contact
+    association :emetteur, factory: :user
   end
 end

@@ -4,6 +4,7 @@ require 'test_helper'
 class FactureTest < ActiveSupport::TestCase
 
   def setup
+    Facture.destroy_all
     @user = FactoryBot.create(:user)
     @facturation_setting = FactoryBot.create(:facturation_setting, user: @user, first_invoice_number: 3)
     @firm_setting = FactoryBot.create(:firm_setting, user: @user)

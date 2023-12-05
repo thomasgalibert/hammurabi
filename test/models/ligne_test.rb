@@ -4,6 +4,7 @@ require 'test_helper'
 class LigneTest < ActiveSupport::TestCase
 
   def setup
+    Facture.destroy_all
     @user = FactoryBot.create(:user)
     @dossier = FactoryBot.create(:dossier, user: @user)
     @contact = FactoryBot.create(:contact, user: @user)

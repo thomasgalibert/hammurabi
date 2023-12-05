@@ -3,6 +3,7 @@ require 'test_helper'
 
 class FactureAssociationsTest < ActiveSupport::TestCase
   def setup
+    Facture.destroy_all
     @user = FactoryBot.create(:user)
     @contact = FactoryBot.create(:contact, user: @user)
     @dossier = FactoryBot.create(:dossier, user: @user)
