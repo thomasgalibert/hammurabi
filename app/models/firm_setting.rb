@@ -18,4 +18,17 @@
 
 class FirmSetting < ApplicationRecord
   belongs_to :user
+
+  def is_complete?
+    legal_name.present? && 
+    address.present? &&
+    city.present? &&
+    zip_code.present? &&
+    country.present? &&
+    phone_number.present? &&
+    email.present? &&
+    business_number.present? &&
+    vat_number.present? &&
+    share_capital.present?
+  end
 end

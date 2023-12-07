@@ -41,6 +41,10 @@ module Facturation
     (numero + self.user.first_invoice_number - 1).to_s.rjust(8, "0")
   end
 
+  def due_date
+    self.date + 15.days
+  end
+
   def breakdown_tva
     lignes.saved.group_by(&:tva).transform_values do |ligne_group|
       {

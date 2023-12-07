@@ -4,6 +4,7 @@ fr:
     subtitle: "Détails sur la structure juridique qui sert à la facturation des honoraires"
     buttons:
       edit: "Modifier les informations"
+      back_to_settings: "&larr; Retour aux paramètres"
     
   activerecord:
     attributes:
@@ -19,3 +20,10 @@ fr:
        business_number: "Numéro SIRET"
        vat_number: "Numéro de TVA"
        share_capital: "Capital social"
+  
+  helpers:
+    submit:
+      firm_setting:
+        create: "Créer les informations"
+        update: "Mettre à jour les informations"
+        

@@ -9,11 +9,13 @@ fr:
       back_dossier: "retour au dossier"
       complete: "Valider la facture"
       delete: "Supprimer la facture"
+      print: "Imprimer la facture"
     flash:
       created: "La facture a été créée avec succès."
       destroyed: "La facture a été supprimée avec succès."
       updated: "La facture a été mise à jour avec succès."
       no_contact: "Vous devez avoir un contact principal dans le dossier !"
+      no_firm_settings: "Vous devez avoir renseigné vos paramètres de facturation !"
       completed: "La facture a été validée avec succès."
       not_destroyed: "La facture n'a pas pu être supprimée."
     titles:
@@ -48,3 +50,5 @@ fr:
         date_fin_validite: "Date de fin de validité"
         no_description: "-- Aucune objet --"
         description: "Objet de la facture"
+        emetteur_business_number: "Numéro de SIRET"
+        emetteur_vat_number: "N° de TVA"

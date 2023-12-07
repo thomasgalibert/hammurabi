@@ -32,8 +32,16 @@ class Dossier < ApplicationRecord
   scope :last_viewed, -> (limit) { order(viewed_at: :desc).limit(limit) }
   
   # Helpers
+  def main_dossier_contact
+    self.dossier_contacts.find_by(is_main: true)
+  end
+
   def contact_principal
-    self.dossier_contacts.find_by(is_main: true).contact
+    main_dossier_contact.present? ? main_dossier_contact.contact : nil
+  end
+
+  def convention_number
+    self.conventions.last.try(:numero)
   end
   
   before_save :update_viewed_at
