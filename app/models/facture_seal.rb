@@ -10,6 +10,13 @@
 # t.string "emetteur_share_capital"
 # t.datetime "created_at", null: false
 # t.datetime "updated_at", null: false
+# t.string "client_name"
+# t.text "client_address"
+# t.string "client_city"
+# t.string "client_zip_code"
+# t.string "client_country"
+# t.string "client_business_number"
+# t.string "client_vat_number"
 # t.index ["facture_id"], name: "index_facture_seals_on_facture_id"
 # -> END SCHEMA
 

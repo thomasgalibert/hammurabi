@@ -35,4 +35,8 @@ class FacturePresenter < Keynote::Presenter
       end
     end
   end
+
+  def convention
+    facture.convention.present? ? k(facture.convention).amount_with_date : "--"
+  end
 end

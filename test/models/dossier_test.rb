@@ -32,4 +32,10 @@ class DossierTest < ActiveSupport::TestCase
     assert_equal "unpaid", dossier.state
   end
 
+  test "un dossier a une référence unique de 8 lettres (majuscules) et chiffres avec le préfix de l'année et la date" do
+    dossier = FactoryBot.create(:dossier, user: @user)
+    assert_equal dossier.reference.length, 15
+    assert dossier.reference.match?(/\A\d{6}-[A-Z0-9]+\z/)
+  end
+
 end

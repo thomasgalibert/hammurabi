@@ -1,23 +1,28 @@
+<%= render "settings/tabs", selected: "facturation_setting" %>
+
 <%= form_with model: @facturation_setting, 
     url: settings_facturation_setting_path() do |form| %>
 
-  <%#= render "shared/errors", object: form.object %>
+  <%= render "shared/errors", object: form.object %>
 
   <fieldset class="bg-white border rounded-md p-6 relative mt-10">
-    <legend class="absolute -top-10 text-stone-500 text-lg">
-      <span class="font-semibold"><%= t('facturation_setting.title') %> </span>
-    </legend>
-
-    <div class="grid grid-cols-2 gap-4">
-      <div class="flex flex-col space-y-2 mb-6 col-span-2 sm:col-span-1">
+    
+    <div class="grid grid-cols-3 gap-4">
+      <div class="flex flex-col space-y-2 mb-6 col-span-3 sm:col-span-1">
         <%= form.label :tva_standard, class: "block text-sm font-medium leading-6 text-stone-900" %>
         <%= form.number_field :tva_standard, step: :any, min: 0, required: true,
             class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
       </div>
 
-      <div class="flex flex-col space-y-2 mb-6 col-span-2 sm:col-span-1">
+      <div class="flex flex-col space-y-2 mb-6 col-span-3 sm:col-span-1">
         <%= form.label :first_invoice_number, class: "block text-sm font-medium leading-6 text-stone-900" %>
         <%= form.number_field :first_invoice_number, step: :any, min: 0, required: true, disabled: current_user.factures.nodraft.any?,
+            class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset disabled:text-gray-300 ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+      </div>
+
+      <div class="flex flex-col space-y-2 mb-6 col-span-3 sm:col-span-1">
+        <%= form.label :number_of_days_before_due, class: "block text-sm font-medium leading-6 text-stone-900" %>
+        <%= form.number_field :number_of_days_before_due, step: :any, min: 0, required: true,
             class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset disabled:text-gray-300 ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
       </div>
     </div>
@@ -33,6 +38,16 @@
       <%= form.file_field :logo,
           class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
     </div>
+
+    <div class="flex flex-col space-y-2 mb-6">
+      <%= form.label :conditions_paiement, class: "block text-sm font-medium leading-6 text-stone-900" %>
+      <%= form.rich_text_area :conditions_paiement,
+          class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+    </div>
+
+    <% if @facturation_setting.logo.attached? %>
+      <div class="my-4"><%= image_tag @facturation_setting.logo.url, class: "w-24 h-24 rounded-md border bg-white" %></div>
+    <% end %>
 
     <div class="flex justify-between items-center">
       <%= link_to t("facturation_setting.buttons.back_to_settings").html_safe, settings_path, class: "text-stone-600 border px-2 py-1.5 border-stone-300 rounded-md bg-white hover:text-stone-800 hover:shadow-md" %>

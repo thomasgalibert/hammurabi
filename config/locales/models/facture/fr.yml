@@ -4,6 +4,7 @@ fr:
     buttons:
       new: "Nouvelle facture"
       edit_client_id: "Modifier le client"
+      edit_convention_id: "Sélectionner la convention"
       new_ligne: "Ajouter une nouvelle ligne"
       edit_description: "Modifier l'objet"
       back_dossier: "retour au dossier"
@@ -33,6 +34,22 @@ fr:
       content: "Veuillez vérifier tous les éléments de la facture avant de cliquer encore sur le bouton valider."
       cancel: "Annuler"
       confirm: "Valider cette facture"
+    pdf:
+      title: "Note d'honoraires"
+      send_by: "facture émise par"
+      sent_to: "facturé à"
+      payment_conditions: "Instructions de paiement"
+      lignes:
+        number: "Num"
+        description: "Libellé"
+        quantite: "Qt"
+        prix_unitaire: "PU HT"
+        remise: "Rem %"
+        total_ht: "Total HT"
+        total_tva: "Total TVA"
+        total_ttc: "Total TTC"
+        rate: "Taux"
+        rate_base: "Base HT"
   activerecord:
     attributes:
       facture:
@@ -52,3 +69,12 @@ fr:
         description: "Objet de la facture"
         emetteur_business_number: "Numéro de SIRET"
         emetteur_vat_number: "N° de TVA"
+        due_date: "Date d'échéance"
+        total_due: "Net à payer"
+        convention_reference: "Réf. convention"
+        convention_date: "Date convention"
+        currency: "Devise"
+        client_business_number: "Numéro de SIRET"
+        client_vat_number: "N° de TVA"
+        email: "Email"
+        phone_number: "T."

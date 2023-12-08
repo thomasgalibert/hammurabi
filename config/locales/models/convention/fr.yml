@@ -7,6 +7,7 @@ fr:
         forfait: "Montant forfaitaire"
         variable: "Honoraires variables"
         fichier: "Fichier"
+        reference: "Référence"
   conventions:
     flash:
       created: "La convention a été créée avec succès."

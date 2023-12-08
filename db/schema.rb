@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_04_143554) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_08_093221) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,6 +80,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_143554) do
     t.integer "forfait_cents"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "reference"
     t.index ["dossier_id"], name: "index_conventions_on_dossier_id"
     t.index ["user_id"], name: "index_conventions_on_user_id"
   end
@@ -114,6 +115,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_143554) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "viewed_at"
+    t.string "reference"
     t.index ["user_id"], name: "index_dossiers_on_user_id"
   end
 
@@ -137,6 +139,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_143554) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "default_payment_link"
+    t.integer "number_of_days_before_due", default: 15
     t.index ["user_id"], name: "index_facturation_settings_on_user_id"
   end
 
@@ -179,7 +182,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_143554) do
     t.string "backup_number"
     t.string "currency"
     t.string "order_reference"
+    t.bigint "convention_id"
     t.index ["contact_id"], name: "index_factures_on_contact_id"
+    t.index ["convention_id"], name: "index_factures_on_convention_id"
     t.index ["dossier_id"], name: "index_factures_on_dossier_id"
     t.index ["emetteur_id"], name: "index_factures_on_emetteur_id"
     t.index ["user_id"], name: "index_factures_on_user_id"
@@ -280,6 +285,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_143554) do
   add_foreign_key "facturation_settings", "users"
   add_foreign_key "facture_seals", "factures"
   add_foreign_key "factures", "contacts"
+  add_foreign_key "factures", "conventions"
   add_foreign_key "factures", "dossiers"
   add_foreign_key "factures", "users"
   add_foreign_key "factures", "users", column: "emetteur_id"

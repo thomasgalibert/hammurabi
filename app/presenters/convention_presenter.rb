@@ -8,4 +8,8 @@ class ConventionPresenter < Keynote::Presenter
       "--"
     end
   end
+
+  def amount_with_date
+    "#{number_to_currency(convention.forfait)} (#{I18n.l(convention.date)})"
+  end
 end

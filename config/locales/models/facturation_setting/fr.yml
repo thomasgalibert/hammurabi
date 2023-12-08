@@ -15,6 +15,8 @@ fr:
         first_invoice_number: "Numéro de la première facture"
         default_payment_link: "Lien de paiement par défaut"
         logo: "Logo du cabinet"
+        number_of_days_before_due: "Nombre de jours avant échéance des factures"
+        conditions_paiement: "Texte des conditions de paiement"
   helpers:
     submit:
       facturation_setting:

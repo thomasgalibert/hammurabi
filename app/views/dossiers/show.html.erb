@@ -17,8 +17,12 @@
 <div class="flex items-center space-x-2">
   <div><%= k(@dossier).badge %></div>
   <div>
+    <span class="text-sm text-stone-500 inline-block mr-6">
+      <%= at(@dossier, :reference) %> :
+      <span class="font-mono text-stone-700"><%= @dossier.reference %></span>
+    </span>
     <span class="text-sm text-stone-500">
-      <%= t('activerecord.attributes.dossier.created_at') %>
+      <%= at(@dossier, :created_at) %>
       <%= l(@dossier.created_at, format: :short) %>
     </span>
   </div>

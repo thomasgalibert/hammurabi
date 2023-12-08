@@ -22,4 +22,11 @@ class ConventionTest < ActiveSupport::TestCase
     assert convention.date.present?
     assert convention.forfait.present?
   end
+
+  test "une convention a une référence qui est du type dossier.reference + 8 caractères (chiffre ou majuscules)'" do
+    convention = FactoryBot.create(:convention, user: @user, dossier: @dossier)
+
+    assert convention.reference.present?
+    assert_equal 24, convention.reference.length
+  end
 end

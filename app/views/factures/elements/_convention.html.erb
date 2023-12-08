@@ -1,0 +1,16 @@
+<%= turbo_frame_tag :facture_convention_id do %>
+  <div class="ml-0 sm:ml-4">
+    <h2 class="text-sm flex items-center space-x-2">
+      <span class="inline-block"><%= at(facture, :convention_reference) %> :
+        <%= k(facture).convention %>
+      </span>
+      <span class="inline-block font-base italic text-sm text-stone-500">
+        <% if facture.draft? %>
+          <%= link_to edit_dossier_facture_path(dossier, facture, attribute: :convention_id) do %>
+            (<%= t('factures.buttons.edit_convention_id') %>)
+          <% end %>
+        <% end %>
+      </span>
+    </h1>
+  </div>
+<% end %>

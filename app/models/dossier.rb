@@ -39,12 +39,8 @@ class Dossier < ApplicationRecord
   def contact_principal
     main_dossier_contact.present? ? main_dossier_contact.contact : nil
   end
-
-  def convention_number
-    self.conventions.last.try(:numero)
-  end
   
-  before_save :update_viewed_at
+  before_save :update_viewed_at, :create_reference
 
   def update_state
     dossier_factures = self.factures.nodraft
@@ -68,6 +64,12 @@ class Dossier < ApplicationRecord
 
   def update_viewed_at
     self.viewed_at = Time.now
+  end
+
+  def create_reference
+    ref_string = SecureRandom.hex(4).upcase
+    date_prefix = Date.today.strftime("%Y%m")
+    self.reference = "#{date_prefix}-#{ref_string}" if self.reference.blank?
   end
 
   

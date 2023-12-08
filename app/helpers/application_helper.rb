@@ -13,4 +13,8 @@ module ApplicationHelper
   def display_boolean(boolean)
     boolean ? I18n.t('helpers.boolean.is_yes') : I18n.t('helpers.boolean.is_no')
   end
+
+  def display_font_awesome_icon(icon, additional_classes = nil)
+    "<i class='#{icon} #{additional_classes}'></i>".html_safe
+  end
 end

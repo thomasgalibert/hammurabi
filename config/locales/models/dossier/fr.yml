@@ -28,3 +28,4 @@ fr:
     attributes:
       dossier:
         created_at: "Créé le"
+        reference: "Référence"

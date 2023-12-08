@@ -2,6 +2,7 @@ require 'barby'
 require 'barby/barcode/code_128'
 require 'barby/outputter/prawn_outputter'
 require "open-uri"
+include ActionView::Helpers::SanitizeHelper
 include ActionView::Helpers::NumberHelper
 include ApplicationHelper
 include PdfHelper
@@ -34,10 +35,10 @@ class FacturePdf < Prawn::Document
     print_sender
     print_logo
     print_details
-    # print_receiver
-    # print_title
-    # print_table_items
-    # print_footer(@invoice_params[:sender])
+    print_receiver
+    print_title
+    print_table_items
+    print_footer(@facture)
   end
 
   def print_barcode
@@ -57,14 +58,14 @@ class FacturePdf < Prawn::Document
         fill_and_stroke_rounded_rectangle [cursor-50,cursor], @header_width_right, 50, 0
         fill_color '000000'
     	end
-    	pad_top(10) { text I18n.t('factures.titles.new'), size: 20, align: :center, color: 'FFFFFF' }
+    	pad_top(10) { text I18n.t('factures.pdf.title'), size: 20, align: :center, color: 'FFFFFF' }
     end
   end
 
   def print_sender
   	bounding_box([0, 822], width: @header_width_left-60, height: 95) do
       # transparent(0.5) { stroke_bounds }
-      text "facture émise par", size: 9, color: @gray
+      text I18n.t('factures.pdf.send_by'), size: 9, color: @gray
       move_down 5
       print_address(@facture)
     end
@@ -80,9 +81,9 @@ class FacturePdf < Prawn::Document
   def print_receiver
   	bounding_box([@header_offset, 722], width: @header_width_right, height: 110) do
       # transparent(0.5) { stroke_bounds }
-      text "Facturé à", size: 9, color: @gray
+      text I18n.t('factures.pdf.sent_to'), size: 9, color: @gray
       move_down 5
-      print_address(@invoice_params[:receiver], size: 10)
+      print_address_client(@facture, size: 10)
     end
   end
 
@@ -102,21 +103,21 @@ class FacturePdf < Prawn::Document
   	move_down 30
   	stroke_horizontal_rule
   	move_down 5
-  	text @invoice_params[:title], align: :center, size: 12
+  	text @facture.description.to_plain_text, align: :center, size: 12
   	move_down 5
   	stroke_horizontal_rule
   end
 
   def print_table_items
     move_down 10
-    items_counts = @items.count+1
+    lignes_counts = @lignes.count+1
     old_y = y
     bounding_box([bounds.left, bounds.top], :width => bounds.width, :height => bounds.height - 30) do
       self.y = old_y
      
-      table rows, column_widths: [30, 290, 40, 70, 45, 100], cell_style: {border_width: 0.5} do
+      table rows(@lignes, @facture), column_widths: [30, 290, 40, 70, 45, 100], cell_style: {border_width: 0.5} do
         row(0).size = 9
-        row(0..items_counts).padding = 4
+        row(0..lignes_counts).padding = 4
         columns(0..1).size = 8
         columns(2).align = :center
         columns(2..5).font = "Courier"
@@ -128,14 +129,13 @@ class FacturePdf < Prawn::Document
       start_new_page if cursor < 121
       print_tax_resume
       print_payment_conditions
-      print_delivery_instructions
     end
   end
 
   def print_tax_resume
     bounding_box([0, cursor-10], width: @header_width_left, height: 120) do
       # transparent(0.5) { stroke_bounds }
-      table tax_rows(@invoice_params[:vats]), column_widths: [50 , 100 , 100], cell_style: {border_width: 0.5} do
+      table tax_rows(@facture), column_widths: [50 , 100 , 100], cell_style: {border_width: 0.5} do
         columns(0..2).align = :right
         columns(0..2).size = 9
         columns(0..2).font = "Courier"
@@ -147,29 +147,10 @@ class FacturePdf < Prawn::Document
   def print_payment_conditions
     bounding_box([@header_offset, cursor+120], width: @header_width_right) do
       # transparent(0.5) { stroke_bounds }
-      text "Instructions de paiement"
+      text I18n.t('factures.pdf.payment_conditions')
       move_down 5
-      payment_instructions(@invoice_params[:payment_conditions])
+      payment_instructions(@facture)
     end
   end
 
-  def print_delivery_instructions
-    y_delivery_position = cursor
-
-    if y_delivery_position < 50
-      start_new_page
-      y_delivery_position = cursor
-    else
-      move_down 10
-    end
-
-    span 200, :position => :left do
-      delivery_conditions(@delivery_conditions) if @delivery_conditions.present?
-    end
-
-    move_cursor_to y_delivery_position
-    span 380, :position => :right do
-      delivery_address(@delivery_address) if @delivery_address.present?
-    end
-  end
 end

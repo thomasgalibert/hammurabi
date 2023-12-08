@@ -29,6 +29,13 @@
           <%= image_tag facturation_setting.logo.url, class: "h-20 w-20 shadow-sm border rounded-md" if facturation_setting.logo.attached? %>
         </dd>
       </div>
+
+      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-900"><%= t("activerecord.attributes.facturation_setting.conditions_paiement") %></dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+          <%= facturation_setting.conditions_paiement %>
+        </dd>
+      </div>
     </dl>
   </div>
 </div>

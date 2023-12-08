@@ -2,7 +2,12 @@
   <%= render "factures/elements/additionnal_actions", facture: facture, dossier: dossier if facture.draft? && params[:action] != "will_complete" %>
   <%= render "factures/elements/print_actions", facture: facture, dossier: dossier if facture.achived? %>
   <%= render "factures/elements/header", facture: facture, dossier: dossier %>
-  <%= render "factures/elements/contact", facture: facture, dossier: dossier %>
+
+  <div class="grid grid-cols-3 gap-4 bg-stone-50 px-4 pb-6 mt-4 border-t border-b pt-4">
+    <div class="col-span-3 sm:col-span-2"><%= render "factures/elements/contact", facture: facture, dossier: dossier %></div>
+    <div class="col-span-3 sm:col-span-1 border-l"><%= render "factures/elements/convention", facture: facture, dossier: dossier %></div>
+  </div>
+  
   <%= render "factures/elements/description", facture: facture, dossier: dossier %>
   <%= render "factures/elements/new_button", facture: facture, dossier: dossier if facture.draft? %>
   <ul><%= render "lignes/header", ligne: Ligne.new %></ul>

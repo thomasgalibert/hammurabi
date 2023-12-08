@@ -16,6 +16,8 @@ class Convention < ApplicationRecord
 
   monetize :forfait_cents
 
+  validates :date, presence: true
+
   validates :fichier, attached: true, 
             content_type: { 
               in: ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'], 
@@ -24,4 +26,17 @@ class Convention < ApplicationRecord
               less_than: 10.megabytes , 
               message: "La taille du fichier ne doit pas dépasser 10 Mo" },
             allow_blank: true
+
+  before_save :create_reference
+  
+  def number
+    dossier.contact_principal.present? ? dossier.contact_principal.name : ""
+  end
+
+  private
+
+  def create_reference
+    ref_string = SecureRandom.hex(4).upcase
+    self.reference = "#{self.dossier.reference}-#{ref_string}" if self.reference.blank?
+  end
 end

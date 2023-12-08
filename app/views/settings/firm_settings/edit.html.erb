@@ -1,12 +1,11 @@
+<%= render "settings/tabs", selected: "firm_setting" %>
+
 <%= form_with model: @firm_setting, 
     url: settings_firm_setting_path() do |form| %>
 
-  <%#= render "shared/errors", object: form.object %>
+  <%= render "shared/errors", object: form.object %>
 
   <fieldset class="bg-white border rounded-md p-6 relative mt-10">
-    <legend class="absolute -top-10 text-stone-500 text-lg">
-      <span class="font-semibold"><%= t('firm_setting.title') %> </span>
-    </legend>
 
     <div class="flex flex-col space-y-2 mb-6">
       <%= form.label :legal_name, class: "block text-sm font-medium leading-6 text-stone-900" %>

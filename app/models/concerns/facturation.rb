@@ -32,17 +32,14 @@ module Facturation
     scope :nodraft, -> { where.not(state: "draft") }
   end
 
-  def calculer_totaux
-    self.total_ht_cents = lignes.sum(&:total_ht_cents)
-    self.total_ttc_cents = lignes.sum(&:total_ttc_cents)
-  end
+  # Helpers
 
   def screen_number
     (numero + self.user.first_invoice_number - 1).to_s.rjust(8, "0")
   end
 
   def due_date
-    self.date + 15.days
+    self.date + self.user.facturation_setting.number_of_days_before_due.days
   end
 
   def breakdown_tva
@@ -54,6 +51,12 @@ module Facturation
     end
   end
 
+  def convention_number
+    self.convention.present? ? I18n.l(self.convention.date) : ""
+  end
+
+  # States
+
   def complete!
     definir_numero
   end
@@ -64,6 +67,13 @@ module Facturation
 
   def draft?
     state == "draft"
+  end
+
+  # Calculations
+
+  def calculer_totaux
+    self.total_ht_cents = lignes.sum(&:total_ht_cents)
+    self.total_ttc_cents = lignes.sum(&:total_ttc_cents)
   end
 
   private

@@ -87,7 +87,8 @@ class FacturesController < ApplicationController
       :total_ttc,
       :contact_id,
       :date_fin_validite,
-      :description
+      :description,
+      :convention_id
     )
   end
 end

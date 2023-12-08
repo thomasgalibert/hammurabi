@@ -1,0 +1,32 @@
+<div class="mb-6">
+  <div class="sm:hidden">
+    <label for="tabs" class="sr-only">Select a tab</label>
+    <!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
+    <select id="tabs" name="tabs" class="block w-full rounded-md border-gray-300 focus:border-amber-500 focus:ring-amber-500">
+      <option><%= t('tabs.firm_setting') %></option>
+      <option><%= t('tabs.facturation_setting') %></option>
+    </select>
+  </div>
+  <div class="hidden sm:block">
+    <div class="border-b border-gray-200">
+      <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+        <% default_tab_class = "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 group inline-flex items-center border-b-2 py-4 px-1 text-sm font-medium" %>
+        <% active_tab_class = "border-amber-500 text-amber-600 group inline-flex items-center border-b-2 py-4 px-1 text-sm font-medium" %>
+
+        <% default_svg_class = "text-gray-400 group-hover:text-gray-500 -ml-0.5 mr-2 mt-4 h-5 w-5" %>
+        <% active_svg_class = "text-amber-500 -ml-0.5 mr-2 mt-4 h-5 w-5" %>
+
+        <% [{name: "firm_setting", icon: "fa-solid fa-building fa-xl  ", url: settings_firm_setting_path}, {name: "facturation_setting", icon: "fa-solid fa-file-invoice-dollar fa-xl ", url: settings_facturation_setting_path}].each do |tab| %>
+          <% current_tab_class = selected == tab[:name] ? active_tab_class : default_tab_class  %>
+          <% current_svg_class = selected == tab[:name] ? active_svg_class : default_svg_class  %>
+
+          <a href="<%= tab[:url] %>" class="<%= current_tab_class %>">
+            <%= display_font_awesome_icon(tab[:icon], current_svg_class) %>
+            <span><%= t("tabs.#{tab[:name]}") %></span>
+          </a>
+        <% end %>        
+        
+      </nav>
+    </div>
+  </div>
+</div>

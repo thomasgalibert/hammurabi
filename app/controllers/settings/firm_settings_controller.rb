@@ -1,16 +1,20 @@
 class Settings::FirmSettingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_firm_setting, only: [:edit, :update]
+  before_action :set_firm_setting, only: [:edit, :update, :show]
 
   def edit
   end
 
   def update
     if @firm_setting.update(firm_setting_params)
-      redirect_to settings_path
+      redirect_to settings_firm_setting_path
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def show
+    
   end
 
   private
