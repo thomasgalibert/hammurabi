@@ -15,7 +15,7 @@
 - [X] Retirer les éléments de modification d'une facture quand elle est achived
 - [X] Ajouter le bouton pour finalier la facture avec une fenêtre d'avertissement
 - [X] Mettre à jour les statuts des dossiers avec la nouvelle liste
-- [ ] PDF de la facture
+- [X] PDF de la facture
 - [ ] Interface pour les paiements
 - [ ] Recherche globale dans les dossiers et contacts
 - [ ] Liste globale des contacts et des dossiers

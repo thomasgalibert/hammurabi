@@ -1,1 +1,2 @@
 <%= render "facture", facture: @facture, dossier: @dossier %>
+<%= turbo_frame_tag "#{@facture.id}_payments", src: facture_payments_path(@facture) %>

@@ -1,0 +1,10 @@
+<div class="bg-white px-10 pb-10 pt-16 rounded-lg border relative mt-10">
+  <div class="flex justify-between items-center border-b mb-2 pb-2">
+    <h1 class="text-xl"><%= t('payments.list') %></h1>
+    <div class="flex items-center">
+      <%= link_to new_facture_payment_path(facture), class: "bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded" do %>
+        <%= t('payments.buttons.new') %>
+      <% end %>
+    </div>
+  </div>
+</div>

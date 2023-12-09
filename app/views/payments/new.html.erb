@@ -1,0 +1,4 @@
+<%= turbo_frame_tag "#{@facture.id}_payments" do %>
+  <%= render "header", facture: @facture %>
+  <%= render "form", facture: @facture, payment: @payment %>
+<% end %>

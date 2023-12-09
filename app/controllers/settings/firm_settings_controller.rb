@@ -20,7 +20,7 @@ class Settings::FirmSettingsController < ApplicationController
   private
 
   def set_firm_setting
-    @firm_setting = current_user.firm_setting
+    @firm_setting = current_user.firm_setting || current_user.create_firm_setting
   end
 
   def firm_setting_params

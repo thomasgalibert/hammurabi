@@ -1,0 +1,10 @@
+fr:
+  payments:
+    list: "Liste des paiements"
+    buttons:
+      new: "Nouveau paiement"
+  activerecord:
+    attributes:
+      payment:
+        issued_date: "Date d'encaissement"
+        amount: "Montant"

@@ -28,7 +28,6 @@ class FirmSetting < ApplicationRecord
     phone_number.present? &&
     email.present? &&
     business_number.present? &&
-    vat_number.present? &&
-    share_capital.present?
+    vat_number.present?
   end
 end

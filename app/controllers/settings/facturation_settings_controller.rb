@@ -20,7 +20,7 @@ class Settings::FacturationSettingsController < ApplicationController
   private
 
   def set_facturation_setting
-    @facturation_setting = current_user.facturation_setting
+    @facturation_setting = current_user.facturation_setting || current_user.create_facturation_setting(tva_standard: 20, first_invoice_number: 1)
   end
 
   def facturation_setting_params
