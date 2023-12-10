@@ -79,7 +79,7 @@ module Facturation
   private
 
   def date_posterieure_a_la_derniere_facture
-    derniere_facture = self.class.order(date: :desc).first
+    derniere_facture = self.user.factures.order(date: :desc).first
     if derniere_facture && date < derniere_facture.date
       errors.add(:date, "doit être postérieure à la date de la dernière pièce (#{derniere_facture.date}).")
     end
@@ -87,7 +87,7 @@ module Facturation
 
   def definir_numero
     if numero.blank?
-      derniere_facture = self.class.nodraft.order(created_at: :desc).first
+      derniere_facture = self.user.factures.nodraft.order(created_at: :desc).first
       new_number = derniere_facture ? derniere_facture.numero + 1 : 1
       update(numero: new_number)
       update(backup_number: self.screen_number)

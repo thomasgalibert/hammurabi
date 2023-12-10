@@ -204,4 +204,23 @@ class FactureTest < ActiveSupport::TestCase
     assert_not_nil @facture.facture_seal
   end
 
+  test "vérifie que la numérotation suit l'utilisateur" do
+    Facture.delete_all
+
+    user_2 = FactoryBot.create(:user)
+    facturation_setting_2 = FactoryBot.create(:facturation_setting, user: user_2, first_invoice_number: 2)
+    firm_setting_2 = FactoryBot.create(:firm_setting, user: user_2)
+    dossier_2 = FactoryBot.create(:dossier, user: user_2)
+    contact_2 = FactoryBot.create(:contact, user: user_2)
+    
+    facture1 = FactoryBot.create(:facture, state: :draft, emetteur: @user, dossier: @dossier, contact: @contact, user: @user)    
+    facture2 = FactoryBot.create(:facture, state: :draft, emetteur: user_2, dossier: dossier_2, contact: contact_2, user: user_2)    
+
+    facture1.complete!
+    facture2.complete!
+
+    assert_equal 1, facture1.numero
+    assert_equal 1, facture2.numero
+  end
+
 end
