@@ -157,17 +157,20 @@ class FactureTest < ActiveSupport::TestCase
   end
 
   test "vérifie que le facture payée en partie a un payment_status égal à partial" do
+    @facture.complete!
+
     payment = FactoryBot.create(
                 :payment, 
                 facture: @facture, 
                 user: @user,
                 amount_cents: @facture.total_ttc_cents - 1)
 
+    assert_equal 1, @facture.payments.count            
     assert_equal "partial", @facture.payment_status
   end
 
   test "vérifie que le facture non payée a un payment_status égal à unpaid" do
-    assert_equal "unpaid", @facture.payment_status
+    assert_equal "billable", @facture.payment_status
   end
 
   test "vérifie qu'à la création de la facture, les conditions_paiement et conditions_generales sont ceux de facturation_setting" do

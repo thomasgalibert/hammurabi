@@ -3,8 +3,19 @@ fr:
     list: "Liste des paiements"
     buttons:
       new: "Nouveau paiement"
+    flash:
+      created: "Le paiement a été créé avec succès."
+      updated: "Le paiement a été mis à jour avec succès."
+      destroyed: "Le paiement a été supprimé avec succès."
   activerecord:
     attributes:
       payment:
         issued_date: "Date d'encaissement"
         amount: "Montant"
+        mean: "Moyen de paiement"
+        means:
+          check: "Chèque"
+          cash: "Espèces"
+          wire: "Virement"
+          card: "Carte bancaire"
+          other: "Autre"

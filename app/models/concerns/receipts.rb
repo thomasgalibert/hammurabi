@@ -2,19 +2,21 @@ module Receipts
   extend ActiveSupport::Concern
 
   included do
-    before_save :update_payment_status
+    after_save :update_payment_status
   end
 
   def update_payment_status
-    if payments.empty?
-      self.payment_status = "unpaid"
+    if self.payments.empty?
+      new_status = "unpaid"
     elsif total_ttc_cents == payments.sum(&:amount_cents)
-      self.payment_status = "paid"
+      new_status = "paid"
     elsif total_ttc_cents > payments.sum(&:amount_cents)
-      self.payment_status = "partial"
+      new_status = "partial"
     else
-      self.payment_status = "unpaid"
+      new_status = "unpaid"
     end
+
+    self.update(payment_status: new_status) if self.payment_status != new_status
   end
 
   def paid?

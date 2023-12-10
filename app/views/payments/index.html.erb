@@ -1,3 +1,8 @@
-<%= turbo_frame_tag "#{@facture.id}_payments" do %>
-  <%= render "header", facture: @facture %>
+<%= turbo_frame_tag "#{@facture.id}_payments_list" do %>
+  <div class="bg-white px-10 pb-10 pt-16 rounded-lg border relative mt-10">
+    <%= render "header", facture: @facture %>
+    <ul class="grid grid-cols-4 gap-4" id="<%= "#{@facture.id}_payments" %>">
+      <%= render @facture.payments %>
+    </ul>
+  </div>
 <% end %>

@@ -97,7 +97,7 @@ module Facturation
   end 
 
   def verifier_si_modifiable
-    if self.achived?
+    if self.achived? && !mise_a_jour_paiement_status_uniquement?
       errors.add(:base, "Cette facture est verrouillée et ne peut plus être modifiée.")
     end
   end
@@ -121,6 +121,10 @@ module Facturation
 
   def update_dossier_state
     self.dossier.update_state
+  end
+
+  def mise_a_jour_paiement_status_uniquement?
+    self.changed == ['payment_status']
   end
 
 end
