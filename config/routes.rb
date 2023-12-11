@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  draw :contacts
+  draw :searchs
   draw :settings
   draw :factures
   draw :dashboard

@@ -76,6 +76,10 @@ module Facturation
     self.total_ttc_cents = lignes.sum(&:total_ttc_cents)
   end
 
+  def total_payments
+    payments.sum(&:amount)
+  end
+
   private
 
   def date_posterieure_a_la_derniere_facture

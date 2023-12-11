@@ -30,6 +30,8 @@ fr:
       destroyed: "Le contact a été supprimé avec succès."
       added: "Le contact a été ajouté au dossier avec succès."
       removed: "Le contact a été retiré du dossier avec succès."
+    list_dossiers: "Liste des dossiers"
+    list_factures: "Liste des factures"
     new:
       legend: "Nouveau contact dans le dossier"
       choose: "Choisissez un contact existant"

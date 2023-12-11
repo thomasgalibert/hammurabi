@@ -29,3 +29,5 @@ fr:
       dossier:
         created_at: "Créé le"
         reference: "Référence"
+        name: "Nom du dossier"
+        state: "Statut"

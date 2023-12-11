@@ -263,6 +263,10 @@ GEM
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
     rake (13.1.0)
+    ransack (4.1.1)
+      activerecord (>= 6.1.5)
+      activesupport (>= 6.1.5)
+      i18n
     rdoc (6.6.0)
       psych (>= 4.0.0)
     redis (5.0.8)
@@ -362,6 +366,7 @@ DEPENDENCIES
   prawn-table
   puma (>= 5.0)
   rails (~> 7.1.2)
+  ransack
   redis (>= 4.0.1)
   requestjs-rails
   selenium-webdriver
@@ -468,6 +473,7 @@ CHECKSUMS
   rails-html-sanitizer (1.6.0) sha256=86e9f19d2e6748890dcc2633c8945ca45baa08a1df9d8c215ce17b3b0afaa4de
   railties (7.1.2) sha256=f0394dc4ff065aafe6c87103ad3188a54268d811cb1549e4ac8bc56f71581858
   rake (13.1.0) sha256=be6a3e1aa7f66e6c65fa57555234eb75ce4cf4ada077658449207205474199c6
+  ransack (4.1.1) sha256=01db200ede29be9f147a2c433eb0005b36df24bc7f8b624a6eeea62d50788901
   rdoc (6.6.0) sha256=10bff3fb916454ad47afa2b2471b2154896ff65bb808b616f221d22da67dd3de
   redis (5.0.8) sha256=3b770ea597850b26d6a9718fa184241e53e6c8a7ae0486ee8bfaefd29f26f3d8
   redis-client (0.18.0) sha256=a93bd1f99c024bb7f8e21eff7bdbcb16d85dbcbfe3f6ed051239e38d4c127704

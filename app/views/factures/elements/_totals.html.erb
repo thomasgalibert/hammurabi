@@ -21,4 +21,9 @@
         <div class="text-lg font-medium text-black"><%= at(facture, :total_ttc) %></div>
         <div class="text-lg font-medium text-black font-mono"><%= number_to_currency facture.total_ttc %></div>
     </div>
+
+    <div class="flex justify-between pt-1">
+        <div class="text-sm font-medium text-stone-600"><%= at(facture, :total_due) %></div>
+        <div class="text-sm font-medium text-stone-600 font-mono"><%= number_to_currency facture.total_ttc - facture.total_payments %></div>
+    </div>
 </div>

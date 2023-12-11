@@ -16,6 +16,12 @@
     <% end %>
   </div>
 
+  <div class="mt-1">
+    <%= link_to facture.contact.name_with_company, 
+        dashboard_contact_path(facture.contact), 
+        class: "text-sky-600 underline" %>
+  </div>
+
   <div class="mt-3 flex justify-between items-center">
     <%= k(facture).badge %>
     <%= k(facture).payment_badge %>

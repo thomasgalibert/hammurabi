@@ -78,3 +78,4 @@ fr:
         client_vat_number: "N° de TVA"
         email: "Email"
         phone_number: "T."
+        payment_status: "Statut du paiement"

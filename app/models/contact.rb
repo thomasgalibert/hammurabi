@@ -23,8 +23,11 @@ class Contact < ApplicationRecord
   has_person_name
   has_many :dossier_contacts, dependent: :destroy
   has_many :dossiers, through: :dossier_contacts
+  has_many :factures
 
   KINDS = ["customer", "witness", "partner", "other"]
+
+  scope :customers, -> { where(kind: "customer") }
 
   validates :kind, presence: true
   validates :kind, inclusion: { in: KINDS }
@@ -40,5 +43,13 @@ class Contact < ApplicationRecord
 
   def is_main?
     DossierContact.find_by(contact_id: self.id).is_main
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["company_name", "last_name"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    []
   end
 end

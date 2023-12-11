@@ -39,6 +39,10 @@ class Dossier < ApplicationRecord
   def contact_principal
     main_dossier_contact.present? ? main_dossier_contact.contact : nil
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["name"]
+  end
   
   before_save :update_viewed_at, :create_reference
 

@@ -1,0 +1,12 @@
+<h1 class="text-4xl font-black border-b mb-4 pb-4"><%= @contact.name_with_company %></h1>
+
+<h2 class="text-xl text-stone-600 mb-1"><%= t('contacts.list_dossiers') %></h2>
+<%= render TableComponent.new(
+      objects: @contact.dossiers.order(:name), 
+      list_attributes: %i(state name created_at),
+      class_name: "Dossier",
+      actions_controller: "/dossiers")
+%>
+
+<h2 class="text-xl text-stone-600 mb-1 mt-6"><%= t('contacts.list_factures') %></h2>
+<%= render "factures/table", factures: @contact.factures.order(created_at: :desc) %>
