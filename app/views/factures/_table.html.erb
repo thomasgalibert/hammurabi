@@ -1,44 +1,46 @@
-<table class="min-w-full divide-y divide-gray-300">
-  <thead class="bg-gray-50">
-    <tr>
-      <% %i(payment_status date dossier description total_ttc).each do |attribute| %>
-        <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-          <%= I18n.t("activerecord.attributes.facture.#{attribute}") %>
-        </th>
-      <% end %>
-      <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><th>
-    </tr>
-  </thead>
-
-  <tbody class="divide-y divide-gray-200 bg-white">
-    <% factures.each do |facture| %> 
+<div class="overflow-x-auto">
+  <table class="min-w-full divide-y divide-gray-300">
+    <thead class="bg-gray-50">
       <tr>
-        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-          <%= k(facture).payment_badge %>
-        </td>
-
-        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-          <%= l facture.date %>
-        </td>
-
-        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-          <%= facture.dossier.name %>
-        </td>
-
-        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-          <%= facture.description %>
-        </td>
-
-        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-          <span class="font-mono text-black"><%= number_to_currency facture.total_ttc %></span>
-        </td>
-
-        <td class="px-3 py-4 whitespace-nowrap text-right text-sm font-medium">
-          <%= link_to t('buttons.show'), 
-              dossier_facture_path(facture.dossier, facture), 
-              class: 'text-indigo-600 hover:text-indigo-900' %>
-        </td>
+        <% %i(payment_status date dossier description total_ttc).each do |attribute| %>
+          <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+            <%= I18n.t("activerecord.attributes.facture.#{attribute}") %>
+          </th>
+        <% end %>
+        <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody class="divide-y divide-gray-200 bg-white">
+      <% factures.each do |facture| %> 
+        <tr>
+          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+            <%= k(facture).payment_badge %>
+          </td>
+
+          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+            <%= l facture.date %>
+          </td>
+
+          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+            <%= facture.dossier.name %>
+          </td>
+
+          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+            <%= facture.description %>
+          </td>
+
+          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+            <span class="font-mono text-black"><%= number_to_currency facture.total_ttc %></span>
+          </td>
+
+          <td class="px-3 py-4 whitespace-nowrap text-right text-sm font-medium">
+            <%= link_to t('buttons.show'), 
+                dossier_facture_path(facture.dossier, facture), 
+                class: 'text-indigo-600 hover:text-indigo-900' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

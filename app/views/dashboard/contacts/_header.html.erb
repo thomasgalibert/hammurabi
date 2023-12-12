@@ -1,0 +1,9 @@
+<div class="flex justify-between items-center border-b mb-4 pb-4">
+  <div class="flex items-center">
+    <span class="font-normal text-stone-600 text-base inline-block mr-6">
+      &larr; <%= link_to t('buttons.back_list'), dashboard_contacts_path %>
+    </span>
+    <h1 class="text-xl sm:text-4xl font-black "><%= contact.name_with_company %></h1>
+  </div>
+  <div><%= render LinkComponent.new(name: t('buttons.edit'), url: edit_dashboard_contact_path(contact), color: "emerald") %></div>
+</div>

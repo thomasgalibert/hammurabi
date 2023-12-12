@@ -1,0 +1,87 @@
+<%= form_with model: contact, url: dashboard_contact_path(contact), class: "max-w-full" do |form| %>
+  <%= render "shared/errors", object: form.object %>
+  
+  <fieldset class="bg-white border rounded-md p-6 relative mt-10">
+    
+    <div class="grid grid-cols-2 sm:gap-4 mb-6">
+      <div class="flex flex-col space-y-2 mb-0 col-span-2 sm:col-span-1">
+        <%= form.label :last_name, class: "block text-sm font-medium leading-6 text-stone-900" %>
+        <%= form.text_field :last_name, autofocus: true,
+            class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+      </div>
+
+      <div class="flex flex-col space-y-2 mb-0 col-span-2 sm:col-span-1">
+        <%= form.label :first_name, class: "block text-sm font-medium leading-6 text-stone-900" %>
+        <%= form.text_field :first_name,
+            class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+      </div>
+    </div>
+
+    <div class="flex flex-col space-y-2 mb-6">
+      <%= form.label :company_name, class: "block text-sm font-medium leading-6 text-stone-900" %>
+      <%= form.text_field :company_name,
+          class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+    </div>
+
+    
+    <div class="grid grid-cols-2 sm:gap-4 mb-6">
+      <div class="flex flex-col space-y-2 mb-6 col-span-2 sm:col-span-2">
+        <%= form.label :kind, class: "block text-sm font-medium leading-6 text-stone-900" %>
+        <%= form.select :kind, Contact::KINDS.collect { |k| [t("activerecord.attributes.contact.kinds.#{k}"), k] }, {}, class: "mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 sm:gap-4 mb-6">
+      <div class="flex flex-col space-y-2 mb-0 col-span-2 sm:col-span-1">
+        <%= form.label :business_number, class: "block text-sm font-medium leading-6 text-stone-900" %>
+        <%= form.text_field :business_number,
+            class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+      </div>
+
+      <div class="flex flex-col space-y-2 mb-0 col-span-2 sm:col-span-1">
+        <%= form.label :vat_number, class: "block text-sm font-medium leading-6 text-stone-900" %>
+        <%= form.text_field :vat_number,
+            class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+      </div>
+    </div>
+
+
+    <div class="grid grid-cols-3 sm:gap-4 mb-6">
+      <div class="flex flex-col space-y-2 mb-0 col-span-3 sm:col-span-1">
+        <%= form.label :phone, class: "block text-sm font-medium leading-6 text-stone-900" %>
+        <%= form.phone_field :phone,
+            class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+      </div>
+
+      <div class="flex flex-col space-y-2 mb-0 col-span-3 sm:col-span-2">
+        <%= form.label :email, class: "block text-sm font-medium leading-6 text-stone-900" %>
+        <%= form.email_field :email,
+            class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+      </div>
+    </div>
+
+    <div class="flex flex-col space-y-2 mb-6">
+      <%= form.label :address, class: "block text-sm font-medium leading-6 text-stone-900" %>
+      <%= form.text_area :address, class: "mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+    </div>
+
+    <div class="grid grid-cols-12 sm:gap-4 mb-6">
+      <div class="flex flex-col space-y-2 mb-6 col-span-1 sm:col-span-3">
+        <%= form.label :zip_code, class: "block text-sm font-medium leading-6 text-stone-900" %>
+        <%= form.text_field :zip_code, class: "mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+      </div>
+
+      <div class="flex flex-col space-y-2 mb-6 col-span-1 sm:col-span-4">
+        <%= form.label :city, class: "block text-sm font-medium leading-6 text-stone-900" %>
+        <%= form.text_field :city, class: "mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+      </div>
+
+      <div class="flex flex-col space-y-2 mb-6 col-span-1 sm:col-span-5">
+        <%= form.label :country, class: "block text-sm font-medium leading-6 text-stone-900" %>
+        <%= form.country_select :country, {priority_countries: ["FR","ES","DE"], sort_provided: false}, class: "mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+      </div>
+    </div>
+
+    <%= form.submit class: "mt-10 flex w-full justify-center rounded-md bg-emerald-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600" %>
+  </fieldset>
+<% end %>

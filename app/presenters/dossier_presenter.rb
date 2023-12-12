@@ -16,4 +16,10 @@ class DossierPresenter < Keynote::Presenter
 
     content_tag :span, t("dossiers.states.#{dossier.state}"), class: badge_class
   end
+
+  def state = badge
+  def name = content_tag(:span, dossier.name, class: "font-semibold text-lg")
+  def created_at  = I18n.l(dossier.created_at, format: :only_date)
+  def url = dossier_path(dossier)
+  def description = truncate(dossier.description)
 end

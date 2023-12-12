@@ -1,12 +1,25 @@
-<h1 class="text-4xl font-black border-b mb-4 pb-4"><%= @contact.name_with_company %></h1>
+<%= render 'header', contact: @contact %>
 
-<h2 class="text-xl text-stone-600 mb-1"><%= t('contacts.list_dossiers') %></h2>
-<%= render TableComponent.new(
-      objects: @contact.dossiers.order(:name), 
-      list_attributes: %i(state name created_at),
-      class_name: "Dossier",
-      actions_controller: "/dossiers")
-%>
+<div class="grid grid-cols-3 gap-4">
+  <div class="col-span-3 sm:col-span-1">
+    <%= render "resume", contact: @contact %>
+  </div>
 
-<h2 class="text-xl text-stone-600 mb-1 mt-6"><%= t('contacts.list_factures') %></h2>
-<%= render "factures/table", factures: @contact.factures.order(created_at: :desc) %>
+  <div class="col-span-3 sm:col-span-2">
+    <h2 class="text-xl text-stone-600 mb-1"><%= t('contacts.list_dossiers') %></h2>
+    <%= render TableComponent.new(
+          objects: @contact.dossiers.order(:name),
+          list_attributes: %i(state name created_at),
+          class_name: "Dossier",
+          url_method: :url)
+    %>
+    
+    <h2 class="text-xl text-stone-600 mb-1 mt-6"><%= t('contacts.list_factures') %></h2>
+    <%= render TableComponent.new(
+          objects: @contact.factures.order(created_at: :desc),
+          list_attributes: %i(payment_badge numero dossier description date),
+          class_name: "Facture",
+          url_method: :dossier_url)
+    %>
+  </div>
+</div>

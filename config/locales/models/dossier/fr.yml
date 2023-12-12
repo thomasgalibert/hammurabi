@@ -31,3 +31,5 @@ fr:
         reference: "Référence"
         name: "Nom du dossier"
         state: "Statut"
+        badge: "Statut"
+        description: "Description"

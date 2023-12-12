@@ -1,0 +1,14 @@
+<h1 class="text-xl font-semibold text-stone-500">
+  <%= t('contacts.list') %> <%= current_user.firm_setting.legal_name %>
+</h1>
+
+<div class="my-6"><%== pagy_nav @pagy %></div>
+
+<%= render TableComponent.new(
+      objects: @contacts,
+      list_attributes: %i(last_name first_name company_name badge created_at),
+      class_name: "Contact",
+      url_method: :url)
+%>
+
+<div class="my-6"><%== pagy_nav @pagy %></div>

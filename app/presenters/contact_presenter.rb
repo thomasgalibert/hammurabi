@@ -25,6 +25,13 @@ class ContactPresenter < Keynote::Presenter
     contact.name_with_company
   end
 
+  def international_phone = contact.phone
+  def last_name = contact.last_name
+  def first_name = contact.first_name
+  def company_name = contact.company_name
+  def created_at = I18n.l(contact.created_at, format: :short)
+  def url = dashboard_contact_path(contact)
+
   private
 
   def contact_class(contact)

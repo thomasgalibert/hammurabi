@@ -1,30 +1,30 @@
-<table class="min-w-full divide-y divide-gray-300">
-  <thead class="bg-gray-50">
-    <tr>
-      <% @list_attributes.each do |attribute| %>
-        <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-          <%= I18n.t("activerecord.attributes.#{@class_name.underscore}.#{attribute}") %>
-        </th>
-      <% end %>
-      <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><th>
-    </tr>
-  </thead>
-
-  <tbody class="divide-y divide-gray-200 bg-white">
-    <% @objects.each do |object| %> 
+<div class="overflow-x-auto">
+  <table class="min-w-full divide-y divide-gray-300">
+    <thead class="bg-gray-50">
       <tr>
         <% @list_attributes.each do |attribute| %>
-          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-            <%= display_attribute object, attribute %>
-          </td>
+          <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+            <%= I18n.t("activerecord.attributes.#{@class_name.underscore}.#{attribute}") %>
+          </th>
         <% end %>
-
-        <td class="px-3 py-4 whitespace-nowrap text-right text-sm font-medium">
-          <%= link_to t('buttons.show'), 
-              url_for(controller: @actions_controller, action: :show, id: object.id), 
-              class: 'text-indigo-600 hover:text-indigo-900' %>
-        </td>
+        <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody class="divide-y divide-gray-200 bg-white">
+      <% @objects.each do |object| %> 
+        <tr>
+          <% @list_attributes.each do |attribute| %>
+            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+              <%= display_attribute object, attribute %>
+            </td>
+          <% end %>
+
+          <td class="px-3 py-4 whitespace-nowrap text-right text-sm font-medium">
+            <%= render LinkComponent.new(name: t('buttons.show'), url: k(object).send(@url_method), color: "amber") %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

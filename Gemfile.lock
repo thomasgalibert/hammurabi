@@ -212,6 +212,7 @@ GEM
     nokogiri (1.15.5)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
+    pagy (6.2.0)
     pdf-core (0.9.0)
     pg (1.5.4)
     prawn (2.4.0)
@@ -361,6 +362,7 @@ DEPENDENCIES
   keynote
   money-rails
   name_of_person
+  pagy (~> 6.2)
   pg (~> 1.1)
   prawn
   prawn-table
@@ -456,6 +458,7 @@ CHECKSUMS
   net-smtp (0.4.0) sha256=2d7eb8de289ba8dce3f0d436ee40b9366bea28354c5ba183c8ab2ec05139a3e7
   nio4r (2.7.0) sha256=9586a685eca8246d6406e712a525e705d15bb88f709d78fc3f141e864df97276
   nokogiri (1.15.5) sha256=22448ca35dbcbdcec60dbe25ccf452b685a5436c28f21b2fec2e20917aba9100
+  pagy (6.2.0) sha256=6dd5a71077faaefee1d79c757e8ed974c6eba4303a2d743f46d06abd6e8f876f
   pdf-core (0.9.0) sha256=4f368b2f12b57ec979872d4bf4bd1a67e8648e0c81ab89801431d2fc89f4e0bb
   pg (1.5.4) sha256=04f7b247151c639a0b955d8e5a9a41541343f4640aa3c2bdf749a872c339d25d
   prawn (2.4.0) sha256=82062744f7126c2d77501da253a154271790254dfa8c309b8e52e79bc5de2abd

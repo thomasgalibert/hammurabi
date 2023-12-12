@@ -1,4 +1,5 @@
 class FacturePresenter < Keynote::Presenter
+  include ApplicationHelper
   presents :facture
 
   def badge
@@ -27,6 +28,12 @@ class FacturePresenter < Keynote::Presenter
 
     content_tag :span, t("factures.payment_statuses.#{facture.payment_status}"), class: badge_class
   end
+
+  def description = facture.description
+  def created_at = I18n.l(facture.created_at, format: :short)
+  def date = I18n.l(facture.created_at, format: :short)
+  def dossier = facture.dossier.name
+  def dossier_url = dossier_facture_path(facture.dossier, facture)
 
   def numero
     if facture.achived?

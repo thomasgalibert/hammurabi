@@ -235,6 +235,7 @@ fr:
     delete: "supprimer"
     download: "télécharger"
     show: "afficher"
+    back_list: "retour à la liste"
   tabs:
     firm_setting: "Paramètres du cabinet"
     facturation_setting: "Paramètres de facturation"
