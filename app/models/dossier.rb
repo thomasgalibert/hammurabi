@@ -45,6 +45,7 @@ class Dossier < ApplicationRecord
   end
   
   before_save :update_viewed_at, :create_reference
+  before_validation :update_state_pending_if_nil
 
   def update_state
     dossier_factures = self.factures.nodraft
@@ -74,6 +75,10 @@ class Dossier < ApplicationRecord
     ref_string = SecureRandom.hex(4).upcase
     date_prefix = Date.today.strftime("%Y%m")
     self.reference = "#{date_prefix}-#{ref_string}" if self.reference.blank?
+  end
+
+  def update_state_pending_if_nil
+    self.state = 'pending' if self.state.blank?
   end
 
   

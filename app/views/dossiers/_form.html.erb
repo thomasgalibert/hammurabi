@@ -1,0 +1,35 @@
+<%= form_with model: dossier, class: "max-w-3xl" do |form| %>
+  <%= render "shared/errors", object: form.object %>
+  
+  <fieldset class="bg-white border rounded-md p-6 relative mt-10">
+    <legend class="absolute -top-10 text-stone-500 text-lg">
+      <span class="font-semibold"><%= dossier.new_record? ? t('dossiers.legends.new') : t('dossiers.legends.edit') %> </span>
+    </legend>
+
+    <div class="flex flex-col space-y-2 mb-6">
+      <%= form.label :name, class: "block text-sm font-medium leading-6 text-stone-900" %>
+      <%= form.text_field :name, autofocus: true,
+          class: "block w-full rounded-md border-0 py-1.5 sm:py-3 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-xl sm:leading-6" %>
+    </div>
+
+    <div class="flex flex-col space-y-2 mb-6">
+      <%= form.label :description, class: "block text-sm font-medium leading-6 text-stone-900" %>
+      <%= form.text_area :description, class: "mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+    </div>
+
+    <div class="flex flex-col space-y-2 mb-6">
+      <%= form.label :category, class: "block text-sm font-medium leading-6 text-stone-900" %>
+      <%= form.select :category, translate_options_for_select(dossier, :categories, Dossier::CATEGORIES), {},
+          class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+    </div>
+
+    <div class="flex flex-col space-y-2 mb-6">
+      <%= form.label :court, class: "block text-sm font-medium leading-6 text-stone-900" %>
+      <%= form.text_field :court,
+          class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+    </div>
+
+
+    <%= form.submit class: "mt-10 flex w-full justify-center rounded-md bg-emerald-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600" %>
+  </fieldset>
+<% end %>

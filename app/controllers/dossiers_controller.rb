@@ -47,7 +47,7 @@ class DossiersController < ApplicationController
   end
 
   def dossier_params
-    params.require(:dossier).permit(:name, :description)
+    params.require(:dossier).permit(:name, :description, :category, :court)
   end
 
   def update_viewed_at

@@ -6,11 +6,14 @@ fr:
       destroyed: "Dossier supprimé avec succès."
     list: "Derniers dossiers visités"
     add: "Nouveau dossier"
+    legends:
+      new: "Nouveau dossier"
+      edit: "Modifier le dossier"
     actions:
       email: "Email"
       call: "Appeler"
     states:
-      pending: "En cours"
+      pending: "Pas encore facturé"
       archived: "Archivé"
       partial: "Partiellement payé"
       paid: "Payé"
@@ -33,3 +36,13 @@ fr:
         state: "Statut"
         badge: "Statut"
         description: "Description"
+        category: "Catégorie"
+        court: "Juridiction"
+        categories:
+          civil: "Civil"
+          penal: "Pénal"
+          criminal: "Pénal"
+          work: "Social"
+          public: "Public"
+          business: "Commercial"
+          family: "Famille"

@@ -1,4 +1,4 @@
-<div class="relative flex items-center z-[100]" 
+<div class="relative flex items-center" 
     data-controller="search"
     data-search-url-value="<%= searchs_globals_path %>"
     data-action="search:click:outside->search#close"
@@ -15,7 +15,7 @@
     <kbd class="inline-flex items-center rounded border border-gray-200 px-1 font-sans text-xs text-gray-400">⌘K</kbd>
   </div>
 
-  <ul data-search-target="results" 
+  <ul data-search-target="results z-[100]" 
        class="bg-amber-50 absolute top-10 w-full rounded-md shadow-sm">
   </ul>
 </div>
