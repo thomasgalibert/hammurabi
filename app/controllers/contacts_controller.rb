@@ -1,5 +1,6 @@
 class ContactsController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_firm_setting_is_complete
   before_action :set_dossier, only: [:new, :create, :show, :edit, :update, :destroy, :new_existing, :add_existing, :remove]
   before_action :set_contact, only: [:show, :edit, :update, :destroy, :remove]
 

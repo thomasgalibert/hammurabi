@@ -31,4 +31,8 @@ class ApplicationController < ActionController::Base
     Current.user = nil
     reset_session
   end
+
+  def check_firm_setting_is_complete
+    redirect_to settings_firm_setting_path, alert: t('firm_setting.not_complete') unless current_user.firm_setting.is_complete? && current_user.firm_setting.is_complete?
+  end
 end

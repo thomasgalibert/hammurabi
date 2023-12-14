@@ -1,5 +1,6 @@
 class NotesController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_firm_setting_is_complete
   before_action :set_dossier, only: [:index, :new, :create, :show, :edit, :update, :destroy]
   before_action :set_note, only: [:show, :edit, :update, :destroy]
 

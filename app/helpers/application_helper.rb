@@ -19,4 +19,22 @@ module ApplicationHelper
   def display_font_awesome_icon(icon, additional_classes = nil)
     "<i class='#{icon} #{additional_classes}'></i>".html_safe
   end
+
+  def check_params(q, search_matcher, value)
+    if q.present? && q.send(search_matcher).present?
+      q.send(search_matcher).include?(value)
+    else
+      false
+    end
+  end
+
+  def display_period(date, period:)
+    case period
+    when "month"
+      I18n.l(date, format: :month_and_year)
+    else
+      I18n.l(date, format: :month_and_year)
+    end
+  end
+
 end

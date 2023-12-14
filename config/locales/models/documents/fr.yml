@@ -5,4 +5,10 @@ fr:
       name: "Nom de la pièce"
   activerecord:
     attributes:
-      name: "nom de la pièce"
+      document:
+        name: "Nom de la pièce"
+        dossier: "Dossier"
+        created_at: "Créé le"
+        due_at: "Date d'échéance"
+        format: "Type de fichier"
+        download: "Télécharger"

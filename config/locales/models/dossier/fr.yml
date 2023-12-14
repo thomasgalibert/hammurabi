@@ -5,6 +5,7 @@ fr:
       updated: "Dossier mis à jour avec succès."
       destroyed: "Dossier supprimé avec succès."
     list: "Derniers dossiers visités"
+    list_all: "Liste de tous les dossiers"
     add: "Nouveau dossier"
     legends:
       new: "Nouveau dossier"
@@ -25,7 +26,7 @@ fr:
       events: "Autres événements"
       documents: "Liste des pièces"
       contacts: "Contacts"
-      conventions: "Conventions"
+      conventions: "Conventions & Missions"
       factures: "Factures"
   activerecord:
     attributes:

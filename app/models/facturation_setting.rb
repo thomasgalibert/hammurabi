@@ -35,4 +35,8 @@ class FacturationSetting < ApplicationRecord
     end
   end
 
+  def is_complete?
+    self.tva_standard.present? && self.first_invoice_number.present?
+  end
+
 end

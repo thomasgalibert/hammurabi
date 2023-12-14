@@ -6,6 +6,13 @@ fr:
     buttons:
       edit: "modifier"
       delete: "supprimer"
+  activerecord:
+    attributes:
+      todo:
+        name: "Nom de la tâche"
+        dossier: "Dossier"
+        created_at: "Créé le"
+        due_at: "Date d'échéance"
   helpers:
     submit:
       create: "ajouter"

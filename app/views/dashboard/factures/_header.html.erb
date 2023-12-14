@@ -1,0 +1,7 @@
+<nav class="mt-4 text-stone-600">
+  <ul class="flex justify-center items-center space-x-4">
+    <li><%= link_to "<<", dashboard_factures_path(start_date: (@start_date - 1).beginning_of_month) %></li>
+    <li><%= display_period(@start_date, period: @period) %></li>
+    <li><%= link_to ">>", dashboard_factures_path(start_date: (@end_date + 1)) %></li>
+  </ul>
+</nav>

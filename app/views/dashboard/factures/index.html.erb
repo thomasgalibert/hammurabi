@@ -1,0 +1,38 @@
+<h1 class="text-xl font-semibold text-stone-500 text-center"><%= t('factures.dashboard_title') %></h1>
+<%= render "header" %>
+
+<div class="relative isolate overflow-hidden">
+  <div class="border-b border-b-gray-900/10 lg:border-t lg:border-t-gray-900/5 mt-10">
+    <dl class="mx-auto grid max-w-7xl grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:px-2 xl:px-0">
+  
+      <div class="flex items-baseline flex-wrap justify-between gap-y-2 gap-x-4 border-t border-r border-gray-900/5 px-4 py-10 sm:px-6 lg:border-t-0 xl:px-8">
+        <dt class="text-sm font-medium leading-6 text-gray-500">Total facturé HT</dt>
+        <dd class="text-xs font-medium text-gray-700">+/- --%</dd>
+        <dd class="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-gray-900">
+          <%= number_to_currency current_user.factures.where(date: @start_date..@end_date).sum(&:total_ht) %>
+        </dd>
+      </div>
+  
+      <div class="flex items-baseline flex-wrap justify-between gap-y-2 gap-x-4 border-t border-gray-900/5 px-4 py-10 sm:px-6 lg:border-t-0 xl:px-8">
+        <dt class="text-sm font-medium leading-6 text-gray-500">Total encaissé</dt>
+        <dd class="text-xs font-medium text-gray-700">+/- --%</dd>
+        <dd class="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-gray-900">
+          <%= number_to_currency current_user.payments.where(issued_date: @start_date..@end_date).sum(&:amount) %>
+        </dd>
+      </div>
+  
+      <div class="flex items-baseline flex-wrap justify-between gap-y-2 gap-x-4 border-t border-r-0 border border-gray-900/5 px-4 py-10 sm:px-6 lg:border-t-0 xl:px-8">
+        <dt class="text-sm font-medium leading-6 text-gray-500">Nombre de nouveaux dossiers</dt>
+        <dd class="text-xs font-medium text-gray-700">+/- --%</dd>
+        <dd class="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-gray-900">
+          <%= current_user.dossiers.where(created_at: @start_date..@end_date).count %>
+        </dd>
+      </div>
+  
+    </dl>
+  </div>
+
+  <div class="absolute left-0 top-full -z-10 mt-96 origin-top-left translate-y-40 -rotate-90 transform-gpu opacity-20 blur-3xl sm:left-1/2 sm:-ml-96 sm:-mt-10 sm:translate-y-0 sm:rotate-0 sm:transform-gpu sm:opacity-50" aria-hidden="true">
+    <div class="aspect-[1154/678] w-[72.125rem] bg-gradient-to-br from-[#FF80B5] to-[#9089FC]" style="clip-path: polygon(100% 38.5%, 82.6% 100%, 60.2% 37.7%, 52.4% 32.1%, 47.5% 41.8%, 45.2% 65.6%, 27.5% 23.4%, 0.1% 35.3%, 17.9% 0%, 27.7% 23.4%, 76.2% 2.5%, 74.2% 56%, 100% 38.5%)"></div>
+  </div>
+</div>

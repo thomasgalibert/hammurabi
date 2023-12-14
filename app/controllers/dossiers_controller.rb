@@ -1,5 +1,6 @@
 class DossiersController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_firm_setting_is_complete
   before_action :set_dossier, only: [:show, :edit, :update, :destroy]
   before_action :update_viewed_at, only: [:show, :edit]
 

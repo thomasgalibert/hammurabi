@@ -3,4 +3,6 @@ namespace :dashboard do
   resources :contacts
   resources :dossiers
   resources :factures
+  resources :todos
+  resources :documents
 end

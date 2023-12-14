@@ -19,7 +19,7 @@
                  locals: {can_edit: false, show_dossier: true} %>
                  
       <li class="flex items-center justify-end text-xs gap-x-3 py-2 pt-4">
-        <%= link_to "voir toutes les tâches &rarr;".html_safe, '#' %>
+        <%= link_to "voir toutes les tâches &rarr;".html_safe, dashboard_todos_path %>
       </li>
     </ul>
   </div>
@@ -30,7 +30,7 @@
     <ul role="list" class="divide-y divide-gray-100 bg-white p-4 rounded-md border">
       <%= render DocumentComponent.with_collection(current_user.documents.lasts(5), show_dossier: true) %>
       <li class="flex items-center justify-end text-xs gap-x-3 py-2 pt-4">
-        <%= link_to "voir toutes les documents &rarr;".html_safe, '#' %>
+        <%= link_to "voir toutes les documents &rarr;".html_safe, dashboard_documents_path %>
       </li>
     </ul>
   </div>

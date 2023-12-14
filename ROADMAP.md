@@ -17,18 +17,33 @@
 - [X] Mettre à jour les statuts des dossiers avec la nouvelle liste
 - [X] PDF de la facture
 - [X] Interface pour les paiements
-- [ ] Recherche globale dans les dossiers et contacts
-- [ ] Liste globale des contacts et des dossiers
+- [X] Recherche globale dans les dossiers et contacts
+- [X] Liste globale des contacts et des dossiers
+- [X] S'assurer que l'utilisateur a bien rempli les informations du cabinet et les paramètres de facturation
+- [X] Filtrer les dossiers par statuts
+- [X] Vue de toutes les tâches
+- [X] Vue de toutes les pièces
+- [ ] Dashboard finances
+
+## Factures
+
+- [ ] Permettre de rajouter des sections dans la facture
+- [ ] Grouper ou non les lignes de la facture dans les sections
 
 ## Récolte des pièces
 
-- [ ] Ajouter, modifier et supprimer une demande de pièces
 - [ ] Créer une page privée pour le dépôt des pièces par le client
 
 ## Collaboration
 
-- [ ] Ajouter, modifier et supprimer les collaborateurs
 - [ ] Page privée de consultation du dossier pour les non utilisateurs d'Hammurabi 
+- [ ] Ajouter, modifier et supprimer les collaborateurs
+
+## Gérer les emails entrants
+
+- [ ] Créer une adresse email à chaque utilisateur
+- [ ] Router les emails entrants en retrouvant le contact
+- [ ] Enregistrer les pièces jointes dans le dossier et le contenu de l'email
 
 ## Tests
 

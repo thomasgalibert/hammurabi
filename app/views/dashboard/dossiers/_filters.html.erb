@@ -1,0 +1,13 @@
+<%= search_form_for @q, url: dashboard_dossiers_path, class: "bg-white p-4 rounded-md border my-4" do |form| %>
+  <% Dossier::STATES.each do |state| %>
+    <label class="mr-4">
+      <span class="text-xs text-gray-600"><%= t "dossiers.states.#{state}" %></span>
+
+      <%= check_box_tag 'q[state_eq_any][]', 
+          state, 
+          check_params(@q, :state_eq_any, state), 
+          class: "rounded-full border border-amber-500",
+          onchange: "this.form.requestSubmit();" %>
+    </label>
+  <% end %>
+<% end %>

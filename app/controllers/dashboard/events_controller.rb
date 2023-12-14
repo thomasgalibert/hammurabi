@@ -1,5 +1,6 @@
 class Dashboard::EventsController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_firm_setting_is_complete
 
   def index
     start_date = params.fetch(:start_date, Date.today).to_date

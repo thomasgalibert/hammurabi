@@ -12,7 +12,7 @@
 # == Schema end
 
 class Dossier < ApplicationRecord
-  STATES = %w[pending partial unpaid paid archived]
+  STATES = %w[pending unpaid partial paid archived]
   CATEGORIES = %w[civil business criminal family work public]
 
   belongs_to :user
@@ -41,7 +41,11 @@ class Dossier < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    ["name"]
+    ["name", "state"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["contacts", "conventions", "documents", "dossier_contacts", "events", "factures", "notes", "todos", "user"]
   end
   
   before_save :update_viewed_at, :create_reference

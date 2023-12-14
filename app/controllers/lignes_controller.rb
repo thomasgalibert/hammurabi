@@ -1,6 +1,7 @@
 class LignesController < ApplicationController
   include Ordering
   before_action :authenticate_user!
+  before_action :check_firm_setting_is_complete
   before_action :set_facture
   before_action :set_ligne, only: [:sort, :edit, :update, :destroy]
 

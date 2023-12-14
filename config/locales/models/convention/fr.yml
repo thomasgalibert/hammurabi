@@ -3,19 +3,19 @@ fr:
     attributes:
       convention:
         title: "Titre"
-        date: "Date de la convention"
+        date: "Date du contrat"
         forfait: "Montant forfaitaire"
         variable: "Honoraires variables"
         fichier: "Fichier"
         reference: "Référence"
   conventions:
     flash:
-      created: "La convention a été créée avec succès."
-      updated: "La convention a été mise à jour avec succès."
-      destroyed: "La convention a été supprimée avec succès."
+      created: "Le contrat a été créée avec succès."
+      updated: "Le contrat a été mise à jour avec succès."
+      destroyed: "Le contrat a été supprimée avec succès."
     new:
-      legend: "Nouvelle convention dans le dossier"
+      legend: "Nouvelle convention ou mission dans le dossier"
     edit:
-      legend: "Modifier la convention du dossier"
+      legend: "Modifier le contrat"
     buttons:
-      new: "Nouvelle convention"
+      new: "Nouvelle convention ou mission"

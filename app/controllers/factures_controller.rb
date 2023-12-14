@@ -1,6 +1,7 @@
 class FacturesController < ApplicationController
   include Ordering
   before_action :authenticate_user!
+  before_action :check_firm_setting_is_complete
   before_action :set_dossier, only: [:index, :new, :show, :edit, :update, :destroy, :will_complete, :complete]
   before_action :set_facture, only: [:show, :edit, :update, :destroy, :complete, :will_complete]
   before_action :check_contact_existence, only: [:new]

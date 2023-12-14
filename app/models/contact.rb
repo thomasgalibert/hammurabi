@@ -31,7 +31,7 @@ class Contact < ApplicationRecord
 
   validates :kind, presence: true
   validates :kind, inclusion: { in: KINDS }
-  validates :last_name, :first_name, presence: true
+  validates :last_name, :first_name, :address, :zip_code, :city, :country, presence: true
 
   def name_with_company
     if self.company_name.present?

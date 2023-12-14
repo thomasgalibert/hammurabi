@@ -2,6 +2,7 @@ fr:
   firm_setting:
     title: "Informations du cabinet"
     subtitle: "Détails sur la structure juridique qui sert à la facturation des honoraires"
+    not_complete: "Veuillez renseiger toutes informations nécessaires à la facturation des honoraires"
     buttons:
       edit: "Modifier les informations"
       back_to_settings: "&larr; Retour aux paramètres"

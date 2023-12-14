@@ -1,6 +1,7 @@
 fr:
   factures:
     without_description: "-- Sans objet --"
+    dashboard_title: "Tableau de bord financier"
     buttons:
       new: "Nouvelle facture"
       edit_client_id: "Modifier le client"

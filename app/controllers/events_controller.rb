@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_firm_setting_is_complete
   before_action :set_event, only: [:edit, :update, :destroy]
 
   def create

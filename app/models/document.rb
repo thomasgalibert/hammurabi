@@ -33,4 +33,8 @@ class Document < ApplicationRecord
       "---"
     end
   end
+
+  def filename
+    self.fichier.blob.filename.to_s
+  end
 end
