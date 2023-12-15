@@ -23,10 +23,11 @@
 - [X] Filtrer les dossiers par statuts
 - [X] Vue de toutes les tâches
 - [X] Vue de toutes les pièces
-- [ ] Dashboard finances
+- [X] Dashboard finances
 
 ## Factures
 
+- [ ] Permettre de faire un avoir de la facture (avec un pourcentage ou un montant)
 - [ ] Permettre de rajouter des sections dans la facture
 - [ ] Grouper ou non les lignes de la facture dans les sections
 
@@ -36,6 +37,7 @@
 
 ## Collaboration
 
+- [ ] Accès privée pour les comptables (création model Accoutant avec même fonctions d'authentication mais relatif à un User)
 - [ ] Page privée de consultation du dossier pour les non utilisateurs d'Hammurabi 
 - [ ] Ajouter, modifier et supprimer les collaborateurs
 

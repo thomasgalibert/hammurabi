@@ -19,5 +19,6 @@
 class Facture < ApplicationRecord
   include Facturation
   include Receipts
+  include RefundSystem
   belongs_to :convention, optional: true
 end

@@ -226,4 +226,14 @@ class FactureTest < ActiveSupport::TestCase
     assert_equal 1, facture2.numero
   end
 
+  test "création d'une facture avoir avec un montant ou un pourcentage. Cette facture d'avoir doit suivre la numérotation des factures" do
+    Facture.delete_all
+    facture = FactoryBot.create(:facture, state: :draft, emetteur: @user, dossier: @dossier, contact: @contact, user: @user)
+    facture.complete!
+    avoir = facture.create_avoir(amount_cents: 1000)
+    
+    assert_equal 2, avoir.numero
+    assert_true avoir.is_refund?
+  end
+
 end
