@@ -6,8 +6,8 @@ fr:
           meeting: "Rendez-vous"
           signature: "Signature"
           hearing: "Audience"
-          conciliation hearing: "Audience de conciliation"
-          judgment hearing: "Audience de jugement"
+          conciliation_hearing: "Audience de conciliation"
+          judgment_hearing: "Audience de jugement"
           expertise: "Expertise"
           other: "Autre"
   events:

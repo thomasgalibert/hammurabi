@@ -1,3 +1,4 @@
+# Schema information for the Payment model. Defines database columns and their types.
 # -------------- SCHEMA INFORMATION --------------
 # t.bigint "facture_id", null: false
 # t.bigint "user_id", null: false
@@ -19,10 +20,18 @@ class Payment < ApplicationRecord
   validates :issued_date, :mean, presence: true
 
   MEANS = %w[card wire check cash other]
+  
+  def vat_evaluated_amount
+    ( amount_cents / 100 ) - ( amount_cents / (1 + rate_vat_of_facture) / 100.0 )
+  end
 
   private
 
   def update_facture_status
     facture.update_payment_status
+  end
+
+  def rate_vat_of_facture
+    (facture.total_tva / facture.total_ttc.to_f)
   end
 end

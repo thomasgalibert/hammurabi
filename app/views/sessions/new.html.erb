@@ -1,6 +1,6 @@
 <%= form_with url: session_path, class: "max-w-3xl" do |form| %>
   <fieldset class="bg-white border rounded-md p-6 relative mt-10">
-    <legend class="absolute -top-10 text-stone-500 text-lg"><%= t 'sessions.login_legend' %></legend>
+    <legend class="absolute -top-16 sm:-top-10 text-stone-500 text-lg"><%= t 'sessions.login_legend' %></legend>
     <div class="flex flex-col space-y-2 mb-6">
       <%= form.label :email, t('sessions.email'), class: "block text-sm font-medium leading-6 text-stone-900" %>
       <%= form.email_field :email, autofocus: true, class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>

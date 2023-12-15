@@ -30,6 +30,7 @@ module Facturation
     after_save :update_dossier_state
 
     scope :nodraft, -> { where.not(state: "draft") }
+    scope :not_totaly_paid, -> { where(payment_status: ["unpaid", "partial"]) }
   end
 
   # Helpers
@@ -49,6 +50,10 @@ module Facturation
         montant: ligne_group.sum(&:total_tva_cents)
       }
     end
+  end
+
+  def total_tva
+    (total_ttc_cents - total_ht_cents) / 100
   end
 
   def convention_number

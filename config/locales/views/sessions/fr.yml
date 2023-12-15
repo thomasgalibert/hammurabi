@@ -7,7 +7,7 @@ fr:
     destroy: "Vous êtes bien déconnecté du service."
     create: "Vous êtes bien connecté au service."
     invalid_credentials: "Votre identifiant ou votre mot de passe est incorrect."
-    login_legend: "Connectez-vous avec l'email et le mot de passe utilisés lors de votre inscription."
+    login_legend: "Connectez-vous avec votre email et mot de passe :"
     email: "Email"
     password: "Mot de passe"
     submit: "Connexion"

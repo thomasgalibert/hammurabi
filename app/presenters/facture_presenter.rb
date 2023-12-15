@@ -34,6 +34,7 @@ class FacturePresenter < Keynote::Presenter
   def date = I18n.l(facture.created_at, format: :short)
   def dossier = facture.dossier.name
   def dossier_url = dossier_facture_path(facture.dossier, facture)
+  def facture_url = dossier_facture_path(facture.dossier, facture)
 
   def numero
     if facture.achived?

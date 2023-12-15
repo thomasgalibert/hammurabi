@@ -34,6 +34,7 @@ fr:
       removed: "Le contact a été retiré du dossier avec succès."
     list_dossiers: "Liste des dossiers"
     list_factures: "Liste des factures"
+    list_factures_unpaid: "Liste des factures impayés"
     list: "Liste des contacts du cabinet"
     new:
       legend: "Nouveau contact dans le dossier"

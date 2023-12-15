@@ -5,7 +5,9 @@ class Dashboard::FacturesController < ApplicationController
   before_action :set_dates
 
   def index
-    
+    @factures = current_user.factures.where(date: @start_date..@end_date)
+    @payments = current_user.payments.where(issued_date: @start_date..@end_date)
+    @dossiers = current_user.dossiers.where(created_at: @start_date..@end_date)
   end
 
   private

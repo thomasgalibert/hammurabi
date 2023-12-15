@@ -51,6 +51,14 @@ fr:
         total_ttc: "Total TTC"
         rate: "Taux"
         rate_base: "Base HT"
+    stats:
+      total_ht: "Total facturé HT"
+      total_received: "Total encaissé"
+      new_dossiers_count: "Nombre de nouveaux dossiers"
+      vat_billed: "TVA collectée sur factures"
+      vat_received: "TVA collectée sur encaissements"
+      tva: "TVA"
+      list_factures_unpaids: "Liste des factures impayées"
   activerecord:
     attributes:
       facture:

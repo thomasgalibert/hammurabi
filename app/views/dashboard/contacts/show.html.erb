@@ -16,10 +16,10 @@
     
     <h2 class="text-xl text-stone-600 mb-1 mt-6"><%= t('contacts.list_factures') %></h2>
     <%= render TableComponent.new(
-          objects: @contact.factures.order(created_at: :desc),
+          objects: @contact.factures.not_totaly_paid.order(created_at: :desc),
           list_attributes: %i(payment_badge numero dossier description date),
           class_name: "Facture",
-          url_method: :dossier_url)
+          url_method: :facture_url)
     %>
   </div>
 </div>
