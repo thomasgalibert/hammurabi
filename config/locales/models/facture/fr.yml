@@ -59,6 +59,8 @@ fr:
       vat_received: "TVA collectée sur encaissements"
       tva: "TVA"
       list_factures_unpaids: "Liste des factures impayées"
+    avoir:
+      title: "Avoir sur facture N° "
   activerecord:
     attributes:
       facture:

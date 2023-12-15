@@ -13,7 +13,15 @@
 # t.bigint "user_id", null: false
 # t.string "payment_status"
 # t.string "backup_number"
+# t.string "currency"
+# t.string "order_reference"
 # t.bigint "convention_id"
+# t.boolean "is_refund", default: false
+# t.index ["contact_id"], name: "index_factures_on_contact_id"
+# t.index ["convention_id"], name: "index_factures_on_convention_id"
+# t.index ["dossier_id"], name: "index_factures_on_dossier_id"
+# t.index ["emetteur_id"], name: "index_factures_on_emetteur_id"
+# t.index ["user_id"], name: "index_factures_on_user_id"
 # ------------- END SCHEMA -------------
 
 class Facture < ApplicationRecord

@@ -230,10 +230,20 @@ class FactureTest < ActiveSupport::TestCase
     Facture.delete_all
     facture = FactoryBot.create(:facture, state: :draft, emetteur: @user, dossier: @dossier, contact: @contact, user: @user)
     facture.complete!
-    avoir = facture.create_avoir(amount_cents: 1000)
+    avoir = facture.create_avoir(amount_cents: -1000)
     
     assert_equal 2, avoir.numero
-    assert_true avoir.is_refund?
+    assert_equal -1200, avoir.total_ttc_cents
+    assert avoir.is_refund?
   end
+
+  test "on ne peut pas créer d'avoir d'une facture qui n'est pas validée" do
+    Facture.delete_all
+    facture = FactoryBot.create(:facture, state: :draft, emetteur: @user, dossier: @dossier, contact: @contact, user: @user)
+    avoir = facture.create_avoir(amount_cents: -1000)
+
+    assert_nil avoir
+  end
+
 
 end
