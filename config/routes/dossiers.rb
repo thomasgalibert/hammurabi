@@ -24,6 +24,7 @@ resources :dossiers do
     member do
       get :will_complete
       put :complete
+      post :refund
     end
   end
 end

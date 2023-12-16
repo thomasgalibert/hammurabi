@@ -12,6 +12,7 @@ fr:
       complete: "Valider la facture"
       delete: "Supprimer la facture"
       print: "Imprimer la facture"
+      refund: "Emettre un avoir sur cette facture"
     flash:
       created: "La facture a été créée avec succès."
       destroyed: "La facture a été supprimée avec succès."
