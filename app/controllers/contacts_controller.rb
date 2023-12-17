@@ -40,7 +40,13 @@ class ContactsController < ApplicationController
   def update
     if @contact.update(contact_params)
       update_dossier_contact_main(@dossier, @contact, @contact.main)
-      redirect_to @dossier, notice: t('contacts.flash.updated')
+
+      respond_to do |format|
+        format.html { redirect_to @dossier, notice: t('contacts.flash.updated') }
+        format.turbo_stream { 
+          render turbo_stream: turbo_stream.update(
+            "dossier_#{@dossier.id}_contacts", ContactComponent.with_collection(@dossier.contacts, dossier: @dossier)) }
+      end
     else
       render :edit, status: :unprocessable_entity
     end

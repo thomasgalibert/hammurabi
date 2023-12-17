@@ -1,4 +1,9 @@
-<li id="<%= dom_id(@contact) %>" class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
+<li id="<%= dom_id(@contact) %>" 
+    data-controller="contact"
+    data-contact-id-value="<%= @contact.id %>"
+    data-contact-main-value="<%= @contact.main %>"
+    data-contact-dossier-value="<%= @dossier.id %>"
+    class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
   <div class="flex w-full items-center justify-between space-x-6 p-6">
     <div class="flex-1 truncate">
       <div class="flex items-center space-x-3">

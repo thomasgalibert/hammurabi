@@ -18,7 +18,9 @@ class Dashboard::ContactsController < ApplicationController
 
   def update
     if @contact.update(contact_params)
-      redirect_to dashboard_contact_path(@contact), notice: t('contacts.flash.updated')
+      respond_to do |format|
+        format.html { redirect_to dashboard_contact_path(@contact), notice: t('contacts.flash.updated') }
+      end
     else
       render :edit, status: :unprocessable_entity
     end
@@ -43,7 +45,8 @@ class Dashboard::ContactsController < ApplicationController
       :address,
       :zip_code,
       :city,
-      :country)
+      :country,
+      :main)
   end
 
 end

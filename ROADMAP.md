@@ -24,10 +24,11 @@
 - [X] Vue de toutes les tâches
 - [X] Vue de toutes les pièces
 - [X] Dashboard finances
+- [X] Ajouter bouton étoile pour définir contact principal du dossier
 
 ## Factures
 
-- [ ] Permettre de faire un avoir de la facture (avec un pourcentage ou un montant)
+- [ ] Permettre de faire un avoir de la facture (avec un montant)
 - [ ] Permettre de rajouter des sections dans la facture
 - [ ] Grouper ou non les lignes de la facture dans les sections
 

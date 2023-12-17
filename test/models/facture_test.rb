@@ -229,9 +229,22 @@ class FactureTest < ActiveSupport::TestCase
   test "création d'une facture avoir avec un montant ou un pourcentage. Cette facture d'avoir doit suivre la numérotation des factures" do
     Facture.delete_all
     facture = FactoryBot.create(:facture, state: :draft, emetteur: @user, dossier: @dossier, contact: @contact, user: @user)
+
+    FactoryBot.create(
+      :ligne, 
+      tva: 20, 
+      reduction: 0, 
+      quantite: 1, 
+      prix_unitaire_cents: 1000, 
+      facturable: facture)
+
+    facture.reload
+    facture.calculer_totaux
+    facture.breakdown_tva
     facture.complete!
-    avoir = facture.create_avoir(amount_cents: -1000)
+    avoir = facture.create_avoir(amount_cents: 1200)
     
+    assert_equal 1200, facture.total_ttc_cents
     assert_equal 2, avoir.numero
     assert_equal -1200, avoir.total_ttc_cents
     assert avoir.is_refund?
@@ -241,6 +254,24 @@ class FactureTest < ActiveSupport::TestCase
     Facture.delete_all
     facture = FactoryBot.create(:facture, state: :draft, emetteur: @user, dossier: @dossier, contact: @contact, user: @user)
     avoir = facture.create_avoir(amount_cents: -1000)
+
+    assert_nil avoir
+  end
+
+  test "on ne peut pas créer un avoir d'un montant supérieur au montant de la facture" do
+    Facture.delete_all
+    facture = FactoryBot.create(:facture, state: :draft, emetteur: @user, dossier: @dossier, contact: @contact, user: @user)
+
+    FactoryBot.create(
+      :ligne, 
+      tva: 20, 
+      reduction: 0, 
+      quantite: 1, 
+      prix_unitaire_cents: 1000, 
+      facturable: facture)
+
+    facture.complete!
+    avoir = facture.create_avoir(amount_cents: 1300)
 
     assert_nil avoir
   end

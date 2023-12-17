@@ -11,7 +11,11 @@ class ContactPresenter < Keynote::Presenter
 
   def star
     if contact.is_main?
-      content_tag :div, class: "text-yellow-500" do
+      content_tag :div, class: "text-yellow-500 cursor-pointer hover:text-stone-200", data: {action: "click->contact#toggle"} do
+        content_tag :i, "", class: "fa-solid fa-star"
+      end
+    else
+      content_tag :div, class: "text-stone-200 cursor-pointer hover:text-yellow-500", data: {action: "click->contact#toggle"} do
         content_tag :i, "", class: "fa-solid fa-star"
       end
     end

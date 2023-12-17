@@ -30,7 +30,18 @@ module Authentication
   end
 
   def check_firm_setting_is_complete
+    create_firm_setting_if_not_exist
+    create_facturation_setting_if_not_exist
     redirect_to settings_firm_setting_path, alert: t('firm_setting.not_complete') unless current_user.firm_setting.is_complete? && current_user.firm_setting.is_complete?
   end
+
+  def create_firm_setting_if_not_exist
+    current_user.create_firm_setting unless current_user.firm_setting.present?
+  end
+
+  def create_facturation_setting_if_not_exist
+    current_user.create_facturation_setting(tva_standard: 20, first_invoice_number: 1) unless current_user.facturation_setting.present?
+  end
+    
 
 end
