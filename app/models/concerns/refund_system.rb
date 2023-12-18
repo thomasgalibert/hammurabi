@@ -8,7 +8,6 @@ module RefundSystem
     user = self.user
     contact = self.contact
     title = "#{I18n.t('factures.avoir.title')} #{self.screen_number}"
-    prix_unitaire_cents = -(amount_cents) / (1 + user.facturation_setting.tva_standard / 100.0)
 
     avoir = user.factures.create!(
       description: title,
@@ -28,7 +27,7 @@ module RefundSystem
       quantite: 1,
       reduction: 0,
       tva: user.facturation_setting.tva_standard,
-      prix_unitaire_cents: prix_unitaire_cents,
+      prix_unitaire_cents: -amount_cents,
       unit: :forfait)
 
     avoir.complete!

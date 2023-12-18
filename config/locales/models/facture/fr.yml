@@ -30,6 +30,7 @@ fr:
       paid: "Payée"
       partial: "Partiellement payée"
       unpaid: "Impayée"
+      refund: "Avoir"
     warning:
       title: "Attention cette action est irréversible !"
       subtitle: "Vous ne pourrez plus supprimer cette facture une fois validée."
@@ -38,6 +39,7 @@ fr:
       confirm: "Valider cette facture"
     pdf:
       title: "Note d'honoraires"
+      title_avoir: "Avoir sur honoraires"
       send_by: "facture émise par"
       sent_to: "facturé à"
       payment_conditions: "Instructions de paiement"
@@ -62,6 +64,13 @@ fr:
       list_factures_unpaids: "Liste des factures impayées"
     avoir:
       title: "Avoir sur facture N° "
+      legend: "Montant de l'avoir à effectuer dans le dossier "
+      amount: "Montant de l'avoir HT"
+      submit: "Valider l'avoir (attention, action irréversible)"
+      recall: "Rappel du montant HT de la facture"
+      hint_amount: "le montant de l'avoir ne peut pas dépasser celui de la facture."
+      cancel: "&larr; Annuler et revenir à la facture"
+      flash_amount_required: "Vous devez renseigner un montant valide !"
   activerecord:
     attributes:
       facture:

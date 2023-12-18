@@ -6,6 +6,10 @@ module PdfHelper
 		"#{country_code}-#{legal_organisation_number}-#{invoice_number}"
 	end
 
+  def facture_title(facture)
+    facture.is_refund? ? I18n.t('factures.pdf.title_avoir') : I18n.t('factures.pdf.title')
+  end
+
   def print_address(facture, *args)
 		options = args.extract_options!
 		size = options[:size] || 9

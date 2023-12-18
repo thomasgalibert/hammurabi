@@ -20,6 +20,7 @@ class FacturePresenter < Keynote::Presenter
       when 'unpaid' then "bg-rose-50 text-rose-700 ring-rose-600/20"
       when 'partial' then "bg-orange-50 text-orange-700 ring-orange-600/20"
       when 'paid' then "bg-emerald-50 text-emerald-700 ring-emerald-600/20"
+      when 'refund' then "bg-indigo-50 text-indigo-700 ring-indigo-600/20"
       else "bg-gray-50 text-gray-700 ring-gray-600/20"
     end
 
@@ -33,6 +34,7 @@ class FacturePresenter < Keynote::Presenter
   def created_at = I18n.l(facture.created_at, format: :short)
   def date = I18n.l(facture.created_at, format: :short)
   def dossier = facture.dossier.name
+  def total_ttc = content_tag(:span, number_to_currency(facture.total_ttc), class: "font-mono")
   def dossier_url = dossier_facture_path(facture.dossier, facture)
   def facture_url = dossier_facture_path(facture.dossier, facture)
 

@@ -242,7 +242,7 @@ class FactureTest < ActiveSupport::TestCase
     facture.calculer_totaux
     facture.breakdown_tva
     facture.complete!
-    avoir = facture.create_avoir(amount_cents: 1200)
+    avoir = facture.create_avoir(amount_cents: 1000)
     
     assert_equal 1200, facture.total_ttc_cents
     assert_equal 2, avoir.numero

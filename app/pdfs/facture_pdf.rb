@@ -58,7 +58,7 @@ class FacturePdf < Prawn::Document
         fill_and_stroke_rounded_rectangle [cursor-50,cursor], @header_width_right, 50, 0
         fill_color '000000'
     	end
-    	pad_top(10) { text I18n.t('factures.pdf.title'), size: 20, align: :center, color: 'FFFFFF' }
+    	pad_top(10) { text facture_title(@facture), size: 20, align: :center, color: 'FFFFFF' }
     end
   end
 

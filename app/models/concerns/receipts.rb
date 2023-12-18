@@ -6,7 +6,9 @@ module Receipts
   end
 
   def update_payment_status
-    if self.payments.empty?
+    if self.is_refund?
+      new_status = "refund"
+    elsif self.payments.empty?
       new_status = "unpaid"
     elsif total_ttc_cents == payments.sum(&:amount_cents)
       new_status = "paid"

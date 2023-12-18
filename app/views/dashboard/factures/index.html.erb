@@ -41,7 +41,7 @@
 
 <%= render TableComponent.new(
       objects: current_user.factures.order(created_at: :desc),
-      list_attributes: %i(payment_badge numero dossier description date),
+      list_attributes: %i(payment_badge numero dossier description date total_ttc),
       class_name: "Facture",
       url_method: :dossier_url)
 %>

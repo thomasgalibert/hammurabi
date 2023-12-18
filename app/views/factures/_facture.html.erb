@@ -15,5 +15,5 @@
     <%= render facture.lignes.saved.order(row_order: :asc) %>
   </ul>
   <div id="totals"><%= render "factures/elements/totals", facture: facture, dossier: dossier %></div>
-  <div class="mt-6"><%= render "refund_action" %></div>
+  <div class="mt-6"><%= render "refund_action" unless facture.is_refund? %></div>
 </div>

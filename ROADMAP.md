@@ -28,7 +28,7 @@
 
 ## Factures
 
-- [ ] Permettre de faire un avoir de la facture (avec un montant)
+- [X] Permettre de faire un avoir de la facture (avec un montant)
 - [ ] Permettre de rajouter des sections dans la facture
 - [ ] Grouper ou non les lignes de la facture dans les sections
 

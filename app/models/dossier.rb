@@ -24,6 +24,7 @@ class Dossier < ApplicationRecord
   has_many :conventions, :dependent => :destroy
   has_many :notes, :dependent => :destroy
   has_many :factures, :dependent => :destroy
+  has_many :payments, through: :factures, dependent: :destroy
 
   validates :name, presence: true
   validates :state, inclusion: { in: STATES }
@@ -53,16 +54,14 @@ class Dossier < ApplicationRecord
 
   def update_state
     dossier_factures = self.factures.nodraft
+    dossier_payments = self.payments
 
     if dossier_factures.any?
-      if dossier_factures.all? { |facture| facture.paid? }
-        update(state: 'paid') 
-      elsif dossier_factures.any? { |facture| facture.partial? }
-        update(state: 'partial') 
-      elsif dossier_factures.any? { |facture| facture.unpaid? }
-        update(state: 'unpaid') 
-      else
-        update(state: 'unpaid') 
+      case balance
+        when dossier_factures.sum(:total_ttc_cents) then update(state: 'unpaid')
+        when 0 then update(state: 'paid')
+        when 1.. then update(state: 'partial')
+        else update(state: 'pending')
       end
     else
       update(state: 'pending') 
@@ -83,6 +82,14 @@ class Dossier < ApplicationRecord
 
   def update_state_pending_if_nil
     self.state = 'pending' if self.state.blank?
+  end
+
+  def balance
+    dossier_factures = self.factures.nodraft
+    dossier_payments = self.payments
+    sum_factures = dossier_factures.sum(:total_ttc_cents)
+    sum_payments = dossier_payments.sum(:amount_cents)
+    return sum_factures - sum_payments
   end
 
   
