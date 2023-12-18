@@ -1,0 +1,14 @@
+fr:
+  activerecord:
+    attributes:
+      ask:
+        name: "Nom du ficher demandé"
+  asks:
+    titles:
+      new: "Liste des pièces demandées à"
+    placeholders:
+      name: "Description de la pièce demandée"
+    flash:
+      created: "Demande de pièce ajoutée avec succès !"
+      updated: "Demande de pièce modifiée avec succès !"
+      destroyed: "Demande de pièce supprimée avec succès !"

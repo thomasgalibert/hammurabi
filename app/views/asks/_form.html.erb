@@ -1,0 +1,12 @@
+<%= form_with model: [dossier, ask], class: "flex items-center space-x-0 text-sm my-6" do |form| %>
+  <%= form.hidden_field :contact_id, value: contact.id %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
+
+  <%= form.text_field :name, 
+      placeholder: t('asks.placeholders.name'),
+      autofocus: true,
+      required: true,
+      class: "flex-1 border-r-0 px-2 py-1 rounded-l-md m-0 border-stone-300 placeholder:text-gray-400 focus:ring-0 focus:outline-none outline-none text-sm" %>
+  
+  <%= form.submit class: "cursor-pointer border-l border-stone-300 border-t border-r border-b px-2 py-1 rounded-r-md m-0 bg-stone-50 text-stone-600 font-semibold w-18" %>
+<% end %>

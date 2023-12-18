@@ -24,6 +24,7 @@ class Contact < ApplicationRecord
   has_many :dossier_contacts, dependent: :destroy
   has_many :dossiers, through: :dossier_contacts
   has_many :factures
+  has_many :asks, dependent: :destroy
 
   KINDS = ["customer", "witness", "partner", "other"]
 

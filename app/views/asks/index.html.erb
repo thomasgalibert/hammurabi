@@ -1,0 +1,7 @@
+<div class="bg-white px-10 pb-10 pt-16 rounded-lg border relative">
+  <%= render "header", dossier: @dossier, contact: @contact %>
+  <%= render "form", dossier: @dossier, contact: @contact, ask: @ask %>
+  <ul id="<%= dom_id(@dossier, :asks) %>" class="flex flex-col space-y-2">
+    <%= render @asks, dossier: @dossier, contact: @contact %>
+  </ul>
+</div>

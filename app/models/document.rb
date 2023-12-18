@@ -4,6 +4,8 @@
 # t.string "name"
 # t.datetime "created_at", null: false
 # t.datetime "updated_at", null: false
+# t.bigint "ask_id"
+# t.index ["ask_id"], name: "index_documents_on_ask_id"
 # t.index ["dossier_id"], name: "index_documents_on_dossier_id"
 # t.index ["user_id"], name: "index_documents_on_user_id"
 # == Schema end
@@ -13,6 +15,7 @@ class Document < ApplicationRecord
   # Associations
   belongs_to :user
   belongs_to :dossier
+  belongs_to :ask, optional: true
   has_one_attached :fichier
 
   scope :lasts, -> (limit) { order(created_at: :desc).limit(limit) }

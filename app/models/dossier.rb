@@ -25,6 +25,7 @@ class Dossier < ApplicationRecord
   has_many :notes, :dependent => :destroy
   has_many :factures, :dependent => :destroy
   has_many :payments, through: :factures, dependent: :destroy
+  has_many :asks, :dependent => :destroy
 
   validates :name, presence: true
   validates :state, inclusion: { in: STATES }

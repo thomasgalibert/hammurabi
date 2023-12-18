@@ -47,3 +47,4 @@ fr:
       add_new: "Créer un tout nouveau contact"
       add_existing: "Ajouter ce contact au dossier"
       remove: "Retirer ce contact du dossier"
+      ask_documents: "Demander des pièces"

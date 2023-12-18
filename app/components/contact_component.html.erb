@@ -14,7 +14,9 @@
         <%= k(@contact).badge %>
         <%= k(@contact).star %>
       </div>
-      <p class="mt-1 truncate text-sm text-gray-500"></p>
+      <p class="mt-1 truncate text-sm text-gray-500">
+        <%= link_to t('contacts.buttons.ask_documents'), dossier_asks_path(@dossier, contact_id: @contact.id) %>
+      </p>
     </div>
   </div>
   <div>

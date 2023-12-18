@@ -1,0 +1,14 @@
+<%= turbo_frame_tag ask do %>
+  <%= content_tag :li, class: "p-4 border bg-stone-50 rounded-md flex justify-between" do %>
+    <div><%= ask.name %></div>
+    <div class="flex items-center space-x-2">
+      <%= render LinkComponent.new(name: t('buttons.edit'), url: edit_dossier_ask_path(dossier, ask), color: "stone") %>
+
+      <%= button_to t('buttons.delete'), 
+          dossier_ask_path(dossier, ask),
+          method: :delete,
+          form: { data: { turbo_confirm: t('are_you_sure') } },
+          class: "text-rose-600 border px-2 py-1.5 border-rose-300 rounded-md bg-white hover:text-rose-800 hover:shadow-md" %>
+    </div>
+  <% end %>
+<% end %>
