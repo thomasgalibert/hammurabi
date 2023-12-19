@@ -1,7 +1,7 @@
 class AsksController < ApplicationController
   before_action :authenticate_user!
   before_action :check_firm_setting_is_complete
-  before_action :set_dossier_and_contact, only: [:index]
+  before_action :set_dossier_and_contact, only: [:index, :send_by_email]
   before_action :set_dossier, only: [:create, :edit, :update, :destroy]
   before_action :set_ask, only: [:edit, :update, :destroy]
 
@@ -37,6 +37,11 @@ class AsksController < ApplicationController
   def destroy
     @ask.destroy
     redirect_to dossier_asks_path(@dossier, contact: @contact), notice: t('asks.flash.destroyed')
+  end
+
+  def send_by_email
+    ContactMailer.with(dossier: @dossier, contact: @contact).document.deliver_later
+    redirect_to dossier_asks_path(@dossier, contact_id: @contact), notice: t('asks.flash.sent_by_email')
   end
 
   private

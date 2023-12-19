@@ -1,0 +1,9 @@
+<h3><%= t('asks.emails.greetings') %></h3>
+
+<p><%= t('asks.emails.document.content') %></p>
+
+<p><%= k(@dossier).link_asks %></p>
+
+<p style="border-top: 1px solid #D4D4D4; margin-top: 10px; margin-bottom: 10px;"></p>
+
+<p><%= simple_format k(@user).email_signature %></p>

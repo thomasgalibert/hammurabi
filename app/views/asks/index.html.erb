@@ -4,4 +4,10 @@
   <ul id="<%= dom_id(@dossier, :asks) %>" class="flex flex-col space-y-2">
     <%= render @asks, dossier: @dossier, contact: @contact %>
   </ul>
+
+  <div class="mt-8 flex justify-end">
+    <%= render LinkComponent.new name: "#{t('asks.buttons.send')} #{@contact.email}",
+        url: send_by_email_dossier_asks_path(@dossier, contact_id: @contact),
+        color: "amber" if @contact.email.present? %>
+  </div>
 </div>

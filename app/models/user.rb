@@ -68,4 +68,8 @@ class User < ApplicationRecord
       1
     end
   end
+
+  def from_email
+    self.name.mentionable + "@demerys-mailbox.com"
+  end
 end

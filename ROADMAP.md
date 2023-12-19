@@ -34,6 +34,8 @@
 
 ## Récolte des pièces
 
+- [X] Manager la liste des pièces demandées au client
+- [X] Créer l'email de demande de la liste des pièces
 - [ ] Créer une page privée pour le dépôt des pièces par le client
 
 ## Collaboration

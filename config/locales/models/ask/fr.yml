@@ -12,3 +12,12 @@ fr:
       created: "Demande de pièce ajoutée avec succès !"
       updated: "Demande de pièce modifiée avec succès !"
       destroyed: "Demande de pièce supprimée avec succès !"
+      sent_by_email: "Email de demande de pièces envoyé au client !"
+    buttons:
+      send: "Envoyer par email à"
+    emails:
+      subject: "Demande de pièces de votre avocat "
+      greetings: "Cher client,"
+      link: "Lien vers la page de téléchargement des pièces demandées"
+      document:
+        content: "Veuillez cliquer sur le lien ci-dessous afin de télécharger les pièces demandées :"

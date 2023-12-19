@@ -19,7 +19,12 @@ resources :dossiers do
   resources :documents
   resources :conventions
   resources :notes
-  resources :asks
+  
+  resources :asks do
+    collection do
+      get :send_by_email
+    end
+  end
 
   resources :factures do
     member do

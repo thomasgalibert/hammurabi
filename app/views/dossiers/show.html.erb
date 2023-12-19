@@ -112,7 +112,7 @@
     <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.factures') %></h2>
 
     <ul class="grid grid-cols-2 gap-4 mt-4">
-      <%= render partial: "factures/sheet", collection: @dossier.factures, as: :facture %>
+      <%= render partial: "factures/sheet", collection: @dossier.factures.order(:numero), as: :facture %>
     </ul>
 
     <div class="flex justify-end mt-4">

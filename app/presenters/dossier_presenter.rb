@@ -22,4 +22,8 @@ class DossierPresenter < Keynote::Presenter
   def created_at  = I18n.l(dossier.created_at, format: :only_date)
   def url = dossier_path(dossier)
   def description = truncate(dossier.description)
+
+  def link_asks
+    link_to I18n.t('asks.emails.link'), "client/dossier/document/KJHKJHKJHJHJKKJHKJH"
+  end
 end
