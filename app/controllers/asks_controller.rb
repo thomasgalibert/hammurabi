@@ -6,7 +6,7 @@ class AsksController < ApplicationController
   before_action :set_ask, only: [:edit, :update, :destroy]
 
   def index
-    @asks = @dossier.asks.for_contact(@contact)
+    @asks = @dossier.asks.for_contact(@contact).without_document
     @ask = @dossier.asks.new(contact: @contact, user: current_user)
   end
 

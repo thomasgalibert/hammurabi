@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_18_145112) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_21_123200) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -97,6 +97,16 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_18_145112) do
     t.index ["user_id"], name: "index_conventions_on_user_id"
   end
 
+  create_table "document_share_links", force: :cascade do |t|
+    t.bigint "contact_id", null: false
+    t.bigint "dossier_id", null: false
+    t.string "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_id"], name: "index_document_share_links_on_contact_id"
+    t.index ["dossier_id"], name: "index_document_share_links_on_dossier_id"
+  end
+
   create_table "documents", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "dossier_id", null: false
@@ -117,6 +127,16 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_18_145112) do
     t.boolean "is_main", default: false
     t.index ["contact_id"], name: "index_dossier_contacts_on_contact_id"
     t.index ["dossier_id"], name: "index_dossier_contacts_on_dossier_id"
+  end
+
+  create_table "dossier_share_links", force: :cascade do |t|
+    t.bigint "contact_id", null: false
+    t.bigint "dossier_id", null: false
+    t.string "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_id"], name: "index_dossier_share_links_on_contact_id"
+    t.index ["dossier_id"], name: "index_dossier_share_links_on_dossier_id"
   end
 
   create_table "dossiers", force: :cascade do |t|
@@ -294,11 +314,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_18_145112) do
   add_foreign_key "contacts", "users"
   add_foreign_key "conventions", "dossiers"
   add_foreign_key "conventions", "users"
+  add_foreign_key "document_share_links", "contacts"
+  add_foreign_key "document_share_links", "dossiers"
   add_foreign_key "documents", "asks"
   add_foreign_key "documents", "dossiers"
   add_foreign_key "documents", "users"
   add_foreign_key "dossier_contacts", "contacts"
   add_foreign_key "dossier_contacts", "dossiers"
+  add_foreign_key "dossier_share_links", "contacts"
+  add_foreign_key "dossier_share_links", "dossiers"
   add_foreign_key "dossiers", "users"
   add_foreign_key "events", "dossiers"
   add_foreign_key "events", "users"

@@ -6,6 +6,9 @@ fr:
   asks:
     titles:
       new: "Liste des pièces demandées à"
+      how_to_send: "Comment demander des pièces au client ?"
+      copy: "Créer un lien de partage et lui envoyer"
+      send_email: "OU alors vous pouvez cliquer sur ce bouton pour envoyer directement un email"
     placeholders:
       name: "Description de la pièce demandée"
     flash:
@@ -13,11 +16,21 @@ fr:
       updated: "Demande de pièce modifiée avec succès !"
       destroyed: "Demande de pièce supprimée avec succès !"
       sent_by_email: "Email de demande de pièces envoyé au client !"
+      link_invalid: "Le lien de partage a expiré ou n'est pas valide !"
     buttons:
       send: "Envoyer par email à"
+      create_share_link: "Créer un lien de partage"
+      delete_share_link: "Supprimer le lien de partage"
+      upload: "Télécharger"
     emails:
       subject: "Demande de pièces de votre avocat "
       greetings: "Cher client,"
       link: "Lien vers la page de téléchargement des pièces demandées"
       document:
         content: "Veuillez cliquer sur le lien ci-dessous afin de télécharger les pièces demandées :"
+    sharing:
+      dossier: "Dossier"
+      please: "Veuillez télécharger les documents demandés ci-dessous :"
+      instructions: >
+        Attention ! Les fichiers téléchargés ne doivent pas dépasser 10 Mo et 
+        doivent être au format PDF, JPG ou PNG.

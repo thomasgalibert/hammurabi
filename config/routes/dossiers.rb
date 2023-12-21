@@ -8,6 +8,9 @@ resources :dossiers do
 
   resources :events
 
+  resources :document_share_links
+  resources :dossier_share_links
+
   resources :contacts do
     member do
       get :new_existing

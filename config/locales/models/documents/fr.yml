@@ -3,6 +3,9 @@ fr:
     list: "Derniers documents"
     placeholders:
       name: "Nom de la pièce"
+    flash:
+      created: "Le document a été téléchargé avec succès."
+      not_created: "Il y a eu un problème lors du téléchargement du document. Veuillez recommencer."
   activerecord:
     attributes:
       document:

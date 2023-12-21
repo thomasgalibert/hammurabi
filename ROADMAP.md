@@ -38,6 +38,10 @@
 - [X] Créer l'email de demande de la liste des pièces
 - [ ] Créer une page privée pour le dépôt des pièces par le client
 
+## Calendrier
+
+- [ ] Ajouter synchronisation Ical
+
 ## Collaboration
 
 - [ ] Accès privée pour les comptables (création model Accoutant avec même fonctions d'authentication mais relatif à un User)

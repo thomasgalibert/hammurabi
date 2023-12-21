@@ -1,0 +1,21 @@
+<%= content_tag :li, id: dom_id(ask), class: "flex justify-between flex-col sm:flex-row items-center pt-2" do %>
+  <div class="flex items-center space-x-2">
+    <span class="bg-sky-500 text-white size-8 rounded-full text-sm flex items-center justify-center"><%= index + 1 %></span>
+    <span><%= ask.name %></span>
+  </div>
+  <div>
+    <%= form_with url: sharing_documents_path(token: params[:token]), 
+                  model: Document.new(user: @dossier.user, dossier: @dossier, ask: ask) do |form| %>
+
+      <%= form.hidden_field :ask_id %>
+      <%= form.hidden_field :dossier_id %>
+      <%= form.hidden_field :user_id %>
+      <%= form.hidden_field :name, value: ask.name %>
+
+      <%= form.file_field :fichier, class: "bg-sky-100 flex-1 border-r-0 px-2 py-1 rounded-md m-0 border-stone-300 placeholder:text-gray-400 focus:ring-0 focus:outline-none outline-none text-xs" %>
+
+      <%= form.submit t('asks.buttons.upload'), class: "cursor-pointer border border-stone-300 px-2 py-1 rounded-md m-0 bg-stone-50 text-stone-600 text-xs" %>
+    
+    <% end %>
+  </div>
+<% end %>

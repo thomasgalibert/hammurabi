@@ -1,0 +1,10 @@
+<h1 class="font-black text-xl mb-2 text-stone-600"><%= t('asks.sharing.dossier') %> : <%= @dossier.name %></h1>
+<h2 class="text-base text-stone-500"><%= t('asks.sharing.please') %></h2>
+
+<div class="my-6"><%= render InstructionsComponent.new message: t('asks.sharing.instructions') %></div>
+
+<ul class="bg-white rounded-md p-6 border flex flex-col divide-y space-y-2">
+  <% @dossier.asks.for_contact(@contact).without_document.each_with_index do |ask, index| %>
+    <%= render ask, index: index %>
+  <% end %>
+</ul>

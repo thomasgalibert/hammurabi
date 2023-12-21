@@ -36,7 +36,11 @@ module Facturation
   # Helpers
 
   def screen_number
-    (numero + self.user.first_invoice_number - 1).to_s.rjust(8, "0")
+    if draft?
+      I18n.t("factures.states.not_attributed")
+    else
+      (numero + self.user.first_invoice_number - 1).to_s.rjust(8, "0")
+    end
   end
 
   def due_date

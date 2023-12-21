@@ -5,9 +5,22 @@
     <%= render @asks, dossier: @dossier, contact: @contact %>
   </ul>
 
-  <div class="mt-8 flex justify-end">
+  <div class="mt-8">
+    <%= render DividerComponent.new title: t('asks.titles.how_to_send') %>
+
+    <%= render NumberDividerComponent.new(number: 1, title: t('asks.titles.copy')) %>
+
+    <%= turbo_frame_tag dom_id(@dossier, :document_share_links) do %>
+      <%= render "document_share_links/link", dossier: @dossier, contact: @contact %>
+    <% end %>
+
+    <div class="mt-16"><%= render NumberDividerComponent.new(number: 2, title: t('asks.titles.send_email')) %></div>
+    
     <%= render LinkComponent.new name: "#{t('asks.buttons.send')} #{@contact.email}",
         url: send_by_email_dossier_asks_path(@dossier, contact_id: @contact),
-        color: "amber" if @contact.email.present? %>
+        color: "stone",
+        icon: "fa-solid fa-paper-plane-top" if @contact.email.present? %>
+
   </div>
+
 </div>

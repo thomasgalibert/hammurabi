@@ -26,6 +26,7 @@ fr:
     states:
       draft: "Brouillon"
       achived: "Validée"
+      not_attributed: "-- non validée --"
     payment_statuses:
       paid: "Payée"
       partial: "Partiellement payée"

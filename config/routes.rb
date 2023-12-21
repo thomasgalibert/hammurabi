@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  draw :sharing
   draw :contacts
   draw :searchs
   draw :settings
