@@ -36,7 +36,7 @@ module Facturation
   # Helpers
 
   def screen_number
-    if draft?
+    if self.draft?
       I18n.t("factures.states.not_attributed")
     else
       (numero + self.user.first_invoice_number - 1).to_s.rjust(8, "0")
@@ -103,8 +103,8 @@ module Facturation
       derniere_facture = self.user.factures.nodraft.order(created_at: :desc).first
       new_number = derniere_facture ? derniere_facture.numero + 1 : 1
       update(numero: new_number)
-      update(backup_number: self.screen_number)
       update_attribute(:state, "achived")
+      update(backup_number: self.screen_number)
       create_facture_seal_from_facture(self)
     end
   end 

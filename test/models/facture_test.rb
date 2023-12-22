@@ -191,6 +191,7 @@ class FactureTest < ActiveSupport::TestCase
 
   test "vérifie que quand le numero est créé, le champ backup_number est bien rempli" do
     @facture.complete!
+    assert @facture.achived?
     assert_equal @facture.screen_number, @facture.backup_number
   end
 
