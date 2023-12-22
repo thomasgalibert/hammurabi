@@ -45,6 +45,8 @@ class User < ApplicationRecord
     email
   end
 
+  has_secure_token :forward_email_token
+
   def conditions_generales
     if self.facturation_setting.present? && self.facturation_setting.conditions_generales.present?
       self.facturation_setting.conditions_generales
@@ -70,6 +72,15 @@ class User < ApplicationRecord
   end
 
   def from_email
-    self.name.mentionable + "@demerys-mailbox.com"
+    self.name.mentionable + "@hammurabi.software"
+  end
+
+  def communication_email
+    if forward_email_token.present?
+      forward_email_token + "@hammurabi.software"
+    else
+      regenerate_forward_email_token
+      forward_email_token + "@hammurabi.software"
+    end
   end
 end

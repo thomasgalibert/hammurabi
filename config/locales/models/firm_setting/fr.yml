@@ -3,6 +3,13 @@ fr:
     title: "Informations du cabinet"
     subtitle: "Détails sur la structure juridique qui sert à la facturation des honoraires"
     not_complete: "Veuillez renseiger toutes informations nécessaires à la facturation des honoraires"
+    link: "Paramètres"
+    communication_title: "Paramètres de communication"
+    communication_subtitle: |
+      Adresse email personnelle à utiliser pour transférer les emails reçus sur la plateforme.
+      Il vous suffit de d'enregistrer cette adresse dans votre logiciel d'email et d'y transférer les emails
+      que vous souhaitez sauvegarder dans le dossier.
+    communication_email: "Email de transfert"
     buttons:
       edit: "Modifier les informations"
       back_to_settings: "&larr; Retour aux paramètres"

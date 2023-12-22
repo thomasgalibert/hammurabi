@@ -7,8 +7,8 @@ fr:
     titles:
       new: "Liste des pièces demandées à"
       how_to_send: "Comment demander des pièces au client ?"
-      copy: "Créer un lien de partage et lui envoyer"
-      send_email: "OU alors vous pouvez cliquer sur ce bouton pour envoyer directement un email"
+      copy: "Créez un lien de partage et copiez le"
+      send_email: "ET envoyer le lien à votre client par le moyen de votre choix"
     placeholders:
       name: "Description de la pièce demandée"
     flash:

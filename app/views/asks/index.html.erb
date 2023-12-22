@@ -15,11 +15,6 @@
     <% end %>
 
     <div class="mt-16"><%= render NumberDividerComponent.new(number: 2, title: t('asks.titles.send_email')) %></div>
-    
-    <%= render LinkComponent.new name: "#{t('asks.buttons.send')} #{@contact.email}",
-        url: send_by_email_dossier_asks_path(@dossier, contact_id: @contact),
-        color: "stone",
-        icon: "fa-solid fa-paper-plane-top" if @contact.email.present? %>
 
   </div>
 

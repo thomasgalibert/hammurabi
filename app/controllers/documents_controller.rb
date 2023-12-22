@@ -21,7 +21,10 @@ class DocumentsController < ApplicationController
   end
 
   def destroy
+    @ask = @document.ask
     @document.destroy
+    @ask.destroy if @ask.present?
+    
     respond_to do |format|
       format.html { redirect_to @document.dossier }
       format.turbo_stream { render turbo_stream: turbo_stream.remove(@document) }

@@ -16,7 +16,12 @@
         <% default_svg_class = "text-gray-400 group-hover:text-gray-500 -ml-0.5 mr-2 mt-4 h-5 w-5" %>
         <% active_svg_class = "text-amber-500 -ml-0.5 mr-2 mt-4 h-5 w-5" %>
 
-        <% [{name: "firm_setting", icon: "fa-solid fa-building fa-xl  ", url: settings_firm_setting_path}, {name: "facturation_setting", icon: "fa-solid fa-file-invoice-dollar fa-xl ", url: settings_facturation_setting_path}].each do |tab| %>
+        <% [
+            {name: "firm_setting", icon: "fa-solid fa-building fa-xl  ", url: settings_firm_setting_path}, 
+            {name: "facturation_setting", icon: "fa-solid fa-file-invoice-dollar fa-xl ", url: settings_facturation_setting_path},
+            {name: "communication_setting", icon: "fa-solid fa-satellite fa-xl ", url: settings_communication_path}
+           ].each do |tab| %>
+
           <% current_tab_class = selected == tab[:name] ? active_tab_class : default_tab_class  %>
           <% current_svg_class = selected == tab[:name] ? active_svg_class : default_svg_class  %>
 
