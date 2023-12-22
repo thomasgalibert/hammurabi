@@ -49,7 +49,7 @@
 
 ## Gérer les emails entrants
 
-- [ ] Créer une adresse email à chaque utilisateur
+- [X] Créer une adresse email à chaque utilisateur
 - [ ] Router les emails entrants en retrouvant le contact
 - [ ] Enregistrer les pièces jointes dans le dossier et le contenu de l'email
 

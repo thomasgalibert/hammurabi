@@ -1,5 +1,5 @@
 <% unless document.new_record? %>
   <%= turbo_frame_tag dom_id(document) do %>
-    <%= render DocumentComponent.new(document: document, show_dossier: false) %>
+    <%= render DocumentComponent.new(document: document, show_dossier: false, current_user: current_user) %>
   <% end %>
 <% end %>

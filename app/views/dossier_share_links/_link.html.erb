@@ -1,0 +1,28 @@
+<% link = DossierShareLink.find_by(dossier: dossier, contact: contact) %>
+
+<% if link %>
+
+  <div class="mb-4"><%= k(link).url %></div>
+
+  <%= button_to dossier_dossier_share_link_path(dossier, link, contact_id: contact),
+      method: :delete,
+      class: "text-rose-600 border px-2 py-1.5 border-rose-300 rounded-md " + 
+            "bg-white hover:text-rose-800 hover:shadow-md" do %>
+
+    <span><%= t('asks.buttons.delete_share_link') %></span>
+    
+    <i class="fa-solid fa-share ml-2"></i>
+  <% end %>
+  
+<% else %>
+
+  <%= button_to dossier_dossier_share_links_path(dossier, contact_id: contact),
+      class: "text-stone-600 border px-2 py-1.5 border-stone-300 rounded-md " + 
+            "bg-white hover:text-stone-800 hover:shadow-md" do %>
+
+    <span><%= t('asks.buttons.create_share_link') %></span>
+    
+    <i class="fa-solid fa-share ml-2"></i>
+  <% end %>
+
+<% end %>

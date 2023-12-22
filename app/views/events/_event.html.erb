@@ -1,5 +1,5 @@
 <% unless event.new_record? %>
   <%= turbo_frame_tag dom_id(event) do %>
-    <%= render EventComponent.new(event: event) %>
+    <%= render EventComponent.new(event: event, current_user: current_user) %>
   <% end %>
 <% end %>

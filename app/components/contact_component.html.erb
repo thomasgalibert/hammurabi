@@ -14,9 +14,19 @@
         <%= k(@contact).badge %>
         <%= k(@contact).star %>
       </div>
-      <p class="mt-1 truncate text-sm text-gray-500">
-        <%= link_to t('contacts.buttons.ask_documents'), dossier_asks_path(@dossier, contact_id: @contact.id) %>
-      </p>
+      <div class="mt-1 flex flex-col truncate text-xs text-gray-500">
+        <%= link_to dossier_asks_path(@dossier, contact_id: @contact.id), class: "flex items-center space-x-1" do %>
+          <i class="fa-solid fa-hand-point-up text-sky-500"></i>
+          <span><%= t('contacts.buttons.ask_documents') %></span>
+        <% end %>
+
+        <% if @contact.kind == "partner" %>
+          <%= link_to dossier_dossier_share_links_path(@dossier, contact_id: @contact.id), class: "flex items-center space-x-1" do %>
+            <i class="fa-solid fa-share-from-square text-emerald-500"></i>
+            <span><%= t('contacts.buttons.share_dossier') %></span>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
   <div>

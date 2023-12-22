@@ -69,12 +69,6 @@
   </div>
 
   <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 lg:col-span-1">
-    <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.documents') %></h2>
-    <div class="mb-4"><%= render "documents/form", document: @dossier.documents.new, dossier: @dossier %></div>
-    <%= render @dossier.documents %>
-  </div>
-
-  <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 lg:col-span-1">
     <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.events') %></h2>
     <div class="mb-4"><%= render "events/form_other", event: @dossier.events.new, dossier: @dossier %></div>
     <div class="flow-root">
@@ -82,6 +76,12 @@
         <%= render @dossier.events.others %>
       </ul>
     </div>
+  </div>
+
+  <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 lg:col-span-2">
+    <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.documents') %></h2>
+    <div class="mb-4"><%= render "documents/form", document: @dossier.documents.new, dossier: @dossier %></div>
+    <ul role="list" class="flex flex-col divide-y"><%= render @dossier.documents %></ul>
   </div>
 
   <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 lg:col-span-1">
@@ -108,7 +108,7 @@
     </div>
   </div>
 
-  <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 lg:col-span-1">
+  <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 lg:col-span-2">
     <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.factures') %></h2>
 
     <ul class="grid grid-cols-2 gap-4 mt-4">

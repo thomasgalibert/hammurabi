@@ -20,16 +20,26 @@
       </time>
 
       <% unless @show_dossier %>
-        <%= render DropdownComponent.new do %>
-          <%= link_to t('buttons.edit'), edit_dossier_document_path(@document.dossier, @document), class: "text-gray-700 block px-4 py-2 text-sm" %>
-          <%= link_to t('buttons.download'), 
-                @document.fichier.url(expires_in: 1.hour), 
-                target: "_blank",
-                class: "text-gray-700 block px-4 py-2 text-sm" if @document.fichier.attached? %>
-          <%= button_to t('buttons.delete'), 
-              dossier_document_path(@document.dossier, @document),
-              method: :delete, 
-              class: "text-gray-700 block px-4 py-2 text-sm" %>
+        <% if @current_user %>
+          <%= render DropdownComponent.new do %>
+            <%= link_to t('buttons.edit'), edit_dossier_document_path(@document.dossier, @document), class: "text-gray-700 block px-4 py-2 text-sm" %>
+            <%= link_to t('buttons.download'), 
+                  @document.fichier.url(expires_in: 1.hour), 
+                  target: "_blank",
+                  class: "text-gray-700 block px-4 py-2 text-sm" if @document.fichier.attached? %>
+            <%= button_to t('buttons.delete'), 
+                dossier_document_path(@document.dossier, @document),
+                method: :delete, 
+                class: "text-gray-700 block px-4 py-2 text-sm" %>
+          <% end %>
+
+        <% else %>
+          <%= render DropdownComponent.new do %>
+            <%= link_to t('buttons.download'), 
+                  @document.fichier.url(expires_in: 1.hour), 
+                  target: "_blank",
+                  class: "text-gray-700 block px-4 py-2 text-sm" if @document.fichier.attached? %>
+          <% end %>
         <% end %>
       <% end %>
     </time>

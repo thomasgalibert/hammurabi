@@ -5,7 +5,7 @@ class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
 
   def index
-    @notes = current_user.notes
+    @notes = @dossier.notes
   end
 
   def new

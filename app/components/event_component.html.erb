@@ -12,12 +12,14 @@
         </div>
       </div>
       
-      <%= render DropdownComponent.new do %>
-        <%= link_to t('todos.buttons.edit'), edit_dossier_event_path(@event.dossier, @event), class: "text-gray-700 block px-4 py-2 text-sm" %>
-        <%= button_to t('todos.buttons.delete'), 
-            dossier_event_path(@event.dossier, @event),
-            method: :delete, 
-            class: "text-gray-700 block px-4 py-2 text-sm" %>
+      <% if @current_user %>
+        <%= render DropdownComponent.new do %>
+          <%= link_to t('todos.buttons.edit'), edit_dossier_event_path(@event.dossier, @event), class: "text-gray-700 block px-4 py-2 text-sm" %>
+          <%= button_to t('todos.buttons.delete'), 
+              dossier_event_path(@event.dossier, @event),
+              method: :delete, 
+              class: "text-gray-700 block px-4 py-2 text-sm" %>
+        <% end %>
       <% end %>
     </div>
   </div>

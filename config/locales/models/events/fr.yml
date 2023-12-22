@@ -9,6 +9,8 @@ fr:
           conciliation_hearing: "Audience de conciliation"
           judgment_hearing: "Audience de jugement"
           expertise: "Expertise"
+          email: "Email"
+          call: "Appel"
           other: "Autre"
   events:
     placeholders:
@@ -21,3 +23,5 @@ fr:
       judgment_hearing: "Audience de jugement"
       expertise: "Expertise"
       other: "Autre"
+      email: "Email"
+      call: "Appel"

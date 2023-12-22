@@ -8,7 +8,16 @@ fr:
       new: "Liste des pièces demandées à"
       how_to_send: "Comment demander des pièces au client ?"
       copy: "Créez un lien de partage et copiez le"
+      copy_share: "Créez un lien de partage et copiez le"
       send_email: "ET envoyer le lien à votre client par le moyen de votre choix"
+      send_link_share_dossier: "ET envoyer le lien à votre confrère par le moyen de votre choix"
+      send_link_explanations: >
+        Vous pouvez envoyer le lien par email, SMS, WhatsApp, Messenger, 
+        Telegram, etc. à votre confrère. Il pourra alors télécharger les pièces 
+        et consulter les éléments du dossier sans avoir à créer un compte.
+        L'accès sera révoqué dès que vous supprimerez le lien de partage.
+      new_share: "Partager le contenu du dossier avec mon confrère"
+      how_to_share: "Comment partager le contenu du dossier ?"
     placeholders:
       name: "Description de la pièce demandée"
     flash:

@@ -5,7 +5,7 @@
   <%= form.text_field :title, placeholder: t('events.placeholders.title'),
       class: "flex-1 border-r-0 px-2 py-1 rounded-l-md m-0 border-stone-300 placeholder:text-gray-400 focus:ring-0 focus:outline-none outline-none text-xs" %>
   
-  <%= form.select :kind, Event::KINDS_HEARING.collect { |k| [t("events.kinds.#{k}"), k] }, {}, class: "px-2 py-1 text-xs border-stone-300 border-l-1 border-r-0" %>
+  <%= form.select :kind, Event::KINDS_HEARING.collect { |k| [t("events.kinds.#{k}"), k] }, {}, class: "px-2 py-1 text-xs border-stone-300 border-l-1 border-r-0 pr-6" %>
 
   <%= form.datetime_field :date, 
       class: "w-30 border-r-0 px-2 py-1 m-0 border-stone-300 placeholder:text-gray-400 focus:ring-0 focus:outline-none outline-none text-xs" %>

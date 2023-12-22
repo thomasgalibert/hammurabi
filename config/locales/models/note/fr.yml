@@ -5,6 +5,7 @@ fr:
         content: "Contenu de la note"
   notes:
     list: "Liste des notes"
+    updated_at: "Note du"
     flash:
       created: "La note a été créée avec succès."
       updated: "La note a été mise à jour avec succès."

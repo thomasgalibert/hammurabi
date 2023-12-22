@@ -1,0 +1,21 @@
+<div class="bg-white px-10 pb-10 pt-16 rounded-lg border relative">
+  <%= render "header", dossier: @dossier, contact: @contact %>
+
+  <div class="mt-8">
+    <%= render DividerComponent.new title: t('asks.titles.how_to_share') %>
+
+    <%= render NumberDividerComponent.new(number: 1, title: t('asks.titles.copy_share')) %>
+
+    <%= turbo_frame_tag dom_id(@dossier, :dossier_share_links) do %>
+      <%= render "dossier_share_links/link", dossier: @dossier, contact: @contact %>
+    <% end %>
+
+    <div class="mt-16">
+      <%= render NumberDividerComponent.new(number: 2, title: t('asks.titles.send_link_share_dossier')) %>
+
+      <%= render InstructionsComponent.new message: t('asks.titles.send_link_explanations') %>
+    </div>
+
+  </div>
+
+</div>
