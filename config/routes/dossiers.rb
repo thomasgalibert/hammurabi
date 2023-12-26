@@ -21,6 +21,7 @@ resources :dossiers do
 
   resources :documents
   resources :conventions
+  resources :conclusions
   resources :notes
   
   resources :asks do

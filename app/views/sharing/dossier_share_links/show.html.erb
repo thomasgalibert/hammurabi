@@ -38,6 +38,13 @@
     </ul>
   </div>
 
+  <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 lg:col-span-2">
+    <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.contacts') %></h2>
+    <ul role="list" id="dossier_<%= @dossier.id %>_contacts" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2 mt-4">
+      <%= render ContactShareComponent.with_collection(@dossier.contacts, dossier: @dossier) %>
+    </ul>
+  </div>
+
   <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 lg:col-span-1">
     <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.hearings') %></h2>
     <div class="flow-root">
@@ -61,5 +68,10 @@
     <ul role="list" class="flex flex-col divide-y">
       <%= render partial: "documents/document", collection: @dossier.documents %>
     </ul>
+  </div>
+
+  <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 lg:col-span-2">
+    <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.conclusions') %></h2>
+    <%= render ConclusionShareComponent.with_collection(@dossier.conclusions) %>  
   </div>
 </div>

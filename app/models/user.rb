@@ -19,6 +19,7 @@ class User < ApplicationRecord
   has_many :events, dependent: :destroy
   has_many :contacts, dependent: :destroy
   has_many :conventions, dependent: :destroy
+  has_many :conclusions, dependent: :destroy
   has_many :notes, :dependent => :destroy
   has_many :factures, dependent: :destroy
   has_many :lignes, through: :factures

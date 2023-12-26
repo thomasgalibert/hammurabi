@@ -22,6 +22,7 @@ class Dossier < ApplicationRecord
   has_many :documents, dependent: :destroy
   has_many :events, :dependent => :destroy
   has_many :conventions, :dependent => :destroy
+  has_many :conclusions, :dependent => :destroy
   has_many :notes, :dependent => :destroy
   has_many :factures, :dependent => :destroy
   has_many :payments, through: :factures, dependent: :destroy

@@ -1,0 +1,18 @@
+fr:
+  activerecord:
+    attributes:
+      conclusion:
+        name: "Nom du fichier"
+        created_at: "Date d'ajout du fichier"
+        fichier: "Fichier"
+  conclusions:
+    flash:
+      created: "Le fichier a été créé avec succès."
+      updated: "Le fichier a été mise à jour avec succès."
+      destroyed: "Le fichier a été supprimé avec succès."
+    new:
+      legend: "Nouveau fichier dans le dossier"
+    edit:
+      legend: "Modifier le fichier"
+    buttons:
+      new: "Nouveau fichier"

@@ -84,6 +84,17 @@
     <ul role="list" class="flex flex-col divide-y"><%= render @dossier.documents %></ul>
   </div>
 
+  <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 lg:col-span-2">
+    <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.conclusions') %></h2>
+    <%= render ConclusionComponent.with_collection(@dossier.conclusions) %>
+
+    <div class="flex justify-end mt-4">
+      <%= link_to new_dossier_conclusion_path(@dossier), "data-turbo-frame": "modal" do %>
+        <span class="text-xs cursor-pointer border-stone-300 border px-2 py-1 rounded-md m-0 bg-stone-50 text-stone-600 font-semibold w-18"><%= t('conclusions.buttons.new') %></span>
+      <% end %>
+    </div>
+  </div>
+
   <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 lg:col-span-1">
     <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.contacts') %></h2>
     <ul role="list" id="dossier_<%= @dossier.id %>_contacts" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2 mt-4">

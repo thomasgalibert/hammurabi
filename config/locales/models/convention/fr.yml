@@ -10,9 +10,9 @@ fr:
         reference: "Référence"
   conventions:
     flash:
-      created: "Le contrat a été créée avec succès."
+      created: "Le contrat a été créé avec succès."
       updated: "Le contrat a été mise à jour avec succès."
-      destroyed: "Le contrat a été supprimée avec succès."
+      destroyed: "Le contrat a été supprimé avec succès."
     new:
       legend: "Nouvelle convention ou mission dans le dossier"
     edit:

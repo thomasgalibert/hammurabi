@@ -25,6 +25,7 @@
 - [X] Vue de toutes les pièces
 - [X] Dashboard finances
 - [X] Ajouter bouton étoile pour définir contact principal du dossier
+- [X] Ajouter, modifier et supprimer les conclusions
 
 ## Factures
 
@@ -44,7 +45,7 @@
 ## Collaboration
 
 - [ ] Accès privée pour les comptables (création model Accoutant avec même fonctions d'authentication mais relatif à un User)
-- [ ] Page privée de consultation du dossier pour les non utilisateurs d'Hammurabi 
+- [X] Page privée de consultation du dossier pour les non utilisateurs d'Hammurabi 
 - [ ] Ajouter, modifier et supprimer les collaborateurs
 
 ## Gérer les emails entrants
@@ -60,9 +61,8 @@
 - [X] Tests factures
 - [X] Tests events
 - [X] Tests todos
-- [ ] Tests récolte des pièces
 
 ## Environnement de développement
 
-- [X] Passer à Ruby 3.3.0.dev
+- [ ] Passer à Ruby 3.3.0
 - [X] Passer à Postgres

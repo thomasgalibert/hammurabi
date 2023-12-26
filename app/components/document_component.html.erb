@@ -24,7 +24,7 @@
           <%= render DropdownComponent.new do %>
             <%= link_to t('buttons.edit'), edit_dossier_document_path(@document.dossier, @document), class: "text-gray-700 block px-4 py-2 text-sm" %>
             <%= link_to t('buttons.download'), 
-                  @document.fichier.url(expires_in: 1.hour), 
+                  @document.fichier.url(expires_in: 4.hour), 
                   target: "_blank",
                   class: "text-gray-700 block px-4 py-2 text-sm" if @document.fichier.attached? %>
             <%= button_to t('buttons.delete'), 
@@ -36,7 +36,7 @@
         <% else %>
           <%= render DropdownComponent.new do %>
             <%= link_to t('buttons.download'), 
-                  @document.fichier.url(expires_in: 1.hour), 
+                  @document.fichier.url(expires_in: 4.hour), 
                   target: "_blank",
                   class: "text-gray-700 block px-4 py-2 text-sm" if @document.fichier.attached? %>
           <% end %>

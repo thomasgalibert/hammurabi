@@ -1,0 +1,25 @@
+<li id="<%= dom_id(@conclusion) %>" class="flex items-center text-xs gap-x-3 py-2">
+  
+  <div class="flex flex-1 justify-between items-center">
+    <div class="flex flex-col space-y-1">
+      <div class="text-sm font-semibold">
+        <%= link_to @conclusion.name, dossier_conclusion_path(@conclusion.dossier, @conclusion), 
+            "data-turbo-frame": "modal", class: "underline font-semibold" %> 
+        <span class="text-xs font-normal italic text-stone-500">
+          (<%= k(@conclusion).fichier_description %>)
+        </span>
+      </div>
+    </div>
+
+    <div class="flex space-x-1 items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-stone-400">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <time datetime="<%= @conclusion.created_at %>">
+        <%= l(@conclusion.created_at, format: :short) %>
+      </time>
+    </time>
+
+  </div>
+  
+</li>

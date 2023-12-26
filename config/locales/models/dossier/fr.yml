@@ -27,6 +27,7 @@ fr:
       documents: "Liste des pièces"
       contacts: "Contacts"
       conventions: "Conventions & Missions"
+      conclusions: "Autres fichiers (conclusions, etc.)"
       factures: "Factures"
   activerecord:
     attributes:
