@@ -21,7 +21,7 @@
           <% end %>
 
           <td class="px-3 py-4 whitespace-nowrap text-right text-sm font-medium">
-            <%= render LinkComponent.new(name: t('buttons.show'), url: k(object).send(@url_method), color: "amber") %>
+            <%= render LinkComponent.new(name: t('buttons.show'), url: k(object).send(@url_method), color: "amber") if @url_method.present? %>
           </td>
         </tr>
       <% end %>

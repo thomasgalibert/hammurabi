@@ -29,7 +29,7 @@ class FacturesController < ApplicationController
       format.html
       format.pdf do
         pdf = FacturePdf.new(@facture)
-        send_data pdf.render, filename: "facture.pdf", type: "application/pdf", disposition: "inline"
+        send_data pdf.render, filename: "facture_#{current_user.name.mentionable}_#{@facture.screen_number}.pdf", type: "application/pdf", disposition: "inline"
       end
     end
   end

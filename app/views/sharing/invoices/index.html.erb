@@ -40,8 +40,8 @@
 <h2 class="text-xl text-stone-600 mt-10 mb-4"><%= t('factures.stats.list_factures_unpaids') %></h2>
 
 <%= render TableComponent.new(
-      objects: current_user.factures.where(date: @start_date..@end_date).order(created_at: :desc),
-      list_attributes: %i(date payment_badge numero dossier description total_ttc download),
+      objects: @factures,
+      list_attributes: %i(date payment_badge numero dossier description total_ttc share_download),
       class_name: "Facture",
-      url_method: :dossier_url)
+      url_method: nil)
 %>

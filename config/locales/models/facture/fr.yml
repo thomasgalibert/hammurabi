@@ -62,7 +62,7 @@ fr:
       vat_billed: "TVA collectée sur factures"
       vat_received: "TVA collectée sur encaissements"
       tva: "TVA"
-      list_factures_unpaids: "Liste des factures impayées"
+      list_factures_unpaids: "Liste des factures de la période"
     avoir:
       title: "Avoir sur facture N° "
       legend: "Montant de l'avoir à effectuer dans le dossier "
@@ -101,3 +101,5 @@ fr:
         email: "Email"
         phone_number: "T."
         payment_badge: "Statut du paiement"
+        download: ""
+        share_download: ""

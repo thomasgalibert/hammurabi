@@ -4,6 +4,7 @@ fr:
     subtitle: "Détails sur la structure juridique qui sert à la facturation des honoraires"
     not_complete: "Veuillez renseiger toutes informations nécessaires à la facturation des honoraires"
     link: "Paramètres"
+    accountant_share_link: "Lien de partage expert comptable"
     communication_title: "Paramètres de communication"
     communication_subtitle: |
       Adresse email personnelle à utiliser pour transférer les emails reçus sur la plateforme.
@@ -13,6 +14,9 @@ fr:
     buttons:
       edit: "Modifier les informations"
       back_to_settings: "&larr; Retour aux paramètres"
+      regenerate_accountant_link: "Renouveler le lien de partage expert comptable"
+    flash:
+      accountant_link_renewed: "Le lien de partage expert comptable a été renouvelé"
     
   activerecord:
     attributes:

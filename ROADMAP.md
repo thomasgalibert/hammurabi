@@ -44,9 +44,9 @@
 
 ## Collaboration
 
-- [ ] Accès privée pour les comptables (création model Accoutant avec même fonctions d'authentication mais relatif à un User)
+- [X] Créer un lien de partage pour les comptables
+- [X] Page de consultation des factures pour les comptables
 - [X] Page privée de consultation du dossier pour les non utilisateurs d'Hammurabi 
-- [ ] Ajouter, modifier et supprimer les collaborateurs
 
 ## Gérer les emails entrants
 

@@ -1,9 +1,9 @@
 <%= link_to @url, 
   class: "text-#{@color}-600 hover:text-#{@color}-800 border-#{@color}-300 " + 
-         "rounded-md bg-white border px-2 py-1.5  hover:shadow-md" do %>
+         "rounded-md bg-white border px-2 py-1.5  hover:shadow-md", target: @target do %>
   <span><%= @name.html_safe %></span>
 
   <% if @icon.present? %>
-    <%= content_tag :i, "", class: [@icon, "ml-2"] %>
+    <%= content_tag :i, "", class: [@icon, @margin_icon] %>
   <% end %>
 <% end %>

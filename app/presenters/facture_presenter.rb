@@ -32,11 +32,26 @@ class FacturePresenter < Keynote::Presenter
 
   def description = facture.description
   def created_at = I18n.l(facture.created_at, format: :short)
-  def date = I18n.l(facture.created_at, format: :short)
+  def date = I18n.l(facture.date)
   def dossier = facture.dossier.name
   def total_ttc = content_tag(:span, number_to_currency(facture.total_ttc), class: "font-mono")
   def dossier_url = dossier_facture_path(facture.dossier, facture)
   def facture_url = dossier_facture_path(facture.dossier, facture)
+
+  def download
+    if facture.achived?
+      download_url = dossier_facture_path(facture.dossier, facture, format: :pdf)
+      render LinkComponent.new(name: "", url: download_url, color: "gray", icon: "fa-solid fa-file-pdf", target: "_blank")
+    end
+  end
+
+  def share_download
+    if facture.achived?
+      token = facture.user.accountant_share_token
+      download_url = sharing_invoice_path(facture, token: token, format: :pdf)
+      render LinkComponent.new(name: "", url: download_url, color: "gray", icon: "fa-solid fa-file-pdf", target: "_blank")
+    end
+  end
 
   def numero
     if facture.achived?

@@ -223,6 +223,7 @@ fr:
       long: "%A %d %B %Y %Hh%M"
       short: "%d %b %Y, %Hh%M "
       only_date: "%d %B %Y"
+      ultra_short: "%d/%m/%Y"
     pm: pm
   simple_calendar:
     previous: "<<"

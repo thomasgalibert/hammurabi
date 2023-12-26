@@ -47,6 +47,7 @@ class User < ApplicationRecord
   end
 
   has_secure_token :forward_email_token
+  has_secure_token :accountant_token, length: 36
 
   def conditions_generales
     if self.facturation_setting.present? && self.facturation_setting.conditions_generales.present?
@@ -82,6 +83,15 @@ class User < ApplicationRecord
     else
       regenerate_forward_email_token
       forward_email_token + "@hammurabi.software"
+    end
+  end
+
+  def accountant_share_token
+    if accountant_token.present?
+      accountant_token
+    else
+      regenerate_accountant_token
+      accountant_token
     end
   end
 end
