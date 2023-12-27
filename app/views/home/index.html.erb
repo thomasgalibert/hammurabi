@@ -1,132 +1,38 @@
 <div class="bg-transparent py-0 sm:py-0 rounded-xl">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <div class="mx-auto max-w-2xl sm:text-center">
-      <h2 class="text-base font-semibold leading-7 text-yellow-500">HAMMURABI</h2>
-      <p class="mt-2 text-3xl font-bold tracking-tight text-black sm:text-4xl">Logiciel open source de gestion de cabinet d'avocat.</p>
-      <p class="mt-6 text-lg leading-8 text-stone-900">
-        Ne payez plus tous les mois pour un logiciel qui ne vous appartient pas.
-      </p>
+      <p class="mt-2 text-3xl font-bold tracking-tight text-stone-500 sm:text-4xl">Logiciel open source de gestion de cabinet d'avocat.</p>
     </div>
   </div>
-  <div class="relative overflow-hidden pt-16">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <%= image_tag "sample_hammurabi.jpg", 
-            alt: "Exemple hammurabi dossier", 
-            class: "mb-[-12%] rounded-xl shadow-2xl ring-1 ring-white/10", 
-            width: "2432", 
-            height: "1442" %>
-      <div class="relative" aria-hidden="true">
-        <div class="absolute -inset-x-20 bottom-0  pt-[7%]"></div>
-      </div>
+
+  <div class="grid grid-cols-3 gap-10 my-20">
+    <div class="col-span-3 sm:col-span-1 bg-white border-2 border-stone-600 p-10 rounded-md text-2xl text-center">
+      <%= link_to new_session_path do %>
+        <div class="flex flex-col space-y-10 fa-2xl">
+          <i class="fa-solid fa-fingerprint text-emerald-500"></i>
+          <span class="text-2xl font-semibold text-stone-600"><%= t('sessions.login') %></span>
+        </div>
+      <% end %>
+    </div>
+    
+    <div class="col-span-3 sm:col-span-1 bg-white border-2 border-stone-600 p-10 rounded-md text-2xl text-center">
+      <%= link_to new_registration_path do %>
+        <div class="flex flex-col space-y-10 fa-2xl">
+          <i class="fa-duotone fa-rocket text-sky-500"></i>
+          <span class="text-2xl font-semibold text-stone-600"><%= t('sessions.signup') %></span>
+        </div>
+      <% end %>
+    </div>
+    
+    <div class="col-span-3 sm:col-span-1 bg-white border-2 border-stone-600 p-10 rounded-md text-2xl text-center">
+      <%= link_to help_path do %>
+        <div class="flex flex-col space-y-10 fa-2xl">
+          <i class="fa-duotone fa-life-ring text-pink-500"></i>
+          <span class="text-2xl font-semibold text-stone-600"><%= t('sessions.help') %></span>
+        </div>
+      <% end %>
     </div>
   </div>
-  <div class="mx-auto mt-16 max-w-7xl px-6 sm:mt-20 md:mt-24 lg:px-8">
-    <dl class="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base leading-7 text-stone-500 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
-      <div class="relative pl-9">
-        <dt class="inline font-semibold text-black">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="absolute left-1 top-1 h-5 w-5 text-yellow-500">
-            <path d="M18 1.5c2.9 0 5.25 2.35 5.25 5.25v3.75a.75.75 0 01-1.5 0V6.75a3.75 3.75 0 10-7.5 0v3a3 3 0 013 3v6.75a3 3 0 01-3 3H3.75a3 3 0 01-3-3v-6.75a3 3 0 013-3h9v-3c0-2.9 2.35-5.25 5.25-5.25z" />
-          </svg>
-          Logiciel open-source
-        </dt>
-        <dd class="inline">Vous avez accès au code source et vous pouvez héberger vos données sur vos propres serveurs</dd>
-      </div>
-      <div class="relative pl-9">
-        <dt class="inline font-semibold text-black">
-          <svg class="absolute left-1 top-1 h-5 w-5 text-yellow-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M10 2.5c-1.31 0-2.526.386-3.546 1.051a.75.75 0 01-.82-1.256A8 8 0 0118 9a22.47 22.47 0 01-1.228 7.351.75.75 0 11-1.417-.49A20.97 20.97 0 0016.5 9 6.5 6.5 0 0010 2.5zM4.333 4.416a.75.75 0 01.218 1.038A6.466 6.466 0 003.5 9a7.966 7.966 0 01-1.293 4.362.75.75 0 01-1.257-.819A6.466 6.466 0 002 9c0-1.61.476-3.11 1.295-4.365a.75.75 0 011.038-.219zM10 6.12a3 3 0 00-3.001 3.041 11.455 11.455 0 01-2.697 7.24.75.75 0 01-1.148-.965A9.957 9.957 0 005.5 9c0-.028.002-.055.004-.082a4.5 4.5 0 018.996.084V9.15l-.005.297a.75.75 0 11-1.5-.034c.003-.11.004-.219.005-.328a3 3 0 00-3-2.965zm0 2.13a.75.75 0 01.75.75c0 3.51-1.187 6.745-3.181 9.323a.75.75 0 11-1.186-.918A13.687 13.687 0 009.25 9a.75.75 0 01.75-.75zm3.529 3.698a.75.75 0 01.584.885 18.883 18.883 0 01-2.257 5.84.75.75 0 11-1.29-.764 17.386 17.386 0 002.078-5.377.75.75 0 01.885-.584z" clip-rule="evenodd" />
-          </svg>
-          Confidentialité
-        </dt>
-        <dd class="inline">
-          Conçu avec le respect du RGPD en tête, vous pouvez anonymiser en un click les donneés personnelles de vos clients.
-        </dd>
-      </div>
-      <div class="relative pl-9">
-        <dt class="inline font-semibold text-black">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="absolute left-1 top-1 h-5 w-5 text-yellow-500">
-            <path d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z" />
-          </svg>
-          Collaboration
-        </dt>
-        <dd class="inline">Conçu pour faciliter la collaboration entre confrères (postulation, sous-traitance) et permet un partage en toute sécurité des dossiers.</dd>
-      </div>
-      <div class="relative pl-9">
-        <dt class="inline font-semibold text-black">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="absolute left-1 top-1 h-5 w-5 text-yellow-500">
-            <path d="M3.375 3C2.339 3 1.5 3.84 1.5 4.875v.75c0 1.036.84 1.875 1.875 1.875h17.25c1.035 0 1.875-.84 1.875-1.875v-.75C22.5 3.839 21.66 3 20.625 3H3.375z" />
-            <path fill-rule="evenodd" d="M3.087 9l.54 9.176A3 3 0 006.62 21h10.757a3 3 0 002.995-2.824L20.913 9H3.087zM12 10.5a.75.75 0 01.75.75v4.94l1.72-1.72a.75.75 0 111.06 1.06l-3 3a.75.75 0 01-1.06 0l-3-3a.75.75 0 111.06-1.06l1.72 1.72v-4.94a.75.75 0 01.75-.75z" clip-rule="evenodd" />
-          </svg>
-          Récolte des pièces clients
-        </dt>
-        <dd class="inline">Quoi de plus chronophage d'avoir à demander des pièces pas email. Pas ici. Hammurabi s'en charge.</dd>
-      </div>
-      <div class="relative pl-9">
-        <dt class="inline font-semibold text-black">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="absolute left-1 top-1 h-5 w-5 text-yellow-500">
-            <path d="M10.5 18.75a.75.75 0 000 1.5h3a.75.75 0 000-1.5h-3z" />
-            <path fill-rule="evenodd" d="M8.625.75A3.375 3.375 0 005.25 4.125v15.75a3.375 3.375 0 003.375 3.375h6.75a3.375 3.375 0 003.375-3.375V4.125A3.375 3.375 0 0015.375.75h-6.75zM7.5 4.125C7.5 3.504 8.004 3 8.625 3H9.75v.375c0 .621.504 1.125 1.125 1.125h2.25c.621 0 1.125-.504 1.125-1.125V3h1.125c.621 0 1.125.504 1.125 1.125v15.75c0 .621-.504 1.125-1.125 1.125h-6.75A1.125 1.125 0 017.5 19.875V4.125z" clip-rule="evenodd" />
-          </svg>
-          Entièrement mobile
-        </dt>
-        <dd class="inline">Vous êtes souvent en audience ou en déplacement ? Aucun souci, vous avez accès à toutes les fonctions sur votre mobile.</dd>
-      </div>
-      <div class="relative pl-9">
-        <dt class="inline font-semibold text-black">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="absolute left-1 top-1 h-5 w-5 text-yellow-500">
-            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-2.625 6c-.54 0-.828.419-.936.634a1.96 1.96 0 00-.189.866c0 .298.059.605.189.866.108.215.395.634.936.634.54 0 .828-.419.936-.634.13-.26.189-.568.189-.866 0-.298-.059-.605-.189-.866-.108-.215-.395-.634-.936-.634zm4.314.634c.108-.215.395-.634.936-.634.54 0 .828.419.936.634.13.26.189.568.189.866 0 .298-.059.605-.189.866-.108.215-.395.634-.936.634-.54 0-.828-.419-.936-.634a1.96 1.96 0 01-.189-.866c0-.298.059-.605.189-.866zm2.023 6.828a.75.75 0 10-1.06-1.06 3.75 3.75 0 01-5.304 0 .75.75 0 00-1.06 1.06 5.25 5.25 0 007.424 0z" clip-rule="evenodd" />
-          </svg>
-          Agréable et intuitif
-        </dt>
-        <dd class="inline">Facile à utiliser avec une interface claire, aucune formation n'est requise.</dd>
-      </div>
-    </dl>
-  </div>
 
-  <div class="mx-auto max-w-4xl text-center mt-20 border-t pt-10">
-    <div class="flex justify-center mb-4">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-24 h-24 text-yellow-400">
-        <path fill-rule="evenodd" d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z" clip-rule="evenodd" />
-      </svg>
-    </div>
-    <h2 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Ce qu'Hammurabi ne fait pas et ne fera jamais</h2>
-    <p class="mt-6 text-lg leading-8 text-gray-600">Proposer des modèles de rédactions</p>
-    <p class="mt-2 text-lg leading-8 text-gray-600">Envoyer et intégrer les emails dans vos dossiers</p>
-  </div>
 
-  <div class="mx-auto max-w-4xl text-center mt-20 border-t pt-10">
-    <div class="flex justify-center mb-4">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-24 h-24 text-emerald-400">
-        <path d="M4.08 5.227A3 3 0 016.979 3H17.02a3 3 0 012.9 2.227l2.113 7.926A5.228 5.228 0 0018.75 12H5.25a5.228 5.228 0 00-3.284 1.153L4.08 5.227z" />
-        <path fill-rule="evenodd" d="M5.25 13.5a3.75 3.75 0 100 7.5h13.5a3.75 3.75 0 100-7.5H5.25zm10.5 4.5a.75.75 0 100-1.5.75.75 0 000 1.5zm3.75-.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" clip-rule="evenodd" />
-      </svg>
-    </div>
-    <h2 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Mais concrètement, comment je peux l'installer ?</h2>
-
-    <dl class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 text-base leading-7 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-      <div>
-        <dt class="font-semibold text-gray-900">Sur vos propres serveurs physiques</dt>
-        <dd class="mt-1 text-gray-600">Cela nécessite tout de même l'intervention d'un expert en déploiement (Docker) mais le coût est unique.</dd>
-      </div>
-      <div>
-        <dt class="font-semibold text-gray-900">Sur votre cloud hébergé.</dt>
-        <dd class="mt-1 text-gray-600">Il faut toujours l'intervention d'un expert mais l'opération peut se faire à distance.</dd>
-      </div>
-      <div>
-        <dt class="font-semibold text-gray-900">Vous utilisez notre service d'hébergement</dt>
-        <dd class="mt-1 text-gray-600">Il vous suffit de créer un compte <%= link_to "ICI", new_registration_path, class: "underline text-emerald-600 font-semibold" %> et nous occupons de tout pour 30 € TTC / mois.</dd>
-      </div>
-    </dl>
-
-    <p class="mt-10 leading-loose text-lg bg-white rounded-lg p-4">
-      <span class="font-semibold">Evidemment, rien n'est totalement gratuit.</span> <br /> 
-      
-      Même si en théorie, vous pouvez très bien tout installer par vous même, il vous faudra au minimum un ordinateur et une connexion internet. Et si vous n'avez pas de serveur, il vous faudra en louer un. Et si vous n'avez pas de compétences techniques, il vous faudra payer quelqu'un pour le faire. Et si vous n'avez pas de temps, il vous faudra payer quelqu'un pour le faire.</p>
-
-    <p class="mt-10 leading-loose text-lg bg-stone-800 text-white rounded-lg p-4">
-      <span class="font-semibold">N'hésitez pas à nous contacter ou nous demander conseil !</span>
-    </p> 
-  </div>
-
-  
 </div>

@@ -14,6 +14,7 @@ fr:
     forget_password: "Mot de passe oublié ?"
     unauthenticate: "Vous n'êtes pas connecté au service."
     updated_password: "Votre mot de passe a bien été modifié."
+    help: "Aide"
   
   flash:
     title:
