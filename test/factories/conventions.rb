@@ -5,5 +5,6 @@ FactoryBot.define do
     forfait_cents { Faker::Number.number(digits: 6) }
     variable { Faker::Lorem.paragraph(sentence_count: 3) }
     association :user, factory: :user
+    fichier { Rack::Test::UploadedFile.new(Rails.root.join('test/fixtures/files/sample.pdf'), 'application/pdf') }
   end
 end

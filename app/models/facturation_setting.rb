@@ -24,8 +24,7 @@ class FacturationSetting < ApplicationRecord
               message: "Le format du fichier doit être au format jpeg"}, 
             size: { 
               less_than: 1.megabytes , 
-              message: "La taille du fichier ne doit pas dépasser 1 Mo" },
-            allow_blank: true
+              message: "La taille du fichier ne doit pas dépasser 1 Mo" }
 
   validate :check_if_factures_achived_exists
 

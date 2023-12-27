@@ -6,5 +6,6 @@ FactoryBot.define do
     first_invoice_number { 1 }
     default_payment_link { "https://www.stripe.com" }
     association :user, factory: :user
+    logo { Rack::Test::UploadedFile.new(Rails.root.join('test/fixtures/files/logo.jpg'), 'image/jpeg') }
   end
 end

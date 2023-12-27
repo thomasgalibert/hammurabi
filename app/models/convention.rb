@@ -24,8 +24,7 @@ class Convention < ApplicationRecord
               message: "Le format du fichier doit être au format pdf ou word"}, 
             size: { 
               less_than: 10.megabytes , 
-              message: "La taille du fichier ne doit pas dépasser 10 Mo" },
-            allow_blank: true
+              message: "La taille du fichier ne doit pas dépasser 10 Mo" }
 
   before_save :create_reference
   
