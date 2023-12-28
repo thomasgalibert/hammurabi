@@ -5,6 +5,7 @@
 # t.text "description"
 # t.string "category"
 # t.string "court"
+# t.string "rg_number"
 # t.datetime "created_at", null: false
 # t.datetime "updated_at", null: false
 # t.datetime "viewed_at"
@@ -43,6 +44,18 @@ class Dossier < ApplicationRecord
 
   def contact_principal
     main_dossier_contact.present? ? main_dossier_contact.contact : nil
+  end
+
+  def adversary
+    self.contacts.find_by(kind: "adversary")
+  end
+
+  def adversary_attorney
+    self.contacts.find_by(kind: "adversary_attorney")
+  end
+
+  def can_edit_document_submission_schedule?
+    contact_principal.present? && adversary.present? && adversary_attorney.present?
   end
 
   def self.ransackable_attributes(auth_object = nil)

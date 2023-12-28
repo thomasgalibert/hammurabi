@@ -37,8 +37,8 @@
 
 - [X] Manager la liste des pièces demandées au client
 - [X] Créer une page privée pour le dépôt des pièces par le client
-- [ ] Permettre de réordonner les pièces
-- [ ] Tamponner les pièces
+- [X] Permettre de réordonner les pièces
+- [X] Tamponner les pièces
 - [ ] Editer le borderau de communication des pièces
 
 ## Calendrier

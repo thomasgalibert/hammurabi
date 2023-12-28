@@ -12,21 +12,22 @@
       <% end %>
     </span>
   </h1>
+
+  <div class="flex items-center space-x-2">
+    <div><%= k(@dossier).badge %></div>
+    <div>
+      <span class="text-sm text-stone-500 inline-block mr-6">
+        <%= at(@dossier, :rg_number) %> :
+        <span class="font-mono text-stone-700"><%= @dossier.rg_number %></span>
+      </span>
+      <span class="text-sm text-stone-500">
+        <%= at(@dossier, :court) %> :
+        <%= @dossier.court %>
+      </span>
+    </div>
+  </div>
 <% end %>
 
-<div class="flex items-center space-x-2">
-  <div><%= k(@dossier).badge %></div>
-  <div>
-    <span class="text-sm text-stone-500 inline-block mr-6">
-      <%= at(@dossier, :reference) %> :
-      <span class="font-mono text-stone-700"><%= @dossier.reference %></span>
-    </span>
-    <span class="text-sm text-stone-500">
-      <%= at(@dossier, :created_at) %>
-      <%= l(@dossier.created_at, format: :short) %>
-    </span>
-  </div>
-</div>
 
 <div class="grid grid-cols-2 mt-10 gap-4">
   <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 lg:col-span-1">

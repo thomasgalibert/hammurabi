@@ -40,6 +40,7 @@ fr:
         description: "Description"
         category: "Catégorie"
         court: "Juridiction"
+        rg_number: "Numéro RG"
         categories:
           civil: "Civil"
           penal: "Pénal"

@@ -30,7 +30,7 @@ class DossiersController < ApplicationController
 
   def update
     if @dossier.update(dossier_params)
-      redirect_to @dossier, notice: t('dossiers.flash.updated')
+      redirect_to @dossier
     else
       render :edit, status: :unprocessable_entity
     end
@@ -48,7 +48,7 @@ class DossiersController < ApplicationController
   end
 
   def dossier_params
-    params.require(:dossier).permit(:name, :description, :category, :court)
+    params.require(:dossier).permit(:name, :description, :category, :court, :rg_number)
   end
 
   def update_viewed_at

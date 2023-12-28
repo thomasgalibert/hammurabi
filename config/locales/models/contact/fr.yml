@@ -5,8 +5,9 @@ fr:
         kinds:
           customer: "Client"
           witness: "Témoin"
-          partner: "Confrère"
+          partner: "Postulant / Correspondant"
           adversary: "Adversaire"
+          adversary_attorney: "Avocat adverse"
           other: "Autre"
         first_name: "Prénom"
         last_name: "Nom"

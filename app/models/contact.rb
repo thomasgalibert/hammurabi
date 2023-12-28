@@ -32,7 +32,7 @@ class Contact < ApplicationRecord
   has_many :document_share_links, dependent: :destroy
   has_many :dossier_share_links, dependent: :destroy
 
-  KINDS = ["customer", "witness", "partner", "adversary", "other"]
+  KINDS = ["customer", "adversary", "adversary_attorney", "witness", "partner", "other"]
 
   scope :customers, -> { where(kind: "customer") }
 
@@ -58,5 +58,9 @@ class Contact < ApplicationRecord
 
   def self.ransackable_associations(auth_object = nil)
     []
+  end
+
+  def birthday_date
+    birthday.present? ? I18n.l(birthday) : "----"
   end
 end
