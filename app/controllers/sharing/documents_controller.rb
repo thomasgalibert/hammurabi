@@ -1,9 +1,11 @@
 class Sharing::DocumentsController < ApplicationController
+  include Ordering
   before_action :check_link_and_token
 
   def create
     document = Document.new(document_params)
     if document.save
+      add_item_to_list_with_position(document.dossier.documents, document)
       redirect_to sharing_document_share_link_url(@document_share_link, token: @document_share_link.token)
       flash[:notice] = t('documents.flash.created')
     else
