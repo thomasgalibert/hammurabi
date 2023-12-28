@@ -32,6 +32,8 @@ fr:
        business_number: "Numéro SIRET"
        vat_number: "Numéro de TVA"
        share_capital: "Capital social"
+       bar_name: "Nom du barreau"
+       mailbox_number: "Numéro de case"
   
   helpers:
     submit:

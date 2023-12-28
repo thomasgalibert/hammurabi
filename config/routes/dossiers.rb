@@ -19,7 +19,14 @@ resources :dossiers do
     end
   end
 
-  resources :documents
+  resources :documents do
+    member do
+      put :sort
+    end
+  end
+  
+  resource :document_submission_schedule, only: [:show]
+  
   resources :conventions
   resources :conclusions
   resources :notes

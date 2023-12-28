@@ -26,4 +26,8 @@ class DossierPresenter < Keynote::Presenter
   def link_asks
     link_to I18n.t('asks.emails.link'), "client/dossier/document/KJHKJHKJHJHJKKJHKJH"
   end
+
+  def name_as_url
+    I18n.transliterate(dossier.name).parameterize(separator: '_').downcase
+  end
 end

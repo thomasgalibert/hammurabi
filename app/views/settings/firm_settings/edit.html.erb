@@ -12,6 +12,20 @@
       <%= form.text_field :legal_name, autofocus: true,
           class: "block w-full rounded-md border-0 py-1.5 sm:py-4 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 text-sm sm:text-xl sm:leading-6" %>
     </div>
+
+    <div class="grid grid-cols-12 gap-4">
+      <div class="flex flex-col space-y-2 mb-6 col-span-12 sm:col-span-8">
+        <%= form.label :bar_name, class: "block text-sm font-medium leading-6 text-stone-900" %>
+        <%= form.text_field :bar_name,
+            class: "block w-full rounded-md border-0 py-1.5 sm:py-4 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 text-sm sm:text-xl sm:leading-6" %>
+      </div>
+
+      <div class="flex flex-col space-y-2 mb-6 col-span-12 sm:col-span-4">
+        <%= form.label :mailbox_number, class: "block text-sm font-medium leading-6 text-stone-900" %>
+        <%= form.text_field :mailbox_number,
+            class: "block w-full rounded-md border-0 py-1.5 sm:py-4 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 text-sm sm:text-xl sm:leading-6" %>
+      </div>
+    </div>
     
     <div class="flex flex-col space-y-2 mb-6">
       <%= form.label :address, class: "block text-sm font-medium leading-6 text-stone-900" %>

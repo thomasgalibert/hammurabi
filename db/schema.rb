@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_26_152113) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_28_111513) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -92,6 +92,11 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_26_152113) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "main", default: false
+    t.date "birthday"
+    t.string "nationality"
+    t.string "job"
+    t.string "bar_name"
+    t.string "mailbox_number"
     t.index ["user_id"], name: "index_contacts_on_user_id"
   end
 
@@ -125,6 +130,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_26_152113) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "ask_id"
+    t.integer "position"
     t.index ["ask_id"], name: "index_documents_on_ask_id"
     t.index ["dossier_id"], name: "index_documents_on_dossier_id"
     t.index ["user_id"], name: "index_documents_on_user_id"
@@ -251,6 +257,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_26_152113) do
     t.string "share_capital"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "bar_name"
+    t.string "mailbox_number"
     t.index ["user_id"], name: "index_firm_settings_on_user_id"
   end
 

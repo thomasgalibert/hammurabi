@@ -92,7 +92,13 @@ class ContactsController < ApplicationController
       :zip_code,
       :city,
       :country,
-      :main)
+      :main,
+      :birthday,
+      :nationality,
+      :job,
+      :bar_name,
+      :mailbox_number
+      )
   end
 
   def update_dossier_contact_main(dossier, contact, is_main)

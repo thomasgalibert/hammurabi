@@ -45,8 +45,55 @@ module Ordering
     end
   end
 
+  def delete_item_with_position(items, item)
+    item_to_delete = item
+    deleted_position = item_to_delete.position
+
+    # Supprimer l'élément
+    item_to_delete.destroy
+
+    # Réajuster l'ordre des éléments restants
+    items.where('position > ?', deleted_position).each do |item|
+      item.update(position: item.position - 1)
+    end
+  end
+
   def add_item_to_list(items, item)
-    max_position = items.maximum(:row_order) || 0
-    item.update(row_order: max_position + 1)
+    if items.count == 1
+      item.update(row_order: 1)
+    else
+      max_position = items.maximum(:row_order) || 0
+      item.update(row_order: max_position + 1)
+    end
+  end
+
+  def add_item_to_list_with_position(items, item)
+    if items.count == 1
+      item.update(position: 1)
+    else  
+      max_position = items.maximum(:position) || 0
+      item.update(position: max_position + 1)
+    end
+  end
+
+  def reorder_items_with_acts_as_list(items, item, new_position)
+    item_to_move = item
+    old_position = item_to_move.position
+
+    # Mise à jour de l'ordre
+    if old_position < new_position
+      # Déplacer vers le bas dans la liste
+      items.where(position: (old_position + 1)..new_position).each do |item|
+        item.update(position: item.position - 1)
+      end
+    elsif old_position > new_position
+      # Déplacer vers le haut dans la liste
+      items.where(position: new_position..(old_position - 1)).each do |item|
+        item.update(position: item.position + 1)
+      end
+    end
+
+    # Mettre à jour la position de l'élément
+    item_to_move.update(position: new_position)
   end
 end

@@ -21,6 +21,21 @@
       </div>
     </div>
 
+    <div class="grid grid-cols-2 sm:gap-4 mb-6">
+      <div class="flex flex-col space-y-2 mb-0 col-span-2 sm:col-span-1">
+        <%= form.label :birthday, class: "block text-sm font-medium leading-6 text-stone-900" %>
+        <%= form.date_field :birthday,
+            class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+      </div>
+
+      <div class="flex flex-col space-y-2 mb-0 col-span-2 sm:col-span-1">
+        <%= form.label :nationality, class: "block text-sm font-medium leading-6 text-stone-900" %>
+        <%= form.text_field :nationality,
+            class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+      </div>
+    </div>
+    
+
     <div class="flex flex-col space-y-2 mb-6">
       <%= form.label :company_name, class: "block text-sm font-medium leading-6 text-stone-900" %>
       <%= form.text_field :company_name,
@@ -42,6 +57,22 @@
           <%= form.label :main, class: "font-medium text-gray-900" %>
           <p id="candidates-description" class="text-gray-500"><%= t('activerecord.attributes.contact.main_explanation') %></p>
         </div>
+      </div>
+    </div>
+
+    <%= render DividerComponent.new title: "Si confrère ou adversaire" %>
+
+    <div class="grid grid-cols-12 gap-4">
+      <div class="flex flex-col space-y-2 mb-6 col-span-12 sm:col-span-8">
+        <%= form.label :bar_name, class: "block text-sm font-medium leading-6 text-stone-900" %>
+        <%= form.text_field :bar_name,
+            class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+      </div>
+
+      <div class="flex flex-col space-y-2 mb-6 col-span-12 sm:col-span-4">
+        <%= form.label :mailbox_number, class: "block text-sm font-medium leading-6 text-stone-900" %>
+        <%= form.text_field :mailbox_number,
+            class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
       </div>
     </div>
 

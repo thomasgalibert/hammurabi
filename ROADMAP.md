@@ -33,10 +33,13 @@
 - [ ] Permettre de rajouter des sections dans la facture
 - [ ] Grouper ou non les lignes de la facture dans les sections
 
-## Récolte des pièces
+## Gestion des pièces
 
 - [X] Manager la liste des pièces demandées au client
 - [X] Créer une page privée pour le dépôt des pièces par le client
+- [ ] Permettre de réordonner les pièces
+- [ ] Tamponner les pièces
+- [ ] Editer le borderau de communication des pièces
 
 ## Calendrier
 
@@ -64,5 +67,5 @@
 
 ## Environnement de développement
 
-- [ ] Passer à Ruby 3.3.0
+- [X] Passer à Ruby 3.3.0
 - [X] Passer à Postgres

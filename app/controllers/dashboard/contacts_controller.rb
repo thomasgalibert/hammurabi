@@ -46,7 +46,13 @@ class Dashboard::ContactsController < ApplicationController
       :zip_code,
       :city,
       :country,
-      :main)
+      :main,
+      :birthday,
+      :nationality,
+      :job,
+      :bar_name,
+      :mailbox_number
+      )
   end
 
 end

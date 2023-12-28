@@ -147,6 +147,17 @@ module PdfHelper
     number_pages string, options
   end
 
+  def print_number_of_pages
+    # Paging
+    string = "<page> / <total>"
+    options = { :at => [bounds.right - 150, 7],
+                    :width => 150,
+                    :align => :right,
+                    :size => 7,
+                    :start_count_at => 1}
+    number_pages string, options
+  end
+
   private
 
   def display_date(date)

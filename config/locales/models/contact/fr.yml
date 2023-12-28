@@ -6,6 +6,7 @@ fr:
           customer: "Client"
           witness: "Témoin"
           partner: "Confrère"
+          adversary: "Adversaire"
           other: "Autre"
         first_name: "Prénom"
         last_name: "Nom"
@@ -25,6 +26,11 @@ fr:
         main_explanation: "Le contact servira à la facturation et à l'envoi des documents."
         created_at: "Créé le"
         badge: "Rôle"
+        birthday: "Date de naissance"
+        nationality: "De nationalité"
+        job: "Profession"
+        bar_name: "Nom du barreau"
+        mailbox_number: "N° de case"
   contacts:
     flash:
       created: "Le contact a été créé avec succès."

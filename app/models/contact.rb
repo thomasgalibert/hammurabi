@@ -15,7 +15,11 @@
 # t.datetime "created_at", null: false
 # t.datetime "updated_at", null: false
 # t.boolean "main", default: false
-# t.index ["user_id"], name: "index_contacts_on_user_id"
+# t.date "birthday"
+# t.string "nationality"
+# t.string "job"
+# t.string "bar_name"
+# t.string "mailbox_number"
 # == Schema end
 
 class Contact < ApplicationRecord
@@ -28,7 +32,7 @@ class Contact < ApplicationRecord
   has_many :document_share_links, dependent: :destroy
   has_many :dossier_share_links, dependent: :destroy
 
-  KINDS = ["customer", "witness", "partner", "other"]
+  KINDS = ["customer", "witness", "partner", "adversary", "other"]
 
   scope :customers, -> { where(kind: "customer") }
 

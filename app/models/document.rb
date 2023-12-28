@@ -5,6 +5,7 @@
 # t.datetime "created_at", null: false
 # t.datetime "updated_at", null: false
 # t.bigint "ask_id"
+# t.integer "position"
 # t.index ["ask_id"], name: "index_documents_on_ask_id"
 # t.index ["dossier_id"], name: "index_documents_on_dossier_id"
 # t.index ["user_id"], name: "index_documents_on_user_id"
@@ -12,18 +13,21 @@
 
 class Document < ApplicationRecord
   include ActionView::Helpers::NumberHelper
+  include StampPdf
   # Associations
   belongs_to :user
   belongs_to :dossier
   belongs_to :ask, optional: true
   has_one_attached :fichier
+  acts_as_list scope: [:dossier]
 
+  default_scope { order(position: :asc) }
   scope :lasts, -> (limit) { order(created_at: :desc).limit(limit) }
 
   validates :fichier, attached: true, 
             content_type: { 
-              in: ['image/png', 'image/jpeg', 'application/pdf'], 
-              message: "Le format du fichier doit être png, jpeg ou pdf"}, 
+              in: ['application/pdf'], 
+              message: "Le format du fichier doit être au format pdf"}, 
             size: { 
               less_than: 10.megabytes , 
               message: "La taille du fichier ne doit pas dépasser 10 Mo" }

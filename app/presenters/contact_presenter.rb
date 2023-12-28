@@ -43,6 +43,7 @@ class ContactPresenter < Keynote::Presenter
     when "customer" then "bg-green-50 text-green-700 ring-green-600/20"
     when "witness" then "bg-yellow-50 text-yellow-700 ring-yellow-600/20"
     when "partner" then "bg-blue-50 text-blue-700 ring-blue-600/20"
+    when "adversary" then "bg-rose-50 text-rose-700 ring-rose-600/20"
     when "other" then "bg-gray-50 text-gray-700 ring-gray-600/20"
     else "bg-gray-50 text-gray-700 ring-gray-600/20"
     end
