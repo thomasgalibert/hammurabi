@@ -1,137 +1,84 @@
-<%= form_with model: [dossier, contact], class: "max-w-3xl", data: {turbo: false} do |form| %>
+<%= form_with model: [dossier, contact],
+              builder: CustomFormBuilder,
+              class: "max-w-3xl", data: {turbo: false} do |form| %>
+
   <%= render "shared/errors", object: form.object %>
-  
+
   <fieldset class="bg-white border rounded-md p-6 relative mt-10">
     <legend class="absolute -top-10 text-stone-500 text-lg">
       <span class="font-semibold"><%= contact.new_record? ? t('contacts.new.legend') : t('contacts.edit.legend') %> </span>
-      <%= dossier.name %> 
+      <%= dossier.name %>
     </legend>
 
-    <div class="grid grid-cols-2 sm:gap-4 mb-6">
-      <div class="flex flex-col space-y-2 mb-0 col-span-2 sm:col-span-1">
-        <%= form.label :last_name, class: "block text-sm font-medium leading-6 text-stone-900" %>
-        <%= form.text_field :last_name, autofocus: true,
-            class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+    <div class="grid grid-cols-2 sm:gap-4">
+      <div class="col-span-2 sm:col-span-1"><%= form.text_field :last_name %></div>
+      <div class="col-span-2 sm:col-span-1"><%= form.text_field :first_name %></div>
+    </div>
+
+    <div class="grid grid-cols-2 sm:gap-4">
+      <div class="col-span-2 sm:col-span-1"><%= form.date_field :birthday %></div>
+      <div class="col-span-2 sm:col-span-1"><%= form.text_field :nationality %></div>
+    </div>
+
+    <%= form.text_field :job %>
+    <%= form.text_field :company_name %>
+
+    <div class="grid grid-cols-2 sm:gap-4">
+      <div class="col-span-2 sm:col-span-1">
+        <%= form.select :kind, Contact::KINDS.collect { |k| [t("activerecord.attributes.contact.kinds.#{k}"), k] } %>
       </div>
 
-      <div class="flex flex-col space-y-2 mb-0 col-span-2 sm:col-span-1">
-        <%= form.label :first_name, class: "block text-sm font-medium leading-6 text-stone-900" %>
-        <%= form.text_field :first_name,
-            class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+      <div class="col-span-2 sm:col-span-1">
+        <%= form.check_box :main %>
+        <p id="candidates-description" class="text-gray-500 text-xs"><%= t('activerecord.attributes.contact.main_explanation') %></p>
       </div>
     </div>
 
-    <div class="grid grid-cols-2 sm:gap-4 mb-6">
-      <div class="flex flex-col space-y-2 mb-0 col-span-2 sm:col-span-1">
-        <%= form.label :birthday, class: "block text-sm font-medium leading-6 text-stone-900" %>
-        <%= form.date_field :birthday,
-            class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
-      </div>
-
-      <div class="flex flex-col space-y-2 mb-0 col-span-2 sm:col-span-1">
-        <%= form.label :nationality, class: "block text-sm font-medium leading-6 text-stone-900" %>
-        <%= form.text_field :nationality,
-            class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
-      </div>
-    </div>
-
-    <div class="flex flex-col space-y-2 mb-6">
-      <%= form.label :job, class: "block text-sm font-medium leading-6 text-stone-900" %>
-      <%= form.text_field :job,
-          class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
-    </div>
-    
-
-    <div class="flex flex-col space-y-2 mb-6">
-      <%= form.label :company_name, class: "block text-sm font-medium leading-6 text-stone-900" %>
-      <%= form.text_field :company_name,
-          class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
-    </div>
-    
-    <div class="grid grid-cols-2 sm:gap-4 mb-6">
-      <div class="flex flex-col space-y-2 mb-6 col-span-2 sm:col-span-1">
-        <%= form.label :kind, class: "block text-sm font-medium leading-6 text-stone-900" %>
-        <%= form.select :kind, Contact::KINDS.collect { |k| [t("activerecord.attributes.contact.kinds.#{k}"), k] }, {}, class: "mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
-      </div>
-
-      <div class="relative flex items-start col-span-2 sm:col-span-1">
-        <div class="flex h-6 items-center">
-          <%= form.check_box :main, class: "h-4 w-4 rounded border-gray-300 text-amber-600 focus:ring-amber-600" %>
+    <div class="bg-indigo-100 rounded-md p-3 mb-6">
+      <div class="grid grid-cols-12 gap-4">
+        <div class="col-span-12 sm:col-span-8">
+          <%= form.text_field :bar_name %>
         </div>
-        <div class="ml-3 text-sm leading-6">
-          <%= form.label :main, class: "font-medium text-gray-900" %>
-          <p id="candidates-description" class="text-gray-500"><%= t('activerecord.attributes.contact.main_explanation') %></p>
+        <div class="col-span-12 sm:col-span-4">
+          <%= form.text_field :mailbox_number %>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 sm:gap-4 ">
+        <div class="col-span-2 sm:col-span-1">
+          <%= form.text_field :business_number %>
+        </div>
+        <div class="col-span-2 sm:col-span-1">
+          <%= form.text_field :vat_number %>
         </div>
       </div>
     </div>
-
-    <%= render DividerComponent.new title: "Si confrère ou adversaire" %>
-
-    <div class="grid grid-cols-12 gap-4 mb-6">
-      <div class="flex flex-col space-y-2 mb-6 col-span-12 sm:col-span-8">
-        <%= form.label :bar_name, class: "block text-sm font-medium leading-6 text-stone-900" %>
-        <%= form.text_field :bar_name,
-            class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
-      </div>
-
-      <div class="flex flex-col space-y-2 mb-6 col-span-12 sm:col-span-4">
-        <%= form.label :mailbox_number, class: "block text-sm font-medium leading-6 text-stone-900" %>
-        <%= form.text_field :mailbox_number,
-            class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
-      </div>
-    </div>
-
-    <div class="grid grid-cols-2 sm:gap-4 mb-6">
-      <div class="flex flex-col space-y-2 mb-0 col-span-2 sm:col-span-1">
-        <%= form.label :business_number, class: "block text-sm font-medium leading-6 text-stone-900" %>
-        <%= form.text_field :business_number,
-            class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
-      </div>
-
-      <div class="flex flex-col space-y-2 mb-0 col-span-2 sm:col-span-1">
-        <%= form.label :vat_number, class: "block text-sm font-medium leading-6 text-stone-900" %>
-        <%= form.text_field :vat_number,
-            class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
-      </div>
-    </div>
-
 
     <div class="grid grid-cols-3 sm:gap-4 mb-6">
-      <div class="flex flex-col space-y-2 mb-0 col-span-3 sm:col-span-1">
-        <%= form.label :phone, class: "block text-sm font-medium leading-6 text-stone-900" %>
-        <%= form.phone_field :phone,
-            class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+      <div class="col-span-3 sm:col-span-1">
+        <%= form.phone_field :phone %>
       </div>
 
-      <div class="flex flex-col space-y-2 mb-0 col-span-3 sm:col-span-2">
-        <%= form.label :email, class: "block text-sm font-medium leading-6 text-stone-900" %>
-        <%= form.email_field :email,
-            class: "block w-full rounded-md border-0 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+      <div class="col-span-3 sm:col-span-2">
+        <%= form.email_field :email %>
       </div>
     </div>
 
-    <div class="flex flex-col space-y-2 mb-6">
-      <%= form.label :address, class: "block text-sm font-medium leading-6 text-stone-900" %>
-      <%= form.text_area :address, class: "mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
-    </div>
+    <%= form.text_area :address %>
 
-    <div class="grid grid-cols-12 sm:gap-4 mb-6">
-      <div class="flex flex-col space-y-2 mb-6 col-span-1 sm:col-span-3">
-        <%= form.label :zip_code, class: "block text-sm font-medium leading-6 text-stone-900" %>
-        <%= form.text_field :zip_code, class: "mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+    <div class="grid grid-cols-12 sm:gap-4">
+      <div class="col-span-1 sm:col-span-3">
+        <%= form.text_field :zip_code %>
       </div>
 
-      <div class="flex flex-col space-y-2 mb-6 col-span-1 sm:col-span-4">
-        <%= form.label :city, class: "block text-sm font-medium leading-6 text-stone-900" %>
-        <%= form.text_field :city, class: "mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+      <div class="col-span-1 sm:col-span-4">
+        <%= form.text_field :city %>
       </div>
 
-      <div class="flex flex-col space-y-2 mb-6 col-span-1 sm:col-span-5">
-        <%= form.label :country, class: "block text-sm font-medium leading-6 text-stone-900" %>
-        <%= form.country_select :country, {priority_countries: ["FR","ES","DE"], sort_provided: false}, class: "mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-emerald-600 sm:text-sm sm:leading-6" %>
+      <div class="col-span-1 sm:col-span-5">
+        <%= form.country_select :country, {priority_countries: ["FR","ES","DE"], sort_provided: false} %>
       </div>
     </div>
 
-    <%= form.submit class: "mt-10 flex w-full justify-center rounded-md bg-emerald-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600" %>
+    <%= form.submit %>
   </fieldset>
 <% end %>
