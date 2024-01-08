@@ -1,6 +1,10 @@
 <%= form_with model: [dossier, contact],
               builder: CustomFormBuilder,
-              class: "max-w-3xl", data: {turbo: false} do |form| %>
+              class: "max-w-3xl", data: {
+                turbo: false, 
+                controller: "select",
+                select_matches_value: ['partner', 'adversary_attorney']
+              } do |form| %>
 
   <%= render "shared/errors", object: form.object %>
 
@@ -20,12 +24,19 @@
       <div class="col-span-2 sm:col-span-1"><%= form.text_field :nationality %></div>
     </div>
 
+
     <%= form.text_field :job %>
     <%= form.text_field :company_name %>
 
     <div class="grid grid-cols-2 sm:gap-4">
       <div class="col-span-2 sm:col-span-1">
-        <%= form.select :kind, Contact::KINDS.collect { |k| [t("activerecord.attributes.contact.kinds.#{k}"), k] } %>
+        <%= form.select :kind, 
+            Contact::KINDS.collect { |k| [t("activerecord.attributes.contact.kinds.#{k}"), k] }, {}, {
+              data: { 
+                action: "select#toggle", 
+                select_target: "trigger"
+                }
+            } %>
       </div>
 
       <div class="col-span-2 sm:col-span-1">
@@ -34,7 +45,7 @@
       </div>
     </div>
 
-    <div class="bg-indigo-100 rounded-md p-3 mb-6">
+    <div class="bg-indigo-100 rounded-md p-3 mb-6 hidden" data-select-target="zone">
       <div class="grid grid-cols-12 gap-4">
         <div class="col-span-12 sm:col-span-8">
           <%= form.text_field :bar_name %>
