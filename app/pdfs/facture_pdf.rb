@@ -141,6 +141,9 @@ class FacturePdf < Prawn::Document
         columns(0..2).font = "Courier"
         self.header = true
       end
+
+      move_down 5
+      text "Facture acquittée", size: 14, style: :bold, color: "B20202" if @facture.paid?
     end
   end
 

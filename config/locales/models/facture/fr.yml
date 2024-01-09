@@ -55,6 +55,8 @@ fr:
         total_ttc: "Total TTC"
         rate: "Taux"
         rate_base: "Base HT"
+        payments: "Déjà réglé"
+        balance: "Net à payer"
     stats:
       total_ht: "Total facturé HT"
       total_received: "Total encaissé"

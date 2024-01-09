@@ -51,7 +51,7 @@ module PdfHelper
       [at(facture, :date), display_date(facture.date)],
       [at(facture, :due_date), display_date(facture.due_date)],
       [at(facture, :convention_date), facture.convention_number],
-      [at(facture, :total_due), number_to_currency(facture.total_ttc)]
+      [at(facture, :total_due), number_to_currency(facture.balance)]
     ]		
 	end
 
@@ -77,8 +77,7 @@ module PdfHelper
     [[
       {content: "" }, 
       {content: I18n.t('factures.pdf.lignes.total_ttc'), colspan: 4, align: :right }, 
-      {content: number_with_precision(facture.total_ttc, precision: 2), colspan: 1, align: :right, size: 8 }]]
-
+      {content: number_with_precision(facture.total_ttc, precision: 2), colspan: 1, align: :right, size: 8 }]] + payments_rows(facture)
   end
 
   def row_items(lignes)
@@ -97,6 +96,21 @@ module PdfHelper
     end
 
     data
+  end
+
+  def payments_rows(facture)
+    if facture.payments.any?
+      [[
+        {content: "" },
+        {content: I18n.t('factures.pdf.lignes.payments'), colspan: 4, align: :right },
+        {content: number_with_precision(-(facture.sum_payments), precision: 2), colspan: 1, align: :right, size: 8 }]] +
+      [[
+        {content: "" },
+        {content: I18n.t('factures.pdf.lignes.balance'), colspan: 4, align: :right },
+        {content: number_with_precision(facture.balance, precision: 2), colspan: 1, align: :right, size: 8 }]]
+    else
+      []
+    end
   end
 
   def tax_rows(facture)
