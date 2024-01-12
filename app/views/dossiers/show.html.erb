@@ -46,26 +46,25 @@
   </div>
 
   <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 lg:col-span-1">
-    <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.todos') %></h2>
-    <div class="mb-4"><%= render "todos/form", todo: @dossier.todos.new, todoable: @dossier %></div>
-    <ul data-controller="sortable" class="divide-y">
-      <%= render partial: "todos/todo", collection: @dossier.todos.incomplete.order(:row_order), locals: {can_edit: true, show_dossier: false} %>
-    </ul>
-    <div class="flex justify-end mt-4">
-      <%= link_to "voir les tâches complétées &rarr;".html_safe,
-          completed_dossier_todos_path(@dossier),
-          "data-turbo-frame": "modal",
-          class: "text-stone-500 text-xs italic underline" if @dossier.todos.completed.any? %>
-    </div>
-  </div>
-
-  <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 lg:col-span-1">
     <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.hearings') %></h2>
     <div class="mb-4"><%= render "events/form", event: @dossier.events.new, dossier: @dossier %></div>
     <div class="flow-root">
       <ul role="list" class="mt-4" id="hearings">
         <%= render @dossier.events.hearings %>
       </ul>
+    </div>
+  </div>
+
+  <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 lg:col-span-2">
+    <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.contacts') %></h2>
+    <ul role="list" id="dossier_<%= @dossier.id %>_contacts" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2 mt-4">
+      <%= render ContactComponent.with_collection(@dossier.contacts, dossier: @dossier) %>
+    </ul>
+
+    <div class="flex justify-end mt-4">
+      <%= link_to new_existing_dossier_contact_path(@dossier), "data-turbo-frame": "modal" do %>
+        <span class="text-xs cursor-pointer border-stone-300 border px-2 py-1 rounded-md m-0 bg-stone-50 text-stone-600 font-semibold w-18"><%= t('contacts.buttons.new') %></span>
+      <% end %>
     </div>
   </div>
 
@@ -76,6 +75,20 @@
       <ul role="list" class="mt-4" id="events">
         <%= render @dossier.events.others %>
       </ul>
+    </div>
+  </div>
+
+  <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 lg:col-span-1">
+    <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.todos') %></h2>
+    <div class="mb-4"><%= render "todos/form", todo: @dossier.todos.new, todoable: @dossier %></div>
+    <ul data-controller="sortable" class="divide-y">
+      <%= render partial: "todos/todo", collection: @dossier.todos.incomplete.order(:row_order), locals: {can_edit: true, show_dossier: false} %>
+    </ul>
+    <div class="flex justify-end mt-4">
+      <%= link_to "voir les tâches complétées &rarr;".html_safe,
+          completed_dossier_todos_path(@dossier),
+          "data-turbo-frame": "modal",
+          class: "text-stone-500 text-xs italic underline" if @dossier.todos.completed.any? %>
     </div>
   </div>
 
@@ -96,7 +109,7 @@
     </div>
   </div>
 
-  <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 lg:col-span-2">
+  <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 lg:col-span-1">
     <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.conclusions') %></h2>
     <%= render ConclusionComponent.with_collection(@dossier.conclusions) %>
 
@@ -107,18 +120,7 @@
     </div>
   </div>
 
-  <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 lg:col-span-1">
-    <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.contacts') %></h2>
-    <ul role="list" id="dossier_<%= @dossier.id %>_contacts" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2 mt-4">
-      <%= render ContactComponent.with_collection(@dossier.contacts, dossier: @dossier) %>
-    </ul>
-
-    <div class="flex justify-end mt-4">
-      <%= link_to new_existing_dossier_contact_path(@dossier), "data-turbo-frame": "modal" do %>
-        <span class="text-xs cursor-pointer border-stone-300 border px-2 py-1 rounded-md m-0 bg-stone-50 text-stone-600 font-semibold w-18"><%= t('contacts.buttons.new') %></span>
-      <% end %>
-    </div>
-  </div>
+  
 
   <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 lg:col-span-1">
     <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.conventions') %></h2>

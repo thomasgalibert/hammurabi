@@ -5,7 +5,7 @@ class DossiersController < ApplicationController
   before_action :update_viewed_at, only: [:show, :edit]
 
   def index
-    @dossiers = current_user.dossiers.actives.last_viewed(9)
+    @dossiers = current_user.dossiers.actives.last_viewed(6)
   end
 
   def show

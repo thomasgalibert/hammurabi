@@ -30,10 +30,8 @@
   <div class="flex flex-col space-y-1 lg:space-y-0 mt-4 lg:mt-0 lg:flex-row items-center space-x-4">
     <div class="flex items-center space-x-4"><%= render "shared/icons" %></div>
     <%= render "dossiers/search" %>
-    <%= button_to session_path, method: :delete, class: "hidden text-stone-600 bg-white rounded-full h-10 w-10 p-2 border lg:flex justify-center items-center hover:shadow-md" do %>
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
-      </svg>
+    <%= button_to session_path, method: :delete, class: "hidden bg-white border p-1 rounded-md lg:flex text-xs text-rose-600" do %>
+      <%= t('sessions.logout') %>
     <% end %>
   </div>
 </nav>
