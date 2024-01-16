@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   draw :dossiers
   draw :authentications
   get "help" => "home#help", as: :help
+  get "reach" => "home#reach", as: :reach
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Make a route constraint that redirect only if user signed in ?

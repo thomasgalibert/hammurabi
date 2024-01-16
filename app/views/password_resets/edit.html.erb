@@ -1,4 +1,4 @@
-<%= form_with model: @user, url: password_reset_path(token: params[:token]), class: "max-w-3xl" do |form| %>
+<%= form_with model: @user, url: password_reset_path(token: params[:token]), class: "max-w-3xl mx-auto" do |form| %>
   <%= render "shared/errors", object: form.object %>
   
   <fieldset class="bg-white border rounded-md p-6 relative mt-10">

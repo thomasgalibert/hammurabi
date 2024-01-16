@@ -42,3 +42,13 @@ fr:
   password_mailer:
     password_reset:
       subject: "Réinitialisation de votre mot de passe"
+  registration_mailer:
+    subject: "Bienvenue sur Hammurabi, "
+    title: "Bienvenue sur Hammurabi,"
+    connexion: "Vous pouvez dès à présenter vous connecter avec l'email et le mot de passe choisi lors de votre inscription."
+    help: "Nous avons une rubrique d'aide qui vous guidera dans vos premiers pas dans le logiciel :"
+    link_name: "Aide du logiciel"
+    questions: "Si vous avez des questions, n'hésitez pas à nous contacter :"
+    link_contact: "Contactez-nous"
+    good_day: "Bonne journée,"
+    signature: "L'équipe Hammurabi"

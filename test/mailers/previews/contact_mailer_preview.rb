@@ -9,5 +9,4 @@ class ContactMailerPreview < ActionMailer::Preview
 
     ContactMailer.with(dossier: dossier, contact: contact).document
   end
-
 end

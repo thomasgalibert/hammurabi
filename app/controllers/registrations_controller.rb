@@ -8,6 +8,10 @@ class RegistrationsController < ApplicationController
     if @user.save
       login @user
       redirect_to root_path
+
+      ContactMailer.with(
+        user: user
+      ).welcome.deliver_later
     else
       render :new, status: :unprocessable_entity
     end
