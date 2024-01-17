@@ -83,6 +83,7 @@ module Facturation
   def calculer_totaux
     self.total_ht_cents = lignes.sum(&:total_ht_cents)
     self.total_ttc_cents = lignes.sum(&:total_ttc_cents)
+    self.is_refund = lignes.sum(&:total_ht_cents) < 0
   end
 
   def total_payments

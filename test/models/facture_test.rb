@@ -277,5 +277,23 @@ class FactureTest < ActiveSupport::TestCase
     assert_nil avoir
   end
 
+  test "quand on crée une facture avec un montant négtif, elle est considérée comme un avoir" do
+    Facture.delete_all
+    facture = FactoryBot.create(:facture, state: :draft, emetteur: @user, dossier: @dossier, contact: @contact, user: @user)
+
+    FactoryBot.create(
+      :ligne, 
+      tva: 20, 
+      reduction: 0, 
+      quantite: 1, 
+      prix_unitaire_cents: -1000, 
+      facturable: facture)
+
+    facture.reload
+    facture.calculer_totaux
+    facture.complete!
+    assert facture.is_refund?
+  end
+
 
 end
