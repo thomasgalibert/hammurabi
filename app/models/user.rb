@@ -32,6 +32,10 @@ class User < ApplicationRecord
 
   validates :last_name, :first_name, :firm, presence: true
 
+  # virtual attribute for agreement checkbox
+  attr_accessor :agreement
+  validates :agreement, acceptance: true, on: :create
+
   # Validates password width min 12 characters, 1 uppercase, 1 lowercase, 1 number, 1 special character
   validates :password, 
     format: { with: /\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[[:^alnum:]])/x, 

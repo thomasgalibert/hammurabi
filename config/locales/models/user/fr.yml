@@ -12,6 +12,7 @@ fr:
         last_name: "Nom de famille"
         first_name: "Prénom"
         firm: "Nom du cabinet"
+        agreement: "J'accepte les conditions générales d'utilisation ci-dessous"
   
   helpers:
     submit:
