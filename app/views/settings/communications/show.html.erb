@@ -8,9 +8,16 @@
   </div>
   <div class="border-t border-gray-100">
     <dl class="divide-y divide-gray-100">
+
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-sm font-medium text-gray-900"><%= t('firm_setting.communication_email') %></dt>
-        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= current_user.communication_email %></dd>
+        <dt class="text-sm font-medium text-gray-900"><%= t('firm_setting.ical_link') %></dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+          <div><%= k(current_user).ical_link %></div>
+          <div class="mt-4 flex items-center space-x-4">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="24" width="24"><path fill="#e3e3e3" d="M12 0.5a11.5 11.5 0 1 0 0 23 11.5 11.5 0 0 0 0 -23ZM12 18a6 6 0 1 1 0 -12 6 6 0 0 1 0 12Z" stroke-width="1"></path><path fill="#ffffff" d="M12 18a6 6 0 1 1 0 -12V0.5a11.5 11.5 0 1 0 0 23V18Z" stroke-width="1"></path><path fill="#ff808c" stroke="#191919" stroke-linecap="round" stroke-linejoin="round" d="M9.428 6.585 5.419 2.577a11.563 11.563 0 0 0 -2.832 2.828l4.006 4.007a6.015 6.015 0 0 1 2.835 -2.827v0Z" stroke-width="1"></path><path fill="#ff808c" stroke="#191919" stroke-linecap="round" stroke-linejoin="round" d="m17.411 9.421 4.008 -4.007a11.552 11.552 0 0 0 -2.833 -2.833l-4.008 4.007a6.01 6.01 0 0 1 2.833 2.833v0Z" stroke-width="1"></path><path fill="#ff808c" stroke="#191919" stroke-linecap="round" stroke-linejoin="round" d="m14.591 17.405 4.009 4.006a11.54 11.54 0 0 0 2.826 -2.828l-4.009 -4.009a6.006 6.006 0 0 1 -2.826 2.831Z" stroke-width="1"></path><path fill="#ff808c" stroke="#191919" stroke-linecap="round" stroke-linejoin="round" d="m6.591 14.584 -4.007 4.007a11.59 11.59 0 0 0 2.83 2.828l4.008 -4.008a6.016 6.016 0 0 1 -2.831 -2.827v0Z" stroke-width="1"></path><path stroke="#191919" stroke-linecap="round" stroke-linejoin="round" d="M12 0.5a11.5 11.5 0 1 0 0 23 11.5 11.5 0 0 0 0 -23v0ZM12 18a6 6 0 1 1 0 -12 6 6 0 0 1 0 12Z" stroke-width="1"></path></svg>
+            <p class="italic text-stone-500"><%= t('firm_setting.ical_link_help') %></p>
+          </div>
+        </dd>
       </div>
 
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">

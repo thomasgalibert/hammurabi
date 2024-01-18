@@ -11,6 +11,8 @@ fr:
       Il vous suffit de d'enregistrer cette adresse dans votre logiciel d'email et d'y transférer les emails
       que vous souhaitez sauvegarder dans le dossier.
     communication_email: "Email de transfert"
+    ical_link: "Lien pour synchroniser votre agenda"
+    ical_link_help: "Copiez ce lien et ajoutez le dans votre logiciel d'agenda pour synchroniser vos rendez-vous"
     buttons:
       edit: "Modifier les informations"
       back_to_settings: "&larr; Retour aux paramètres"

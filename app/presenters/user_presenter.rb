@@ -14,4 +14,11 @@ class UserPresenter < Keynote::Presenter
     
     content_tag :input, "", type: :text, disabled: true, class: input_class, value: path
   end
+
+  def ical_link
+    path = ical_user_url(token: user.ical_share_token, format: :ics)
+    input_class = "border rounded px-2 py-1 w-full border-stone-300 text-sky-600"
+    
+    content_tag :input, "", type: :text, disabled: true, class: input_class, value: path
+  end
 end

@@ -6,6 +6,9 @@
 # t.string "last_name"
 # t.string "first_name"
 # t.string "firm"
+# t.string "forward_email_token"
+# t.string "accountant_token"
+# t.string "ical_token"
 # == Schema end
 
 class User < ApplicationRecord
@@ -51,6 +54,7 @@ class User < ApplicationRecord
   end
 
   has_secure_token :forward_email_token
+  has_secure_token :ical_token
   has_secure_token :accountant_token, length: 36
 
   def conditions_generales
@@ -96,6 +100,15 @@ class User < ApplicationRecord
     else
       regenerate_accountant_token
       accountant_token
+    end
+  end
+
+  def ical_share_token
+    if ical_token.present?
+      ical_token
+    else
+      regenerate_ical_token
+      ical_token
     end
   end
 end
