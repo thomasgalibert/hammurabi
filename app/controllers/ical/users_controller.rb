@@ -2,7 +2,9 @@ class Ical::UsersController < ApplicationController
   before_action :check_token
 
   def show
-    @events = @user.events.importants.where("date >= ?", Time.zone.now).order(date: :asc)
+    @events = @user.events.importants
+      .where("date >= ? AND date <= ?", (Time.zone.now - 30.days), (Time.zone.now + 360.days))
+      .order(date: :asc)
 
     cal = Icalendar::Calendar.new
     cal.x_wr_calname = "Hammurabi"
