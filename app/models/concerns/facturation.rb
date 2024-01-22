@@ -44,7 +44,11 @@ module Facturation
   end
 
   def due_date
-    self.date + self.user.facturation_setting.number_of_days_before_due.days
+    if self.date_fin_validite.present?
+      self.date_fin_validite
+    else
+      self.date + self.user.number_of_days_before_due.days
+    end
   end
 
   def breakdown_tva
@@ -119,6 +123,7 @@ module Facturation
   def set_conditions
     self.conditions_paiement = self.user.conditions_paiement if self.conditions_paiement.blank?
     self.conditions_generales = self.user.conditions_generales if self.conditions_generales.blank?
+    self.date_fin_validite = self.date + self.user.number_of_days_before_due.days if self.date_fin_validite.blank?
   end
 
   def create_facture_seal_from_facture(facture)

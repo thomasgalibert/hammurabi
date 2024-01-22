@@ -9,8 +9,8 @@ class ContactPresenter < Keynote::Presenter
     end
   end
 
-  def star
-    if contact.is_main?
+  def star(dossier)
+    if contact.is_main_for?(dossier)
       content_tag :div, class: "text-yellow-500 cursor-pointer hover:text-stone-200", data: {action: "click->contact#toggle"} do
         content_tag :i, "", class: "fa-solid fa-star"
       end

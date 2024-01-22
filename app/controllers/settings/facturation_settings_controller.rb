@@ -29,7 +29,8 @@ class Settings::FacturationSettingsController < ApplicationController
       :first_invoice_number, 
       :default_payment_link, 
       :logo,
-      :conditions_paiement
+      :conditions_paiement,
+      :number_of_days_before_due
     )
   end
 end

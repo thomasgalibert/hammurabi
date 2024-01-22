@@ -16,7 +16,7 @@
         <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= number_to_percentage facturation_setting.tva_standard, precision: 2 %></dd>
       </div>
 
-      <% %w(first_invoice_number default_payment_link).each do |attribute| %>
+      <% %w(first_invoice_number number_of_days_before_due default_payment_link).each do |attribute| %>
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm font-medium text-gray-900"><%= t("activerecord.attributes.facturation_setting.#{attribute}") %></dt>
           <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= facturation_setting.send(attribute) %></dd>

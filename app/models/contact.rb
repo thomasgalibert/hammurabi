@@ -52,6 +52,10 @@ class Contact < ApplicationRecord
     DossierContact.find_by(contact_id: self.id).is_main
   end
 
+  def is_main_for?(dossier)
+    DossierContact.find_by(contact_id: self.id, dossier_id: dossier.id).is_main
+  end
+
   def self.ransackable_attributes(auth_object = nil)
     ["company_name", "last_name"]
   end

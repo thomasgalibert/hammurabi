@@ -12,7 +12,7 @@
           <%= link_to "-- no name --", dossier_contact_path(@dossier, @contact), "data-turbo-frame": "modal" unless @contact.last_name.present? %>
         </h3>
         <%= k(@contact).badge %>
-        <%= k(@contact).star %>
+        <%= k(@contact).star(@dossier) %>
       </div>
       <div class="mt-1 flex flex-col truncate text-xs text-gray-500">
         <%= link_to dossier_asks_path(@dossier, contact_id: @contact.id), class: "flex items-center space-x-1" do %>

@@ -73,6 +73,14 @@ class User < ApplicationRecord
     end
   end
 
+  def number_of_days_before_due
+    if self.facturation_setting.present? && self.facturation_setting.number_of_days_before_due.present?
+      self.facturation_setting.number_of_days_before_due
+    else
+      15
+    end
+  end
+
   def first_invoice_number
     if self.facturation_setting.present? && self.facturation_setting.first_invoice_number.present?
       self.facturation_setting.first_invoice_number

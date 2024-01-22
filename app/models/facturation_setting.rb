@@ -5,6 +5,7 @@
 # t.datetime "created_at", null: false
 # t.datetime "updated_at", null: false
 # t.string "default_payment_link"
+# t.integer "number_of_days_before_due", default: 15
 # t.index ["user_id"], name: "index_facturation_settings_on_user_id"
 # -> END SCHEMA
 
