@@ -1,0 +1,12 @@
+fr:
+  activerecord:
+    attributes:
+      slip:
+        recipient: "Destinataire"
+        date: "Date de délivrance"
+        show: "Détails"
+  slips:
+    new:
+      legend: "Ajouter un nouveau BCP au dossier"
+    show:
+      title: "Borderau de communication de pièces"

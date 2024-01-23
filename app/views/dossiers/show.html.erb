@@ -93,18 +93,18 @@
   </div>
 
   <div class="p-4 bg-white rounded-md border shadow-sm col-span-2 lg:col-span-2">
-    <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.documents') %></h2>
-    <div class="mb-4"><%= render "documents/form", document: @dossier.documents.new, dossier: @dossier %></div>
-    <ul data-controller="sortable" role="list" class="flex flex-col divide-y">
-      <%= render partial: "documents/document", collection: @dossier.documents, locals: {dossier: @dossier, document: @document} %>
-    </ul>
+    <h2 class="text-sm font-semibold text-stone-400"><%= t('dossiers.show.slips') %></h2>
+
+    <%= render TableComponent.new(
+          objects: @dossier.slips,
+          list_attributes: %i(recipient date show),
+          class_name: "Slip")
+    %>
     <div class="mt-6">
       <%= render LinkComponent.new(
-            name: "Bordereau de communication des pièces",
-            url: dossier_document_submission_schedule_path(@dossier, format: :pdf),
-            color: "sky",
-            icon: "fa-solid fa-print",
-            target: "_blank")
+            name: "Nouveau bordereau",
+            url: new_dossier_slip_path(@dossier),
+            color: "sky")
             %>
     </div>
   </div>

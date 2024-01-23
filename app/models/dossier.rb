@@ -30,6 +30,7 @@ class Dossier < ApplicationRecord
   has_many :asks, :dependent => :destroy
   has_many :document_share_links, dependent: :destroy
   has_many :dossier_share_links, dependent: :destroy
+  has_many :slips, dependent: :destroy
 
   validates :name, presence: true
   validates :state, inclusion: { in: STATES }

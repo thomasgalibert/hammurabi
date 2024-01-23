@@ -1,0 +1,7 @@
+<div class="bg-white max-w-3xl mx-auto border rounded-md p-6 relative mt-10">
+  <h1 class="absolute -top-10 text-stone-500 text-lg">
+    <span class="inline-block text-sm italic mr-4 text-stone-500"><%= link_to "&larr; retour au dossier".html_safe, @dossier %></span>
+    <%= t 'slips.show.title' %> <%= k(@slip).number %>
+  </h1>
+  <h3 class="font-light text-xl mb-6"><%= @dossier.name %></h3>
+</div>

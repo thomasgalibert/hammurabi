@@ -18,8 +18,11 @@ class Document < ApplicationRecord
   belongs_to :user
   belongs_to :dossier
   belongs_to :ask, optional: true
+  belongs_to :slip, optional: true, touch: true
   has_one_attached :fichier
   acts_as_list scope: [:dossier]
+
+  broadcasts_refreshes
 
   default_scope { order(position: :asc) }
   scope :lasts, -> (limit) { order(created_at: :desc).limit(limit) }

@@ -1,7 +1,7 @@
 <% unless document.new_record? %>
-  <li data-sortable-update-url="<%= sort_dossier_document_path(dossier, document) %>">
+  <li data-sortable-update-url="<%= sort_dossier_document_path(document.dossier, document) %>">
     <%= turbo_frame_tag dom_id(document) do %>
-      <%= render DocumentComponent.new(document: document, show_dossier: false, current_user: current_user) %>
+      <%= render DocumentComponent.new(document: document, show_dossier: show_dossier, current_user: current_user) %>
     <% end %>
   </li>
 <% end %>

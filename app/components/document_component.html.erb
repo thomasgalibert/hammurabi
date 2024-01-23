@@ -1,62 +1,59 @@
-<li class="flex items-center text-xs gap-x-3 py-2">
-  <div class="flex flex-1 justify-between items-center">
-
-    <div class="flex flex-col space-y-1">
-      <div class="flex items-center space-x-2">
-        <% unless @show_dossier %>
-          <div class="handle cursor-move">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-stone-400">
-              <path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd" />
-            </svg>
-          </div>
-        <% end %>
-
-        <div class="text-sm font-semibold">
-          <%= @document.name %>
-          <span class="text-xs font-normal italic text-stone-500">
-            (<%= @document.description %>)
-          </span>
-        </div>
-      </div>
-
-      <% if @show_dossier %>
-        <div class="border rounded-md p-1 text-stone-500 cursor-pointer hover:bg-stone-50">
-          <%=link_to @document.dossier.name, @document.dossier, data: {turbo_frame: "_top"} %>
+<div class="flex flex-1 justify-between items-center text-xs pt-2">
+  <div class="flex flex-col space-y-1">
+    <div class="flex items-center space-x-2">
+      <% unless @show_dossier %>
+        <div class="handle cursor-move">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-stone-400">
+            <path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd" />
+          </svg>
         </div>
       <% end %>
+
+      <div class="text-sm font-semibold">
+        <%= @document.name %>
+        <span class="text-xs font-normal italic text-stone-500">
+          (<%= @document.description %>)
+        </span>
+      </div>
     </div>
 
-    <div class="flex space-x-1 items-center">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-stone-400">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-      <time datetime="<%= @document.created_at %>">
-        <%= l(@document.created_at, format: :short) %>
-      </time>
+    <% if @show_dossier %>
+      <div class="border rounded-md p-1 text-stone-500 cursor-pointer hover:bg-stone-50">
+        <%=link_to @document.dossier.name, @document.dossier, data: {turbo_frame: "_top"} %>
+      </div>
+    <% end %>
+  </div>
 
-      <% unless @show_dossier %>
-        <% if @current_user %>
-          <%= render DropdownComponent.new do %>
-            <%= link_to t('buttons.edit'), edit_dossier_document_path(@document.dossier, @document), class: "text-gray-700 block px-4 py-2 text-sm" %>
-            <%= link_to t('buttons.print'), 
-                  dossier_document_path(@document.dossier, @document, format: :pdf),
-                  target: "_blank",
-                  class: "text-gray-700 block px-4 py-2 text-sm" if @document.fichier.attached? %>
-            <%= button_to t('buttons.delete'), 
-                dossier_document_path(@document.dossier, @document),
-                method: :delete, 
-                class: "text-gray-700 block px-4 py-2 text-sm" %>
-          <% end %>
+  <div class="flex space-x-1 items-center">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-stone-400">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    <time datetime="<%= @document.created_at %>">
+      <%= l(@document.created_at, format: :short) %>
+    </time>
 
-        <% else %>
-          <%= render DropdownComponent.new do %>
-            <%= link_to t('buttons.download'), 
-                  @document.fichier.url(expires_in: 4.hour), 
-                  target: "_blank",
-                  class: "text-gray-700 block px-4 py-2 text-sm" if @document.fichier.attached? %>
-          <% end %>
+    <% unless @show_dossier %>
+      <% if @current_user %>
+        <%= render DropdownComponent.new do %>
+          <%= link_to t('buttons.edit'), edit_dossier_document_path(@document.dossier, @document), class: "text-gray-700 block px-4 py-2 text-sm" %>
+          <%= link_to t('buttons.print'), 
+                dossier_document_path(@document.dossier, @document, format: :pdf),
+                target: "_blank",
+                class: "text-gray-700 block px-4 py-2 text-sm" if @document.fichier.attached? %>
+          <%= button_to t('buttons.delete'), 
+              dossier_document_path(@document.dossier, @document),
+              method: :delete, 
+              class: "text-gray-700 block px-4 py-2 text-sm" %>
+        <% end %>
+
+      <% else %>
+        <%= render DropdownComponent.new do %>
+          <%= link_to t('buttons.download'), 
+                @document.fichier.url(expires_in: 4.hour), 
+                target: "_blank",
+                class: "text-gray-700 block px-4 py-2 text-sm" if @document.fichier.attached? %>
         <% end %>
       <% end %>
-    </time>
-  </div>
-</li>
+    <% end %>
+  </time>
+</div>

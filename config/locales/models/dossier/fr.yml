@@ -29,6 +29,7 @@ fr:
       conventions: "Conventions & Missions"
       conclusions: "Autres fichiers (conclusions, etc.)"
       factures: "Factures"
+      slips: "Liste ds bordereaux de pièces"
   activerecord:
     attributes:
       dossier:

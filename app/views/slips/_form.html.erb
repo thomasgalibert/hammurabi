@@ -1,0 +1,17 @@
+<%= form_with model: [dossier, slip], 
+    builder: CustomFormBuilder,
+    class: "max-w-3xl mx-auto" do |form| %>
+
+  <%= render "shared/errors", object: form.object %>
+  
+  <fieldset class="bg-white border rounded-md p-6 relative mt-10">
+    <legend class="absolute -top-10 text-stone-500 text-lg">
+      <span class="inline-block text-sm italic mr-4 text-stone-500"><%= link_to "&larr; retour au dossier".html_safe, @dossier %></span>
+      <%= t 'slips.new.legend' %>
+    </legend>
+    <h3 class="font-light text-xl mb-6"><%= @dossier.name %></h3>
+    <%= form.text_area :recipient, autofocus: true, placeholder: "nom de la juridiction et date et type de l'audience" %>
+    <%= form.date_field :date %>
+    <%= form.submit %>
+  </fieldset>
+<% end %>

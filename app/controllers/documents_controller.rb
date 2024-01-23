@@ -27,11 +27,12 @@ class DocumentsController < ApplicationController
   def update
     @document.update(document_params)
     dossier = @document.dossier
+    redirect_to dossier
 
-    respond_to do |format|
-      format.html { redirect_to dossier }
-      format.turbo_stream { render turbo_stream: turbo_stream.replace(@document, partial: "documents/document", locals: { document: @document, dossier: dossier }) }
-    end
+    # respond_to do |format|
+    #   # format.html { redirect_to dossier }
+    #   # format.turbo_stream { render turbo_stream: turbo_stream.replace(@document, partial: "documents/document", locals: { document: @document, dossier: dossier }) }
+    # end
   end
 
   def destroy

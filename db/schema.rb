@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_18_104305) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_23_145336) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -131,8 +131,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_18_104305) do
     t.datetime "updated_at", null: false
     t.bigint "ask_id"
     t.integer "position"
+    t.bigint "slip_id"
     t.index ["ask_id"], name: "index_documents_on_ask_id"
     t.index ["dossier_id"], name: "index_documents_on_dossier_id"
+    t.index ["slip_id"], name: "index_documents_on_slip_id"
     t.index ["user_id"], name: "index_documents_on_user_id"
   end
 
@@ -302,6 +304,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_18_104305) do
     t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
+  create_table "slips", force: :cascade do |t|
+    t.bigint "dossier_id", null: false
+    t.text "recipient"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "date"
+    t.index ["dossier_id"], name: "index_slips_on_dossier_id"
+  end
+
   create_table "todos", force: :cascade do |t|
     t.string "todoable_type", null: false
     t.bigint "todoable_id", null: false
@@ -343,6 +354,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_18_104305) do
   add_foreign_key "document_share_links", "dossiers"
   add_foreign_key "documents", "asks"
   add_foreign_key "documents", "dossiers"
+  add_foreign_key "documents", "slips"
   add_foreign_key "documents", "users"
   add_foreign_key "dossier_contacts", "contacts"
   add_foreign_key "dossier_contacts", "dossiers"
@@ -363,5 +375,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_18_104305) do
   add_foreign_key "notes", "users"
   add_foreign_key "payments", "factures"
   add_foreign_key "payments", "users"
+  add_foreign_key "slips", "dossiers"
   add_foreign_key "todos", "users"
 end

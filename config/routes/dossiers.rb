@@ -8,6 +8,8 @@ resources :dossiers do
 
   resources :events
 
+  resources :slips
+
   resources :document_share_links
   resources :dossier_share_links
 

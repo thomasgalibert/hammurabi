@@ -12,11 +12,11 @@ class ContactPresenter < Keynote::Presenter
   def star(dossier)
     if contact.is_main_for?(dossier)
       content_tag :div, class: "text-yellow-500 cursor-pointer hover:text-stone-200", data: {action: "click->contact#toggle"} do
-        content_tag :i, "", class: "fa-solid fa-star"
+        raw('<svg class="size-5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.56 8.73a1.51 1.51 0 0 0 -1.41 -1h-6.09a0.5 0.5 0 0 1 -0.47 -0.33l-2.18 -6.2A1.52 1.52 0 0 0 12 0.25a1.49 1.49 0 0 0 -1.4 1L8.41 7.42a0.5 0.5 0 0 1 -0.47 0.33H1.85a1.5 1.5 0 0 0 -1.41 1 1.52 1.52 0 0 0 0.45 1.65l5.18 4.3a0.5 0.5 0 0 1 0.16 0.54l-2.18 6.53a1.5 1.5 0 0 0 2.31 1.69l5.34 -3.92a0.49 0.49 0 0 1 0.59 0l5.35 3.92A1.5 1.5 0 0 0 20 21.77l-2.18 -6.53a0.5 0.5 0 0 1 0.16 -0.54l5.19 -4.31a1.51 1.51 0 0 0 0.39 -1.66Z" fill="currentcolor" stroke-width="1"></path></svg>')
       end
     else
       content_tag :div, class: "text-stone-200 cursor-pointer hover:text-yellow-500", data: {action: "click->contact#toggle"} do
-        content_tag :i, "", class: "fa-solid fa-star"
+      raw('<svg class="size-5 text-gray-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.56 8.73a1.51 1.51 0 0 0 -1.41 -1h-6.09a0.5 0.5 0 0 1 -0.47 -0.33l-2.18 -6.2A1.52 1.52 0 0 0 12 0.25a1.49 1.49 0 0 0 -1.4 1L8.41 7.42a0.5 0.5 0 0 1 -0.47 0.33H1.85a1.5 1.5 0 0 0 -1.41 1 1.52 1.52 0 0 0 0.45 1.65l5.18 4.3a0.5 0.5 0 0 1 0.16 0.54l-2.18 6.53a1.5 1.5 0 0 0 2.31 1.69l5.34 -3.92a0.49 0.49 0 0 1 0.59 0l5.35 3.92A1.5 1.5 0 0 0 20 21.77l-2.18 -6.53a0.5 0.5 0 0 1 0.16 -0.54l5.19 -4.31a1.51 1.51 0 0 0 0.39 -1.66Z" fill="currentcolor" stroke-width="1"></path></svg>')
       end
     end
   end

@@ -13,11 +13,7 @@ class EventsController < ApplicationController
 
   def update
     @event.update(event_params)
-
-    respond_to do |format|
-      format.html { redirect_to @event.dossier }
-      format.turbo_stream { render turbo_stream: turbo_stream.replace(@event, partial: "events/event", locals: { event: @event }) }
-    end
+    redirect_to @event.dossier
   end
 
   def destroy
