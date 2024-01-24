@@ -41,7 +41,7 @@ class FacturePresenter < Keynote::Presenter
   def download
     if facture.achived?
       download_url = dossier_facture_path(facture.dossier, facture, format: :pdf)
-      render LinkComponent.new(name: "", url: download_url, color: "gray", icon: "fa-solid fa-file-pdf", target: "_blank")
+      render PrintButtonComponent.new(url: download_url)
     end
   end
 
