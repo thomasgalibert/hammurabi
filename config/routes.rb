@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  draw :slips
   draw :ical
   draw :sharing
   draw :contacts

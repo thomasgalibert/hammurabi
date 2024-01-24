@@ -1,7 +1,9 @@
-<div class="flex flex-1 justify-between items-center text-xs pt-2">
+<div class="flex flex-1 justify-between items-center text-xs pt-2 border-b">
   <div class="flex flex-col space-y-1">
     <div class="flex items-center space-x-2">
       <% unless @show_dossier %>
+        <div><span class="inline-flex justify-center items-center font-mono text-xs bg-rose-800 text-white size-6 p-1 rounded-full"><%= @document.position %></span></div>
+
         <div class="handle cursor-move">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-stone-400">
             <path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd" />
@@ -43,6 +45,7 @@
           <%= button_to t('buttons.delete'), 
               dossier_document_path(@document.dossier, @document),
               method: :delete, 
+              data: { turbo: false },
               class: "text-gray-700 block px-4 py-2 text-sm" %>
         <% end %>
 

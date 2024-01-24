@@ -172,6 +172,10 @@ module PdfHelper
     number_pages string, options
   end
 
+  def title_list(slip)
+    slip.number > 1 ? "Nouvelles pièces communiquées" : "Liste des pièces"
+  end
+
   private
 
   def display_date(date)

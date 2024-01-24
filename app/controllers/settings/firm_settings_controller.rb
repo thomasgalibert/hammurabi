@@ -37,7 +37,8 @@ class Settings::FirmSettingsController < ApplicationController
         :vat_number,
         :share_capital,
         :bar_name,
-        :mailbox_number
+        :mailbox_number,
+        :honorific_titles
       )
   end
 end

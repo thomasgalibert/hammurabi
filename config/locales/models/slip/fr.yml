@@ -3,8 +3,10 @@ fr:
     attributes:
       slip:
         recipient: "Destinataire"
-        date: "Date de délivrance"
+        date: "Date de communication"
         show: "Détails"
+        number: "Numéro"
+        documents_count: "Nombre de pièces"
   slips:
     new:
       legend: "Ajouter un nouveau BCP au dossier"

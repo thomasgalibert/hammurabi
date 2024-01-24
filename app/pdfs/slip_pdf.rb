@@ -1,7 +1,7 @@
-class DocumentSubmissionSchedulePdf < Prawn::Document
+class SlipPdf < Prawn::Document
   include PdfHelper
 
-  def initialize(dossier)		
+  def initialize(slip)		
     super(top_margin: 20, bottom_margin: 20, page_size: "A4")
 
     # Set font family OpenSans
@@ -13,58 +13,58 @@ class DocumentSubmissionSchedulePdf < Prawn::Document
     })
     font "OpenSans"
 
-    @dossier = dossier
+    @slip = slip
+    @dossier = @slip.dossier
     @plaintiff = @dossier.contact_principal
     @attorney = @dossier.user
     @firm_setting = @attorney.firm_setting
     @adversary = @dossier.adversary
     @adversary_attorney = @dossier.adversary_attorney
 
+    print_attorney
     print_court
     print_title
     print_plaintiff
-    print_attorney
     print_adversary
-    print_adversary_attorney
-    start_new_page
+    print_previous_list if @slip.number > 1
     print_documents_list
+    print_date
     print_number_of_pages
   end
 
   private
 
   def print_court
-    text @dossier.court, size: 14, style: :bold
+    text "Affaire #{@dossier.name}", size: 14, style: :bold
+    text @slip.recipient, size: 12
     move_down 2
-    text "Répertoire général : #{@dossier.rg_number}", size: 12
+    text "RG : #{@dossier.rg_number}", size: 12
   end
 
   def print_title
     move_down 30
-    text "Bordereau de pièces communiquées", size: 20, style: :bold, align: :center
+    text "Bordereau de communication de pièces #{@slip.full_number}", size: 20, style: :bold, align: :center
     move_down 10
     stroke_horizontal_rule
     move_down 20
   end
 
   def print_plaintiff
-    text "POUR :", size: 16, style: :bold
-    move_down 10
-    text identity(@plaintiff), size: 12
+    text "Pièces communiquées par Maître #{@attorney.first_name} #{@attorney.last_name}, avocat de #{name_or_company(@plaintiff)},", size: 12
     move_down 10
   end
 
   def print_attorney
-    text "Ayant pour avocat Maître #{@dossier.user.name.full}", size: 14, style: :bold
-    move_down 10
-    text attorney_identity, size: 12
-    move_down 40
+    text "#{@dossier.user.name.full}", size: 12, style: :bold, align: :center
+    move_down 5
+    text attorney_identity, size: 10, align: :center
+    move_down 20
   end
 
   def print_adversary
-    text "CONTRE :", size: 16, style: :bold
+    text "A", size: 14
     move_down 10
-    text identity(@adversary), size: 12
+    text "Maître #{@adversary_attorney.first_name} #{@adversary_attorney.last_name}, avocat de #{name_or_company(@adversary)}.", size: 12
     move_down 10
   end
 
@@ -76,35 +76,46 @@ class DocumentSubmissionSchedulePdf < Prawn::Document
   end
 
   def print_documents_list
-    text "Liste des pièces :", size: 20, style: :bold
+    move_down 20
+    text "#{title_list(@slip)} communiquées :", size: 14, style: :bold
     move_down 10
     stroke_horizontal_rule
     move_down 10
 
-    @dossier.documents.each do |document|
+    @slip.documents.each do |document|
       text "#{document.position} - #{document.name}"
     end
   end
 
-  def identity(contact)
-    "#{name_or_company(contact)}" +
-    ", né le #{contact.birthday_date}" +
-    ", excerçant la profession de #{contact.job}" +
-    ", et demeurant #{full_address(contact)},"
+  def print_previous_list
+    move_down 20
+    text "Pièces déjà communiquées :", size: 14, style: :bold
+    move_down 10
+    stroke_horizontal_rule
+    move_down 10
+
+    @slip.previous_slips.each do |slip|
+      text "Bordereau #{slip.full_number} du #{I18n.l(slip.date, format: :long)} :", size: 12, style: :bold
+      move_down 10
+
+      slip.documents.each do |document|
+        text "#{document.position} - #{document.name}"
+      end
+    end
   end
+
+  def print_date
+    move_down 20
+    text "À #{@attorney.firm_setting.city}, le #{I18n.l(@slip.date, format: :long)}"
+  end
+
+  private
 
   def attorney_identity
     "Avocat au barreau de #{@firm_setting.bar_name} \n" +
+    (@firm_setting.honorific_titles.empty? ? "" : "#{@firm_setting.honorific_titles} \n") +
     "#{full_address_attorney} \n" +
-    "Tél. #{@firm_setting.phone_number}     -    Email : #{@firm_setting.email}" +
-    mailbox_number(@firm_setting)
-  end
-
-  def adversary_attorney_identity
-    "Avocat au barreau de #{@adversary_attorney.bar_name} \n" +
-    "#{full_address(@adversary_attorney)} \n" +
-    "Tél. #{@adversary_attorney.phone}      -    Email #{@adversary_attorney.email}" +
-    mailbox_number(@adversary_attorney)
+    "Tél. #{@firm_setting.phone_number} - Email : #{@firm_setting.email}"
   end
 
   def full_address(contact)
@@ -120,14 +131,6 @@ class DocumentSubmissionSchedulePdf < Prawn::Document
       "#{contact.company_name}, représentée par #{contact.name.full}"
     else
       contact.name.full
-    end
-  end
-
-  def mailbox_number(contact)
-    if contact.mailbox_number.present?
-      "\n Palais #{contact.mailbox_number}"
-    else
-      ""
     end
   end
 end

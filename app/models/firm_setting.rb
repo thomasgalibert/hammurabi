@@ -15,6 +15,7 @@
 # t.datetime "updated_at", null: false
 # t.string "bar_name"
 # t.string "mailbox_number"
+# t.text "honorific_titles"
 # t.index ["user_id"], name: "index_firm_settings_on_user_id"
 # -> END SCHEMA
 

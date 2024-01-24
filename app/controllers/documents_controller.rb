@@ -4,10 +4,13 @@ class DocumentsController < ApplicationController
   before_action :check_firm_setting_is_complete
   before_action :set_document, only: [:edit, :update, :destroy, :sort, :show]
 
-  def create
-    @document = current_user.documents.create(document_params)
-    add_item_to_list_with_position(@document.dossier.documents, @document)
-    redirect_to @document.dossier
+  def upload
+    @slip = current_user.slips.find(params[:slip_id])
+    @dossier = @slip.dossier
+    params = document_params.merge(dossier_id: @dossier.id, slip_id: @slip.id)
+    @document = current_user.documents.new(params)
+    @document.save
+    redirect_to dossier_slip_path(@dossier, @slip)
   end
 
   def edit
@@ -26,30 +29,24 @@ class DocumentsController < ApplicationController
 
   def update
     @document.update(document_params)
-    dossier = @document.dossier
-    redirect_to dossier
-
-    # respond_to do |format|
-    #   # format.html { redirect_to dossier }
-    #   # format.turbo_stream { render turbo_stream: turbo_stream.replace(@document, partial: "documents/document", locals: { document: @document, dossier: dossier }) }
-    # end
+    @dossier = @document.dossier
+    @slip = @document.slip
+    redirect_to dossier_slip_path(@dossier, @slip)
   end
 
   def destroy
     @ask = @document.ask
-    delete_item_with_position(@document.dossier.documents, @document)
+    delete_item_with_position(@document.slip.documents, @document)
     @ask.destroy if @ask.present?
     
-    respond_to do |format|
-      format.html { redirect_to @document.dossier }
-      format.turbo_stream { render turbo_stream: turbo_stream.remove(@document) }
-    end
+    @dossier = @document.dossier
+    @slip = @document.slip
+    redirect_to dossier_slip_path(@dossier, @slip)
   end
 
   def sort
-    # Reorder the documents in the dossier according to the new position with acts_as_list
     new_position = params[:row_order_position].to_i+1
-    reorder_items_with_acts_as_list(@document.dossier.documents, @document, new_position)
+    reorder_items_with_acts_as_list(@document.slip.documents, @document, new_position)
     head :ok
   end
 
@@ -60,6 +57,6 @@ class DocumentsController < ApplicationController
   end
 
   def document_params
-    params.require(:document).permit(:name, :dossier_id, :fichier)
+    params.require(:document).permit(:name, :dossier_id, :fichier, :slip_id, :position)
   end
 end

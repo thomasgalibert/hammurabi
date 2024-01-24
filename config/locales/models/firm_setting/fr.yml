@@ -36,6 +36,7 @@ fr:
        share_capital: "Capital social"
        bar_name: "Nom du barreau"
        mailbox_number: "Numéro de case"
+       honorific_titles: "Titres honorifiques et diplômes"
   
   helpers:
     submit:

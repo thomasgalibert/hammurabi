@@ -86,7 +86,7 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
 
   def country_select(method, priority_countries = nil, options = {}, html_options = {})
     label_content = label(method, class: label_class)
-    field_content = super(method, priority_countries, merge_tailwind_classes(select_class, options), html_options)
+    field_content = super(method, ["FR","ES","DE"], {sort_provided: false}, merge_tailwind_classes(select_class, html_options))
 
     @template.content_tag(:div, class: field_class) do
       label_content + @template.content_tag(:div, field_content, class: "mt-2")

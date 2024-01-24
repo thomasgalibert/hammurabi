@@ -28,6 +28,7 @@ class User < ApplicationRecord
   has_many :lignes, through: :factures
   has_many :payments, dependent: :destroy
   has_many :asks, dependent: :destroy
+  has_many :slips, through: :dossiers
   
   validates :email, presence: true
   validates :email, uniqueness: true

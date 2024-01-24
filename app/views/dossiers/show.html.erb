@@ -97,7 +97,7 @@
 
     <%= render TableComponent.new(
           objects: @dossier.slips,
-          list_attributes: %i(recipient date show),
+          list_attributes: %i(number date recipient documents_count show),
           class_name: "Slip")
     %>
     <div class="mt-6">

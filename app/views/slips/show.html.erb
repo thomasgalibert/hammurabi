@@ -1,7 +1,38 @@
+<%= turbo_stream_from @slip %>
+
 <div class="bg-white max-w-3xl mx-auto border rounded-md p-6 relative mt-10">
   <h1 class="absolute -top-10 text-stone-500 text-lg">
     <span class="inline-block text-sm italic mr-4 text-stone-500"><%= link_to "&larr; retour au dossier".html_safe, @dossier %></span>
     <%= t 'slips.show.title' %> <%= k(@slip).number %>
   </h1>
-  <h3 class="font-light text-xl mb-6"><%= @dossier.name %></h3>
+
+  <div class="flex justify-between items-center mb-6">
+    <div>
+      <h2 class="font-light text-xl"><%= @dossier.name %></h2>
+      <p class="text-sm text-gray-500">
+        <%= @slip.recipient %> <br />
+        <%= t('activerecord.attributes.slip.date') %> : <%= l(@slip.date, format: :long) %>
+      </p>
+    </div>
+    <div class="flex items-center space-x-2">
+      <%= render LinkComponent.new name: t('buttons.edit'), url: edit_dossier_slip_path(@dossier, @slip), color: "stone" %>
+      <%= render PrintButtonComponent.new url: dossier_slip_path(@dossier, @slip, format: :pdf) %>
+    </div>
+  </div>
+
+  <div id="documents-count" class="hidden"><%= @slip.documents.count %></div>
+
+  <div class="dropzone" 
+     data-controller="dropzone" 
+     data-dropzone-url-value="<%= upload_slip_documents_path(@slip) %>" 
+     data-turbo-permanent>
+    <%= file_field_tag :documents,
+          class: "col-span-6 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md",
+          multiple: true,
+          data: { dropzone_target: "input" } %>      
+  </div>
+
+  <ul data-controller="sortable" id="documents" class="flex flex-col space-y-4 mt-6">
+    <%= render @slip.documents, show_dossier: false %>
+  </ul>
 </div>
