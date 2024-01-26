@@ -115,13 +115,13 @@ class FacturePdf < Prawn::Document
     bounding_box([bounds.left, bounds.top], :width => bounds.width, :height => bounds.height - 30) do
       self.y = old_y
      
-      table rows(@lignes, @facture), column_widths: [30, 290, 40, 70, 45, 100], cell_style: {border_width: 0.5} do
+      table rows(@lignes, @facture), column_widths: [30, 245, 40, 70, 45, 45, 100], cell_style: {border_width: 0.5} do
         row(0).size = 9
         row(0..lignes_counts).padding = 4
         columns(0..1).size = 8
         columns(2).align = :center
-        columns(2..5).font = "Courier"
-        columns(3..5).align = :right
+        columns(2..6).font = "Courier"
+        columns(3..6).align = :right
         self.row_colors = ["F2F2F2","FFFFFF"]
         self.header = true
       end

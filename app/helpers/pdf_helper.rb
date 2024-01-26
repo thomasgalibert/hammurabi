@@ -61,22 +61,23 @@ module PdfHelper
       I18n.t('factures.pdf.lignes.description'),
       I18n.t('factures.pdf.lignes.quantite'),
       I18n.t('factures.pdf.lignes.prix_unitaire'),
+      I18n.t('factures.pdf.lignes.tva'),
       I18n.t('factures.pdf.lignes.remise'),
       I18n.t('factures.pdf.lignes.total_ht')
     ]] +
     row_items(lignes) +
     [[
       {content: "" }, 
-      {content: I18n.t('factures.pdf.lignes.total_ht'), colspan: 4, align: :right }, 
+      {content: I18n.t('factures.pdf.lignes.total_ht'), colspan: 5, align: :right }, 
       {content: number_with_precision(facture.total_ht, precision: 2), colspan: 1, align: :right, size: 8 }]] +
     [[
       {content: "" }, 
-      {content: I18n.t('factures.pdf.lignes.total_tva'), colspan: 4, align: :right }, 
+      {content: I18n.t('factures.pdf.lignes.total_tva'), colspan: 5, align: :right }, 
       {content: number_with_precision(lignes.sum(&:total_tva), precision: 2), colspan: 1, align: :right, size: 8 }]] +
 
     [[
       {content: "" }, 
-      {content: I18n.t('factures.pdf.lignes.total_ttc'), colspan: 4, align: :right }, 
+      {content: I18n.t('factures.pdf.lignes.total_ttc'), colspan: 5, align: :right }, 
       {content: number_with_precision(facture.total_ttc, precision: 2), colspan: 1, align: :right, size: 8 }]] + payments_rows(facture)
   end
 
@@ -90,6 +91,7 @@ module PdfHelper
           {content: ligne.description, size: 8},
           {content: number_with_precision(ligne.quantite, precision: 2), size: 8, align: :center},
           {content: number_with_precision(ligne.prix_unitaire, precision: 2), size: 8},
+          {content: number_with_precision(ligne.tva, precision: 2), size: 8},
           {content: number_with_precision(ligne.reduction, precision: 2), size: 8},
           {content: number_with_precision(ligne.total_ht, precision: 2), size: 8}
         ]
@@ -102,11 +104,11 @@ module PdfHelper
     if facture.payments.any?
       [[
         {content: "" },
-        {content: I18n.t('factures.pdf.lignes.payments'), colspan: 4, align: :right },
+        {content: I18n.t('factures.pdf.lignes.payments'), colspan: 5, align: :right },
         {content: number_with_precision(-(facture.sum_payments), precision: 2), colspan: 1, align: :right, size: 8 }]] +
       [[
         {content: "" },
-        {content: I18n.t('factures.pdf.lignes.balance'), colspan: 4, align: :right },
+        {content: I18n.t('factures.pdf.lignes.balance'), colspan: 5, align: :right },
         {content: number_with_precision(facture.balance, precision: 2), colspan: 1, align: :right, size: 8 }]]
     else
       []

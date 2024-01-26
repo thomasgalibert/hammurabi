@@ -49,6 +49,7 @@ fr:
         description: "Libellé"
         quantite: "Qt"
         prix_unitaire: "PU HT"
+        tva: "TVA %"
         remise: "Rem %"
         total_ht: "Total HT"
         total_tva: "Total TVA"
