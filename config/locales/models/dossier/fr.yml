@@ -30,6 +30,7 @@ fr:
       conclusions: "Autres fichiers (conclusions, etc.)"
       factures: "Factures"
       slips: "Liste ds bordereaux de pièces"
+      affect_pieces: "Pièces à classer"
   activerecord:
     attributes:
       dossier:

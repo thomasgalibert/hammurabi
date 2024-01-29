@@ -1,6 +1,6 @@
 <%= turbo_frame_tag :modal %>
 
-<div class="flex justify-between items-center">
+<div class="flex flex-col sm:flex-row sm:justify-between items-center">
   <%= turbo_frame_tag :dossier_name do %>
     <h1 class="font-black text-3xl flex items-center space-x-2">
       <span class="inline-block"><%= @dossier.name %></span>
@@ -29,8 +29,8 @@
     </div>
   <% end %>
 
-  <div class="ml-4">
-    <%= render BigButtonComponent.new name: "Nouveau contact", url: new_dossier_contact_path(@dossier) %>
+  <div class="mt-6 sm:ml-4 sm:mt-0">
+    <%= render BigButtonComponent.new name: t('contacts.buttons.new'), url: new_dossier_contact_path(@dossier) %>
   </div>
 </div>
 
@@ -107,6 +107,13 @@
           list_attributes: %i(number date recipient documents_count show),
           class_name: "Slip")
     %>
+
+    <%= render DividerComponent.new title: t('dossiers.show.affect_pieces') if @dossier.documents.without_slip.any? %>
+
+    <ul id="documents-to-affect" class="flex flex-col divide-y space-y-2 mt-6">
+      <%= render partial: "documents/document_to_affect", collection: @dossier.documents.without_slip, as: :document %>
+    </ul>
+
     <div class="mt-6">
       <%= render LinkComponent.new(
             name: "Nouveau bordereau",

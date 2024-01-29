@@ -26,6 +26,7 @@ class Document < ApplicationRecord
   default_scope { order(position: :asc) }
   scope :lasts, -> (limit) { order(created_at: :desc).limit(limit) }
   scope :persisted, -> { where.not(id: nil) }
+  scope :without_slip, -> { where.missing(:slip) }
 
   validates :fichier, attached: true, 
             content_type: { 

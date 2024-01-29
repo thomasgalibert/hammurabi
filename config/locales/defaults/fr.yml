@@ -239,6 +239,8 @@ fr:
     show: "afficher"
     back_list: "retour à la liste"
     print: "imprimer"
+    cancel: "annuler"
+    copied: "Copié"
   tabs:
     firm_setting: "Paramètres du cabinet"
     facturation_setting: "Paramètres de facturation"

@@ -17,7 +17,7 @@ class AsksController < ApplicationController
   def create
     @ask = @dossier.asks.new(ask_params)
     if @ask.save
-      redirect_to dossier_asks_path(@dossier, contact: @ask.contact), notice: t('asks.flash.created')
+      redirect_to dossier_asks_path(@dossier, contact_id: @ask.contact), notice: t('asks.flash.created')
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,7 +26,7 @@ class AsksController < ApplicationController
   def update
     if @ask.update(ask_params)
       respond_to do |format|
-        format.html { redirect_to dossier_asks_path(@dossier, contact: @contact), notice: t('asks.flash.updated') }
+        format.html { redirect_to dossier_asks_path(@dossier, contact_id: @contact), notice: t('asks.flash.updated') }
         format.turbo_stream { render turbo_stream: turbo_stream.replace(@ask, partial: "asks/ask", locals: { ask: @ask, dossier: @dossier, contact: @contact }) }
       end
     else
@@ -36,7 +36,10 @@ class AsksController < ApplicationController
 
   def destroy
     @ask.destroy
-    redirect_to dossier_asks_path(@dossier, contact: @contact), notice: t('asks.flash.destroyed')
+    respond_to do |format|
+      format.html { redirect_to dossier_asks_path(@dossier, contact_id: @contact), notice: t('asks.flash.destroyed') }
+      format.turbo_stream { render turbo_stream: turbo_stream.remove(@ask) }
+    end
   end
 
   def send_by_email

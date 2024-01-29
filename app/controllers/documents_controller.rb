@@ -2,7 +2,7 @@ class DocumentsController < ApplicationController
   include Ordering
   before_action :authenticate_user!
   before_action :check_firm_setting_is_complete
-  before_action :set_document, only: [:edit, :update, :destroy, :sort, :show]
+  before_action :set_document, only: [:edit, :update, :destroy, :sort, :show, :delete_shared, :insert_slip]
 
   def upload
     @slip = current_user.slips.find(params[:slip_id])
@@ -34,6 +34,14 @@ class DocumentsController < ApplicationController
     redirect_to dossier_slip_path(@dossier, @slip)
   end
 
+  def insert_slip
+    @dossier = @document.dossier
+    @slip = @dossier.slips.find(document_params[:slip_id])
+    add_item_to_list_with_position(@slip.documents, @document)
+    @document.update(document_params)
+    redirect_to dossier_slip_path(@dossier, @slip)
+  end
+
   def destroy
     @ask = @document.ask
     delete_item_with_position(@document.slip.documents, @document)
@@ -42,6 +50,12 @@ class DocumentsController < ApplicationController
     @dossier = @document.dossier
     @slip = @document.slip
     redirect_to dossier_slip_path(@dossier, @slip)
+  end
+
+  def delete_shared
+    @dossier = @document.dossier
+    @document.destroy
+    redirect_to @dossier
   end
 
   def sort

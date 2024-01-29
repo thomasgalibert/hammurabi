@@ -1,0 +1,13 @@
+<%= form_with model: [dossier, document], url: insert_slip_dossier_document_path(dossier, document), method: :put do |form| %>
+  <div class="text-xs flex items-center space-x-2">
+    <div>affecter au bordereau</div>
+    <div>
+      <%= form.collection_select :slip_id, dossier.slips, :id, :full_number,
+          {  },
+          class: "text-xs pl-3 py-1 pr-6 text-stone-500 font-mono border rounded-md border-stone-200" %>
+    </div>
+    <div>
+      <%= form.submit 'OK', class: "text-xs px-3 py-1 cursor-pointer text-stone-500 font-mono border rounded-md border-stone-200" %>
+    </div>
+  </div>
+<% end %>

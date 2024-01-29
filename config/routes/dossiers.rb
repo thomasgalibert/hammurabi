@@ -24,6 +24,8 @@ resources :dossiers do
   resources :documents do
     member do
       put :sort
+      delete :delete_shared
+      put :insert_slip
     end
   end
   

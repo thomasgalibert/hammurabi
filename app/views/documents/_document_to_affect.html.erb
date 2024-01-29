@@ -1,0 +1,19 @@
+<%= content_tag :li, id: dom_id(document), class: "pt-2 text-xs" do %>
+  <div class="flex items-center justify-between">
+    <div><span class="text-stone-500"><%= document.name %></span></div>
+    <div class="flex items-center space-x-2">
+      <%= link_to t('buttons.download'), 
+                document.fichier.url(expires_in: 4.hour), 
+                target: "_blank",
+                class: "text-gray-700 block px-4 py-2 text-xs underline" if document.fichier.attached? %>
+
+      <%= button_to t('buttons.delete'), 
+          delete_shared_dossier_document_path(document.dossier, document),
+          method: :delete,
+          form: { data: { turbo_confirm: t('are_you_sure') } },
+          class: "text-rose-500 block px-4 py-2 text-xs" %>
+
+      <%= render "documents/form_affect", document: document, dossier: document.dossier %>
+    </div>
+  </div>
+<% end %>
