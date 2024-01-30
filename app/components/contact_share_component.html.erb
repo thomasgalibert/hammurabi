@@ -8,8 +8,7 @@
     <div class="flex-1 truncate">
       <div class="flex items-center space-x-3">
         <h3 class="truncate text-sm font-medium text-gray-900">
-          <%= link_to @contact.name.full, dossier_contact_path(@dossier, @contact), "data-turbo-frame": "modal" if @contact.last_name.present? %>
-          <%= link_to "-- no name --", dossier_contact_path(@dossier, @contact), "data-turbo-frame": "modal" unless @contact.last_name.present? %>
+          <%= link_to k(@contact).name, dossier_contact_path(@dossier, @contact), "data-turbo-frame": "modal" %>
         </h3>
         <%= k(@contact).badge %>
         <%= k(@contact).star %>

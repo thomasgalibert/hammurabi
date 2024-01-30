@@ -128,7 +128,7 @@ class SlipPdf < Prawn::Document
 
   def name_or_company(contact)
     if contact.company_name.present?
-      "#{contact.company_name}, représentée par #{contact.name.full}"
+      "#{contact.company_name}"
     else
       contact.name.full
     end

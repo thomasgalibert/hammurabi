@@ -1,6 +1,6 @@
 <div class="flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow">
     <div class="flex flex-1 flex-col p-8">
-      <h3 class="mt-6 text-lg font-medium text-gray-900"><%= contact.name.full %></h3>
+      <h3 class="mt-6 text-lg font-medium text-gray-900"><%= k(contact).name %></h3>
       <dl class="mt-1 flex flex-grow flex-col justify-between">
         <dt class="sr-only">Title</dt>
         <% if contact.company_name.present? %>

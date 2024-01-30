@@ -28,4 +28,12 @@ class ContactTest < ActiveSupport::TestCase
     
     assert_equal contact2, @dossier.contact_principal
   end
+
+  test "un contact peut avoir soit un nom et prénom, soit une raison sociale" do
+    contact1 = FactoryBot.create(:contact, user: @user, company_name: nil)
+    contact2 = FactoryBot.create(:contact, user: @user, last_name: nil, first_name: nil, company_name: "CARPA Paris")
+    
+    assert contact1.valid?
+    assert contact2.valid?
+  end
 end

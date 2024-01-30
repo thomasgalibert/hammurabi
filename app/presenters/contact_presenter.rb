@@ -1,6 +1,14 @@
 class ContactPresenter < Keynote::Presenter
   presents :contact
 
+  def name
+    if contact.last_name.present? && contact.first_name.present?
+      "#{contact.first_name} #{contact.last_name}"
+    else
+      contact.company_name
+    end
+  end
+
   def badge
     common_class = "inline-flex flex-shrink-0 items-center rounded-full px-1.5 py-0.5 text-xs font-medium ring-1 ring-inset"
     
