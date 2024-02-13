@@ -26,5 +26,6 @@ module Hammurabi
     config.i18n.available_locales = %i[en fr]
     config.i18n.default_locale = :fr
     # config.eager_load_paths << Rails.root.join("extras")
+    config.active_job.queue_adapter = :sidekiq
   end
 end

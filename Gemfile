@@ -93,5 +93,6 @@ gem 'ransack'
 gem 'pagy', '~> 6.2'
 gem 'acts_as_list'
 gem 'mailgun-ruby', '~>1.2.12'
+gem 'sidekiq'
 
 gem "icalendar", "~> 2.10"
