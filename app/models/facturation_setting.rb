@@ -19,7 +19,7 @@ class FacturationSetting < ApplicationRecord
   validates :tva_standard, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
   validates :first_invoice_number, numericality: { greater_than_or_equal_to: 0 }
 
-  validates :logo, attached: true, 
+  validates :logo, 
             content_type: { 
               in: ['image/jpeg'], 
               message: "Le format du fichier doit être au format jpeg"}, 

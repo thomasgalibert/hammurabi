@@ -10,6 +10,15 @@ class EventPresenter < Keynote::Presenter
     end
   end
 
+  def mini_badge
+    wrapper_class = "h-5 w-5 rounded-full text-white bg-stone-400 flex items-center justify-center ring-8 ring-white"
+    svg_class = "h-3 w-3 fill-white"
+
+    content_tag :span, class: wrapper_class do
+      raw(set_icon(event))
+    end
+  end
+
   def set_icon(event)
     case event.kind
     when "meeting" then meeting_icon

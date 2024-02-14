@@ -1,15 +1,41 @@
 <%= turbo_frame_tag :calendar do %>
-  <%= week_calendar(number_of_weeks: 1, events: @events, attribute: :date) do |date, events| %>
 
-    <div class="flex flex-col align-top">
-      <div class="text-xs text-stone-500"><%=l date %></div>
-      
-      <div class="text-left flex flex-col space-y-1 mt-4">
-        <% events.each do |event| %>
-          <%= render EventCalendarComponent.new(event: event) %>
-        <% end %>
-      </div>
-    </div>
+  <div class="hidden sm:block">
+    <%= week_calendar(number_of_weeks: 1, events: @events, attribute: :date) do |date, events| %>
+      <div class="flex flex-col align-top">
+        <div class="text-xs text-stone-500"><%=l date %></div>
     
-  <% end %>
+        <div class="text-left flex flex-col space-y-1 mt-4">
+          <% events.each do |event| %>
+            <%= render EventCalendarComponent.new(event: event) %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="block sm:hidden mb-6 bg-white p-3 rounded-md border">
+    <h3>Échéances des 3 prochaines semaines :</h3>
+    <ul class="flex flex-col divide-y gap-2">
+      <% @events_next_3_weeks.each do |event| %>
+        <li class="py-3">
+          <div class="relative flex items-center space-x-3">
+          <div><%= k(event).mini_badge %></div>
+            <div class="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
+              <div>
+                <p class="text-sm text-gray-500">
+                  <%= link_to event.dossier do %>
+                    <%= event.title %> (<%= event.dossier.name %>)
+                  <% end %>
+                </p>
+              </div>
+              <div class="whitespace-nowrap text-right text-sm text-gray-500">
+                <time datetime="<%= event.date %>"><%= l event.date, format: :short %></time>
+              </div>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
