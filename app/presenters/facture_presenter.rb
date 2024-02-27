@@ -49,7 +49,7 @@ class FacturePresenter < Keynote::Presenter
     if facture.achived?
       token = facture.user.accountant_share_token
       download_url = sharing_invoice_path(facture, token: token, format: :pdf)
-      render LinkComponent.new(name: "", url: download_url, color: "gray", icon: "fa-solid fa-file-pdf", target: "_blank")
+      render PrintButtonComponent.new(url: download_url)
     end
   end
 
