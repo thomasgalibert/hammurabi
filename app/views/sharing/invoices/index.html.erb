@@ -41,7 +41,7 @@
 
 <%= render TableComponent.new(
       objects: @factures,
-      list_attributes: %i(date payment_badge numero dossier description total_ttc share_download),
+      list_attributes: %i(date payment_badge numero dossier total_ttc balance payments share_download),
       class_name: "Facture",
       url_method: nil)
 %>

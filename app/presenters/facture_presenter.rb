@@ -61,6 +61,28 @@ class FacturePresenter < Keynote::Presenter
     end
   end
 
+  def balance
+    class_balance = case facture.payment_status
+      when 'unpaid' then "text-rose-600"
+      when 'partial' then "text-orange-600"
+      when 'paid' then "text-emerald-600"
+      when 'refund' then "text-indigo-600"
+      else "text-gray-600"
+    end
+
+    content_tag :span, class: ["text-xs", class_balance].join(" ") do
+      number_to_currency facture.balance
+    end
+  end
+
+  def payments
+    content_tag :span, class: "text-xs" do
+      facture.payments.map do |payment|
+        k(payment).amount_with_date
+      end.join(", ").html_safe
+    end
+  end
+
   def convention
     facture.convention.present? ? k(facture.convention).amount_with_date : "--"
   end

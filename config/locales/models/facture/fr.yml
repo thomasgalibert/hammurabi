@@ -106,3 +106,5 @@ fr:
         payment_badge: "Statut du paiement"
         download: ""
         share_download: ""
+        balance: "Solde"
+        payments: "Encaissements"
