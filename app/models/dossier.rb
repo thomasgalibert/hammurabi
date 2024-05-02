@@ -87,7 +87,7 @@ class Dossier < ApplicationRecord
   end
 
   def total_balance
-    balance
+    balance / 100.0
   end
 
   private
