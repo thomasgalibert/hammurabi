@@ -48,7 +48,7 @@ class Contact < ApplicationRecord
     if self.company_name.present? && self.last_name.blank?
       self.company_name
     else
-      self.name.full
+      self.last_name + " " + self.first_name
     end
   end
 

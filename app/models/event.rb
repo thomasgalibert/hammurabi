@@ -24,7 +24,7 @@ class Event < ApplicationRecord
 
   scope :hearings, -> { where(kind: ["hearing"]) }
   scope :others, -> { where.not(kind: ["hearing", "conciliation_hearing", "jugment_hearing"]) }
-  scope :importants, -> { where(kind: ["hearing", "conciliation_hearing", "jugment_hearing", "meeting", "signature", "expertise"]) }
+  scope :importants, -> { where(kind: ["hearing", "conciliation_hearing", "jugment_hearing", "meeting", "signature", "expertise", "deliberation"]) }
 
   KINDS = [
     "meeting",
@@ -44,6 +44,7 @@ class Event < ApplicationRecord
 
   KINDS_OTHERS = [
     "meeting",
+    "deliberation",
     "signature",
     "expertise",
     "email",

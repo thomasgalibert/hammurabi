@@ -86,6 +86,10 @@ class Dossier < ApplicationRecord
     end
   end
 
+  def total_balance
+    balance
+  end
+
   private
 
   def update_viewed_at
@@ -109,6 +113,5 @@ class Dossier < ApplicationRecord
     sum_payments = dossier_payments.sum(:amount_cents)
     return sum_factures - sum_payments
   end
-
   
 end

@@ -5,5 +5,6 @@
   <%= link_to @event.dossier, class: "text-stone-600 text-xs", data: {turbo_frame: "_top"} do %>
     <span class="font-semibold"><%= @event.dossier.name %></span> : <%= @event.title %>
     <span class="text-stone-400 italic">(<%= k(@event).kind_translated %>)</span>
+    <span class="text-stone-600">(<%= l(@event.date, format: :only_time) if @event.date.present? %>)</span>
   <% end %>
 </div>

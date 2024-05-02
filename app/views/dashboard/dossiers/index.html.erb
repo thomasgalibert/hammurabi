@@ -4,7 +4,13 @@
 
 <%= render "filters" %>
 
-<div class="my-6"><%== pagy_nav @pagy %></div>
+<div class="my-6 flex justify-between">
+  <div><%== pagy_nav @pagy %></div>
+
+  <div class="bg-white border rounded-md text-sm font-semibold text-slate-700 px-4 py-2 flex justify-center items-center">
+    Montant TTC : <%= @total_balance_dossiers > 0 ? number_to_currency(@total_balance_dossiers) : "--"  %>
+  </div>
+</div>
 
 <%= render TableComponent.new(
       objects: @dossiers,

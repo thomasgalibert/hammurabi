@@ -9,7 +9,7 @@ class ContactsController < ApplicationController
   end
 
   def new_existing
-    @contacts = current_user.contacts
+    @contacts = current_user.contacts.order(:last_name, :company_name)
   end
 
   def create

@@ -12,6 +12,7 @@ fr:
           email: "Email"
           call: "Appel"
           other: "Autre"
+          deliberation: "Délibéré"
   events:
     placeholders:
       title: "Nom de l'évènement"
@@ -19,6 +20,7 @@ fr:
       meeting: "Rendez-vous"
       signature: "Signature"
       hearing: "Audience"
+      deliberation: "Délibéré"
       conciliation_hearing: "Audience de conciliation"
       judgment_hearing: "Audience de jugement"
       expertise: "Expertise"
