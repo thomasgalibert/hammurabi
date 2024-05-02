@@ -1,7 +1,7 @@
 <%= turbo_frame_tag :calendar do %>
 
   <div class="hidden sm:block">
-    <%= week_calendar(number_of_weeks: 4, events: @events, attribute: :date) do |date, events| %>
+    <%= week_calendar(number_of_weeks: 3, events: @events, attribute: :date) do |date, events| %>
       <div class="flex flex-col align-top">
         <div class="text-xs text-stone-500"><%=l date %></div>
     
