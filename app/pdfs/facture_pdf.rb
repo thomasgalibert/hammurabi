@@ -36,6 +36,7 @@ class FacturePdf < Prawn::Document
     print_logo
     print_details
     print_receiver
+    print_reference_dossier(@facture, size: 10)
     print_title
     print_table_items
     print_footer(@facture)
@@ -84,7 +85,6 @@ class FacturePdf < Prawn::Document
       text I18n.t('factures.pdf.sent_to'), size: 9, color: @gray
       move_down 5
       print_address_client(@facture, size: 10)
-      print_reference_dossier(@facture, size: 10)
     end
   end
 
@@ -101,7 +101,7 @@ class FacturePdf < Prawn::Document
   end
 
   def print_title
-  	move_down 30
+  	move_down 20
   	stroke_horizontal_rule
   	move_down 5
   	text @facture.description.to_plain_text, align: :center, size: 12

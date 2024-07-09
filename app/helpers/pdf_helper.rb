@@ -38,7 +38,7 @@ module PdfHelper
     options = args.extract_options!
     size = options[:size] || 9
     dossier = facture.dossier
-    move_down 5
+    move_down 10
     text "Réf. dossier : #{dossier.name}", size: size, color: @gray
   end
 
