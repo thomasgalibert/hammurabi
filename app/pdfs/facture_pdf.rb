@@ -84,6 +84,7 @@ class FacturePdf < Prawn::Document
       text I18n.t('factures.pdf.sent_to'), size: 9, color: @gray
       move_down 5
       print_address_client(@facture, size: 10)
+      print_reference_dossier(@facture, size: 10)
     end
   end
 

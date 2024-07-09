@@ -34,6 +34,14 @@ module PdfHelper
     text "#{at(facture, :client_vat_number)} : #{seal.client_vat_number}", size: size, color: @gray
 	end
 
+  def print_reference_dossier(facture, *args)
+    options = args.extract_options!
+    size = options[:size] || 9
+    dossier = facture.dossier
+    move_down 5
+    text "Réf. dossier : #{dossier.name}", size: size, color: @gray
+  end
+
   def logo(facture)
     if facture.user.facturation_setting.logo.attached?
       url = facture.user.facturation_setting.logo.url
