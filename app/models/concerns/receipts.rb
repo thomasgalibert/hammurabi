@@ -34,11 +34,11 @@ module Receipts
   end
 
   def balance
-    (total_ttc_cents - payments.sum(&:amount_cents)) / 100
+    (total_ttc_cents - payments.sum(&:amount_cents)) / 100.0
   end
 
   def sum_payments
-    payments.sum(&:amount_cents) / 100
+    payments.sum(&:amount_cents) / 100.0
   end
 
 end

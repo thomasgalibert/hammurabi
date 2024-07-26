@@ -132,8 +132,8 @@ module PdfHelper
 
     facture.breakdown_tva.map do |rate, value|
       [ number_to_percentage(rate, precision: 2),
-        number_with_precision((value[:base]/100), precision: 2),
-        number_with_precision((value[:montant]/100), precision: 2),
+        number_with_precision((value[:base]/100.0), precision: 2),
+        number_with_precision((value[:montant]/100.0), precision: 2),
       ]
     end
   end
