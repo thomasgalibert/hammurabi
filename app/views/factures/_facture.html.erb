@@ -1,3 +1,5 @@
+<% dossier = dossier || facture.dossier %>
+
 <div class="bg-white px-10 pb-10 pt-16 rounded-lg border relative">
   <%= render "factures/elements/additionnal_actions", facture: facture, dossier: dossier if facture.draft? && params[:action] != "will_complete" %>
   <%= render "factures/elements/print_actions", facture: facture, dossier: dossier if facture.achived? %>
@@ -15,5 +17,5 @@
     <%= render facture.lignes.saved.order(row_order: :asc) %>
   </ul>
   <div id="totals"><%= render "factures/elements/totals", facture: facture, dossier: dossier %></div>
-  <div class="mt-6"><%= render "refund_action" unless facture.is_refund? || facture.draft? %></div>
+  <div class="mt-6"><%= render "factures/refund_action", facture: facture, dossier: dossier unless facture.is_refund? || facture.draft? %></div>
 </div>

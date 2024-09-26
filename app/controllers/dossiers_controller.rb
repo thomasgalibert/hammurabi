@@ -6,6 +6,7 @@ class DossiersController < ApplicationController
 
   def index
     @dossiers = current_user.dossiers.actives.last_viewed(6)
+    @factures_unpaids = current_user.factures.not_totaly_paid.order(date: :asc)
   end
 
   def show

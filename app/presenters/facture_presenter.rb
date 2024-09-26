@@ -30,7 +30,7 @@ class FacturePresenter < Keynote::Presenter
     content_tag :span, t("factures.payment_statuses.#{facture.payment_status}"), class: badge_class
   end
 
-  def description = facture.description
+  def description = truncate(facture.description.to_plain_text)
   def created_at = I18n.l(facture.created_at, format: :short)
   def date = I18n.l(facture.date)
   def dossier = facture.dossier.name

@@ -1,6 +1,14 @@
-<div><%= turbo_frame_tag :calendar, src: dashboard_events_path %></div>
+<div class="my-4 flex justify-between items-center">
+  <div>Total impayés : <%=number_to_currency @factures_unpaids.sum(&:balance) %></div>
+  <%= render BigButtonComponent.new name: "Nouveau dossier", url: new_dossier_path %>
+</div>
 
-<div class="my-4 flex justify-center"><%= render BigButtonComponent.new name: "Nouveau dossier", url: new_dossier_path %></div>
+<%= render TableComponent.new(
+      objects: @factures_unpaids,
+      list_attributes: %i(date payment_badge numero dossier description total_ttc download),
+      class_name: "Facture",
+      url_method: :dossier_url)
+%>
 
 <div class="grid grid-cols-2 gap-10">
   <div class="col-span-2 sm:col-span-2">
@@ -16,4 +24,9 @@
       </li>
     </ul>
   </div>
+</div>
+
+<div class="mt-6 border-slate-500">
+  <%= render "shared/divider", title: "Agenda des prochaines semaines" %>
+  <%= turbo_frame_tag :calendar, src: dashboard_events_path %>
 </div>
