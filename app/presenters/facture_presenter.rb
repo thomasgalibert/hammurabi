@@ -33,7 +33,7 @@ class FacturePresenter < Keynote::Presenter
   def description = truncate(facture.description.to_plain_text)
   def created_at = I18n.l(facture.created_at, format: :short)
   def date = I18n.l(facture.date)
-  def dossier = facture.dossier.name
+  def dossier = truncate(facture.dossier.name)
   def total_ttc = content_tag(:span, number_to_currency(facture.total_ttc), class: "font-mono")
   def dossier_url = dossier_facture_path(facture.dossier, facture)
   def facture_url = dossier_facture_path(facture.dossier, facture)
