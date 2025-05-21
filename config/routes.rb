@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   draw :todos
   draw :dossiers
   draw :authentications
+  draw :accounting
   get "help" => "home#help", as: :help
   get "reach" => "home#reach", as: :reach
   get "up" => "rails/health#show", as: :rails_health_check

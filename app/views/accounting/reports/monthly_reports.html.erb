@@ -1,0 +1,104 @@
+<%= render partial: "header", locals: { title: t('accounting.monthly_reports.title') } %>
+
+<div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+  <!-- Récapitulatif des factures -->
+  <div class="overflow-hidden rounded-lg bg-white shadow">
+    <div class="px-4 py-5 sm:p-6">
+      <h3 class="text-lg font-medium leading-6 text-stone-900 border-b pb-2 mb-4"><%= t('accounting.monthly_reports.invoices_summary') %></h3>
+      
+      <div class="mt-2 flex flex-col">
+        <div class="grid grid-cols-2 gap-4 mb-2">
+          <div class="text-sm font-medium text-stone-500"><%= t('accounting.monthly_reports.total_ttc') %></div>
+          <div class="text-sm text-stone-900 font-bold"><%= number_to_currency(@total_ttc) %></div>
+        </div>
+        <div class="grid grid-cols-2 gap-4 mb-2">
+          <div class="text-sm font-medium text-stone-500"><%= t('accounting.monthly_reports.total_ht') %></div>
+          <div class="text-sm text-stone-900"><%= number_to_currency(@total_ht) %></div>
+        </div>
+        <div class="grid grid-cols-2 gap-4 mb-2">
+          <div class="text-sm font-medium text-stone-500"><%= t('accounting.monthly_reports.total_tva') %></div>
+          <div class="text-sm text-stone-900"><%= number_to_currency(@total_tva) %></div>
+        </div>
+      </div>
+      
+      <h4 class="text-md font-medium leading-6 text-stone-900 border-b pb-2 my-4"><%= t('accounting.monthly_reports.breakdown_by_tva') %></h4>
+      
+      <div class="mt-2 flex flex-col">
+        <% @breakdown_by_tva.each do |tva_rate, values| %>
+          <div class="mb-2">
+            <div class="text-sm font-medium text-stone-700 mb-1"><%= t('accounting.monthly_reports.tva_rate', rate: tva_rate) %></div>
+            <div class="grid grid-cols-2 gap-4 ml-2">
+              <div class="text-sm font-medium text-stone-500"><%= t('accounting.monthly_reports.base_ht') %></div>
+              <div class="text-sm text-stone-900"><%= number_to_currency(values[:base]) %></div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 ml-2">
+              <div class="text-sm font-medium text-stone-500"><%= t('accounting.monthly_reports.tva_amount') %></div>
+              <div class="text-sm text-stone-900"><%= number_to_currency(values[:montant]) %></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Récapitulatif des paiements -->
+  <div class="overflow-hidden rounded-lg bg-white shadow">
+    <div class="px-4 py-5 sm:p-6">
+      <h3 class="text-lg font-medium leading-6 text-stone-900 border-b pb-2 mb-4"><%= t('accounting.monthly_reports.payments_summary') %></h3>
+      
+      <div class="mt-2 flex flex-col">
+        <div class="grid grid-cols-2 gap-4 mb-2">
+          <div class="text-sm font-medium text-stone-500"><%= t('accounting.monthly_reports.total_payments') %></div>
+          <div class="text-sm text-stone-900 font-bold"><%= number_to_currency(@total_payments) %></div>
+        </div>
+        <div class="grid grid-cols-2 gap-4 mb-2">
+          <div class="text-sm font-medium text-stone-500"><%= t('accounting.monthly_reports.total_vat') %></div>
+          <div class="text-sm text-stone-900"><%= number_to_currency(@total_payments_vat) %></div>
+        </div>
+      </div>
+      
+      <h4 class="text-md font-medium leading-6 text-stone-900 border-b pb-2 my-4"><%= t('accounting.monthly_reports.breakdown_by_payment_method') %></h4>
+      
+      <div class="mt-2 flex flex-col">
+        <% @payments_by_means.each do |mean, amount| %>
+          <div class="grid grid-cols-2 gap-4 mb-2">
+            <div class="text-sm font-medium text-stone-500"><%= t("accounting.payment_means.#{mean}") %></div>
+            <div class="text-sm text-stone-900"><%= number_to_currency(amount) %></div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Récapitulatif des factures impayées -->
+  <div class="overflow-hidden rounded-lg bg-white shadow">
+    <div class="px-4 py-5 sm:p-6">
+      <h3 class="text-lg font-medium leading-6 text-stone-900 border-b pb-2 mb-4"><%= t('accounting.monthly_reports.unpaid_invoices_summary') %></h3>
+      
+      <div class="mt-2 flex flex-col">
+        <div class="grid grid-cols-2 gap-4 mb-2">
+          <div class="text-sm font-medium text-stone-500"><%= t('accounting.monthly_reports.total_unpaid_ttc') %></div>
+          <div class="text-sm text-stone-900 font-bold"><%= number_to_currency(@total_unpaid_ttc) %></div>
+        </div>
+        <div class="grid grid-cols-2 gap-4 mb-2">
+          <div class="text-sm font-medium text-stone-500"><%= t('accounting.monthly_reports.total_unpaid_ht') %></div>
+          <div class="text-sm text-stone-900"><%= number_to_currency(@total_unpaid_ht) %></div>
+        </div>
+        <div class="grid grid-cols-2 gap-4 mb-2">
+          <div class="text-sm font-medium text-stone-500"><%= t('accounting.monthly_reports.total_unpaid_tva') %></div>
+          <div class="text-sm text-stone-900"><%= number_to_currency(@total_unpaid_tva) %></div>
+        </div>
+      </div>
+      
+      <div class="mt-4">
+        <%= link_to t('accounting.monthly_reports.view_unpaid_details'), accounting_unpaid_invoices_path, class: "text-sm text-blue-600 hover:text-blue-800" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Graphiques ou visualisations supplémentaires pourraient être ajoutés ici -->
+
+<div class="mt-8 text-right">
+  <p class="text-sm text-stone-500"><%= t('accounting.monthly_reports.generated_at', date: l(Time.current, format: :long)) %></p>
+</div>

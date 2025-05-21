@@ -1,0 +1,43 @@
+<div class="flex flex-wrap justify-between items-center gap-2 mb-6 p-4 bg-stone-100 rounded-lg">
+  <div class="flex items-center gap-2">
+    <h2 class="text-stone-700 font-semibold"><%= t('accounting.filters.title') %></h2>
+    
+    <%= form_with url: url_for(action: action_name), method: :get, data: { turbo_frame: "_top" } do |f| %>
+      <div class="flex flex-wrap items-center gap-2">
+        <div>
+          <label class="block text-sm font-medium text-stone-500"><%= t('accounting.filters.period') %></label>
+          <%= f.select :period, 
+                      options_for_select([
+                        [t('accounting.filters.week'), "week"],
+                        [t('accounting.filters.month'), "month"],
+                        [t('accounting.filters.quarter'), "quarter"],
+                        [t('accounting.filters.year'), "year"]
+                      ], @period),
+                      {}, 
+                      { class: "shadow-sm bg-white border-stone-300 rounded-md text-sm" } %>
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium text-stone-500"><%= t('accounting.filters.start_date') %></label>
+          <%= f.date_field :start_date, value: @start_date, class: "shadow-sm bg-white border-stone-300 rounded-md text-sm" %>
+        </div>
+        
+        <div class="mt-4">
+          <%= f.submit t('accounting.filters.filter'), class: "rounded-md bg-stone-700 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-stone-600" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  
+  <div class="flex gap-2">
+    <%= link_to t('accounting.navigation.monthly_reports'), accounting_monthly_reports_path, class: "rounded-md bg-white px-3 py-2 text-sm font-semibold text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 hover:bg-stone-50" %>
+    <%= link_to t('accounting.navigation.invoice_details'), accounting_invoice_details_path, class: "rounded-md bg-white px-3 py-2 text-sm font-semibold text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 hover:bg-stone-50" %>
+    <%= link_to t('accounting.navigation.payment_details'), accounting_payment_details_path, class: "rounded-md bg-white px-3 py-2 text-sm font-semibold text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 hover:bg-stone-50" %>
+    <%= link_to t('accounting.navigation.unpaid_invoices'), accounting_unpaid_invoices_path, class: "rounded-md bg-white px-3 py-2 text-sm font-semibold text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 hover:bg-stone-50" %>
+  </div>
+</div>
+
+<div class="text-center mb-6">
+  <h1 class="text-2xl font-bold text-stone-700"><%= title %></h1>
+  <p class="text-stone-500"><%= t('accounting.period') %>: <%= l(@start_date) %> - <%= l(@end_date) %></p>
+</div>

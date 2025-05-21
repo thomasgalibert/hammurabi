@@ -1,0 +1,62 @@
+<%= render partial: "header", locals: { title: t('accounting.invoice_details.title') } %>
+
+<div class="overflow-hidden bg-white shadow sm:rounded-lg">
+  <div class="px-4 py-5 sm:p-6">
+    <% if @invoices.any? %>
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-300">
+          <thead>
+            <tr>
+              <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"><%= t('accounting.invoice_details.date') %></th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= t('accounting.invoice_details.number') %></th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= t('accounting.invoice_details.client') %></th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= t('accounting.invoice_details.case') %></th>
+              <th scope="col" class="px-3 py-3.5 text-right text-sm font-semibold text-gray-900"><%= t('accounting.invoice_details.total_ht') %></th>
+              <th scope="col" class="px-3 py-3.5 text-right text-sm font-semibold text-gray-900"><%= t('accounting.invoice_details.total_tva') %></th>
+              <th scope="col" class="px-3 py-3.5 text-right text-sm font-semibold text-gray-900"><%= t('accounting.invoice_details.total_ttc') %></th>
+              <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900"><%= t('accounting.invoice_details.status') %></th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <% @invoices.each do |invoice| %>
+              <tr>
+                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 sm:pl-0"><%= l(invoice.date) %></td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900"><%= invoice.screen_number %></td>
+                <td class="px-3 py-4 text-sm text-gray-900"><%= k(invoice.contact).name %></td>
+                <td class="px-3 py-4 text-sm text-gray-900"><%= invoice.dossier.name.truncate(30) %></td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900 text-right"><%= number_to_currency(invoice.total_ht) %></td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900 text-right"><%= number_to_currency(invoice.total_tva) %></td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900 text-right font-semibold"><%= number_to_currency(invoice.total_ttc) %></td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-center">
+                  <span class="px-2 py-1 text-xs rounded-full
+                    <%= invoice.payment_status == 'paid' ? 'bg-green-100 text-green-800' : 
+                        invoice.payment_status == 'partial' ? 'bg-yellow-100 text-yellow-800' : 
+                        'bg-red-100 text-red-800' %>">
+                    <%= t("factures.payment_status.#{invoice.payment_status}") %>
+                  </span>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+          <tfoot>
+            <tr class="border-t-2 border-gray-900">
+              <th scope="row" colspan="4" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"><%= t('accounting.invoice_details.total') %></th>
+              <td class="px-3 py-3.5 text-right text-sm font-semibold text-gray-900"><%= number_to_currency(@invoices.sum { |i| i.total_ht }) %></td>
+              <td class="px-3 py-3.5 text-right text-sm font-semibold text-gray-900"><%= number_to_currency(@invoices.sum { |i| i.total_tva }) %></td>
+              <td class="px-3 py-3.5 text-right text-sm font-semibold text-gray-900"><%= number_to_currency(@invoices.sum { |i| i.total_ttc }) %></td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    <% else %>
+      <div class="text-center py-10">
+        <p class="text-gray-500"><%= t('accounting.invoice_details.no_invoices') %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="mt-8 text-right">
+  <p class="text-sm text-stone-500"><%= t('accounting.invoice_details.count', count: @invoices.count) %></p>
+</div>

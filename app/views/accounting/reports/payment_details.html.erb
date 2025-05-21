@@ -1,0 +1,87 @@
+<%= render partial: "header", locals: { title: t('accounting.payment_details.title') } %>
+
+<div class="grid grid-cols-1 gap-6 lg:grid-cols-4">
+  <!-- Récapitulatif par moyen de paiement -->
+  <div class="lg:col-span-1 overflow-hidden rounded-lg bg-white shadow">
+    <div class="px-4 py-5 sm:p-6">
+      <h3 class="text-lg font-medium leading-6 text-stone-900 border-b pb-2 mb-4"><%= t('accounting.payment_details.summary_by_means') %></h3>
+      
+      <div class="mt-2 flex flex-col space-y-4">
+        <% @payments_by_means.each do |mean, data| %>
+          <div>
+            <h4 class="text-md font-medium text-stone-700"><%= t("accounting.payment_means.#{mean}") %></h4>
+            <div class="grid grid-cols-2 gap-2 ml-2 mt-1">
+              <div class="text-sm text-stone-500"><%= t('accounting.payment_details.count') %></div>
+              <div class="text-sm text-stone-900"><%= data[:count] %></div>
+            </div>
+            <div class="grid grid-cols-2 gap-2 ml-2">
+              <div class="text-sm text-stone-500"><%= t('accounting.payment_details.total') %></div>
+              <div class="text-sm text-stone-900 font-semibold"><%= number_to_currency(data[:total]) %></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="mt-6 pt-4 border-t">
+        <div class="grid grid-cols-2 gap-2">
+          <div class="text-sm font-medium text-stone-700"><%= t('accounting.payment_details.grand_total') %></div>
+          <div class="text-sm font-bold text-stone-900"><%= number_to_currency(@payments.sum(&:amount)) %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Liste des paiements -->
+  <div class="lg:col-span-3 overflow-hidden bg-white shadow sm:rounded-lg">
+    <div class="px-4 py-5 sm:p-6">
+      <h3 class="text-lg font-medium leading-6 text-stone-900 border-b pb-2 mb-4"><%= t('accounting.payment_details.payments_list') %></h3>
+      
+      <% if @payments.any? %>
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-300">
+            <thead>
+              <tr>
+                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"><%= t('accounting.payment_details.date') %></th>
+                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= t('accounting.payment_details.invoice') %></th>
+                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= t('accounting.payment_details.client') %></th>
+                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= t('accounting.payment_details.case') %></th>
+                <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900"><%= t('accounting.payment_details.payment_method') %></th>
+                <th scope="col" class="px-3 py-3.5 text-right text-sm font-semibold text-gray-900"><%= t('accounting.payment_details.amount') %></th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <% @payments.each do |payment| %>
+                <tr>
+                  <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 sm:pl-0"><%= l(payment.issued_date) %></td>
+                  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900"><%= payment.facture.screen_number %></td>
+                  <td class="px-3 py-4 text-sm text-gray-900"><%= payment.facture.contact.full_name %></td>
+                  <td class="px-3 py-4 text-sm text-gray-900"><%= payment.facture.dossier.nom.truncate(30) %></td>
+                  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900 text-center">
+                    <span class="px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-800">
+                      <%= t("accounting.payment_means.#{payment.mean}") %>
+                    </span>
+                  </td>
+                  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900 text-right font-semibold"><%= number_to_currency(payment.amount) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+            <tfoot>
+              <tr class="border-t-2 border-gray-900">
+                <th scope="row" colspan="5" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"><%= t('accounting.payment_details.total') %></th>
+                <td class="px-3 py-3.5 text-right text-sm font-semibold text-gray-900"><%= number_to_currency(@payments.sum(&:amount)) %></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      <% else %>
+        <div class="text-center py-10">
+          <p class="text-gray-500"><%= t('accounting.payment_details.no_payments') %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="mt-8 text-right">
+  <p class="text-sm text-stone-500"><%= t('accounting.payment_details.count', count: @payments.count) %></p>
+</div>
