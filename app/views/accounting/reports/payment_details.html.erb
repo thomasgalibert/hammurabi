@@ -54,8 +54,8 @@
                 <tr>
                   <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 sm:pl-0"><%= l(payment.issued_date) %></td>
                   <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900"><%= payment.facture.screen_number %></td>
-                  <td class="px-3 py-4 text-sm text-gray-900"><%= payment.facture.contact.full_name %></td>
-                  <td class="px-3 py-4 text-sm text-gray-900"><%= payment.facture.dossier.nom.truncate(30) %></td>
+                  <td class="px-3 py-4 text-sm text-gray-900"><%=  k(payment.facture.contact).name %></td>
+                  <td class="px-3 py-4 text-sm text-gray-900"><%= payment.facture.dossier.name.truncate(30) %></td>
                   <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900 text-center">
                     <span class="px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-800">
                       <%= t("accounting.payment_means.#{payment.mean}") %>
