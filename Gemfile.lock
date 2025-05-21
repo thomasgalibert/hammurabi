@@ -155,6 +155,9 @@ GEM
     foreman (0.87.2)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    honeybadger (5.28.0)
+      logger
+      ostruct
     http-accept (1.7.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
@@ -180,6 +183,7 @@ GEM
     jmespath (1.6.2)
     keynote (1.1.1)
       rails (>= 3.1.0)
+    logger (1.7.0)
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -235,6 +239,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.16.0-x86_64-linux)
       racc (~> 1.4)
+    ostruct (0.6.1)
     pagy (6.2.0)
     pdf-core (0.9.0)
     pg (1.5.4)
@@ -396,6 +401,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   foreman
+  honeybadger (~> 5.28)
   icalendar (~> 2.10)
   image_processing (~> 1.2)
   importmap-rails

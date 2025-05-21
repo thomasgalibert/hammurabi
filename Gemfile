@@ -96,3 +96,5 @@ gem 'mailgun-ruby', '~>1.2.12'
 gem 'sidekiq'
 
 gem "icalendar", "~> 2.10"
+
+gem "honeybadger", "~> 5.28"
