@@ -15,6 +15,7 @@
               <th scope="col" class="px-3 py-3.5 text-right text-sm font-semibold text-gray-900"><%= t('accounting.invoice_details.total_tva') %></th>
               <th scope="col" class="px-3 py-3.5 text-right text-sm font-semibold text-gray-900"><%= t('accounting.invoice_details.total_ttc') %></th>
               <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900"><%= t('accounting.invoice_details.status') %></th>
+              <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900"><%= t('accounting.invoice_details.actions') %></th>
             </tr>
           </thead>
           <tbody class="divide-y divide-gray-200">
@@ -22,8 +23,8 @@
               <tr>
                 <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 sm:pl-0"><%= l(invoice.date) %></td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900"><%= invoice.screen_number %></td>
-                <td class="px-3 py-4 text-sm text-gray-900"><%= k(invoice.contact).name %></td>
-                <td class="px-3 py-4 text-sm text-gray-900"><%= invoice.dossier.name.truncate(30) %></td>
+                <td class="px-3 py-4 text-sm text-gray-900"><%= invoice.contact&.name&.full || "—" %></td>
+                <td class="px-3 py-4 text-sm text-gray-900"><%= invoice.dossier&.name&.truncate(30) || "—" %></td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900 text-right"><%= number_to_currency(invoice.total_ht) %></td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900 text-right"><%= number_to_currency(invoice.total_tva) %></td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900 text-right font-semibold"><%= number_to_currency(invoice.total_ttc) %></td>
@@ -35,6 +36,17 @@
                     <%= t("factures.payment_status.#{invoice.payment_status}") %>
                   </span>
                 </td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-center">
+                  <%= link_to dossier_facture_path(invoice.dossier, invoice, format: :pdf), 
+                              target: "_blank",
+                              class: "inline-flex items-center text-stone-600 hover:text-stone-900" do %>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                      <path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z" />
+                      <path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z" />
+                    </svg>
+                    <span class="ml-1">PDF</span>
+                  <% end %>
+                </td>
               </tr>
             <% end %>
           </tbody>
@@ -44,7 +56,7 @@
               <td class="px-3 py-3.5 text-right text-sm font-semibold text-gray-900"><%= number_to_currency(@invoices.sum { |i| i.total_ht }) %></td>
               <td class="px-3 py-3.5 text-right text-sm font-semibold text-gray-900"><%= number_to_currency(@invoices.sum { |i| i.total_tva }) %></td>
               <td class="px-3 py-3.5 text-right text-sm font-semibold text-gray-900"><%= number_to_currency(@invoices.sum { |i| i.total_ttc }) %></td>
-              <td></td>
+              <td colspan="2"></td>
             </tr>
           </tfoot>
         </table>

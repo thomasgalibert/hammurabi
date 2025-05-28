@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   # Make a route constraint that redirect only if user signed in ?
   constraints ->(request) { request.session[:user_id].present? } do
-    root "dossiers#index", as: :dashboard
+    root "dashboard#redirect", as: :dashboard
   end
 
   root "home#index"

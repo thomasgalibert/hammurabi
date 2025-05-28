@@ -1,32 +1,34 @@
-<div>
-  <%= link_to root_path, class: "flex flex-col items-center" do %>
-    <svg class="w-6 h-6 text-stone-400 hover:text-stone-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M12 0a12 12 0 1 0 12 12A12 12 0 0 0 12 0Zm7.33 18.8a15.82 15.82 0 0 0-14.66 0 10 10 0 1 1 14.66 0Z" fill="currentColor"></path><path d="M5.5 11.25H4a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5Z" fill="currentColor"></path><path d="M7 5.91A.75.75 0 1 0 5.91 7L7 8a.75.75 0 0 0 1 0 .75.75 0 0 0 0-1Z" fill="currentColor"></path><path d="M12 6.25a.76.76 0 0 0 .75-.75V4a.75.75 0 0 0-1.5 0v1.5a.76.76 0 0 0 .75.75Z" fill="currentColor"></path><path d="M20 11.25h-1.5a.75.75 0 0 0 0 1.5H20a.75.75 0 0 0 0-1.5Z" fill="currentColor"></path><path d="M18.35 6.65a.49.49 0 0 0-.61-.08c-.69.42-6.75 4.07-7.51 4.82a2.4 2.4 0 0 0 0 3.38 2.43 2.43 0 0 0 3.38 0C14.36 14 18 8 18.43 7.26a.49.49 0 0 0-.08-.61Z" fill="currentColor"></path></g></svg>
+<% if current_user.owner? %>
+  <div>
+    <%= link_to root_path, class: "flex flex-col items-center" do %>
+      <svg class="w-6 h-6 text-stone-400 hover:text-stone-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M12 0a12 12 0 1 0 12 12A12 12 0 0 0 12 0Zm7.33 18.8a15.82 15.82 0 0 0-14.66 0 10 10 0 1 1 14.66 0Z" fill="currentColor"></path><path d="M5.5 11.25H4a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5Z" fill="currentColor"></path><path d="M7 5.91A.75.75 0 1 0 5.91 7L7 8a.75.75 0 0 0 1 0 .75.75 0 0 0 0-1Z" fill="currentColor"></path><path d="M12 6.25a.76.76 0 0 0 .75-.75V4a.75.75 0 0 0-1.5 0v1.5a.76.76 0 0 0 .75.75Z" fill="currentColor"></path><path d="M20 11.25h-1.5a.75.75 0 0 0 0 1.5H20a.75.75 0 0 0 0-1.5Z" fill="currentColor"></path><path d="M18.35 6.65a.49.49 0 0 0-.61-.08c-.69.42-6.75 4.07-7.51 4.82a2.4 2.4 0 0 0 0 3.38 2.43 2.43 0 0 0 3.38 0C14.36 14 18 8 18.43 7.26a.49.49 0 0 0-.08-.61Z" fill="currentColor"></path></g></svg>
 
-    <span class="inline-block text-xs text-stone-500 hover:text-stone-600">Hub</span>
-  <% end %>
-</div>
+      <span class="inline-block text-xs text-stone-500 hover:text-stone-600">Hub</span>
+    <% end %>
+  </div>
 
-<div>
-  <%= link_to dashboard_dossiers_path, class: "flex flex-col items-center" do %>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-stone-400 hover:text-stone-500">
-      <path d="M3.375 3C2.339 3 1.5 3.84 1.5 4.875v.75c0 1.036.84 1.875 1.875 1.875h17.25c1.035 0 1.875-.84 1.875-1.875v-.75C22.5 3.839 21.66 3 20.625 3H3.375z" />
-      <path fill-rule="evenodd" d="M3.087 9l.54 9.176A3 3 0 006.62 21h10.757a3 3 0 002.995-2.824L20.913 9H3.087zm6.163 3.75A.75.75 0 0110 12h4a.75.75 0 010 1.5h-4a.75.75 0 01-.75-.75z" clip-rule="evenodd" />
-    </svg>
+  <div>
+    <%= link_to dashboard_dossiers_path, class: "flex flex-col items-center" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-stone-400 hover:text-stone-500">
+        <path d="M3.375 3C2.339 3 1.5 3.84 1.5 4.875v.75c0 1.036.84 1.875 1.875 1.875h17.25c1.035 0 1.875-.84 1.875-1.875v-.75C22.5 3.839 21.66 3 20.625 3H3.375z" />
+        <path fill-rule="evenodd" d="M3.087 9l.54 9.176A3 3 0 006.62 21h10.757a3 3 0 002.995-2.824L20.913 9H3.087zm6.163 3.75A.75.75 0 0110 12h4a.75.75 0 010 1.5h-4a.75.75 0 01-.75-.75z" clip-rule="evenodd" />
+      </svg>
 
-    <span class="inline-block text-xs text-stone-500 hover:text-stone-600">Liste dossiers</span>
-  <% end %>
-</div>
+      <span class="inline-block text-xs text-stone-500 hover:text-stone-600">Liste dossiers</span>
+    <% end %>
+  </div>
 
-<div>
-  <%= link_to dashboard_contacts_path, class: "flex flex-col items-center" do %>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-stone-400 hover:text-stone-500">
-      <path fill-rule="evenodd" d="M8.25 6.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM15.75 9.75a3 3 0 116 0 3 3 0 01-6 0zM2.25 9.75a3 3 0 116 0 3 3 0 01-6 0zM6.31 15.117A6.745 6.745 0 0112 12a6.745 6.745 0 016.709 7.498.75.75 0 01-.372.568A12.696 12.696 0 0112 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 01-.372-.568 6.787 6.787 0 011.019-4.38z" clip-rule="evenodd" />
-      <path d="M5.082 14.254a8.287 8.287 0 00-1.308 5.135 9.687 9.687 0 01-1.764-.44l-.115-.04a.563.563 0 01-.373-.487l-.01-.121a3.75 3.75 0 013.57-4.047zM20.226 19.389a8.287 8.287 0 00-1.308-5.135 3.75 3.75 0 013.57 4.047l-.01.121a.563.563 0 01-.373.486l-.115.04c-.567.2-1.156.349-1.764.441z" />
-    </svg>
+  <div>
+    <%= link_to dashboard_contacts_path, class: "flex flex-col items-center" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-stone-400 hover:text-stone-500">
+        <path fill-rule="evenodd" d="M8.25 6.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM15.75 9.75a3 3 0 116 0 3 3 0 01-6 0zM2.25 9.75a3 3 0 116 0 3 3 0 01-6 0zM6.31 15.117A6.745 6.745 0 0112 12a6.745 6.745 0 016.709 7.498.75.75 0 01-.372.568A12.696 12.696 0 0112 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 01-.372-.568 6.787 6.787 0 011.019-4.38z" clip-rule="evenodd" />
+        <path d="M5.082 14.254a8.287 8.287 0 00-1.308 5.135 9.687 9.687 0 01-1.764-.44l-.115-.04a.563.563 0 01-.373-.487l-.01-.121a3.75 3.75 0 013.57-4.047zM20.226 19.389a8.287 8.287 0 00-1.308-5.135 3.75 3.75 0 013.57 4.047l-.01.121a.563.563 0 01-.373.486l-.115.04c-.567.2-1.156.349-1.764.441z" />
+      </svg>
 
-    <span class="inline-block text-xs text-stone-500 hover:text-stone-600">Liste contacts</span>
-  <% end %>
-</div>
+      <span class="inline-block text-xs text-stone-500 hover:text-stone-600">Liste contacts</span>
+    <% end %>
+  </div>
+<% end %>
 
 <div>
   <%= link_to dashboard_factures_path, class: "flex flex-col items-center" do %>
@@ -47,5 +49,3 @@
     <span class="inline-block text-xs text-stone-500 hover:text-stone-600">Comptabilité</span>
   <% end %>
 </div>
-
-

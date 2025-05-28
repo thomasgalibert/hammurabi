@@ -1,12 +1,13 @@
 class Accounting::ReportsController < ApplicationController
   before_action :authenticate_user!
   before_action :check_firm_setting_is_complete
+  before_action :require_financial_access!
   before_action :set_period
   before_action :set_dates
 
   # Récapitulatif mensuel des factures
   def monthly_reports
-    @invoices = current_user.factures.where(date: @start_date..@end_date).nodraft
+    @invoices = team_scope(Facture).where(date: @start_date..@end_date).nodraft
     
     # Calcul des totaux
     @total_ttc = @invoices.sum(&:total_ttc_cents) / 100.0
@@ -30,7 +31,7 @@ class Accounting::ReportsController < ApplicationController
     end
 
     # Récapitulatif des paiements du mois
-    @payments = current_user.payments.where(issued_date: @start_date..@end_date)
+    @payments = team_scope(Payment).where(issued_date: @start_date..@end_date)
     @total_payments = @payments.sum(&:amount_cents) / 100.0
     @total_payments_vat = @payments.sum(&:vat_evaluated_amount)
 
@@ -40,7 +41,7 @@ class Accounting::ReportsController < ApplicationController
     end
 
     # Récapitulatif des factures non réglées
-    @unpaid_invoices = current_user.factures.nodraft.not_totaly_paid
+    @unpaid_invoices = team_scope(Facture).nodraft.not_totaly_paid
     @total_unpaid_ttc = @unpaid_invoices.sum(&:balance)
     @total_unpaid_ht = @unpaid_invoices.sum { |invoice| invoice.total_ht_cents / 100.0 * (invoice.balance / invoice.total_ttc.to_f) }
     @total_unpaid_tva = @total_unpaid_ttc - @total_unpaid_ht
@@ -48,12 +49,12 @@ class Accounting::ReportsController < ApplicationController
 
   # Détails des factures pour la période
   def invoice_details
-    @invoices = current_user.factures.where(date: @start_date..@end_date).nodraft.order(date: :asc)
+    @invoices = team_scope(Facture).where(date: @start_date..@end_date).nodraft.order(date: :asc)
   end
 
   # Détails des paiements pour la période
   def payment_details
-    @payments = current_user.payments.where(issued_date: @start_date..@end_date).order(issued_date: :asc)
+    @payments = team_scope(Payment).where(issued_date: @start_date..@end_date).order(issued_date: :asc)
     
     # Ventilation des paiements par moyen de paiement
     @payments_by_means = @payments.group_by(&:mean).transform_values do |payment_group|
@@ -66,7 +67,7 @@ class Accounting::ReportsController < ApplicationController
 
   # Liste des factures non réglées
   def unpaid_invoices
-    @unpaid_invoices = current_user.factures.nodraft.not_totaly_paid.order(date: :asc)
+    @unpaid_invoices = team_scope(Facture).nodraft.not_totaly_paid.order(date: :asc)
   end
 
   private

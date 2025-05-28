@@ -14,6 +14,12 @@
 class User < ApplicationRecord
   has_secure_password
   has_person_name
+  
+  # Team relations
+  belongs_to :team_owner, class_name: "User", foreign_key: "team_id", optional: true
+  has_many :team_members, class_name: "User", foreign_key: "team_id", dependent: :destroy
+  
+  # Associations existantes
   has_one :facturation_setting, dependent: :destroy
   has_one :firm_setting, dependent: :destroy
   has_many :dossiers, dependent: :destroy
@@ -30,11 +36,19 @@ class User < ApplicationRecord
   has_many :asks, dependent: :destroy
   has_many :slips, through: :dossiers
   
+  # Constants
+  ROLES = %w[owner accountant]
+  
   validates :email, presence: true
   validates :email, uniqueness: true
   normalizes :email, with: -> email { email.strip.downcase }
 
   validates :last_name, :first_name, :firm, presence: true
+  validates :role, inclusion: { in: ROLES }
+  
+  # Validation du team_id pour les comptables
+  validates :team_id, presence: true, if: :accountant?
+  validates :team_id, absence: true, if: :owner?
 
   # virtual attribute for agreement checkbox
   attr_accessor :agreement
@@ -58,33 +72,46 @@ class User < ApplicationRecord
   has_secure_token :ical_token
   has_secure_token :accountant_token, length: 36
 
+  # Override les méthodes pour utiliser les paramètres de l'owner si c'est un comptable
+  def facturation_setting
+    accountant? ? team_owner&.facturation_setting : super
+  end
+  
+  def firm_setting
+    accountant? ? team_owner&.firm_setting : super
+  end
+  
   def conditions_generales
-    if self.facturation_setting.present? && self.facturation_setting.conditions_generales.present?
-      self.facturation_setting.conditions_generales
+    setting = effective_owner&.facturation_setting
+    if setting.present? && setting.conditions_generales.present?
+      setting.conditions_generales
     else
       "Conditions générales de vente"
     end
   end
 
   def conditions_paiement
-    if self.facturation_setting.present? && self.facturation_setting.conditions_paiement.present?
-      self.facturation_setting.conditions_paiement
+    setting = effective_owner&.facturation_setting
+    if setting.present? && setting.conditions_paiement.present?
+      setting.conditions_paiement
     else
       "Paiement à réception de la facture"
     end
   end
 
   def number_of_days_before_due
-    if self.facturation_setting.present? && self.facturation_setting.number_of_days_before_due.present?
-      self.facturation_setting.number_of_days_before_due
+    setting = effective_owner&.facturation_setting
+    if setting.present? && setting.number_of_days_before_due.present?
+      setting.number_of_days_before_due
     else
       15
     end
   end
 
   def first_invoice_number
-    if self.facturation_setting.present? && self.facturation_setting.first_invoice_number.present?
-      self.facturation_setting.first_invoice_number
+    setting = effective_owner&.facturation_setting
+    if setting.present? && setting.first_invoice_number.present?
+      setting.first_invoice_number
     else
       1
     end
@@ -119,5 +146,33 @@ class User < ApplicationRecord
       regenerate_ical_token
       ical_token
     end
+  end
+  
+  # Méthodes de rôle
+  def owner?
+    role == "owner"
+  end
+  
+  def accountant?
+    role == "accountant"
+  end
+  
+  # Récupère l'utilisateur principal (owner) pour l'équipe
+  def effective_owner
+    owner? ? self : team_owner
+  end
+  
+  # Récupère tous les membres de l'équipe (owner + comptables)
+  def all_team_members
+    if owner?
+      [self] + team_members
+    else
+      team_owner.all_team_members
+    end
+  end
+  
+  # IDs de tous les membres de l'équipe pour les requêtes
+  def team_user_ids
+    all_team_members.pluck(:id)
   end
 end

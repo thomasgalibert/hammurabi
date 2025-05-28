@@ -2,20 +2,22 @@ class FacturesController < ApplicationController
   include Ordering
   before_action :authenticate_user!
   before_action :check_firm_setting_is_complete
+  before_action :require_write_access!, only: [:new, :edit, :update, :destroy, :complete]
   before_action :set_dossier, only: [:index, :new, :show, :edit, :update, :destroy, :will_complete, :complete]
   before_action :set_facture, only: [:show, :edit, :update, :destroy, :complete, :will_complete]
   before_action :check_contact_existence, only: [:new]
   before_action :check_firm_settings, only: [:new]
 
   def index
-    @factures = current_user.factures
+    @factures = team_scope(Facture)
   end
 
   def new
-    @facture = current_user.factures.create!(
+    # Pour les comptables, current_user_or_team retourne l'owner
+    @facture = current_user_or_team.factures.create!(
       state: "draft",
       dossier: @dossier, 
-      emetteur: current_user, 
+      emetteur: current_user_or_team, 
       contact: @dossier.contact_principal,
       date: Date.today)
 
@@ -67,11 +69,11 @@ class FacturesController < ApplicationController
   private
 
   def set_dossier
-    @dossier = current_user.dossiers.find(params[:dossier_id])
+    @dossier = team_scope(Dossier).find(params[:dossier_id])
   end
 
   def set_facture
-    @facture = current_user.factures.find(params[:id])
+    @facture = team_scope(Facture).find(params[:id])
   end
 
   def check_contact_existence

@@ -1,0 +1,58 @@
+fr:
+  admin:
+    team_members:
+      index:
+        title: "Gestion de l'équipe"
+        subtitle: "Liste des membres de votre équipe comptable."
+        invite_button: "Inviter un comptable"
+        table:
+          name: "Nom"
+          email: "Email"
+          firm: "Cabinet"
+          role: "Rôle"
+          created_at: "Date d'ajout"
+          actions: "Actions"
+          accountant_badge: "Comptable"
+          delete: "Supprimer"
+          delete_confirm: "Êtes-vous sûr de vouloir supprimer ce membre ?"
+        empty_state:
+          message: "Aucun membre d'équipe pour le moment."
+          help: "Invitez votre premier comptable pour commencer."
+        back_link: "← Retour aux paramètres"
+      new:
+        title: "Inviter un comptable"
+        subtitle: "Ajoutez un comptable à votre équipe. Il aura accès aux données financières et comptables de votre cabinet."
+        form:
+          first_name: "Prénom"
+          last_name: "Nom"
+          email: "Email"
+          email_help: "Un email d'invitation sera envoyé à cette adresse."
+          firm: "Cabinet"
+          firm_help: "Le nom du cabinet sera pré-rempli avec le vôtre."
+        permissions:
+          title: "Permissions du comptable"
+          intro: "Le comptable aura accès à :"
+          can_access:
+            - "Tableau de bord des finances"
+            - "Module de comptabilité (rapports mensuels, détails des factures, etc.)"
+            - "Consultation des factures et paiements"
+          cannot_access_title: "Le comptable n'aura PAS accès à :"
+          cannot_access:
+            - "Création ou modification de dossiers, contacts, factures"
+            - "Paramètres du cabinet"
+            - "Gestion de l'équipe"
+        actions:
+          cancel: "Annuler"
+          submit: "Inviter le comptable"
+      create:
+        success: "Comptable invité avec succès. Un email lui a été envoyé."
+      destroy:
+        success: "Membre de l'équipe supprimé avec succès."
+  
+  tabs:
+    team_management: "Équipe"
+  
+  team_authorization:
+    access_denied: "Accès non autorisé"
+    write_access_denied: "Accès non autorisé. Cette action nécessite les droits d'administrateur."
+    owner_required: "Accès non autorisé. Seul le propriétaire du cabinet peut effectuer cette action."

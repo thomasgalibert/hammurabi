@@ -1,0 +1,104 @@
+<div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="mb-8">
+    <h1 class="text-2xl font-semibold text-gray-900">Créer un comptable</h1>
+    <p class="mt-2 text-sm text-gray-700">Ajoutez un comptable à votre équipe. Il aura accès aux données financières et comptables de votre cabinet. Vous devez définir ses identifiants de connexion.</p>
+  </div>
+
+  <%= form_with model: @team_member, url: admin_team_members_path, local: true do |f| %>
+    <% if @team_member.errors.any? %>
+      <div class="rounded-md bg-red-50 p-4 mb-6">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <svg class="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="ml-3">
+            <h3 class="text-sm font-medium text-red-800">Il y a <%= @team_member.errors.count %> erreur(s) à corriger :</h3>
+            <div class="mt-2 text-sm text-red-700">
+              <ul class="list-disc pl-5 space-y-1">
+                <% @team_member.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="bg-white shadow sm:rounded-lg">
+      <div class="px-4 py-5 sm:p-6">
+        <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+          <div class="sm:col-span-3">
+            <label for="user_first_name" class="block text-sm font-medium text-gray-700">Prénom</label>
+            <div class="mt-1">
+              <%= f.text_field :first_name, class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-stone-500 focus:ring-stone-500 sm:text-sm", required: true %>
+            </div>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label for="user_last_name" class="block text-sm font-medium text-gray-700">Nom</label>
+            <div class="mt-1">
+              <%= f.text_field :last_name, class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-stone-500 focus:ring-stone-500 sm:text-sm", required: true %>
+            </div>
+          </div>
+
+          <div class="sm:col-span-4">
+            <label for="user_email" class="block text-sm font-medium text-gray-700">Email</label>
+            <div class="mt-1">
+              <%= f.email_field :email, class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-stone-500 focus:ring-stone-500 sm:text-sm", required: true %>
+            </div>
+            <p class="mt-2 text-sm text-gray-500">L'email sera utilisé pour la connexion.</p>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label for="user_password" class="block text-sm font-medium text-gray-700">Mot de passe</label>
+            <div class="mt-1">
+              <%= f.password_field :password, class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-stone-500 focus:ring-stone-500 sm:text-sm", required: true %>
+            </div>
+            <p class="mt-2 text-sm text-gray-500">Minimum 12 caractères avec majuscule, minuscule, chiffre et caractère spécial.</p>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label for="user_password_confirmation" class="block text-sm font-medium text-gray-700">Confirmer le mot de passe</label>
+            <div class="mt-1">
+              <%= f.password_field :password_confirmation, class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-stone-500 focus:ring-stone-500 sm:text-sm", required: true %>
+            </div>
+          </div>
+
+          <div class="sm:col-span-6">
+            <label for="user_firm" class="block text-sm font-medium text-gray-700">Cabinet</label>
+            <div class="mt-1">
+              <%= f.text_field :firm, value: current_user.firm, class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-stone-500 focus:ring-stone-500 sm:text-sm", required: true %>
+            </div>
+            <p class="mt-2 text-sm text-gray-500">Le nom du cabinet sera pré-rempli avec le vôtre.</p>
+          </div>
+        </div>
+
+        <div class="mt-6 bg-gray-50 p-4 rounded-md">
+          <h3 class="text-sm font-medium text-gray-900">Permissions du comptable</h3>
+          <div class="mt-2 text-sm text-gray-600">
+            <p>Le comptable aura accès à :</p>
+            <ul class="list-disc pl-5 mt-2 space-y-1">
+              <li>Tableau de bord des finances</li>
+              <li>Module de comptabilité (rapports mensuels, détails des factures, etc.)</li>
+              <li>Consultation des factures et paiements</li>
+            </ul>
+            <p class="mt-2 font-medium">Le comptable n'aura PAS accès à :</p>
+            <ul class="list-disc pl-5 mt-2 space-y-1">
+              <li>Création ou modification de dossiers, contacts, factures</li>
+              <li>Paramètres du cabinet</li>
+              <li>Gestion de l'équipe</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6 flex items-center justify-end gap-x-4">
+      <%= link_to "Annuler", admin_team_members_path, class: "text-sm font-semibold text-gray-900" %>
+      <%= f.submit "Créer le comptable", class: "rounded-md bg-stone-700 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-stone-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-700" %>
+    </div>
+  <% end %>
+</div>

@@ -14,22 +14,34 @@
           <div>
             <%= t('activerecord.attributes.user.honorific') %>
             <%= current_user.name.full %>
-          </div>
-          
-          <div>
-            <%= link_to settings_firm_setting_path do %>
-              <span class="text-xs text-amber-600 font-normal">(<%= t('firm_setting.link') %>)</span>
+            <% if current_user.accountant? %>
+              <span class="text-sm font-normal text-stone-500">(Comptable)</span>
             <% end %>
           </div>
+          
+          <% if current_user.owner? %>
+            <div>
+              <%= link_to settings_firm_setting_path do %>
+                <span class="text-xs text-amber-600 font-normal">(<%= t('firm_setting.link') %>)</span>
+              <% end %>
+            </div>
+          <% end %>
         </div>
       </div>
-      <div class="text-sm font-semibold text-stone-500"><%= current_user.firm %></div>
+      <div class="text-sm font-semibold text-stone-500">
+        <%= current_user.firm %>
+        <% if current_user.accountant? %>
+          - Cabinet de <%= current_user.team_owner.name.full %>
+        <% end %>
+      </div>
     </div>
   </div>
 
   <div class="flex flex-col space-y-1 lg:space-y-0 mt-4 lg:mt-0 lg:flex-row items-center space-x-4">
     <div class="flex items-center space-x-4"><%= render "shared/icons" %></div>
-    <%= render "dossiers/search" %>
+    <% if current_user.owner? %>
+      <%= render "dossiers/search" %>
+    <% end %>
     <%= button_to session_path, method: :delete, class: "hidden bg-white border p-1 rounded-md lg:flex text-xs text-rose-600" do %>
       <%= t('sessions.logout') %>
     <% end %>
